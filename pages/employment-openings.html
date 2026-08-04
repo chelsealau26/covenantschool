@@ -2131,7 +2131,7 @@
                     @media (max-width:600px){ #emp-app-form .fr { flex-direction:column; gap:0; } }
                   </style>
 
-                  <form id="emp-app-form" action="/submit-employment" method="POST" enctype="multipart/form-data" novalidate>
+                  <form id="emp-app-form" action="https://formspree.io/f/mgawwqyd" method="POST" enctype="multipart/form-data" novalidate>
 
                     <div class="fr">
                       <div class="fg">
@@ -2222,13 +2222,13 @@
                       if(!valid) return;
                       btn.disabled = true; btn.textContent = 'Submitting\u2026';
                       err.style.display = 'none';
-                      fetch('/submit-employment',{method:'POST',body:new FormData(form)})
-                        .then(function(r){ return r.json(); })
-                        .then(function(j){
-                          if(j.success){
+                      fetch('https://formspree.io/f/mgawwqyd',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+                        .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
+                        .then(function(res){
+                          if(res.ok){
                             form.style.display='none'; ok.style.display='block';
                           } else {
-                            errDetail.textContent = j.error || 'Please try again or email us at info@covenantschool.com.';
+                            errDetail.textContent = (res.j.errors&&res.j.errors[0]&&res.j.errors[0].message) || 'Please try again or email us at info@covenantschool.com.';
                             err.style.display='block';
                             btn.disabled=false; btn.textContent='Submit Application';
                           }
