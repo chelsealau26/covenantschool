@@ -12,18 +12,38 @@ PDFS_DIR = Path(__file__).parent / "pdfs"
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    def _safe_resolve(self, base: Path, rel: str) -> Path | None:
+        """Resolve a relative path under base, returning None if it escapes."""
+        try:
+            resolved = (base / rel).resolve()
+            if resolved.is_relative_to(base.resolve()):
+                return resolved
+        except Exception:
+            pass
+        return None
+
     def do_GET(self):
         path = self.path.split("?")[0].rstrip("/")
 
         # Route /assets/* to the assets directory
         if path.startswith("/assets/"):
-            file_path = ASSETS_DIR / path[len("/assets/"):]
+            rel = path[len("/assets/"):]
+            file_path = self._safe_resolve(ASSETS_DIR, rel)
+            if file_path is None:
+                self.send_response(403)
+                self.end_headers()
+                return
             self.serve_file(file_path)
             return
 
         # Route /pdfs/* to the pdfs directory
         if path.startswith("/pdfs/"):
-            file_path = PDFS_DIR / path[len("/pdfs/"):]
+            rel = path[len("/pdfs/"):]
+            file_path = self._safe_resolve(PDFS_DIR, rel)
+            if file_path is None:
+                self.send_response(403)
+                self.end_headers()
+                return
             self.serve_file(file_path)
             return
 
@@ -32,15 +52,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.serve_file(PAGES_DIR / "index.html")
             return
 
-        # Try exact match as HTML page
+        # Try exact match as HTML page (pages dir only, no traversal)
         clean = path.lstrip("/")
-        candidates = [
-            PAGES_DIR / clean,
-            PAGES_DIR / (clean + ".html"),
-        ]
-        for candidate in candidates:
-            if candidate.exists():
-                self.serve_file(candidate)
+        for suffix in ("", ".html"):
+            file_path = self._safe_resolve(PAGES_DIR, clean + suffix)
+            if file_path and file_path.exists():
+                self.serve_file(file_path)
                 return
 
         # 404
@@ -83,6 +100,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     os.chdir(Path(__file__).parent)
+    socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("0.0.0.0", PORT), Handler) as httpd:
         print(f"Serving Covenant School website on port {PORT}")
         httpd.serve_forever()
