@@ -2131,8 +2131,10 @@
                     @media (max-width:600px){ #emp-app-form .fr { flex-direction:column; gap:0; } }
                   </style>
 
-                  <form id="emp-app-form" action="https://formspree.io/f/mgawwqyd" method="POST" enctype="multipart/form-data" novalidate>
-                    <input type="hidden" name="_cc" value="chelsea.lau26@gmail.com" />
+                  <form id="emp-app-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
+                    <input type="hidden" name="access_key" value="45e6394e-d543-457f-b7b5-ab622416ea8a" />
+                    <input type="hidden" name="subject" value="New Employment Application – Covenant Christian School" />
+                    <input type="hidden" name="from_name" value="Covenant School Employment Form" />
 
                     <div class="fr">
                       <div class="fg">
@@ -2223,13 +2225,13 @@
                       if(!valid) return;
                       btn.disabled = true; btn.textContent = 'Submitting\u2026';
                       err.style.display = 'none';
-                      fetch('https://formspree.io/f/mgawwqyd',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-                        .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
-                        .then(function(res){
-                          if(res.ok){
+                      fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+                        .then(function(r){ return r.json(); })
+                        .then(function(j){
+                          if(j.success){
                             form.style.display='none'; ok.style.display='block';
                           } else {
-                            errDetail.textContent = (res.j.errors&&res.j.errors[0]&&res.j.errors[0].message) || 'Please try again or email us at info@covenantschool.com.';
+                            errDetail.textContent = j.message || 'Please try again or email us at info@covenantschool.com.';
                             err.style.display='block';
                             btn.disabled=false; btn.textContent='Submit Application';
                           }
