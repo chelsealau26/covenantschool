@@ -3508,7 +3508,6 @@
   display: flex !important;
   align-items: center !important;
   gap: 7px !important;
-  transition: background .2s, transform .2s !important;
   font-family: 'Open Sans', Arial, sans-serif !important;
   font-size: .78rem !important;
   font-weight: 700 !important;
@@ -3516,12 +3515,12 @@
   white-space: nowrap !important;
   text-decoration: none !important;
   filter: none !important;
+  outline-offset: 3px !important;
 }
 #a11y-btn:hover,
 #a11y-btn:focus {
   background: #122b52 !important;
-  transform: scale(1.05) !important;
-  outline: 3px solid #fde047 !important;
+  outline: 3px solid #fbbf24 !important;
   color: #fff !important;
 }
 #a11y-btn svg {
@@ -3531,7 +3530,7 @@
   flex-shrink: 0 !important;
   filter: none !important;
 }
-#a11y-btn span {
+#a11y-btn > span {
   color: #fff !important;
   background: transparent !important;
   font-size: .78rem !important;
@@ -3542,19 +3541,19 @@
 /* ── Panel ── */
 #a11y-panel {
   position: fixed !important;
-  bottom: 80px !important;
+  bottom: 78px !important;
   left: 24px !important;
   z-index: 100000 !important;
-  width: 290px !important;
+  width: 300px !important;
   background: #fff !important;
-  border-radius: 12px !important;
-  box-shadow: 0 8px 40px rgba(0,0,0,.28) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 48px rgba(0,0,0,.22) !important;
   font-family: 'Open Sans', Arial, sans-serif !important;
   overflow: hidden !important;
-  transform: scale(.95) translateY(10px) !important;
+  transform: scale(.96) translateY(8px) !important;
   opacity: 0 !important;
   pointer-events: none !important;
-  transition: opacity .2s ease, transform .2s ease !important;
+  transition: opacity .18s ease, transform .18s ease !important;
   filter: none !important;
 }
 #a11y-panel.open {
@@ -3563,84 +3562,92 @@
   pointer-events: all !important;
 }
 
-/* Header */
+/* Panel header */
 #a11y-panel-header {
   background: #1a3a6b !important;
   color: #fff !important;
-  padding: 14px 18px 12px !important;
+  padding: 13px 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
 }
-#a11y-panel-header span {
+#a11y-panel-header > span {
   font-weight: 700 !important;
-  font-size: .95rem !important;
-  letter-spacing: .03em !important;
+  font-size: .88rem !important;
+  letter-spacing: .02em !important;
   color: #fff !important;
   background: transparent !important;
 }
 #a11y-panel-reset {
-  background: none !important;
-  border: 1px solid rgba(255,255,255,.45) !important;
-  color: rgba(255,255,255,.85) !important;
-  border-radius: 4px !important;
+  background: rgba(255,255,255,.12) !important;
+  border: 1px solid rgba(255,255,255,.35) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
   font-size: .72rem !important;
-  padding: 3px 8px !important;
+  font-weight: 600 !important;
+  padding: 4px 10px !important;
   cursor: pointer !important;
   font-family: inherit !important;
-  transition: background .15s !important;
+  letter-spacing: .02em !important;
+  white-space: nowrap !important;
 }
-#a11y-panel-reset:hover { background: rgba(255,255,255,.15) !important; }
-
-/* Controls grid */
-#a11y-controls {
-  padding: 14px 14px 16px !important;
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 8px !important;
-  background: #fff !important;
+#a11y-panel-reset:hover {
+  background: rgba(255,255,255,.22) !important;
 }
 
-/* Text-size row spans full width */
+/* Text size row */
 #a11y-textsize-row {
-  grid-column: 1 / -1 !important;
   display: flex !important;
   align-items: center !important;
   gap: 6px !important;
-  background: #f5f7fb !important;
-  border-radius: 8px !important;
-  padding: 8px 12px !important;
+  background: #f4f6fa !important;
+  margin: 14px 14px 0 !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
 }
-#a11y-textsize-row label {
-  font-size: .8rem !important;
-  color: #444 !important;
+#a11y-textsize-row > label {
+  font-size: .78rem !important;
+  color: #555 !important;
+  font-weight: 600 !important;
   flex: 1 !important;
   background: transparent !important;
+  letter-spacing: .01em !important;
 }
 .a11y-size-btn {
-  width: 30px !important;
-  height: 30px !important;
-  border-radius: 6px !important;
-  border: 1px solid #dde !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  border: 1.5px solid #d0d5e8 !important;
   background: #fff !important;
-  font-size: 1rem !important;
+  font-size: .85rem !important;
   font-weight: 700 !important;
   cursor: pointer !important;
-  line-height: 1 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   color: #1a3a6b !important;
-  transition: background .15s !important;
+  flex-shrink: 0 !important;
 }
-.a11y-size-btn:hover { background: #eef2f9 !important; }
+.a11y-size-btn:hover {
+  background: #e8edf7 !important;
+  border-color: #1a3a6b !important;
+}
 #a11y-size-val {
-  font-size: .8rem !important;
+  font-size: .78rem !important;
   font-weight: 700 !important;
   color: #1a3a6b !important;
-  min-width: 32px !important;
+  min-width: 38px !important;
   text-align: center !important;
   background: transparent !important;
+}
+
+/* Toggle grid — 3 columns of 2 */
+#a11y-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 8px !important;
+  padding: 12px 14px 16px !important;
+  background: #fff !important;
 }
 
 /* Toggle buttons */
@@ -3649,39 +3656,49 @@
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 5px !important;
-  padding: 10px 6px 9px !important;
-  border-radius: 8px !important;
-  border: 2px solid #e8eaf0 !important;
-  background: #f9fafc !important;
+  gap: 6px !important;
+  padding: 11px 4px 10px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid #e2e6f0 !important;
+  background: #f9fafd !important;
   cursor: pointer !important;
   font-family: inherit !important;
-  font-size: .72rem !important;
+  font-size: .68rem !important;
   color: #444 !important;
   text-align: center !important;
-  line-height: 1.2 !important;
-  transition: background .15s, border-color .15s, color .15s !important;
+  line-height: 1.3 !important;
   user-select: none !important;
+  white-space: nowrap !important;
 }
-.a11y-toggle svg { width: 22px !important; height: 22px !important; fill: #444 !important; }
-.a11y-toggle:hover { background: #eef2f9 !important; border-color: #bcc6dc !important; }
+.a11y-toggle svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: #555 !important;
+  stroke: none !important;
+}
+.a11y-toggle:hover {
+  background: #eef1fa !important;
+  border-color: #b0bcd8 !important;
+}
 .a11y-toggle.active {
   background: #1a3a6b !important;
   border-color: #1a3a6b !important;
   color: #fff !important;
 }
-.a11y-toggle.active svg { fill: #fff !important; }
+.a11y-toggle.active svg {
+  fill: #fff !important;
+}
 
-/* Reading guide */
-#a11y-guide {
+/* Reading ruler */
+#a11y-ruler {
   display: none;
   position: fixed !important;
   left: 0 !important;
   right: 0 !important;
-  height: 40px !important;
-  background: rgba(253, 224, 71, .35) !important;
-  border-top: 2px solid rgba(180,140,0,.4) !important;
-  border-bottom: 2px solid rgba(180,140,0,.4) !important;
+  height: 44px !important;
+  background: rgba(219, 234, 254, .5) !important;
+  border-top: 2px solid rgba(59,130,246,.35) !important;
+  border-bottom: 2px solid rgba(59,130,246,.35) !important;
   z-index: 99998 !important;
   pointer-events: none !important;
   filter: none !important;
@@ -3689,51 +3706,41 @@
 
 /* ── Body-level mode overrides ── */
 
-/* High contrast */
-body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *):not(#a11y-guide) {
-  background-color: #000 !important;
-  color: #ff0 !important;
-  border-color: #ff0 !important;
-  fill: #ff0 !important;
+/* High contrast — refined dark navy, NOT black/yellow */
+body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *):not(#a11y-ruler) {
+  background-color: #0d1b2e !important;
+  color: #e8edf5 !important;
+  border-color: rgba(255,255,255,.25) !important;
 }
-body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *) a,
-body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *) a * {
-  color: #0ff !important;
+body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *) a {
+  color: #7dd3fc !important;
+  text-decoration: underline !important;
 }
-body.a11y-high-contrast img { filter: contrast(1.2) brightness(0.9); }
+body.a11y-high-contrast img {
+  filter: brightness(.9) contrast(1.1) !important;
+}
 
 /* Grayscale — exclude widget */
 body.a11y-grayscale :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *) {
-  filter: grayscale(100%);
+  filter: grayscale(100%) !important;
 }
 
 /* Highlight links */
-body.a11y-links a {
+body.a11y-links a:not(#a11y-panel a) {
   text-decoration: underline !important;
-  outline: 2px solid #c0392b !important;
-  outline-offset: 1px;
+  outline: 2px solid #b91c1c !important;
+  outline-offset: 2px !important;
 }
 
 /* Dyslexia font */
-body.a11y-dyslexia,
-body.a11y-dyslexia p,
-body.a11y-dyslexia li,
-body.a11y-dyslexia span:not(#a11y-btn span),
-body.a11y-dyslexia a,
-body.a11y-dyslexia h1,
-body.a11y-dyslexia h2,
-body.a11y-dyslexia h3,
-body.a11y-dyslexia h4,
-body.a11y-dyslexia h5,
-body.a11y-dyslexia h6,
-body.a11y-dyslexia div:not(#a11y-panel):not(#a11y-panel *) {
+body.a11y-dyslexia *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *) {
   font-family: 'Lexend', sans-serif !important;
-  letter-spacing: .05em !important;
-  word-spacing: .1em !important;
-  line-height: 1.75 !important;
+  letter-spacing: .04em !important;
+  word-spacing: .08em !important;
+  line-height: 1.8 !important;
 }
 
-/* Stop animations — exclude widget transitions */
+/* Stop animations — exclude widget */
 body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel),
 body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::before,
 body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
@@ -3774,18 +3781,19 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
     try { localStorage.setItem('ccs_a11y', JSON.stringify(state)); } catch (e) {}
   }
 
-  /* ── HTML ── */
-  var ICON_A11Y = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8.5 5.5l-5-.5-1.5-.5h-4l-1.5.5-5 .5a1 1 0 0 0 0 2l4-.4V12l-2.5 6.5a1 1 0 1 0 1.87.72L9 14h6l1.13 5.22a1 1 0 1 0 1.87-.72L15.5 12V9.1l4 .4a1 1 0 0 0 0-2z"/></svg>';
+  /* ── Icons ── */
+  var ICON_A11Y = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8.5 5.5l-5-.5-1.5-.5h-4l-1.5.5-5 .5a1 1 0 0 0 0 2l4-.4V12l-2.5 6.5a1 1 0 1 0 1.87.72L9 14h6l1.13 5.22a1 1 0 1 0 1.87-.72L15.5 12V9.1l4 .4a1 1 0 0 0 0-2z"/></svg>';
 
   var icons = {
-    contrast: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm0 16V5a7 7 0 0 1 0 14z"/></svg>',
-    grayscale: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 3v18" stroke="currentColor" stroke-width="2"/></svg>',
-    links:    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
-    dyslexia: '<svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="18" font-size="16" font-weight="bold" fill="currentColor">Aa</text></svg>',
-    noAnim:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/><line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2"/></svg>',
-    guide:    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="10" width="20" height="4" rx="1"/><line x1="2" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="2" y1="17" x2="22" y2="17" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,2"/></svg>',
+    contrast:  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm0 16V5a7 7 0 0 1 0 14z"/></svg>',
+    grayscale: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 4v16M8.5 6.5l7 11M6.5 8.5l11 7" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg>',
+    links:     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+    dyslexia:  '<svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="14" font-weight="700" fill="currentColor" font-family="Arial">Aa</text></svg>',
+    noAnim:    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/><line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    guide:     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="20" height="6" rx="2" fill="currentColor" opacity=".2"/><line x1="2" y1="9" x2="22" y2="9" stroke-dasharray="3 2"/><line x1="2" y1="15" x2="22" y2="15" stroke-dasharray="3 2"/></svg>',
   };
 
+  /* ── Build panel HTML ── */
   var panel = document.createElement('div');
   panel.id = 'a11y-panel';
   panel.setAttribute('role', 'dialog');
@@ -3796,21 +3804,22 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
       '<span>Accessibility Options</span>' +
       '<button id="a11y-panel-reset" aria-label="Reset all accessibility settings">Reset</button>' +
     '</div>' +
-    '<div id="a11y-controls">' +
-      '<div id="a11y-textsize-row">' +
-        '<label for="a11y-inc">Text size</label>' +
-        '<button class="a11y-size-btn" id="a11y-dec" aria-label="Decrease text size">A−</button>' +
-        '<span id="a11y-size-val" aria-live="polite">100%</span>' +
-        '<button class="a11y-size-btn" id="a11y-inc" aria-label="Increase text size">A+</button>' +
-      '</div>' +
-      '<button class="a11y-toggle" id="a11y-contrast"  aria-pressed="false">' + icons.contrast  + 'High<br>Contrast</button>' +
-      '<button class="a11y-toggle" id="a11y-grayscale" aria-pressed="false">' + icons.grayscale + 'Grayscale</button>' +
-      '<button class="a11y-toggle" id="a11y-links"     aria-pressed="false">' + icons.links     + 'Highlight<br>Links</button>' +
-      '<button class="a11y-toggle" id="a11y-dyslexia"  aria-pressed="false">' + icons.dyslexia  + 'Readable<br>Font</button>' +
-      '<button class="a11y-toggle" id="a11y-no-anim"   aria-pressed="false">' + icons.noAnim    + 'Pause<br>Motion</button>' +
-      '<button class="a11y-toggle" id="a11y-guide"     aria-pressed="false">' + icons.guide     + 'Reading<br>Guide</button>' +
+    '<div id="a11y-textsize-row">' +
+      '<label>Text size</label>' +
+      '<button class="a11y-size-btn" id="a11y-dec" aria-label="Decrease text size">A−</button>' +
+      '<span id="a11y-size-val" aria-live="polite">100%</span>' +
+      '<button class="a11y-size-btn" id="a11y-inc" aria-label="Increase text size">A+</button>' +
+    '</div>' +
+    '<div id="a11y-grid">' +
+      '<button class="a11y-toggle" id="a11y-btn-contrast"  aria-pressed="false">' + icons.contrast  + 'High<br>Contrast</button>' +
+      '<button class="a11y-toggle" id="a11y-btn-grayscale" aria-pressed="false">' + icons.grayscale + 'Grayscale</button>' +
+      '<button class="a11y-toggle" id="a11y-btn-links"     aria-pressed="false">' + icons.links     + 'Highlight<br>Links</button>' +
+      '<button class="a11y-toggle" id="a11y-btn-dyslexia"  aria-pressed="false">' + icons.dyslexia  + 'Readable<br>Font</button>' +
+      '<button class="a11y-toggle" id="a11y-btn-noanim"    aria-pressed="false">' + icons.noAnim    + 'Pause<br>Motion</button>' +
+      '<button class="a11y-toggle" id="a11y-btn-guide"     aria-pressed="false">' + icons.guide     + 'Reading<br>Guide</button>' +
     '</div>';
 
+  /* ── Trigger button ── */
   var trigger = document.createElement('button');
   trigger.id = 'a11y-btn';
   trigger.setAttribute('aria-label', 'Accessibility options');
@@ -3818,120 +3827,90 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
   trigger.setAttribute('aria-controls', 'a11y-panel');
   trigger.innerHTML = ICON_A11Y + '<span>Accessibility</span>';
 
-  var guide = document.createElement('div');
-  guide.id = 'a11y-guide';
-  guide.setAttribute('aria-hidden', 'true');
+  /* ── Reading ruler (separate div, no ID collision) ── */
+  var ruler = document.createElement('div');
+  ruler.id = 'a11y-ruler';
+  ruler.setAttribute('aria-hidden', 'true');
 
   document.body.appendChild(trigger);
   document.body.appendChild(panel);
-  document.body.appendChild(guide);
+  document.body.appendChild(ruler);
 
-  /* ── Apply / render state ── */
+  /* ── Apply state ── */
   function applyAll() {
-    /* text size */
     document.documentElement.style.fontSize = state.textSize + '%';
     document.getElementById('a11y-size-val').textContent = state.textSize + '%';
 
-    /* toggles */
-    applyToggle('highContrast', 'a11y-high-contrast', 'a11y-contrast');
-    applyToggle('grayscale',    'a11y-grayscale',      'a11y-grayscale');
-    applyToggle('links',        'a11y-links',          'a11y-links');
-    applyToggle('dyslexia',     'a11y-dyslexia',       'a11y-dyslexia');
-    applyToggle('noAnim',       'a11y-no-anim',        'a11y-no-anim');
+    setToggle('highContrast', 'a11y-high-contrast', 'a11y-btn-contrast');
+    setToggle('grayscale',    'a11y-grayscale',      'a11y-btn-grayscale');
+    setToggle('links',        'a11y-links',          'a11y-btn-links');
+    setToggle('dyslexia',     'a11y-dyslexia',       'a11y-btn-dyslexia');
+    setToggle('noAnim',       'a11y-no-anim',        'a11y-btn-noanim');
 
-    /* reading guide */
-    guide.style.display = state.guide ? 'block' : 'none';
-    var guideBtn = document.getElementById('a11y-guide');
-    /* note: #a11y-guide is the ruler div; the button id is 'a11y-guide' in controls */
-    var guideBtnEl = document.querySelector('#a11y-controls #a11y-guide');
-    if (guideBtnEl) {
-      guideBtnEl.classList.toggle('active', state.guide);
-      guideBtnEl.setAttribute('aria-pressed', state.guide ? 'true' : 'false');
+    ruler.style.display = state.guide ? 'block' : 'none';
+    var gbtn = document.getElementById('a11y-btn-guide');
+    if (gbtn) {
+      gbtn.classList.toggle('active', state.guide);
+      gbtn.setAttribute('aria-pressed', state.guide ? 'true' : 'false');
     }
   }
 
-  function applyToggle(key, bodyClass, btnId) {
+  function setToggle(key, bodyClass, btnId) {
     document.body.classList.toggle(bodyClass, state[key]);
     var btn = document.getElementById(btnId);
-    if (btn && btn.closest('#a11y-controls')) {
+    if (btn) {
       btn.classList.toggle('active', state[key]);
       btn.setAttribute('aria-pressed', state[key] ? 'true' : 'false');
     }
   }
 
-  /* ── Panel open/close ── */
+  /* ── Open / close ── */
   var panelOpen = false;
   function openPanel()  { panel.classList.add('open');    trigger.setAttribute('aria-expanded', 'true');  panelOpen = true; }
   function closePanel() { panel.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); panelOpen = false; }
 
-  trigger.addEventListener('click', function (e) {
-    e.stopPropagation();
-    panelOpen ? closePanel() : openPanel();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && panelOpen) closePanel();
-  });
-  document.addEventListener('click', function (e) {
-    if (panelOpen && !panel.contains(e.target) && e.target !== trigger) closePanel();
-  });
+  trigger.addEventListener('click', function (e) { e.stopPropagation(); panelOpen ? closePanel() : openPanel(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panelOpen) closePanel(); });
+  document.addEventListener('click',   function (e) { if (panelOpen && !panel.contains(e.target) && e.target !== trigger) closePanel(); });
 
   /* ── Text size ── */
   document.getElementById('a11y-inc').addEventListener('click', function () {
-    if (state.textSize >= 150) return;
-    state.textSize = Math.min(150, state.textSize + 10);
-    applyAll(); save();
+    state.textSize = Math.min(150, state.textSize + 10); applyAll(); save();
   });
   document.getElementById('a11y-dec').addEventListener('click', function () {
-    if (state.textSize <= 80) return;
-    state.textSize = Math.max(80, state.textSize - 10);
-    applyAll(); save();
+    state.textSize = Math.max(80, state.textSize - 10); applyAll(); save();
   });
 
   /* ── Toggle handlers ── */
-  function makeToggle(btnId, key) {
-    var el = document.getElementById(btnId);
-    if (el && el.closest('#a11y-controls')) {
-      el.addEventListener('click', function () {
-        state[key] = !state[key];
-        applyAll(); save();
-      });
-    }
-  }
-  makeToggle('a11y-contrast',  'highContrast');
-  makeToggle('a11y-grayscale', 'grayscale');
-  makeToggle('a11y-links',     'links');
-  makeToggle('a11y-dyslexia',  'dyslexia');
-  makeToggle('a11y-no-anim',   'noAnim');
-
-  /* Guide button — use query selector to avoid ID collision with the ruler div */
-  var guideBtnCtrl = document.querySelector('#a11y-controls button:last-child');
-  if (guideBtnCtrl) {
-    guideBtnCtrl.addEventListener('click', function () {
-      state.guide = !state.guide;
-      guide.style.display = state.guide ? 'block' : 'none';
-      guideBtnCtrl.classList.toggle('active', state.guide);
-      guideBtnCtrl.setAttribute('aria-pressed', state.guide ? 'true' : 'false');
-      save();
+  [
+    ['a11y-btn-contrast',  'highContrast'],
+    ['a11y-btn-grayscale', 'grayscale'],
+    ['a11y-btn-links',     'links'],
+    ['a11y-btn-dyslexia',  'dyslexia'],
+    ['a11y-btn-noanim',    'noAnim'],
+  ].forEach(function (pair) {
+    document.getElementById(pair[0]).addEventListener('click', function () {
+      state[pair[1]] = !state[pair[1]]; applyAll(); save();
     });
-  }
+  });
+
+  document.getElementById('a11y-btn-guide').addEventListener('click', function () {
+    state.guide = !state.guide; applyAll(); save();
+  });
 
   /* ── Reset ── */
   document.getElementById('a11y-panel-reset').addEventListener('click', function () {
     state = Object.assign({}, DEFAULTS);
     document.documentElement.style.fontSize = '';
-    guide.style.display = 'none';
     applyAll(); save();
   });
 
-  /* ── Reading guide follows mouse ── */
+  /* ── Reading ruler follows cursor ── */
   document.addEventListener('mousemove', function (e) {
-    if (state.guide) guide.style.top = (e.clientY - 20) + 'px';
+    if (state.guide) ruler.style.top = (e.clientY - 22) + 'px';
   });
 
-  /* ── Apply saved state on load ── */
   applyAll();
-
 })();
 
   </script>
