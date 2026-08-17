@@ -2030,6 +2030,20 @@
           #school-calendar .fc-button-primary:not(:disabled):active { background: #122b52; border-color: #122b52; }
           #school-calendar .fc-day-today { background: #eef2f9 !important; }
           #school-calendar .fc-event { font-size: 0.78rem; cursor: pointer; border: none; }
+          /* No School background — yellow like the PDF */
+          #school-calendar .fc-bg-event.no-school-bg { background: #fff3cd !important; opacity: 1 !important; }
+          /* Early Dismissal background — light orange */
+          #school-calendar .fc-bg-event.early-dismissal-bg { background: #ffe5c2 !important; opacity: 1 !important; }
+          /* Legend */
+          #cal-legend {
+            max-width: 960px; margin: 0 auto 8px; padding: 0 16px;
+            display: flex; flex-wrap: wrap; gap: 16px;
+            font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: #555;
+          }
+          #cal-legend span { display: flex; align-items: center; gap: 6px; }
+          #cal-legend .swatch {
+            width: 16px; height: 16px; border-radius: 2px; flex-shrink: 0;
+          }
           #cal-popup-overlay {
             display: none; position: fixed; inset: 0;
             background: rgba(0,0,0,.45); z-index: 9999;
@@ -2050,8 +2064,16 @@
           }
           @media (max-width: 600px) {
             #school-calendar .fc-toolbar { flex-direction: column; gap: 8px; }
+            #cal-legend { gap: 10px; }
           }
         </style>
+
+        <div id="cal-legend">
+          <span><span class="swatch" style="background:#fff3cd;border:1px solid #e0c94a;"></span>No School</span>
+          <span><span class="swatch" style="background:#ffe5c2;border:1px solid #f0a860;"></span>Early Dismissal</span>
+          <span><span class="swatch" style="background:#1a3a6b;border-radius:2px;"></span>School Event</span>
+          <span><span class="swatch" style="background:#2e7d32;border-radius:2px;"></span>Special Event</span>
+        </div>
 
         <div id="school-calendar"></div>
 
@@ -2083,11 +2105,23 @@
           fetch('/assets/events.json')
             .then(function (r) { return r.json(); })
             .then(function (events) {
+              // Build background shading events
+              var bgEvents = [];
+              events.forEach(function (e) {
+                var isNoSchool = e.color === '#c0392b';
+                var isEarlyDismissal = !isNoSchool && e.title && /early dismissal/i.test(e.title);
+                if (isNoSchool) {
+                  bgEvents.push({ start: e.start, end: e.end || e.start, display: 'background', classNames: ['no-school-bg'] });
+                } else if (isEarlyDismissal) {
+                  bgEvents.push({ start: e.start, end: e.end || e.start, display: 'background', classNames: ['early-dismissal-bg'] });
+                }
+              });
+              var allEvents = bgEvents.concat(events);
               var calEl = document.getElementById('school-calendar');
               var cal = new FullCalendar.Calendar(calEl, {
                 initialView: 'dayGridMonth',
                 headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
-                events: events,
+                events: allEvents,
                 eventClick: function (info) {
                   var start = info.event.startStr;
                   var end   = info.event.endStr;
