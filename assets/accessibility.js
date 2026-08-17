@@ -29,7 +29,7 @@
 
   /* Accessibility icon — white badge circle + dark-red person figure,
      matching the universal accessibility symbol style              */
-  var BTN_RED = '#7B1D1D';
+  var BTN_RED = '#1a3a6b';
   var ICON_A11Y =
     '<svg viewBox="0 0 34 34" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">' +
     /* white badge circle */
