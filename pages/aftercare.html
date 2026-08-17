@@ -3639,15 +3639,12 @@
   outline: 3px solid #fbbf24 !important;
   color: #fff !important;
 }
-/* Trigger icon is stroke-based wheelchair */
+/* Trigger icon — fill-based wheelchair */
 #a11y-btn svg {
-  width: 22px !important;
-  height: 22px !important;
-  fill: none !important;
-  stroke: #fff !important;
-  stroke-width: 2 !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
+  width: 26px !important;
+  height: 26px !important;
+  fill: #fff !important;
+  stroke: none !important;
   flex-shrink: 0 !important;
   filter: none !important;
 }
@@ -3935,19 +3932,26 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
      Trigger button: stroke-based wheelchair (Tabler Icons style)
      Panel toggles:  fill-based shapes                              */
 
-  /* Wheelchair: head circle + seat/back path + two wheel circles */
+  /* Wheelchair icon — fill-based, simple geometric shapes */
   var ICON_A11Y =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"' +
-    ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<circle cx="7" cy="19" r="2"/>' +        /* rear wheel   */
-    '<circle cx="17" cy="17" r="2"/>' +       /* front caster */
-    '<circle cx="5" cy="6" r="1.5" stroke-width="1.5"/>' +  /* head */
-    /* seat-back → seat → arm extending to hand-rim */
-    '<path d="M5 7.5V14a1 1 0 0 0 1 1h5.5l2.5 2"/>' +
+    '<svg viewBox="0 0 24 24" fill="white" aria-hidden="true">' +
+    /* head */
+    '<circle cx="10" cy="3.5" r="2.5"/>' +
+    /* torso / seat back (vertical) */
+    '<rect x="9" y="6" width="2" height="5" rx="1"/>' +
+    /* seat (horizontal) */
+    '<rect x="6" y="11" width="7" height="2" rx="1"/>' +
+    /* lower leg */
+    '<rect x="6" y="13" width="1.5" height="3.5" rx=".75"/>' +
     /* footrest bar */
-    '<path d="M6 14h4"/>' +
-    /* push-rim / arm reaching wheel */
-    '<path d="M9 12l3.5-4"/>' +
+    '<rect x="5.5" y="16" width="4.5" height="1.5" rx=".75"/>' +
+    /* large rear wheel — donut ring via evenodd fill rule */
+    '<path fill-rule="evenodd" d="' +
+      'M3 18 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 ' +   /* outer circle */
+      'M5 18 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0' +       /* inner cutout */
+    '"/>' +
+    /* small front caster */
+    '<circle cx="16.5" cy="19.5" r="1.5"/>' +
     '</svg>';
 
   var icons = {

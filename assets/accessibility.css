@@ -28,15 +28,12 @@
   outline: 3px solid #fbbf24 !important;
   color: #fff !important;
 }
-/* Trigger icon is stroke-based wheelchair */
+/* Trigger icon — fill-based wheelchair */
 #a11y-btn svg {
-  width: 22px !important;
-  height: 22px !important;
-  fill: none !important;
-  stroke: #fff !important;
-  stroke-width: 2 !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
+  width: 26px !important;
+  height: 26px !important;
+  fill: #fff !important;
+  stroke: none !important;
   flex-shrink: 0 !important;
   filter: none !important;
 }
