@@ -188,4 +188,96 @@
   /* ── Boot ── */
   applyAll();
 
+  /* ================================================================
+     Structural accessibility enhancements — run once on page load.
+     These improve the page for ALL users (keyboard, screen reader)
+     regardless of whether the widget is open or not.
+     ================================================================ */
+  (function () {
+
+    /* 1. Skip-to-main-content link — appears on first Tab key press */
+    var skip = document.createElement('a');
+    skip.href      = '#main-content';
+    skip.className = 'a11y-skip-nav';
+    skip.textContent = 'Skip to main content';
+    document.body.insertBefore(skip, document.body.firstChild);
+
+    /* 2. Mark the first content section after the nav as #main-content */
+    var allNavs  = document.querySelectorAll('nav');
+    var lastNav  = allNavs[allNavs.length - 1];
+    var rows     = document.querySelectorAll('.grid-row');
+    var mainSet  = false;
+    rows.forEach(function (row) {
+      if (mainSet || row.id) return;
+      var isAfterNav = lastNav
+        ? !!(lastNav.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING)
+        : true;
+      if (isAfterNav) {
+        row.id       = 'main-content';
+        row.tabIndex = -1;   /* lets skip-link focus it */
+        mainSet = true;
+      }
+    });
+
+    /* 3. Add aria-label to every <nav> that doesn't have one */
+    var primarySet = false;
+    allNavs.forEach(function (nav) {
+      if (nav.getAttribute('aria-label')) return;
+      if (!primarySet && nav.querySelector('a[href]')) {
+        nav.setAttribute('aria-label', 'Main navigation');
+        primarySet = true;
+      } else {
+        nav.setAttribute('aria-label', 'Mobile navigation');
+      }
+    });
+
+    /* 4. Social / external links — add screen-reader context */
+    var socialNames = {
+      'facebook.com':  'Facebook',
+      'instagram.com': 'Instagram',
+      'twitter.com':   'Twitter',
+      'x.com':         'X (Twitter)',
+      'youtube.com':   'YouTube'
+    };
+    document.querySelectorAll('a[target="_blank"]').forEach(function (a) {
+      if (a.getAttribute('aria-label')) return;          /* already labelled */
+      var href  = a.href || '';
+      var label = '';
+      Object.keys(socialNames).forEach(function (domain) {
+        if (href.indexOf(domain) !== -1)
+          label = 'Covenant Christian School on ' + socialNames[domain] + ' (opens in new tab)';
+      });
+      if (!label) {
+        var txt = (a.textContent || '').trim();
+        if (txt) label = txt + ' (opens in new tab)';
+      }
+      if (label) a.setAttribute('aria-label', label);
+    });
+
+    /* 5. Content image alt text — fill in empty alt on non-decorative images.
+          Logo images keep alt="" intentionally (decorative when text is present). */
+    var pagePath = (window.location.pathname || '').toLowerCase();
+    document.querySelectorAll('img[alt=""]').forEach(function (img) {
+      var src = img.getAttribute('src') || img.getAttribute('data-src') || '';
+      /* Skip logo — empty alt IS correct here */
+      if (/Logo_White|Covenant_School_Logo/i.test(src)) return;
+      var alt = '';
+      if (/covenant-\d+/i.test(src)) {
+        alt = pagePath.indexOf('curriculum') !== -1
+          ? 'Students learning at Covenant Christian School'
+          : pagePath.indexOf('athletics') !== -1
+            ? 'Student athletes at Covenant Christian School'
+            : 'Students at Covenant Christian School';
+      } else if (/unsplash/i.test(src)) {
+        alt = pagePath.indexOf('athletics') !== -1
+          ? 'Student athletes'
+          : 'School photo';
+      } else if (/IMG\d{5,}/i.test(src)) {
+        alt = 'Photo from Covenant Christian School';
+      }
+      if (alt) img.setAttribute('alt', alt);
+    });
+
+  }());
+
 })();

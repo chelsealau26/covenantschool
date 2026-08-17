@@ -1,6 +1,39 @@
 /* ============================================================
-   Covenant School — Accessibility Widget
+   Covenant School — Accessibility Widget + Global A11y Fixes
    ============================================================ */
+
+/* ── Skip navigation link (hidden until focused by keyboard) ── */
+.a11y-skip-nav {
+  position: fixed !important;
+  top: -120px !important;
+  left: 16px !important;
+  z-index: 999999 !important;
+  padding: 10px 22px !important;
+  background: #1a3a6b !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: .95rem !important;
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  text-decoration: none !important;
+  border-radius: 4px !important;
+  border: 2px solid #fff !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.45) !important;
+  transition: top .15s ease !important;
+  filter: none !important;
+  white-space: nowrap !important;
+}
+.a11y-skip-nav:focus {
+  top: 16px !important;
+  outline: 3px solid #fbbf24 !important;
+  outline-offset: 3px !important;
+}
+
+/* ── Keyboard focus ring (only appears on keyboard nav, not mouse) ── */
+*:focus-visible:not(#a11y-btn):not(#a11y-panel):not(#a11y-panel *) {
+  outline: 3px solid #1a3a6b !important;
+  outline-offset: 3px !important;
+  border-radius: 2px !important;
+}
 
 /* ── Floating trigger button ── */
 #a11y-btn {
