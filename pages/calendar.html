@@ -2058,7 +2058,8 @@
           }
           #cal-popup-header {
             background: #1a3a6b; color: #fff;
-            padding: 18px 24px 14px;
+            padding: 14px 48px 14px 24px;
+            position: relative;
           }
           #cal-popup-header h3 {
             margin: 0; font-size: 1rem; font-weight: 600; opacity: 0.75;
@@ -2083,9 +2084,11 @@
             padding: 8px 0 4px;
           }
           #cal-popup-close {
-            position: absolute; top: 12px; right: 16px;
-            background: none; border: none; font-size: 1.5rem;
-            cursor: pointer; color: rgba(255,255,255,0.7); line-height: 1;
+            position: absolute; top: 50%; right: 16px;
+            transform: translateY(-50%);
+            background: none; border: none; font-size: 1.6rem; line-height: 1;
+            cursor: pointer; color: rgba(255,255,255,0.75);
+            padding: 4px 6px; z-index: 10;
           }
           #cal-popup-close:hover { color: #fff; }
           @media (max-width: 600px) {
@@ -2129,7 +2132,8 @@
           var popDate    = document.getElementById('cal-popup-date');
           var popList    = document.getElementById('cal-popup-events');
           var popEmpty   = document.getElementById('cal-popup-empty');
-          document.getElementById('cal-popup-close').addEventListener('click', function () {
+          document.getElementById('cal-popup-close').addEventListener('click', function (e) {
+            e.stopPropagation();
             overlay.classList.remove('open');
           });
           overlay.addEventListener('click', function (e) {
