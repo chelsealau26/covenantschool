@@ -3108,18 +3108,43 @@
 
 /* ── Body-level mode overrides ── */
 
-/* High contrast — dark navy, NOT black/yellow */
-body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *):not(#a11y-ruler) {
+/* High contrast — dark navy
+   Strategy: darken body + known text/nav containers only.
+   Do NOT apply background-color broadly — it breaks image
+   sliders and gallery containers by turning them solid dark. */
+
+/* 1. Page background */
+body.a11y-high-contrast {
   background-color: #0d1b2e !important;
-  color: #e8edf5 !important;
-  border-color: rgba(255,255,255,.25) !important;
 }
-body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *) a {
+
+/* 2. Text color everywhere (safe — doesn't break layouts) */
+body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *):not(#a11y-ruler) {
+  color: #e8edf5 !important;
+}
+
+/* 3. Dark background on known text/nav containers only */
+body.a11y-high-contrast .header-row,
+body.a11y-high-contrast .navigation-wrapper,
+body.a11y-high-contrast .navigation-wrapper-fixed,
+body.a11y-high-contrast .fixed-header-wrapper,
+body.a11y-high-contrast .mobile-menu,
+body.a11y-high-contrast .mobile-header,
+body.a11y-high-contrast .text-widget-content,
+body.a11y-high-contrast .page-footer,
+body.a11y-high-contrast footer {
+  background-color: #0d1b2e !important;
+}
+
+/* 4. Links */
+body.a11y-high-contrast :not(#a11y-btn *):not(#a11y-panel *) a {
   color: #7dd3fc !important;
   text-decoration: underline !important;
 }
+
+/* 5. Slight image treatment — don't touch background-color on image containers */
 body.a11y-high-contrast img {
-  filter: brightness(.9) contrast(1.1) !important;
+  filter: brightness(.88) contrast(1.05) !important;
 }
 
 /* Grayscale — exclude widget */
