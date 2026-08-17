@@ -2111,9 +2111,13 @@
                 var isNoSchool = e.color === '#c0392b';
                 var isEarlyDismissal = !isNoSchool && e.title && /early dismissal/i.test(e.title);
                 if (isNoSchool) {
-                  bgEvents.push({ start: e.start, end: e.end || e.start, display: 'background', classNames: ['no-school-bg'] });
+                  var bgEvt = { start: e.start, display: 'background', classNames: ['no-school-bg'] };
+                  if (e.end) bgEvt.end = e.end;
+                  bgEvents.push(bgEvt);
                 } else if (isEarlyDismissal) {
-                  bgEvents.push({ start: e.start, end: e.end || e.start, display: 'background', classNames: ['early-dismissal-bg'] });
+                  var bgEvt2 = { start: e.start, display: 'background', classNames: ['early-dismissal-bg'] };
+                  if (e.end) bgEvt2.end = e.end;
+                  bgEvents.push(bgEvt2);
                 }
               });
               var allEvents = bgEvents.concat(events);
