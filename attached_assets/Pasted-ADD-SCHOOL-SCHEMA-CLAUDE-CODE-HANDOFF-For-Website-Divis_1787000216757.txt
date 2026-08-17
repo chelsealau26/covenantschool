@@ -1,0 +1,235 @@
+ADD SCHOOL SCHEMA — CLAUDE CODE HANDOFF
+For: Website Division | Tool: Claude Code | Type: School schema (K3–8 Christian school)
+
+
+HOW TO USE THIS
+───────────────
+1. Open the school site's repo in Claude Code.
+2. Copy the prompt below.
+3. Paste it into Claude Code and hit enter.
+4. Answer any questions it asks — like missing hours, logo URL, or social links. Don't let it guess.
+5. Validate the result at validator.schema.org, then run Google's Rich Results Test
+   (search.google.com/test/rich-results). See the note under STEP 4 about what that test will
+   and won't show for a school.
+
+
+KNOWN BUSINESS INFO (verified — use exactly as written)
+────────────────────────────────────────────────────────
+Name:      Covenant Christian School
+Address:   7150 Hitt Rd, Mobile, AL 36695, US
+Phone:     (251) 633-8055  →  format as +1-251-633-8055
+Latitude:  30.66903340725618
+Longitude: -88.20948558465906
+Grades:    K3 through 8th grade
+Source:    Google Business Profile + client-supplied coordinates
+
+STILL NEEDED (ask the client, don't guess):
+- Site domain and the exact homepage URL
+- Office/school hours (GBP shows an 8:00 AM open — closing time unconfirmed)
+- Logo URL and a campus photo URL
+- Facebook / Instagram / any other social profile URLs
+- Whether the school is a ministry of a church at the same address (the campus appears to sit
+  next to a church). If so, we need the church's exact legal name and its website URL.
+- Whether "K3" means the 3-year-old preschool class (this affects whether we add Preschool)
+- Founding year, enrollment count, accreditation — optional, and only if documented
+
+
+THE PROMPT
+──────────
+Copy everything below this line and paste it into Claude Code inside the site's repo.
+
+---
+
+You're adding structured data (JSON-LD schema markup) to this Christian school website to improve
+local SEO and help Google understand the school as an entity. Follow these rules exactly.
+
+GOAL
+Add valid schema.org markup so Google understands this is a private Christian school serving K3
+through 8th grade, and where the campus is.
+
+STEP 1: FIGURE OUT THE SITE
+- Read the existing pages to find the school name, phone, logo, campus photos, social links, grade
+  levels, programs, hours, and any addresses already on the site.
+- Tell me if this is a single-campus site or a multi-campus site.
+- Tell me whether the school is presented as a ministry or department of a church.
+- Do NOT invent any school info. If something is missing (hours, coordinates, logo URL, social
+  links), stop and ask me for it. Never guess phone numbers, addresses, hours, enrollment numbers,
+  founding dates, or accreditation.
+
+STEP 2: ADD THE SCHEMA
+Use @type ["School", "LocalBusiness"] for the campus. "School" is the correct schema.org type for a
+K–12 school; there is no "PrivateSchool" or "ChristianSchool" type in the vocabulary. Pairing it
+with "LocalBusiness" is intentional — it puts geo, openingHoursSpecification, and the other
+place-based properties on solid ground for local results.
+
+If the school is strictly preschool/daycare, ask me before switching to "Preschool" or
+"ChildCare". Do not split a K3–8 school into separate Preschool + ElementarySchool + MiddleSchool
+entities — that fragments the entity. One campus, one node.
+
+For a SINGLE-CAMPUS site (expected here):
+- Put ONE School block on the homepage with the full address, geo, phone, logo, and hours.
+- Use a stable @id like "https://SITE.org/#school".
+
+For a MULTI-CAMPUS site:
+- Put ONE "EducationalOrganization" block on the homepage with a stable @id like
+  "https://SITE.org/#organization".
+- Put ONE School block on EACH campus page, each with its own address, phone, geo, and
+  openingHoursSpecification, linking back with
+  "parentOrganization": { "@id": "https://SITE.org/#organization" }.
+
+If the school is a ministry of a church at the same address, add the church as the parent:
+  "parentOrganization": { "@type": "Church", "name": "CHURCH LEGAL NAME", "url": "CHURCH URL" }
+Only do this if I confirm it and give you the church's exact name.
+
+The campus block should include when available: name, alternateName, url, description, image, logo,
+telephone, email, address (PostalAddress), geo (GeoCoordinates), openingHoursSpecification,
+areaServed, sameAs (social links), and — only if documented — foundingDate and numberOfStudents.
+
+For grade levels and programs, do NOT stuff them into hasOfferCatalog as generic Services. Use
+separate EducationalOccupationalProgram nodes that point back at the school with
+"provider": { "@id": "https://SITE.org/#school" }. See the reference below.
+
+STEP 3: RULES
+- Add each block as a <script type="application/ld+json"> tag in the page head or body.
+- Do NOT add aggregateRating or Review schema unless real reviews are actually shown on that page.
+  Faking reviews risks a Google penalty.
+- Do NOT claim accreditation (ACSI, Cognia, AISA, or any other body) unless it is documented on the
+  site or I confirm it. If confirmed, state it in the description — don't fabricate a credential
+  object.
+- Do NOT include student names, student photos as identified individuals, class rosters, or any
+  child-identifying detail in schema. Staff names only if they're already published on the site.
+- Skip priceRange unless tuition is actually published on the site. It's not required for a school
+  and a wrong guess is worse than an omission.
+- Make sure the name, address, and phone in the schema match exactly what's on the page and, if I
+  give it to you, the Google Business Profile.
+- JSON-LD does not allow comments. Keep the JSON clean and valid.
+
+STEP 4: CHECK YOUR WORK
+- After adding it, show me each block you added and which file it's in.
+- List anything you had to ask me for or couldn't find.
+- Remind me to run the site through validator.schema.org first — that's the real validity check.
+- Tell me that Google's Rich Results Test may report "no rich results detected" for School markup.
+  That's expected and not an error. School/EducationalOrganization markup feeds entity
+  understanding and the knowledge panel, not a visual rich snippet.
+
+---
+
+
+REFERENCE: WHAT GOOD OUTPUT LOOKS LIKE
+───────────────────────────────────────
+Claude Code builds these itself. You don't need to paste them. They're here so you can eyeball what
+it produced. Facts already confirmed are filled in; ALL-CAPS placeholders still need real values.
+
+
+Main campus block (homepage, single campus):
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["School", "LocalBusiness"],
+  "@id": "https://SITE.org/#school",
+  "name": "Covenant Christian School",
+  "alternateName": "Covenant Christian School Mobile",
+  "url": "https://SITE.org/",
+  "description": "Private Christian school in Mobile, Alabama serving K3 through 8th grade.",
+  "logo": "https://SITE.org/logo.png",
+  "image": "CAMPUS PHOTO URL",
+  "telephone": "+1-251-633-8055",
+  "email": "OFFICE EMAIL",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7150 Hitt Rd",
+    "addressLocality": "Mobile",
+    "addressRegion": "AL",
+    "postalCode": "36695",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "30.66903340725618",
+    "longitude": "-88.20948558465906"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "CONFIRM WITH CLIENT"
+    }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "Mobile" },
+    { "@type": "AdministrativeArea", "name": "Mobile County" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/PROFILE",
+    "https://www.instagram.com/PROFILE"
+  ]
+}
+</script>
+
+
+Grade-band programs (homepage or academics page — one node per band):
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "@id": "https://SITE.org/#program-early-learning",
+    "name": "Early Learning (K3–K5)",
+    "provider": { "@id": "https://SITE.org/#school" },
+    "educationalProgramMode": "full-time",
+    "typicalAgeRange": "3-5"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "@id": "https://SITE.org/#program-elementary",
+    "name": "Elementary School (1st–5th Grade)",
+    "provider": { "@id": "https://SITE.org/#school" },
+    "educationalProgramMode": "full-time",
+    "typicalAgeRange": "6-10"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "@id": "https://SITE.org/#program-middle",
+    "name": "Middle School (6th–8th Grade)",
+    "provider": { "@id": "https://SITE.org/#school" },
+    "educationalProgramMode": "full-time",
+    "typicalAgeRange": "11-14"
+  }
+]
+</script>
+
+
+Optional parent church (only if confirmed — nest inside the School block, not standalone):
+
+  "parentOrganization": {
+    "@type": "Church",
+    "name": "CHURCH LEGAL NAME",
+    "url": "https://CHURCHSITE.org/"
+  }
+
+
+THREE THINGS TO REMEMBER
+─────────────────────────
+1. Use School, paired with LocalBusiness. "PrivateSchool" and "ChristianSchool" don't exist in the
+   schema.org vocabulary, so they won't work. The real K–12 types are School, Preschool,
+   ElementarySchool, MiddleSchool, and HighSchool — and for a K3–8 campus, one School node beats
+   three fragmented ones.
+
+2. Never fake reviews, and never fake accreditation. Only add rating or review schema if real
+   reviews actually show on the page. Only name an accrediting body if it's documented. Both risk a
+   penalty, and accreditation claims carry legal exposure on top of that.
+
+3. Nothing that identifies a child goes in the markup. No student names, no rosters, no
+   child-identifying detail — ever, regardless of what's already public on the site.
+
+
+NOTE ON PROCESS
+───────────────
+There's no Trainual SOP for this yet, so this guide is our starting point. Once we've run it on a
+few school sites and it's working, we'll write it up as the official SOP in Trainual alongside the
+car wash version.
