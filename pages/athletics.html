@@ -4191,43 +4191,58 @@
 
 /* ── Body-level mode overrides ── */
 
-/* High contrast — dark navy
-   Strategy: darken body + known text/nav containers only.
-   Do NOT apply background-color broadly — it breaks image
-   sliders and gallery containers by turning them solid dark. */
+/* High contrast — max readability, no dark boxes
+   Strategy:
+   1. Pure white text + thick text-shadow everywhere for legibility on images
+   2. Inset box-shadow tints image sections darker (doesn't create DOM boxes)
+   3. Only header/footer get an explicit dark background — they already are dark
+   4. Nothing applied to content text containers so no ugly overlay boxes */
 
-/* 1. Page background */
-body.a11y-high-contrast {
-  background-color: #0d1b2e !important;
-}
-
-/* 2. Text color everywhere (safe — doesn't break layouts) */
+/* 1. Pure white text on everything outside the widget */
 body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *):not(#a11y-ruler) {
-  color: #e8edf5 !important;
+  color: #fff !important;
 }
 
-/* 3. Dark background on known text/nav containers only */
-body.a11y-high-contrast .header-row,
+/* 2. Text shadow — makes text pop on both light and dark/image backgrounds */
+body.a11y-high-contrast h1:not(#a11y-panel *),
+body.a11y-high-contrast h2:not(#a11y-panel *),
+body.a11y-high-contrast h3:not(#a11y-panel *),
+body.a11y-high-contrast h4:not(#a11y-panel *),
+body.a11y-high-contrast h5:not(#a11y-panel *),
+body.a11y-high-contrast h6:not(#a11y-panel *),
+body.a11y-high-contrast p:not(#a11y-panel *),
+body.a11y-high-contrast li:not(#a11y-panel *),
+body.a11y-high-contrast span:not(#a11y-panel *),
+body.a11y-high-contrast label:not(#a11y-panel *) {
+  text-shadow: 0 0 6px rgba(0,0,0,.95), 0 1px 4px rgba(0,0,0,.85) !important;
+}
+
+/* 3. Dark tint over image sections via inset box-shadow — no layout boxes */
+body.a11y-high-contrast .grid-row {
+  box-shadow: inset 0 0 0 9999px rgba(0, 10, 30, .45) !important;
+}
+
+/* 4. Header and footer explicitly darkened (they're already dark, this ensures it) */
 body.a11y-high-contrast .navigation-wrapper,
 body.a11y-high-contrast .navigation-wrapper-fixed,
 body.a11y-high-contrast .fixed-header-wrapper,
 body.a11y-high-contrast .mobile-menu,
 body.a11y-high-contrast .mobile-header,
-body.a11y-high-contrast .text-widget-content,
 body.a11y-high-contrast .page-footer,
 body.a11y-high-contrast footer {
-  background-color: #0d1b2e !important;
+  background-color: #060e1c !important;
 }
 
-/* 4. Links */
+/* 5. Links — bright blue, always underlined */
 body.a11y-high-contrast :not(#a11y-btn *):not(#a11y-panel *) a {
   color: #7dd3fc !important;
   text-decoration: underline !important;
+  text-shadow: 0 0 6px rgba(0,0,0,.9) !important;
 }
 
-/* 5. Slight image treatment — don't touch background-color on image containers */
+/* 6. Images — slightly boost contrast */
 body.a11y-high-contrast img {
-  filter: brightness(.88) contrast(1.05) !important;
+  filter: brightness(.85) contrast(1.1) !important;
 }
 
 /* Grayscale — exclude widget */
