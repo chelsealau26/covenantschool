@@ -83,7 +83,7 @@
   trigger.setAttribute('aria-label', 'Accessibility options');
   trigger.setAttribute('aria-expanded', 'false');
   trigger.setAttribute('aria-controls', 'a11y-panel');
-  trigger.innerHTML = ICON_A11Y + '<span>Accessibility</span>';
+  trigger.innerHTML = ICON_A11Y;
 
   /* ── Reading ruler (separate ID, no collision with button) ── */
   var ruler = document.createElement('div');
