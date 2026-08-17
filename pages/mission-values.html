@@ -837,7 +837,20 @@
 <link  rel="preload stylesheet" as="style" href='//fonts.googleapis.com/css?display=swap&family=Roboto:700%7COpen+Sans:regular%7CPaytone+One:regular%7CAnton:regular'>
           <!-- /><div></div> */</script> /**/ <!-- -->
         
-      </head>
+        <!-- Logo Size Overrides -->
+  <style>
+    /* Sticky / fixed header: shrink logo on scroll */
+    .fixed-header-wrapper .theme-logo img {
+      max-height: 52px !important;
+      width: auto !important;
+      transition: max-height 0.25s ease !important;
+    }
+    /* Footer logo: reduce from 440px to a sensible size */
+    .page-footer .image-box {
+      max-width: 175px !important;
+    }
+  </style>
+</head>
     <body class="theme live-theme " data-resources="https://static.web-repository.com" data-content="https://content.app-sources.com/" data-locale="en" data-ver="1195" data-minor="1195.8592.1234509.-1745094565"  data-ali="0">
       <div 
       
