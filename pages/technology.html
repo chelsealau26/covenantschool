@@ -4269,10 +4269,15 @@
   outline: 3px solid #fbbf24 !important;
   color: #fff !important;
 }
+/* Trigger icon is stroke-based wheelchair */
 #a11y-btn svg {
   width: 22px !important;
   height: 22px !important;
-  fill: #fff !important;
+  fill: none !important;
+  stroke: #fff !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
   flex-shrink: 0 !important;
   filter: none !important;
 }
@@ -4387,7 +4392,7 @@
   background: transparent !important;
 }
 
-/* Toggle grid — 3 columns of 2 */
+/* Toggle grid — 3 columns */
 #a11y-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr !important;
@@ -4396,7 +4401,7 @@
   background: #fff !important;
 }
 
-/* Toggle buttons */
+/* Toggle buttons — fill-based icons */
 .a11y-toggle {
   display: flex !important;
   flex-direction: column !important;
@@ -4452,7 +4457,7 @@
 
 /* ── Body-level mode overrides ── */
 
-/* High contrast — refined dark navy, NOT black/yellow */
+/* High contrast — dark navy, NOT black/yellow */
 body.a11y-high-contrast :not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *):not(#a11y-ruler) {
   background-color: #0d1b2e !important;
   color: #e8edf5 !important;
@@ -4486,12 +4491,16 @@ body.a11y-dyslexia *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-
   line-height: 1.8 !important;
 }
 
-/* Stop animations — exclude widget */
-body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel),
-body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::before,
-body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
-  animation: none !important;
-  transition: none !important;
+/* Pause motion — use near-zero duration so animations COMPLETE instantly
+   rather than being removed (which would freeze elements at opacity:0) */
+body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *),
+body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *)::before,
+body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-panel *)::after {
+  animation-duration: 0.001s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001s !important;
+  transition-delay: 0s !important;
 }
 
 /* ── Responsive ── */
@@ -4527,19 +4536,35 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
     try { localStorage.setItem('ccs_a11y', JSON.stringify(state)); } catch (e) {}
   }
 
-  /* ── Icons ── */
-  var ICON_A11Y = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8.5 5.5l-5-.5-1.5-.5h-4l-1.5.5-5 .5a1 1 0 0 0 0 2l4-.4V12l-2.5 6.5a1 1 0 1 0 1.87.72L9 14h6l1.13 5.22a1 1 0 1 0 1.87-.72L15.5 12V9.1l4 .4a1 1 0 0 0 0-2z"/></svg>';
+  /* ── Icons ──
+     Trigger button: stroke-based wheelchair (Tabler Icons style)
+     Panel toggles:  fill-based shapes                              */
+
+  /* Wheelchair: head circle + seat/back path + two wheel circles */
+  var ICON_A11Y =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"' +
+    ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<circle cx="7" cy="19" r="2"/>' +        /* rear wheel   */
+    '<circle cx="17" cy="17" r="2"/>' +       /* front caster */
+    '<circle cx="5" cy="6" r="1.5" stroke-width="1.5"/>' +  /* head */
+    /* seat-back → seat → arm extending to hand-rim */
+    '<path d="M5 7.5V14a1 1 0 0 0 1 1h5.5l2.5 2"/>' +
+    /* footrest bar */
+    '<path d="M6 14h4"/>' +
+    /* push-rim / arm reaching wheel */
+    '<path d="M9 12l3.5-4"/>' +
+    '</svg>';
 
   var icons = {
     contrast:  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm0 16V5a7 7 0 0 1 0 14z"/></svg>',
-    grayscale: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 4v16M8.5 6.5l7 11M6.5 8.5l11 7" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg>',
-    links:     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
-    dyslexia:  '<svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="14" font-weight="700" fill="currentColor" font-family="Arial">Aa</text></svg>',
-    noAnim:    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/><line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
-    guide:     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="20" height="6" rx="2" fill="currentColor" opacity=".2"/><line x1="2" y1="9" x2="22" y2="9" stroke-dasharray="3 2"/><line x1="2" y1="15" x2="22" y2="15" stroke-dasharray="3 2"/></svg>',
+    grayscale: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm0 2v14a7 7 0 0 1 0-14z"/><line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/></svg>',
+    links:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+    dyslexia:  '<svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="14" font-weight="700" fill="currentColor" font-family="Arial,sans-serif">Aa</text></svg>',
+    noAnim:    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/><line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    guide:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="9" width="20" height="6" rx="2" fill="currentColor" opacity=".15" stroke="none"/><line x1="2" y1="9" x2="22" y2="9" stroke-dasharray="4 2"/><line x1="2" y1="15" x2="22" y2="15" stroke-dasharray="4 2"/></svg>',
   };
 
-  /* ── Build panel HTML ── */
+  /* ── Build panel ── */
   var panel = document.createElement('div');
   panel.id = 'a11y-panel';
   panel.setAttribute('role', 'dialog');
@@ -4573,7 +4598,7 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
   trigger.setAttribute('aria-controls', 'a11y-panel');
   trigger.innerHTML = ICON_A11Y + '<span>Accessibility</span>';
 
-  /* ── Reading ruler (separate div, no ID collision) ── */
+  /* ── Reading ruler (separate ID, no collision with button) ── */
   var ruler = document.createElement('div');
   ruler.id = 'a11y-ruler';
   ruler.setAttribute('aria-hidden', 'true');
@@ -4582,11 +4607,22 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
   document.body.appendChild(panel);
   document.body.appendChild(ruler);
 
-  /* ── Apply state ── */
-  function applyAll() {
-    document.documentElement.style.fontSize = state.textSize + '%';
+  /* ── Apply text size via CSS zoom (works on px-based pages) ── */
+  function applyTextSize() {
+    var scale = state.textSize / 100;
+    if (scale === 1) {
+      document.body.style.zoom = '';
+      document.documentElement.style.fontSize = '';
+    } else {
+      document.body.style.zoom = scale;
+      document.documentElement.style.fontSize = state.textSize + '%';
+    }
     document.getElementById('a11y-size-val').textContent = state.textSize + '%';
+  }
 
+  /* ── Apply all state ── */
+  function applyAll() {
+    applyTextSize();
     setToggle('highContrast', 'a11y-high-contrast', 'a11y-btn-contrast');
     setToggle('grayscale',    'a11y-grayscale',      'a11y-btn-grayscale');
     setToggle('links',        'a11y-links',          'a11y-btn-links');
@@ -4619,12 +4655,12 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panelOpen) closePanel(); });
   document.addEventListener('click',   function (e) { if (panelOpen && !panel.contains(e.target) && e.target !== trigger) closePanel(); });
 
-  /* ── Text size ── */
+  /* ── Text size buttons ── */
   document.getElementById('a11y-inc').addEventListener('click', function () {
-    state.textSize = Math.min(150, state.textSize + 10); applyAll(); save();
+    if (state.textSize < 150) { state.textSize = Math.min(150, state.textSize + 10); applyAll(); save(); }
   });
   document.getElementById('a11y-dec').addEventListener('click', function () {
-    state.textSize = Math.max(80, state.textSize - 10); applyAll(); save();
+    if (state.textSize > 80) { state.textSize = Math.max(80, state.textSize - 10); applyAll(); save(); }
   });
 
   /* ── Toggle handlers ── */
@@ -4634,20 +4670,18 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
     ['a11y-btn-links',     'links'],
     ['a11y-btn-dyslexia',  'dyslexia'],
     ['a11y-btn-noanim',    'noAnim'],
+    ['a11y-btn-guide',     'guide'],
   ].forEach(function (pair) {
     document.getElementById(pair[0]).addEventListener('click', function () {
       state[pair[1]] = !state[pair[1]]; applyAll(); save();
     });
   });
 
-  document.getElementById('a11y-btn-guide').addEventListener('click', function () {
-    state.guide = !state.guide; applyAll(); save();
-  });
-
   /* ── Reset ── */
   document.getElementById('a11y-panel-reset').addEventListener('click', function () {
     state = Object.assign({}, DEFAULTS);
     document.documentElement.style.fontSize = '';
+    document.body.style.zoom = '';
     applyAll(); save();
   });
 
@@ -4656,7 +4690,9 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-panel)::after {
     if (state.guide) ruler.style.top = (e.clientY - 22) + 'px';
   });
 
+  /* ── Boot ── */
   applyAll();
+
 })();
 
   </script>
