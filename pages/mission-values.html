@@ -3761,5 +3761,403 @@
 
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button" async defer></script><!-- /><div></div> */</script> /**/ <!-- -->
       <script type="text/javascript" src="https://static.web-repository.com/scripts/common/hit.js?v=1195"></script>
-    </body>
+    
+  <!-- Accessibility Widget -->
+  <style>
+/* ============================================================
+   Covenant School — Accessibility Widget
+   ============================================================ */
+
+/* ── Floating trigger button ── */
+#a11y-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 100000;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1a3a6b;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s;
+  padding: 0;
+}
+#a11y-btn:hover,
+#a11y-btn:focus {
+  background: #122b52;
+  transform: scale(1.08);
+  outline: 3px solid #fde047;
+}
+#a11y-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── Panel ── */
+#a11y-panel {
+  position: fixed;
+  bottom: 88px;
+  left: 24px;
+  z-index: 99999;
+  width: 290px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.28);
+  font-family: 'Open Sans', Arial, sans-serif;
+  overflow: hidden;
+  transform: scale(.95) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#a11y-panel.open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: all;
+}
+
+/* Header */
+#a11y-panel-header {
+  background: #1a3a6b;
+  color: #fff;
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#a11y-panel-header span {
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .03em;
+}
+#a11y-panel-reset {
+  background: none;
+  border: 1px solid rgba(255,255,255,.45);
+  color: rgba(255,255,255,.85);
+  border-radius: 4px;
+  font-size: .72rem;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+}
+#a11y-panel-reset:hover { background: rgba(255,255,255,.15); }
+
+/* Controls grid */
+#a11y-controls {
+  padding: 14px 14px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Text-size row spans full width */
+#a11y-textsize-row {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f7fb;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+#a11y-textsize-row label {
+  font-size: .8rem;
+  color: #444;
+  flex: 1;
+}
+.a11y-size-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #dde;
+  background: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a3a6b;
+  transition: background .15s;
+}
+.a11y-size-btn:hover { background: #eef2f9; }
+#a11y-size-val {
+  font-size: .8rem;
+  font-weight: 700;
+  color: #1a3a6b;
+  min-width: 32px;
+  text-align: center;
+}
+
+/* Toggle buttons */
+.a11y-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 6px 9px;
+  border-radius: 8px;
+  border: 2px solid #e8eaf0;
+  background: #f9fafc;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .72rem;
+  color: #444;
+  text-align: center;
+  line-height: 1.2;
+  transition: background .15s, border-color .15s, color .15s;
+  user-select: none;
+}
+.a11y-toggle svg { width: 22px; height: 22px; }
+.a11y-toggle:hover { background: #eef2f9; border-color: #bcc6dc; }
+.a11y-toggle.active {
+  background: #1a3a6b;
+  border-color: #1a3a6b;
+  color: #fff;
+}
+.a11y-toggle.active svg { fill: #fff !important; }
+
+/* Reading guide */
+#a11y-guide {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: rgba(253, 224, 71, .35);
+  border-top: 2px solid rgba(180,140,0,.4);
+  border-bottom: 2px solid rgba(180,140,0,.4);
+  z-index: 99998;
+  pointer-events: none;
+}
+
+/* ── Body-level mode overrides ── */
+
+/* High contrast */
+body.a11y-high-contrast,
+body.a11y-high-contrast * {
+  background-color: #000 !important;
+  color: #ff0 !important;
+  border-color: #ff0 !important;
+  fill: #ff0 !important;
+}
+body.a11y-high-contrast a,
+body.a11y-high-contrast a * { color: #0ff !important; }
+body.a11y-high-contrast img { filter: contrast(1.2) brightness(0.9); }
+
+/* Grayscale */
+body.a11y-grayscale { filter: grayscale(100%); }
+
+/* Highlight links */
+body.a11y-links a {
+  text-decoration: underline !important;
+  outline: 2px solid #c0392b !important;
+  outline-offset: 1px;
+}
+
+/* Dyslexia font — Lexend loaded from Google Fonts */
+body.a11y-dyslexia,
+body.a11y-dyslexia p,
+body.a11y-dyslexia li,
+body.a11y-dyslexia span,
+body.a11y-dyslexia a,
+body.a11y-dyslexia h1,
+body.a11y-dyslexia h2,
+body.a11y-dyslexia h3,
+body.a11y-dyslexia h4,
+body.a11y-dyslexia h5,
+body.a11y-dyslexia h6,
+body.a11y-dyslexia div {
+  font-family: 'Lexend', sans-serif !important;
+  letter-spacing: .05em !important;
+  word-spacing: .1em !important;
+  line-height: 1.75 !important;
+}
+
+/* Stop animations */
+body.a11y-no-anim *,
+body.a11y-no-anim *::before,
+body.a11y-no-anim *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  #a11y-panel { width: calc(100vw - 32px); left: 16px; bottom: 80px; }
+  #a11y-btn   { bottom: 16px; left: 16px; }
+}
+
+  </style>
+  <script>
+/* ============================================================
+   Covenant School — Accessibility Widget
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ── Load Lexend font for dyslexia mode ── */
+  var lexendLink = document.createElement('link');
+  lexendLink.rel  = 'stylesheet';
+  lexendLink.href = 'https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap';
+  document.head.appendChild(lexendLink);
+
+  /* ── State ── */
+  var DEFAULTS = { textSize: 100, highContrast: false, grayscale: false,
+                   links: false, dyslexia: false, noAnim: false, guide: false };
+  var state = Object.assign({}, DEFAULTS);
+  try {
+    var saved = JSON.parse(localStorage.getItem('ccs_a11y') || 'null');
+    if (saved) state = Object.assign({}, DEFAULTS, saved);
+  } catch (e) {}
+
+  function save() {
+    try { localStorage.setItem('ccs_a11y', JSON.stringify(state)); } catch (e) {}
+  }
+
+  /* ── HTML ── */
+  var ICON_A11Y = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8.5 5.5l-5-.5-1.5-.5h-4l-1.5.5-5 .5a1 1 0 0 0 0 2l4-.4V12l-2.5 6.5a1 1 0 1 0 1.87.72L9 14h6l1.13 5.22a1 1 0 1 0 1.87-.72L15.5 12V9.1l4 .4a1 1 0 0 0 0-2z"/></svg>';
+
+  var icons = {
+    contrast: '<svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm0 16V5a7 7 0 0 1 0 14z"/></svg>',
+    grayscale: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 3v18" stroke="currentColor" stroke-width="2"/></svg>',
+    links:    '<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+    dyslexia: '<svg viewBox="0 0 24 24"><text x="2" y="18" font-size="16" font-weight="bold" fill="currentColor">Aa</text></svg>',
+    noAnim:   '<svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/><line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2"/></svg>',
+    guide:    '<svg viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="4" rx="1"/><line x1="2" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="2" y1="17" x2="22" y2="17" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,2"/></svg>',
+  };
+
+  var panel = document.createElement('div');
+  panel.id = 'a11y-panel';
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-label', 'Accessibility Options');
+  panel.innerHTML =
+    '<div id="a11y-panel-header">' +
+      '<span>♿ Accessibility</span>' +
+      '<button id="a11y-panel-reset" aria-label="Reset all settings">Reset</button>' +
+    '</div>' +
+    '<div id="a11y-controls">' +
+      '<div id="a11y-textsize-row">' +
+        '<label>Text size</label>' +
+        '<button class="a11y-size-btn" id="a11y-dec" aria-label="Decrease text size">A−</button>' +
+        '<span id="a11y-size-val">100%</span>' +
+        '<button class="a11y-size-btn" id="a11y-inc" aria-label="Increase text size">A+</button>' +
+      '</div>' +
+      '<button class="a11y-toggle" id="a11y-contrast"  aria-pressed="false">' + icons.contrast  + 'High<br>Contrast</button>' +
+      '<button class="a11y-toggle" id="a11y-grayscale" aria-pressed="false">' + icons.grayscale + 'Grayscale</button>' +
+      '<button class="a11y-toggle" id="a11y-links"     aria-pressed="false">' + icons.links     + 'Highlight<br>Links</button>' +
+      '<button class="a11y-toggle" id="a11y-dyslexia"  aria-pressed="false">' + icons.dyslexia  + 'Readable<br>Font</button>' +
+      '<button class="a11y-toggle" id="a11y-no-anim"   aria-pressed="false">' + icons.noAnim    + 'Pause<br>Motion</button>' +
+      '<button class="a11y-toggle" id="a11y-guide"     aria-pressed="false">' + icons.guide     + 'Reading<br>Guide</button>' +
+    '</div>';
+
+  var trigger = document.createElement('button');
+  trigger.id = 'a11y-btn';
+  trigger.setAttribute('aria-label', 'Open accessibility options');
+  trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-controls', 'a11y-panel');
+  trigger.innerHTML = ICON_A11Y;
+
+  var guide = document.createElement('div');
+  guide.id = 'a11y-guide';
+
+  document.body.appendChild(trigger);
+  document.body.appendChild(panel);
+  document.body.appendChild(guide);
+
+  /* ── Apply / render state ── */
+  function applyAll() {
+    /* text size */
+    document.documentElement.style.fontSize = state.textSize + '%';
+    document.getElementById('a11y-size-val').textContent = state.textSize + '%';
+
+    /* toggles */
+    applyToggle('highContrast', 'a11y-high-contrast', 'a11y-contrast');
+    applyToggle('grayscale',    'a11y-grayscale',      'a11y-grayscale');
+    applyToggle('links',        'a11y-links',          'a11y-links');
+    applyToggle('dyslexia',     'a11y-dyslexia',       'a11y-dyslexia');
+    applyToggle('noAnim',       'a11y-no-anim',        'a11y-no-anim');
+
+    /* reading guide */
+    guide.style.display = state.guide ? 'block' : 'none';
+    var guideBtn = document.getElementById('a11y-guide');
+    if (guideBtn) {
+      guideBtn.classList.toggle('active', state.guide);
+      guideBtn.setAttribute('aria-pressed', state.guide ? 'true' : 'false');
+    }
+  }
+
+  function applyToggle(key, bodyClass, btnId) {
+    document.body.classList.toggle(bodyClass, state[key]);
+    var btn = document.getElementById(btnId);
+    if (btn) {
+      btn.classList.toggle('active', state[key]);
+      btn.setAttribute('aria-pressed', state[key] ? 'true' : 'false');
+    }
+  }
+
+  /* ── Panel open/close ── */
+  var panelOpen = false;
+  function openPanel()  { panel.classList.add('open');    trigger.setAttribute('aria-expanded', 'true');  panelOpen = true; }
+  function closePanel() { panel.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); panelOpen = false; }
+
+  trigger.addEventListener('click', function () { panelOpen ? closePanel() : openPanel(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panelOpen) closePanel();
+  });
+  document.addEventListener('click', function (e) {
+    if (panelOpen && !panel.contains(e.target) && e.target !== trigger) closePanel();
+  });
+
+  /* ── Text size ── */
+  document.getElementById('a11y-inc').addEventListener('click', function () {
+    if (state.textSize >= 150) return;
+    state.textSize = Math.min(150, state.textSize + 10);
+    applyAll(); save();
+  });
+  document.getElementById('a11y-dec').addEventListener('click', function () {
+    if (state.textSize <= 80) return;
+    state.textSize = Math.max(80, state.textSize - 10);
+    applyAll(); save();
+  });
+
+  /* ── Toggle handlers ── */
+  function makeToggle(btnId, key) {
+    document.getElementById(btnId).addEventListener('click', function () {
+      state[key] = !state[key];
+      applyAll(); save();
+    });
+  }
+  makeToggle('a11y-contrast',  'highContrast');
+  makeToggle('a11y-grayscale', 'grayscale');
+  makeToggle('a11y-links',     'links');
+  makeToggle('a11y-dyslexia',  'dyslexia');
+  makeToggle('a11y-no-anim',   'noAnim');
+  makeToggle('a11y-guide',     'guide');
+
+  /* ── Reset ── */
+  document.getElementById('a11y-panel-reset').addEventListener('click', function () {
+    state = Object.assign({}, DEFAULTS);
+    document.documentElement.style.fontSize = '';
+    applyAll(); save();
+  });
+
+  /* ── Reading guide follows mouse ── */
+  document.addEventListener('mousemove', function (e) {
+    if (state.guide) guide.style.top = (e.clientY - 20) + 'px';
+  });
+
+  /* ── Apply saved state on load ── */
+  applyAll();
+
+})();
+
+  </script>
+</body>
   </html>

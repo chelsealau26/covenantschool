@@ -1,0 +1,228 @@
+/* ============================================================
+   Covenant School — Accessibility Widget
+   ============================================================ */
+
+/* ── Floating trigger button ── */
+#a11y-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 100000;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1a3a6b;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s;
+  padding: 0;
+}
+#a11y-btn:hover,
+#a11y-btn:focus {
+  background: #122b52;
+  transform: scale(1.08);
+  outline: 3px solid #fde047;
+}
+#a11y-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── Panel ── */
+#a11y-panel {
+  position: fixed;
+  bottom: 88px;
+  left: 24px;
+  z-index: 99999;
+  width: 290px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.28);
+  font-family: 'Open Sans', Arial, sans-serif;
+  overflow: hidden;
+  transform: scale(.95) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#a11y-panel.open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: all;
+}
+
+/* Header */
+#a11y-panel-header {
+  background: #1a3a6b;
+  color: #fff;
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#a11y-panel-header span {
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .03em;
+}
+#a11y-panel-reset {
+  background: none;
+  border: 1px solid rgba(255,255,255,.45);
+  color: rgba(255,255,255,.85);
+  border-radius: 4px;
+  font-size: .72rem;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+}
+#a11y-panel-reset:hover { background: rgba(255,255,255,.15); }
+
+/* Controls grid */
+#a11y-controls {
+  padding: 14px 14px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Text-size row spans full width */
+#a11y-textsize-row {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f7fb;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+#a11y-textsize-row label {
+  font-size: .8rem;
+  color: #444;
+  flex: 1;
+}
+.a11y-size-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #dde;
+  background: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a3a6b;
+  transition: background .15s;
+}
+.a11y-size-btn:hover { background: #eef2f9; }
+#a11y-size-val {
+  font-size: .8rem;
+  font-weight: 700;
+  color: #1a3a6b;
+  min-width: 32px;
+  text-align: center;
+}
+
+/* Toggle buttons */
+.a11y-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 6px 9px;
+  border-radius: 8px;
+  border: 2px solid #e8eaf0;
+  background: #f9fafc;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .72rem;
+  color: #444;
+  text-align: center;
+  line-height: 1.2;
+  transition: background .15s, border-color .15s, color .15s;
+  user-select: none;
+}
+.a11y-toggle svg { width: 22px; height: 22px; }
+.a11y-toggle:hover { background: #eef2f9; border-color: #bcc6dc; }
+.a11y-toggle.active {
+  background: #1a3a6b;
+  border-color: #1a3a6b;
+  color: #fff;
+}
+.a11y-toggle.active svg { fill: #fff !important; }
+
+/* Reading guide */
+#a11y-guide {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: rgba(253, 224, 71, .35);
+  border-top: 2px solid rgba(180,140,0,.4);
+  border-bottom: 2px solid rgba(180,140,0,.4);
+  z-index: 99998;
+  pointer-events: none;
+}
+
+/* ── Body-level mode overrides ── */
+
+/* High contrast */
+body.a11y-high-contrast,
+body.a11y-high-contrast * {
+  background-color: #000 !important;
+  color: #ff0 !important;
+  border-color: #ff0 !important;
+  fill: #ff0 !important;
+}
+body.a11y-high-contrast a,
+body.a11y-high-contrast a * { color: #0ff !important; }
+body.a11y-high-contrast img { filter: contrast(1.2) brightness(0.9); }
+
+/* Grayscale */
+body.a11y-grayscale { filter: grayscale(100%); }
+
+/* Highlight links */
+body.a11y-links a {
+  text-decoration: underline !important;
+  outline: 2px solid #c0392b !important;
+  outline-offset: 1px;
+}
+
+/* Dyslexia font — Lexend loaded from Google Fonts */
+body.a11y-dyslexia,
+body.a11y-dyslexia p,
+body.a11y-dyslexia li,
+body.a11y-dyslexia span,
+body.a11y-dyslexia a,
+body.a11y-dyslexia h1,
+body.a11y-dyslexia h2,
+body.a11y-dyslexia h3,
+body.a11y-dyslexia h4,
+body.a11y-dyslexia h5,
+body.a11y-dyslexia h6,
+body.a11y-dyslexia div {
+  font-family: 'Lexend', sans-serif !important;
+  letter-spacing: .05em !important;
+  word-spacing: .1em !important;
+  line-height: 1.75 !important;
+}
+
+/* Stop animations */
+body.a11y-no-anim *,
+body.a11y-no-anim *::before,
+body.a11y-no-anim *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  #a11y-panel { width: calc(100vw - 32px); left: 16px; bottom: 80px; }
+  #a11y-btn   { bottom: 16px; left: 16px; }
+}
