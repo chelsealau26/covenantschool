@@ -226,6 +226,7 @@ COMMENTS / QUALIFICATIONS
             '.ico': 'image/x-icon',
             '.woff': 'font/woff',
             '.woff2': 'font/woff2',
+            '.json': 'application/json',
         }
         content_type = content_types.get(path.suffix.lower(), 'application/octet-stream')
         data = path.read_bytes()

@@ -1,0 +1,22 @@
+[
+  { "title": "First Day of School", "start": "2026-08-17", "color": "#1a3a6b" },
+  { "title": "Labor Day – No School", "start": "2026-09-07", "color": "#c0392b" },
+  { "title": "Fall Picture Day", "start": "2026-09-10", "color": "#2e7d32" },
+  { "title": "Parent-Teacher Conferences", "start": "2026-09-24", "end": "2026-09-25", "color": "#1a3a6b" },
+  { "title": "End of 1st Quarter", "start": "2026-10-16", "color": "#1a3a6b" },
+  { "title": "Fall Break", "start": "2026-10-19", "end": "2026-10-23", "color": "#c0392b" },
+  { "title": "Veterans Day – No School", "start": "2026-11-11", "color": "#c0392b" },
+  { "title": "Thanksgiving Break", "start": "2026-11-23", "end": "2026-11-27", "color": "#c0392b" },
+  { "title": "End of 2nd Quarter", "start": "2026-12-18", "color": "#1a3a6b" },
+  { "title": "Christmas Break Begins", "start": "2026-12-21", "color": "#c0392b" },
+  { "title": "Classes Resume", "start": "2027-01-04", "color": "#2e7d32" },
+  { "title": "Martin Luther King Jr. Day – No School", "start": "2027-01-19", "color": "#c0392b" },
+  { "title": "End of 3rd Quarter", "start": "2027-03-05", "color": "#1a3a6b" },
+  { "title": "Spring Break", "start": "2027-03-08", "end": "2027-03-12", "color": "#c0392b" },
+  { "title": "Good Friday – No School", "start": "2027-03-26", "color": "#c0392b" },
+  { "title": "Spring Picture Day", "start": "2027-04-08", "color": "#2e7d32" },
+  { "title": "Academic Awards Chapel", "start": "2027-04-22", "color": "#2e7d32" },
+  { "title": "Memorial Day – No School", "start": "2027-05-31", "color": "#c0392b" },
+  { "title": "Graduation Ceremony", "start": "2027-05-21", "color": "#1a3a6b" },
+  { "title": "Last Day of School", "start": "2027-05-28", "color": "#1a3a6b" }
+]

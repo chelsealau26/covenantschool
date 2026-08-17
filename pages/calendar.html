@@ -2012,8 +2012,106 @@
          style="margin-top: 0px; margin-left: 0px;">
 
       <div class="code-widget-content col20">
-        <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-28d2dd97-973b-4612-9979-36695923b91b" data-elfsight-app-lazy></div><!-- */ <!-- -->
+        <!-- FullCalendar -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css">
+        <style>
+          #school-calendar {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 16px 32px;
+            font-family: 'Open Sans', sans-serif;
+          }
+          #school-calendar .fc-toolbar-title { font-size: 1.2rem; font-weight: 700; color: #1a3a6b; }
+          #school-calendar .fc-button-primary {
+            background: #1a3a6b; border-color: #1a3a6b;
+          }
+          #school-calendar .fc-button-primary:hover { background: #122b52; border-color: #122b52; }
+          #school-calendar .fc-button-primary:not(:disabled).fc-button-active,
+          #school-calendar .fc-button-primary:not(:disabled):active { background: #122b52; border-color: #122b52; }
+          #school-calendar .fc-day-today { background: #eef2f9 !important; }
+          #school-calendar .fc-event { font-size: 0.78rem; cursor: pointer; border: none; }
+          #cal-popup-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,.45); z-index: 9999;
+            align-items: center; justify-content: center;
+          }
+          #cal-popup-overlay.open { display: flex; }
+          #cal-popup {
+            background: #fff; border-radius: 4px; padding: 28px 32px;
+            max-width: 380px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,.2);
+            font-family: 'Open Sans', sans-serif; position: relative;
+          }
+          #cal-popup h3 { margin: 0 0 8px; color: #1a3a6b; font-size: 1.05rem; }
+          #cal-popup p  { margin: 0; color: #555; font-size: 0.9rem; }
+          #cal-popup-close {
+            position: absolute; top: 10px; right: 14px;
+            background: none; border: none; font-size: 1.4rem;
+            cursor: pointer; color: #888; line-height: 1;
+          }
+          @media (max-width: 600px) {
+            #school-calendar .fc-toolbar { flex-direction: column; gap: 8px; }
+          }
+        </style>
+
+        <div id="school-calendar"></div>
+
+        <div id="cal-popup-overlay">
+          <div id="cal-popup">
+            <button id="cal-popup-close" aria-label="Close">&times;</button>
+            <h3 id="cal-popup-title"></h3>
+            <p id="cal-popup-date"></p>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+        <script>
+        (function () {
+          function fmt(dateStr) {
+            var d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+          }
+          var overlay = document.getElementById('cal-popup-overlay');
+          var popTitle = document.getElementById('cal-popup-title');
+          var popDate  = document.getElementById('cal-popup-date');
+          document.getElementById('cal-popup-close').addEventListener('click', function () {
+            overlay.classList.remove('open');
+          });
+          overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) overlay.classList.remove('open');
+          });
+
+          fetch('/assets/events.json')
+            .then(function (r) { return r.json(); })
+            .then(function (events) {
+              var calEl = document.getElementById('school-calendar');
+              var cal = new FullCalendar.Calendar(calEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+                events: events,
+                eventClick: function (info) {
+                  var start = info.event.startStr;
+                  var end   = info.event.endStr;
+                  popTitle.textContent = info.event.title;
+                  if (end && end !== start) {
+                    var endAdj = new Date(end + 'T00:00:00');
+                    endAdj.setDate(endAdj.getDate() - 1);
+                    var endStr = endAdj.toISOString().slice(0, 10);
+                    popDate.textContent = fmt(start) + ' – ' + fmt(endStr);
+                  } else {
+                    popDate.textContent = fmt(start);
+                  }
+                  overlay.classList.add('open');
+                },
+                height: 'auto',
+              });
+              cal.render();
+            })
+            .catch(function () {
+              document.getElementById('school-calendar').innerHTML =
+                '<p style="text-align:center;color:#888;padding:40px 0;">Calendar could not be loaded.</p>';
+            });
+        })();
+        </script>
               </div>
     </div>
   </div>
