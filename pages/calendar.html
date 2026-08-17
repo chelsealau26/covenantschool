@@ -2102,9 +2102,63 @@
             if (e.target === overlay) overlay.classList.remove('open');
           });
 
-          fetch('/assets/events.json')
-            .then(function (r) { return r.json(); })
-            .then(function (events) {
+          var SCHOOL_EVENTS = [
+  {"title":"New Family Orientation","start":"2026-08-02","color":"#2e7d32"},
+  {"title":"Teacher Meet & Greet","start":"2026-08-07","color":"#2e7d32"},
+  {"title":"Teacher Workday Optional / Office","start":"2026-08-10","color":"#1a3a6b"},
+  {"title":"First Day of School","start":"2026-08-11","color":"#1a3a6b"},
+  {"title":"Labor Day \u2013 No School","start":"2026-09-07","color":"#c0392b"},
+  {"title":"Mid-Quarter","start":"2026-09-09","color":"#1a3a6b"},
+  {"title":"Fall Picture Day","start":"2026-09-22","color":"#2e7d32"},
+  {"title":"See You at the Pole","start":"2026-09-23","color":"#2e7d32"},
+  {"title":"Sports & Make-up Pictures","start":"2026-09-30","color":"#2e7d32"},
+  {"title":"End of Quarter 1 / Spirit Day \u2013 Early Dismissal","start":"2026-10-07","color":"#1a3a6b"},
+  {"title":"Fall Break \u2013 No School","start":"2026-10-08","end":"2026-10-10","color":"#c0392b"},
+  {"title":"Parent/Teacher Conference \u2013 No Students","start":"2026-10-12","color":"#2e7d32"},
+  {"title":"Report Cards Emailed","start":"2026-10-16","color":"#1a3a6b"},
+  {"title":"Honors Chapel","start":"2026-10-27","color":"#2e7d32"},
+  {"title":"Mid-Quarter","start":"2026-11-04","color":"#1a3a6b"},
+  {"title":"Veterans Day Program","start":"2026-11-10","color":"#2e7d32"},
+  {"title":"Veterans Day \u2013 No School","start":"2026-11-11","color":"#c0392b"},
+  {"title":"Family Fun Day Event \u2013 Early Dismissal from Camp Grace","start":"2026-11-20","color":"#2e7d32"},
+  {"title":"Thanksgiving Break \u2013 No School","start":"2026-11-23","end":"2026-11-28","color":"#c0392b"},
+  {"title":"1st\u20135th Evening Christmas Program","start":"2026-12-15","color":"#2e7d32"},
+  {"title":"K3/K4/K5 Christmas Program & Celebration","start":"2026-12-16","color":"#2e7d32"},
+  {"title":"1st\u20138th Student Christmas Chapel & Celebrations \u2013 Early Dismissal 11:30 / End of Quarter 2","start":"2026-12-18","color":"#1a3a6b"},
+  {"title":"Christmas Break \u2013 No School","start":"2026-12-21","end":"2027-01-05","color":"#c0392b"},
+  {"title":"Teacher Workday","start":"2027-01-04","color":"#1a3a6b"},
+  {"title":"Students Return to School","start":"2027-01-05","color":"#1a3a6b"},
+  {"title":"2nd Quarter Report Cards Emailed","start":"2027-01-08","color":"#1a3a6b"},
+  {"title":"Afternoon Campus Clean-up","start":"2027-01-12","end":"2027-01-14","color":"#2e7d32"},
+  {"title":"Open House 4:30\u20136:30 PM","start":"2027-01-14","color":"#2e7d32"},
+  {"title":"MLK Day \u2013 No School","start":"2027-01-18","color":"#c0392b"},
+  {"title":"Honors Chapel","start":"2027-01-19","color":"#2e7d32"},
+  {"title":"Winter Break \u2013 No School","start":"2027-02-08","end":"2027-02-13","color":"#c0392b"},
+  {"title":"Presidents Day \u2013 No School","start":"2027-02-15","color":"#c0392b"},
+  {"title":"Spring Picture Day","start":"2027-03-10","color":"#2e7d32"},
+  {"title":"End of Quarter 3 / Spirit Day \u2013 Early Dismissal","start":"2027-03-12","color":"#1a3a6b"},
+  {"title":"Spring Sport Picture Day","start":"2027-03-17","color":"#2e7d32"},
+  {"title":"Report Cards Emailed / Grandparents' Day","start":"2027-03-19","color":"#2e7d32"},
+  {"title":"Good Friday \u2013 No School","start":"2027-03-26","color":"#c0392b"},
+  {"title":"Easter \u2013 He is Risen!","start":"2027-03-28","color":"#2e7d32"},
+  {"title":"Spring Break \u2013 No School","start":"2027-03-29","end":"2027-04-03","color":"#c0392b"},
+  {"title":"Honors Chapel","start":"2027-04-06","color":"#2e7d32"},
+  {"title":"Mid-Quarter","start":"2027-04-14","color":"#1a3a6b"},
+  {"title":"K5\u20138th IOWA Testing","start":"2027-04-19","end":"2027-04-23","color":"#1a3a6b"},
+  {"title":"Field Day \u2013 Early Dismissal","start":"2027-04-23","color":"#2e7d32"},
+  {"title":"Mother's Day","start":"2027-05-09","color":"#2e7d32"},
+  {"title":"Alumni Chapel","start":"2027-05-11","color":"#2e7d32"},
+  {"title":"8th Grade Last Day / Graduation \u2013 Early Dismissal 12:00","start":"2027-05-20","color":"#1a3a6b"},
+  {"title":"Last Day of School K3\u20137th / Awards Chapel \u2013 Early Dismissal 11:30 / End of Quarter 4","start":"2027-05-27","color":"#1a3a6b"},
+  {"title":"Teacher Workday","start":"2027-05-28","color":"#1a3a6b"},
+  {"title":"Memorial Day \u2013 No School","start":"2027-05-31","color":"#c0392b"},
+  {"title":"School Office Closed","start":"2027-05-31","end":"2027-06-05","color":"#c0392b"},
+  {"title":"2027/2028 Fees Due","start":"2027-06-01","color":"#1a3a6b"},
+  {"title":"Final Report Cards Emailed / Supply Lists, Reading & iXL Lists on Family Portal","start":"2027-06-11","color":"#1a3a6b"},
+  {"title":"Father's Day","start":"2027-06-20","color":"#2e7d32"}
+];
+          (function () {
+              var events = SCHOOL_EVENTS;
               // Build background shading events
               var bgEvents = [];
               events.forEach(function (e) {
@@ -2143,11 +2197,7 @@
                 height: 'auto',
               });
               cal.render();
-            })
-            .catch(function () {
-              document.getElementById('school-calendar').innerHTML =
-                '<p style="text-align:center;color:#888;padding:40px 0;">Calendar could not be loaded.</p>';
-            });
+          })();
         })();
         </script>
               </div>
@@ -2199,7 +2249,7 @@
          data-animation-delay=""
          data-animation="lazyAnimation-"
          style="margin-top: 0px; margin-left: 0px;">
-      <div class="text-widget-content"><p><span style="color: rgb(255, 255, 255);">Download the 2026-2027 Calendar <span style="font-weight: bold;"><a href="/pdfs/2026-2027_School_Calendar.pdf" target="_blank">here</a></span>.</span></p></div>
+      <div class="text-widget-content"><p><span style="color: rgb(255, 255, 255);">Download the 2026-2027 Calendar <span style="font-weight: bold;"><a href="https://raw.githubusercontent.com/chelsealau26/covenantschool/main/pdfs/2026-2027_School_Calendar.pdf" target="_blank">here</a></span>.</span></p></div>
     </div>
   </div>
               </div></div>
