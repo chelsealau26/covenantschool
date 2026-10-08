@@ -378,7 +378,7 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 #main-content .recipe-heading{max-width:730px;margin:0 auto 32px;text-align:center}
 #main-content .recipe-heading h2{font:clamp(2.35rem,5vw,4rem)/.98 Impact,'Arial Narrow',system-ui,sans-serif;color:var(--recipe-ink);margin:12px 0}
 #main-content .recipe-heading p{max-width:640px;margin:0 auto;color:#536771}
-#main-content .script-note{font:1.25rem cursive;color:var(--recipe-red);font-weight:800;transform:rotate(-2deg);margin-top:9px}
+#main-content .script-note{font:700 clamp(22px,2.1vw,26px)/1.2 'Kalam','Comic Sans MS',cursive;color:#126184;transform:none;margin-top:9px;text-decoration:none}
 #main-content .recipe-story{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:center}
 #main-content .recipe-photo-card{padding:15px;transform:rotate(2deg)}
 #main-content .recipe-photo-card img{display:block;width:100%;max-height:360px;object-fit:contain}
@@ -399,21 +399,35 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 #main-content .recipe-goal strong{display:block;font:1.9rem Impact,sans-serif;color:var(--recipe-ink)}
 #main-content .recipe-goal p{margin:3px 0 0}
 #main-content #dates .recipe-calendar{display:grid;grid-template-columns:1.12fr .88fr;gap:18px;max-width:1040px;margin:0 auto;align-items:start}
-#main-content #dates .calendar-month{overflow:hidden;background:#fffaf0;border:2px solid var(--recipe-ink);border-radius:9px 24px 10px 24px;box-shadow:6px 7px 0 #b5dce6}
-#main-content #dates .calendar-month-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 17px;background:var(--recipe-blue);border-bottom:2px solid var(--recipe-ink);color:#fff}
+#main-content #dates .calendar-month{position:relative;overflow:hidden;background:#fffaf0;border:2px solid var(--recipe-ink);border-radius:9px 24px 10px 24px;box-shadow:6px 7px 0 #b5dce6}
+#main-content #dates .calendar-month-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 14px;background:var(--recipe-blue);border-bottom:2px solid var(--recipe-ink);color:#fff}
 #main-content #dates .calendar-month-heading h3{margin:0;font:1.65rem/1 'Lilita One',Impact,sans-serif;letter-spacing:.025em}
 #main-content #dates .calendar-month-heading span{font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-#main-content #dates .calendar-list{margin:0;padding:0 15px;list-style:none}
+#main-content #dates .month-kitchen-art{display:block;width:68px;height:38px;flex:0 0 auto;overflow:visible}
+#main-content #dates .month-kitchen-art .kitchen-navy{fill:#173d70}
+#main-content #dates .month-kitchen-art .kitchen-blue{fill:#20a8dc}
+#main-content #dates .month-kitchen-art .kitchen-cream{fill:#fff7df}
+#main-content #dates .month-kitchen-art .kitchen-yellow{fill:#ffd966}
+#main-content #dates .month-kitchen-art .kitchen-outline{fill:none;stroke:#173d70;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+#main-content #dates .month-kitchen-art .kitchen-highlight{fill:none;stroke:#fff7df;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+#main-content #dates .month-kitchen-art .kitchen-detail{fill:none;stroke:#ffd966;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+#main-content #dates .calendar-list{position:relative;margin:0;padding:0 15px 0 23px;list-style:none;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 28px,rgba(72,137,158,.12) 29px,transparent 30px),linear-gradient(to right,transparent 0 21px,rgba(32,168,220,.2) 21px 22px,transparent 22px)}
+#main-content #dates .month-margin-art{position:absolute;z-index:1;top:58px;left:4px;width:14px;height:44px;opacity:.88;pointer-events:none}
+#main-content #dates .month-margin-art .margin-navy{fill:#173d70;stroke:none}
+#main-content #dates .month-margin-art .margin-blue{fill:#20a8dc;stroke:none}
+#main-content #dates .month-margin-art .margin-cream{fill:#fff7df;stroke:none}
+#main-content #dates .month-margin-art .margin-yellow{fill:#ffd966;stroke:none}
+#main-content #dates .month-margin-art .margin-outline{fill:none;stroke:#173d70;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 #main-content #dates .date-recipe{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:start;padding:13px 2px;border-bottom:1px dashed #a8cbd3}
 #main-content #dates .date-recipe:last-child{border-bottom:0}
-#main-content #dates .date-recipe>.calendar-dates{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1px 3px;min-height:30px;padding:4px 6px;background:var(--recipe-yellow);border:1.5px solid var(--recipe-ink);border-radius:4px 11px;color:var(--recipe-ink);font:1rem/1.08 'Lilita One',Impact,sans-serif;text-align:center;font-variant-numeric:tabular-nums}
+#main-content #dates .date-recipe>.calendar-dates{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1px 3px;min-height:30px;padding:4px 6px;background-color:#f8dc91;background-image:linear-gradient(90deg,rgba(32,168,220,.16) 0 5px,transparent 5px),repeating-linear-gradient(to bottom,transparent 0 12px,rgba(23,69,105,.1) 13px,transparent 14px);border:1.5px solid var(--recipe-ink);border-radius:3px 9px 4px 8px;color:var(--recipe-ink);font:1rem/1.08 'Lilita One',Impact,sans-serif;text-align:center;font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 2px rgba(255,250,240,.4)}
 #main-content #dates .calendar-dates time{font:inherit}
 #main-content #dates .calendar-dates .date-separator{font:inherit}
 #main-content #dates .date-recipe h4{margin:1px 0 3px;color:var(--recipe-ink);font:1.12rem/1.08 'Lilita One',Impact,sans-serif}
 #main-content #dates .date-recipe p{margin:0;color:#536771;font-size:.84rem;line-height:1.35}
 #main-content #dates .deadline-event{margin:0 -7px;padding:12px 9px;background:#fff0d0;border:0;border-top:1px dashed #d29639;border-bottom:1px dashed #d29639}
-#main-content #dates .deadline-event .calendar-dates{background:var(--recipe-red);color:#fffaf0}
-#main-content #dates .deadline-event h4{color:#8e302c}
+#main-content #dates .deadline-event .calendar-dates{background:#b8443c;color:#fffaf0}
+#main-content #dates .deadline-event h4{color:var(--recipe-ink)}
 #main-content #dates .final-event{margin:5px -8px 7px;padding:12px 9px;background:var(--recipe-yellow);border:2px solid var(--recipe-ink);border-radius:7px 17px;box-shadow:3px 3px 0 #b5dce6}
 #main-content #dates .final-event .calendar-dates{background:var(--recipe-ink);color:#fffaf0}
 #main-content #dates .final-event h4{font-size:1.2rem}
@@ -523,7 +537,446 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 #main-content.recipe-static .grand-prize-list li{flex:1 1 130px;background:#fffaf0;border:2px solid var(--recipe-ink);padding:12px;border-radius:7px 18px;text-align:center;color:var(--recipe-ink);font-weight:900}
 #main-content.recipe-static .grand-prize-list b{display:block;font:2rem 'Lilita One',Impact,sans-serif;color:var(--recipe-red)}
 #main-content.recipe-static img.recipe-hero-logo{position:relative;inset:auto;width:min(100%,370px);height:auto;max-height:330px;object-fit:contain;padding:18px;background:#fffaf0;border:2px solid var(--recipe-ink);box-shadow:8px 8px 0 var(--recipe-yellow);transform:rotate(2deg)}</style>
+<style>
+/* Recipe for Success — one unified, print-shop event poster. */
+#main-content.recipe-page .recipe-hero{
+  padding:46px 0 54px!important;
+  overflow:hidden;
+  background-color:#dff2f6!important;
+  background-image:
+    linear-gradient(45deg,#fffaf0 25%,transparent 25%,transparent 75%,#fffaf0 75%),
+    linear-gradient(45deg,#fffaf0 25%,transparent 25%,transparent 75%,#fffaf0 75%)!important;
+  background-position:0 0,22px 22px!important;
+  background-size:44px 44px!important;
+}
+#main-content.recipe-page .recipe-hero-in{
+  box-sizing:border-box;
+  width:min(960px,calc(100% - 44px))!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"kicker" "title" "art" "lede" "actions" "note"!important;
+  justify-items:center;
+  gap:0!important;
+  padding:clamp(26px,5vw,54px) clamp(22px,7vw,82px)!important;
+  background:#fff!important;
+  border:4px solid #173d70;
+  box-shadow:10px 10px 0 #ffd966;
+  text-align:center;
+  position:relative;
+}
+#main-content.recipe-page .recipe-hero-copy,
+#main-content.recipe-page .recipe-hero-art{display:contents!important}
+#main-content.recipe-page .recipe-hero .recipe-kicker{
+  grid-area:kicker;
+  justify-content:center;
+  color:#a93630!important;
+  font-size:max(.875rem,14px)!important;
+  letter-spacing:.19em;
+  line-height:1.35;
+}
+#main-content.recipe-page .recipe-title{
+  grid-area:title;
+  width:100%;
+  margin:10px 0 0!important;
+  color:#173d70!important;
+  font:900 clamp(3.25rem,8vw,6.1rem)/.9 'Lilita One',Impact,'Arial Black',sans-serif!important;
+  letter-spacing:-.025em;
+  text-shadow:none!important;
+  text-transform:none;
+}
+#main-content.recipe-page .recipe-title span{
+  display:block!important;
+  color:#bd453b!important;
+  font-size:inherit!important;
+  margin:4px 0 0!important;
+}
+#main-content.recipe-page .recipe-hero-logo{
+  grid-area:art;
+  display:block!important;
+  position:static!important;
+  inset:auto!important;
+  width:min(100%,360px)!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain;
+  margin:15px auto 11px;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+  filter:none!important;
+}
+#main-content.recipe-page .recipe-hero .chef-cutout,
+#main-content.recipe-page .recipe-hero .hero-sticker{display:none!important}
+#main-content.recipe-page .recipe-lede{
+  grid-area:lede;
+  max-width:660px!important;
+  margin:0 auto 20px!important;
+  color:#283d4b!important;
+  font-size:max(1.125rem,18px)!important;
+  line-height:1.55!important;
+}
+#main-content.recipe-page .recipe-actions{
+  grid-area:actions;
+  justify-content:center;
+  gap:14px;
+}
+#main-content.recipe-page .recipe-actions .recipe-btn{
+  box-sizing:border-box;
+  min-height:52px;
+  padding:13px 22px;
+  border-radius:5px 16px;
+  box-shadow:4px 4px 0 #173d70;
+  font-size:max(1rem,16px)!important;
+}
+#main-content.recipe-page .recipe-actions .recipe-btn.sun{
+  background:#bd453b!important;
+  border-color:#8f302b!important;
+  color:#fff!important;
+  box-shadow:4px 4px 0 #ffd966;
+}
+#main-content.recipe-page .recipe-actions .recipe-btn.paper{
+  background:#fff2bf!important;
+  border-color:#173d70!important;
+  color:#173d70!important;
+  box-shadow:4px 4px 0 #78bfd8;
+}
+#main-content.recipe-page .recipe-side-note{
+  grid-area:note;
+  margin:22px 0 0!important;
+  max-width:640px;
+  color:#283d4b!important;
+  font-size:max(1rem,16px)!important;
+  line-height:1.5!important;
+}
+#main-content.recipe-page .recipe-side-note b{
+  color:#173d70!important;
+  font-weight:900;
+}
+#main-content.recipe-page .recipe-actions a:focus-visible{
+  outline:3px solid #a93630!important;
+  outline-offset:5px!important;
+}
+@media(max-width:560px){
+  #main-content.recipe-page .recipe-hero{padding:28px 0 36px!important}
+  #main-content.recipe-page .recipe-hero-in{
+    width:calc(100% - 34px)!important;
+    padding:24px 18px 27px!important;
+    border-width:3px;
+    box-shadow:6px 6px 0 #ffd966;
+  }
+  #main-content.recipe-page .recipe-title{
+    font-size:clamp(3rem,13.5vw,4rem)!important;
+    line-height:.98;
+    margin-top:12px!important;
+  }
+  #main-content.recipe-page .recipe-hero-logo{
+    width:min(100%,290px)!important;
+    margin:12px auto 10px;
+  }
+  #main-content.recipe-page .recipe-lede{
+    font-size:max(1.0625rem,17px)!important;
+    margin-bottom:18px!important;
+  }
+  #main-content.recipe-page .recipe-actions{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:11px;
+  }
+  #main-content.recipe-page .recipe-actions .recipe-btn{
+    width:100%;
+    padding-inline:12px;
+    text-align:center;
+  }
+  #main-content.recipe-page .recipe-side-note{margin-top:18px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #main-content.recipe-page .recipe-actions .recipe-btn{transition:none!important}
+}
+/* Typography-led fundraiser poster; the logo now lives in the shared shell. */
+#main-content.recipe-page .recipe-hero{
+  padding:30px 0 42px!important;
+  overflow:hidden!important;
+}
+#main-content.recipe-page .recipe-hero-in{
+  box-sizing:border-box;
+  position:relative;
+  overflow:visible!important;
+  width:min(960px,calc(100% - 44px))!important;
+  min-height:510px;
+  margin:0 auto!important;
+  padding:clamp(36px,6vw,62px) clamp(28px,7vw,74px)!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"kicker" "title" "lede" "actions" "note"!important;
+  align-content:center;
+  justify-items:center;
+  gap:0!important;
+  text-align:center;
+}
+#main-content.recipe-page .recipe-hero .recipe-kicker{
+  grid-area:kicker;
+  justify-content:center;
+  font-size:max(.875rem,14px)!important;
+  letter-spacing:.16em;
+}
+#main-content.recipe-page .recipe-title{
+  grid-area:title;
+  font-size:clamp(3.35rem,7vw,5rem)!important;
+  line-height:.94;
+  margin:12px 0 0!important;
+}
+#main-content.recipe-page .recipe-title span{margin-top:2px!important}
+#main-content.recipe-page .recipe-hero-logo{
+  display:none!important;
+}
+#main-content.recipe-page .recipe-lede{
+  grid-area:lede;
+  max-width:700px!important;
+  margin:18px auto 22px!important;
+  font-size:max(1.125rem,18px)!important;
+  line-height:1.55!important;
+}
+#main-content.recipe-page .recipe-actions{
+  grid-area:actions;
+  justify-content:center;
+  gap:14px;
+}
+#main-content.recipe-page .recipe-side-note{
+  grid-area:note;
+  margin:20px 0 0!important;
+  font-size:max(1rem,16px)!important;
+  line-height:1.5!important;
+}
+#main-content.recipe-page .recipe-hero-in{
+  background-color:#fffaf0!important;
+  background-image:radial-gradient(#dfd3bd .5px,transparent .65px)!important;
+  background-size:11px 11px!important;
+  border:3px dashed #173d70!important;
+  border-radius:12px 28px 12px 28px;
+  box-shadow:8px 9px 0 #ffd966;
+}
+#main-content.recipe-page .recipe-hero-in::before,
+#main-content.recipe-page .recipe-hero-in::after{
+  content:none!important;
+  position:absolute;
+  z-index:0;
+  display:none!important;
+  background-repeat:no-repeat;
+  background-size:contain;
+  pointer-events:none;
+  opacity:.78;
+}
+#main-content.recipe-page .recipe-hero-in::before{
+  top:24px;
+  left:23px;
+  width:54px;
+  height:78px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 100'%3E%3Cpath d='M13 8C3 18 8 40 34 58M23 5C12 20 17 43 34 58M35 4C25 23 28 44 34 58M47 5C58 20 51 43 34 58M57 8C68 18 62 40 34 58' fill='none' stroke='%23173d70' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 12C8 21 13 39 34 53M24 11C17 23 21 40 34 53M35 11C29 26 31 43 34 53M46 11C52 23 47 40 34 53M55 12C62 21 57 39 34 53' fill='none' stroke='%2320a8dc' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M34 55 56 91' fill='none' stroke='%23173d70' stroke-width='13' stroke-linecap='round'/%3E%3Cpath d='m34 57 21 34' fill='none' stroke='%23fff7df' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='m34 58 18 30' fill='none' stroke='%23ffd966' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='56' r='5' fill='%23ffd966' stroke='%23173d70' stroke-width='2'/%3E%3C/svg%3E");
+}
+#main-content.recipe-page .recipe-hero-in::after{
+  right:22px;
+  bottom:19px;
+  width:96px;
+  height:62px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 78'%3E%3Cpath d='M9 25h102c-4 28-21 44-51 44S13 53 9 25Z' fill='%23173d70'/%3E%3Cpath d='M16 31h88c-5 20-20 31-44 31S21 51 16 31Z' fill='%2320a8dc'/%3E%3Cpath d='M5 24c0-6 25-11 55-11s55 5 55 11-25 10-55 10S5 30 5 24Z' fill='%23173d70'/%3E%3Cpath d='M13 23c0-3 21-6 47-6s47 3 47 6-21 6-47 6-47-3-47-6Z' fill='%23fff7df'/%3E%3Cpath d='M27 45c13 5 53 5 66 0' fill='none' stroke='%23fff7df' stroke-width='3' stroke-linecap='round' opacity='.9'/%3E%3Ccircle cx='40' cy='23' r='3.4' fill='%23ffd966'/%3E%3Ccircle cx='62' cy='21' r='3.2' fill='%2320a8dc'/%3E%3Ccircle cx='82' cy='24' r='2.8' fill='%23ffd966'/%3E%3C/svg%3E");
+}
+#main-content.recipe-page .recipe-kicker,
+#main-content.recipe-page .recipe-title,
+#main-content.recipe-page .recipe-lede,
+#main-content.recipe-page .recipe-actions,
+#main-content.recipe-page .recipe-side-note{
+  position:relative;
+  z-index:1;
+}
+@media(max-width:900px){
+  #main-content.recipe-page .recipe-hero{
+    padding:26px 0 34px!important;
+  }
+  #main-content.recipe-page .recipe-hero-in{
+    width:calc(100% - 38px)!important;
+    min-height:0;
+    padding:30px clamp(20px,5vw,42px) 34px!important;
+    grid-template-areas:"kicker" "title" "lede" "actions" "note"!important;
+  }
+  #main-content.recipe-page .recipe-kicker{
+    align-self:center;
+    font-size:max(.875rem,14px)!important;
+    letter-spacing:.12em;
+    line-height:1.3;
+  }
+  #main-content.recipe-page .recipe-title{
+    font-size:clamp(2.8rem,9vw,4.2rem)!important;
+    line-height:.98;
+    margin:10px 0 0!important;
+    padding:0;
+    letter-spacing:-.025em;
+  }
+  #main-content.recipe-page .recipe-title span{margin-top:2px!important}
+  #main-content.recipe-page .recipe-lede{
+    max-width:none!important;
+    margin:17px auto 20px!important;
+    font-size:max(1.0625rem,17px)!important;
+    line-height:1.5!important;
+  }
+  #main-content.recipe-page .recipe-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:12px;
+  }
+  #main-content.recipe-page .recipe-actions .recipe-btn{
+    width:100%;
+    min-height:52px;
+    padding:12px 14px;
+    text-align:center;
+    font-size:max(1rem,16px)!important;
+  }
+  #main-content.recipe-page .recipe-side-note{
+    margin:19px 0 0!important;
+    font-size:max(1rem,16px)!important;
+    line-height:1.45!important;
+  }
+  #main-content.recipe-page .recipe-hero-in::before{
+    top:15px;
+    left:14px;
+    width:34px;
+    height:50px;
+    opacity:.62;
+  }
+  #main-content.recipe-page .recipe-hero-in::after{display:none}
+}
+body.a11y-high-contrast #main-content.recipe-page .recipe-hero-logo{
+  mix-blend-mode:normal;
+}
+/* These page-only shell marks use the same embedded original artwork. */
+body:has(#main-content.recipe-page) .theme-logo img{
+  width:auto!important;
+  max-width:92px!important;
+  max-height:86px!important;
+  object-fit:contain!important;
+}
+@media(max-width:768px){
+  body:has(#main-content.recipe-page) .theme-logo img{max-height:78px!important}
+}
+body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .image-box{
+  max-width:126px!important;
+}
+body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .widget-preserving-ratio-outer{
+  padding-bottom:120%!important;
+}
+body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .widget-preserving-ratio-inner>a{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:7px!important;
+  box-sizing:border-box!important;
+  border-radius:9px;
+  background:#fffaf0!important;
+}
+body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .widget-preserving-ratio-inner img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+}
+#main-content.recipe-page .recipe-side-note{
+  box-sizing:border-box;
+  margin-top:32px!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,max-content);
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  width:100%;
+  max-width:100%!important;
+  padding:0!important;
+  list-style:none!important;
+  background:none!important;
+  border:0!important;
+}
+#main-content.recipe-page .recipe-side-note>li{
+  box-sizing:border-box;
+  display:flex!important;
+  align-items:center;
+  justify-content:flex-start;
+  gap:9px;
+  min-width:0;
+  min-height:0;
+  margin:0!important;
+  padding:0!important;
+  border:0;
+  border-radius:0;
+  background:none!important;
+  box-shadow:none;
+  color:#283d4b!important;
+  font-size:max(1rem,16px)!important;
+  font-family:var(--sans);
+  font-weight:600;
+  line-height:1.3!important;
+  text-align:left;
+  cursor:default;
+}
+#main-content.recipe-page .recipe-note-icon{
+  display:grid;
+  place-items:center;
+  flex:0 0 22px;
+  width:22px;
+  height:22px;
+  border-radius:0;
+  background:none;
+}
+#main-content.recipe-page .recipe-note-icon svg{
+  display:block;
+  width:19px;
+  height:19px;
+}
+#main-content.recipe-page .recipe-note-label{
+  display:block;
+  min-width:0;
+  color:#283d4b!important;
+  font-size:max(1rem,16px)!important;
+  font-family:var(--sans);
+  font-weight:600;
+  line-height:1.3!important;
+  white-space:nowrap;
+}
+@media(max-width:900px){
+  #main-content.recipe-page .recipe-side-note{
+    grid-template-columns:max-content;
+    justify-content:start;
+    width:100%;
+    gap:12px;
+  }
+}
+@media(max-width:380px){
+  #main-content.recipe-page .recipe-side-note>li:last-child .recipe-note-icon{display:none}
+}
+#main-content.recipe-page .recipe-hero .recipe-lede>strong{
+  position:relative;
+  display:inline-block;
+  padding-bottom:5px;
+  color:#a93630!important;
+  font-family:'Kalam','Comic Sans MS',cursive!important;
+  font-size:clamp(22px,2.1vw,26px)!important;
+  font-weight:700;
+  line-height:1.2;
+  text-decoration:none;
+}
+#main-content.recipe-page .recipe-hero .recipe-lede>strong::after{
+  content:"";
+  position:absolute;
+  left:1%;
+  bottom:0;
+  width:98%;
+  height:7px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7c34-5 42 3 75-1s47-3 78 0 49 3 81-1' fill='none' stroke='%23bd8f19' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  pointer-events:none;
+}
+</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&amp;display=swap">
 <script type="text/javascript">
         var WebPlatform = window.WebPlatform || {};
         WebPlatform.clientRequestId = window.location.hostname + '-' + Math.random().toString(16).slice(2);
@@ -2315,13 +2768,49 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 (function () {
   var deadline = Date.parse('2026-11-09T15:00:00-06:00');
   var timer = document.getElementById('fundraiser-countdown');
+  if (!timer) return;
+  var housing = timer.parentElement;
+  var oldLabel = housing.querySelector('.countdown-label');
+  var oldDeadline = housing.querySelector('.countdown-deadline');
+  if (oldLabel) oldLabel.remove();
+  if (oldDeadline) oldDeadline.remove();
+  var dial = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  dial.setAttribute('viewBox', '0 0 48 48');
+  dial.setAttribute('class', 'countdown-dial');
+  dial.setAttribute('aria-hidden', 'true');
+  dial.setAttribute('focusable', 'false');
+  function addSvgShape(name, attributes) {
+    var shape = document.createElementNS('http://www.w3.org/2000/svg', name);
+    Object.keys(attributes).forEach(function (key) {
+      shape.setAttribute(key, attributes[key]);
+    });
+    dial.appendChild(shape);
+  }
+  addSvgShape('circle', { cx: '24', cy: '24', r: '19', fill: '#ffd966', stroke: '#173d70', 'stroke-width': '3' });
+  addSvgShape('path', { d: 'M24 11v13l9 5', fill: 'none', stroke: '#173d70', 'stroke-width': '3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+  addSvgShape('circle', { cx: '24', cy: '24', r: '2.5', fill: '#20a8dc' });
+  housing.appendChild(dial);
   var interval;
+  var hasRendered = false;
+  function motionIsAllowed() {
+    return !document.body.classList.contains('a11y-no-anim') &&
+      !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
   function updateCountdown() {
     var remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
     if (remaining === 0) {
-      timer.parentElement.querySelector('.countdown-label').textContent = 'Thank you for supporting our Eagles!';
-      timer.textContent = 'The fundraiser has ended.';
-      timer.setAttribute('aria-label', 'The fundraiser has ended.');
+      ['days', 'hours', 'minutes', 'seconds'].forEach(function (unit) {
+        timer.querySelector('[data-unit="' + unit + '"]').textContent = '00';
+      });
+      var ended = housing.querySelector('.countdown-ended');
+      if (!ended) {
+        ended = document.createElement('span');
+        ended.className = 'countdown-ended';
+        ended.setAttribute('aria-hidden', 'true');
+        ended.textContent = 'Fundraiser ended';
+        housing.appendChild(ended);
+      }
+      timer.setAttribute('aria-label', 'Fundraiser ended. Deadline: November 9, 2026 at 3 p.m. Central.');
       clearInterval(interval);
       return;
     }
@@ -2332,32 +2821,47 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
       seconds: remaining % 60
     };
     Object.keys(units).forEach(function (unit) {
-      timer.querySelector('[data-unit="' + unit + '"]').textContent = String(units[unit]).padStart(2, '0');
+      var digit = timer.querySelector('[data-unit="' + unit + '"]');
+      var next = String(units[unit]).padStart(2, '0');
+      if (digit.textContent !== next) {
+        digit.textContent = next;
+        if (hasRendered && motionIsAllowed()) {
+          digit.classList.remove('countdown-tick');
+          void digit.offsetWidth;
+          digit.classList.add('countdown-tick');
+          window.setTimeout(function () {
+            digit.classList.remove('countdown-tick');
+          }, 220);
+        }
+      }
     });
-    timer.setAttribute('aria-label', units.days + ' days, ' + units.hours + ' hours, ' + units.minutes + ' minutes, ' + units.seconds + ' seconds remaining');
+    hasRendered = true;
+    timer.setAttribute('aria-label', 'Time remaining until the fundraiser ends: ' +
+      units.days + ' days, ' + units.hours + ' hours, ' + units.minutes + ' minutes, ' +
+      units.seconds + ' seconds. Deadline: November 9, 2026 at 3 p.m. Central.');
   }
   interval = setInterval(updateCountdown, 1000);
   updateCountdown();
 })();
 </script>
-<section class="recipe-section paper" id="the-need"><div class="recipe-wrap recipe-story"><div class="recipe-photo-card recipe-oven-card"><div class="oven-preview" data-oven-preview><div role="img" aria-label="An oven preheating to a $250 student fundraising goal"><div class="oven-topline"><span>Preheating for success</span><span class="oven-goal-tag">Student goal · $250</span></div><div class="oven-controls-top" aria-hidden="true"><span><i class="oven-knob"></i><span class="oven-knob-label">MODE</span></span><div class="oven-clock"><span>$250</span><span class="oven-clock-label">TARGET</span></div><span><i class="oven-knob"></i><span class="oven-knob-label">HEAT</span></span></div><div class="oven-door" aria-hidden="true"><div class="oven-window"><span class="oven-shelf"></span><span class="oven-tray"></span><div class="oven-window-copy"><strong class="oven-amount" data-oven-amount>$0</strong><span class="oven-amount-caption">Preheating to $250</span></div></div></div></div><a class="recipe-btn sun oven-register" href="https://mybooster.com/v3" target="_blank" rel="noopener">Register with Booster</a></div></div><div class="recipe-story-copy"><span class="recipe-kicker">The big thing we’re making</span><h2>A fresh floor for every Eagle.</h2><p>The original gym floor has served Covenant Christian School since <b>1999</b>—more than 25 years of learning, playing, competing and gathering.</p><p>Now we’re raising funds to replace it and ready a well-loved space for future PE classes, games, school events and community celebrations. Every donation helps.</p></div></div></section>
+<section class="recipe-section paper" id="the-need"><div class="recipe-wrap recipe-story"><div class="recipe-photo-card recipe-measuring-card"><div class="measuring-illustration" data-measuring-glass role="img" aria-label="Illustration of a transparent measuring jug with $50 marks from $0 to $250; the blue fill illustrates the $250 student fundraising goal."><span class="measuring-goal" aria-hidden="true"><strong class="goal-amount">$250</strong><small class="goal-caption">Student goal</small></span><div class="measuring-jug"><svg class="measuring-handle" viewBox="0 0 232 260" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M220 58 H236 Q252 58 252 74 V194 Q252 210 236 210 H216" fill="none" stroke="#173d70" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M220 58 H236 Q252 58 252 74 V194 Q252 210 236 210 H216" fill="none" stroke="#8ed5ed" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="measuring-vessel"><div class="measuring-liquid" data-measuring-liquid></div><div class="measuring-glass-shine" aria-hidden="true"></div></div><div class="measuring-levels" aria-hidden="true"><div class="measuring-level"><span>$250</span><i></i></div><div class="measuring-level"><span>$200</span><i></i></div><div class="measuring-level"><span>$150</span><i></i></div><div class="measuring-level"><span>$100</span><i></i></div><div class="measuring-level"><span>$50</span><i></i></div><div class="measuring-level"><span>$0</span><i></i></div></div><svg class="measuring-glass-outline" viewBox="0 0 232 260" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="jug-outline" d="M60 58 L12 28 L60 29 H220 V207 Q220 235 198 242 H82 Q75 242 75 216 L60 58 Z"/><path class="jug-lip-highlight" d="M64 39 H216"/></svg></div><span class="measuring-counter" aria-hidden="true"></span></div></div><div class="recipe-story-copy"><span class="recipe-kicker">The big thing we’re making</span><h2>A fresh floor for every Eagle.</h2><p>The original gym floor has served Covenant Christian School since <b>1999</b>—more than 25 years of learning, playing, competing and gathering.</p><p>Now we’re raising funds to replace it and ready a well-loved space for future PE classes, games, school events and community celebrations. Every donation helps.</p><a class="recipe-btn sun measuring-register" href="https://mybooster.com/v3" target="_blank" rel="noopener">Register with Booster</a></div></div></section>
 <section class="recipe-section blue-wash" id="how-to-help"><div class="recipe-wrap"><div class="recipe-heading"><span class="recipe-kicker">Three easy ingredients</span><h2>Your family’s recipe for success</h2><p>Register, share your personal Booster link with ten people, and work toward your $250 family goal. Matching gifts are welcome; business donations submitted through the fundraiser count toward participating student goals.</p><div class="script-note">Let’s do this together!</div></div><div class="recipe-mix"><article class="mix-card"><span class="mix-number">1</span><h3>Register your student</h3><p>Create a Booster account—or sign in—and get your personal sharing link.</p></article><article class="mix-card"><span class="mix-number">2</span><h3>Invite ten people</h3><p>Share with friends, family, neighbors or local businesses. Personal invitations make it easy to help.</p></article><article class="mix-card"><span class="mix-number">3</span><h3>Raise $250 together</h3><p>Track your progress and celebrate milestones. Employer matching gifts can help your effort go further.</p></article></div><div class="recipe-goal"><div><strong>One family · One big-hearted goal</strong><p>Every gift moves the gym-floor project forward.</p></div><a class="recipe-btn" href="https://mybooster.com/v3" target="_blank" rel="noopener">Start your family recipe ↗</a></div></div></section>
 <section class="recipe-section paper" id="dates">
   <div class="recipe-wrap">
     <div class="recipe-heading">
       <span class="recipe-kicker">Pin it to the fridge</span>
       <h2>Dates from the Recipe Report</h2>
-      <p>Fundraiser season runs October 7–November 9, 2026.</p>
+      <p class="script-note fundraiser-season">Fundraiser season runs October 7–November 9, 2026.</p>
     </div>
     <div class="recipe-calendar" role="group" aria-label="Fundraiser calendar">
       <section class="calendar-month" aria-labelledby="calendar-october">
         <header class="calendar-month-heading"><h3 id="calendar-october">October</h3><span>6 dates · season opens</span></header>
         <ol class="calendar-list" aria-label="October fundraiser dates">
-          <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-10-07">October 7</time></div><div><h4>Fundraiser opens</h4><p>Register and start sharing.</p></div></li>
-          <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-10-13">October 13</time></div><div><h4>T-shirt order deadline</h4><p>Contact the school office for details.</p></div></li>
-          <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-10-14">October 14</time></div><div><h4>Business sponsor deadline</h4><p>Commitment forms and vector logos due.</p></div></li>
+          <li class="date-recipe calendar-detail-entry"><button class="calendar-entry-button" type="button" data-event-key="kickoff" data-event-title="Fundraiser opens" data-event-date="October 7, 2026" aria-haspopup="dialog" aria-controls="calendar-event-dialog" aria-label="Fundraiser opens, October 7. View details"><span class="calendar-dates"><time datetime="2026-10-07">October 7</time></span><span class="calendar-entry-copy"><span class="calendar-entry-heading"><span class="calendar-entry-title" role="heading" aria-level="4">Fundraiser opens</span><span class="calendar-detail-hint" aria-hidden="true">View details</span></span><span class="calendar-entry-preview">Register and start sharing.</span></span></button></li>
+          <li class="date-recipe calendar-detail-entry"><button class="calendar-entry-button" type="button" data-event-key="shirts" data-event-title="T-shirt order deadline" data-event-date="October 13, 2026" aria-haspopup="dialog" aria-controls="calendar-event-dialog" aria-label="T-shirt order deadline, October 13. View details"><span class="calendar-dates"><time datetime="2026-10-13">October 13</time></span><span class="calendar-entry-copy"><span class="calendar-entry-heading"><span class="calendar-entry-title" role="heading" aria-level="4">T-shirt order deadline</span><span class="calendar-detail-hint" aria-hidden="true">View details</span></span><span class="calendar-entry-preview">Contact the school office for details.</span></span></button></li>
+          <li class="date-recipe calendar-detail-entry"><button class="calendar-entry-button" type="button" data-event-key="sponsor" data-event-title="Business sponsor deadline" data-event-date="October 14, 2026" aria-haspopup="dialog" aria-controls="calendar-event-dialog" aria-label="Business sponsor deadline, October 14. View details"><span class="calendar-dates"><time datetime="2026-10-14">October 14</time></span><span class="calendar-entry-copy"><span class="calendar-entry-heading"><span class="calendar-entry-title" role="heading" aria-level="4">Business sponsor deadline</span><span class="calendar-detail-hint" aria-hidden="true">View details</span></span><span class="calendar-entry-preview">Commitment forms and vector logos due.</span></span></button></li>
           <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-10-16">Before October 16</time></div><div><h4>Early registration reward</h4><p>Register before this date to earn a keychain.</p></div></li>
-          <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-10-16">October 16</time><span class="date-separator">·</span><time datetime="2026-10-23">23</time><span class="date-separator">·</span><time datetime="2026-10-30">30</time></div><div><h4>Weekly prize days</h4><p>Weekly student and class recognition.</p></div></li>
+          <li class="date-recipe calendar-detail-entry"><button class="calendar-entry-button" type="button" data-event-key="weekly" data-event-title="Weekly prize days" data-event-date="October 16, 23 and 30, 2026" aria-haspopup="dialog" aria-controls="calendar-event-dialog" aria-label="Weekly prize days, October 16, 23 and 30. View details"><span class="calendar-dates"><time datetime="2026-10-16">October 16</time><span class="date-separator">·</span><time datetime="2026-10-23">23</time><span class="date-separator">·</span><time datetime="2026-10-30">30</time></span><span class="calendar-entry-copy"><span class="calendar-entry-heading"><span class="calendar-entry-title" role="heading" aria-level="4">Weekly prize days</span><span class="calendar-detail-hint" aria-hidden="true">View details</span></span><span class="calendar-entry-preview">Weekly student and class recognition.</span></span></button></li>
           <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-10-26">October 26</time><span class="date-separator">–</span><time datetime="2026-10-30">30</time></div><div><h4>Booster level prizes</h4><p>Celebrate progress through Booster levels.</p></div></li>
         </ol>
       </section>
@@ -2366,11 +2870,182 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
         <ol class="calendar-list" aria-label="November fundraiser dates">
           <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-11-02">November 2</time></div><div><h4>Covenant Kitchen Games</h4><p>On campus.</p></div></li>
           <li class="date-recipe"><div class="calendar-dates"><time datetime="2026-11-03">November 3</time><span class="date-separator">–</span><time datetime="2026-11-13">13</time></div><div><h4>Family Fun Day lunch orders</h4><p>Watch school communications for ordering details.</p></div></li>
-          <li class="date-recipe deadline-event"><div class="calendar-dates"><time datetime="2026-11-09">November 9</time><span class="date-separator">·</span><time datetime="15:00">3 p.m.</time></div><div><h4>Grand-prize entry deadline</h4><p>Fundraiser closes; entries due by 3 p.m.</p></div></li>
-          <li class="date-recipe final-event"><div class="calendar-dates"><time datetime="2026-11-20">November 20</time></div><div><h4>Camp Grace Family Fun Day</h4><p>A day to celebrate our school community.</p></div></li>
+          <li class="date-recipe deadline-event calendar-detail-entry"><button class="calendar-entry-button" type="button" data-event-key="grand" data-event-title="Grand-prize entry deadline" data-event-date="November 9, 2026 · 3 p.m. Central" aria-haspopup="dialog" aria-controls="calendar-event-dialog" aria-label="Grand-prize entry deadline, November 9 at 3 p.m. Central. View details"><span class="calendar-dates"><time datetime="2026-11-09">November 9</time><span class="date-separator">·</span><time datetime="15:00">3 p.m.</time></span><span class="calendar-entry-copy"><span class="calendar-entry-heading"><span class="calendar-entry-title" role="heading" aria-level="4">Grand-prize entry deadline</span><span class="calendar-detail-hint" aria-hidden="true">View details</span></span><span class="calendar-entry-preview">Fundraiser closes; entries due by 3 p.m.</span></span></button></li>
+          <li class="date-recipe final-event calendar-detail-entry"><button class="calendar-entry-button" type="button" data-event-key="familyday" data-event-title="Camp Grace Family Fun Day" data-event-date="November 20, 2026" aria-haspopup="dialog" aria-controls="calendar-event-dialog" aria-label="Camp Grace Family Fun Day, November 20. View details"><span class="calendar-dates"><time datetime="2026-11-20">November 20</time></span><span class="calendar-entry-copy"><span class="calendar-entry-heading"><span class="calendar-entry-title" role="heading" aria-level="4">Camp Grace Family Fun Day</span><span class="calendar-detail-hint" aria-hidden="true">View details</span></span><span class="calendar-entry-preview">A day to celebrate our school community.</span></span></button></li>
         </ol>
       </section>
     </div>
+    <dialog class="calendar-event-dialog" id="calendar-event-dialog" aria-labelledby="calendar-dialog-date calendar-dialog-title">
+      <div class="calendar-dialog-sticky">
+        <button class="calendar-dialog-close" type="button" aria-label="Close event details">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="calendar-dialog-body">
+        <p class="calendar-dialog-date" id="calendar-dialog-date"></p>
+        <h2 id="calendar-dialog-title"></h2>
+        <div class="calendar-dialog-content" id="calendar-dialog-content"></div>
+      </div>
+    </dialog>
+    <template id="calendar-detail-kickoff">
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 17h21l-2 8H9l-4-8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 14c2-3 12-3 15 0M19 5l7 8M17 7l-2 3M22 4l-3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Kickoff</h3>
+        </div>
+        <p class="calendar-recipe-lead">Pep rally and fundraiser kickoff on October 7. The Family Fun Day T-shirt order form opens the same day.</p>
+        <p>The fundraiser runs October 7–November 9.</p>
+      </section>
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M8 6c2 4 2 7 0 10l8 9M23 5c-5 5-7 9-7 14l5 7M6 20l5-5M19 19l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <h3>Getting started</h3>
+        </div>
+        <ul class="calendar-recipe-list">
+          <li>Returning Booster families may sign in with an existing account. New families create an account and register their students for a personal sharing link.</li>
+          <li>Donations on student pages qualify for prize opportunities. Share with ten friends.</li>
+        </ul>
+      </section>
+      <p class="calendar-dialog-source">Source: 2026 Recipe Report.</p>
+      <a class="calendar-dialog-link" href="https://mybooster.com/v3" target="_blank" rel="noopener">Open Booster registration</a>
+    </template>
+    <template id="calendar-detail-shirts">
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="m10 5 6 3 6-3 6 4-4 6-3-2v14H11V13l-3 2-4-6 6-4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13 8c0 3 6 3 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <h3>T-shirt order window</h3>
+        </div>
+        <p class="calendar-recipe-lead">Family Fun Day T-shirt orders open October 7. The last day to order is October 13.</p>
+        <figure class="calendar-shirt-art">
+          <img data-calendar-shirt-logo alt="Recipe for Success 2026 Eagles fundraiser logo featured on the Family Fun Day T-shirts.">
+          <figcaption>The fundraiser logo featured on our Family Fun Day T-shirts.</figcaption>
+        </figure>
+      </section>
+      <p class="calendar-dialog-source">Source: 2026 Recipe Report.</p>
+    </template>
+    <template id="calendar-detail-sponsor">
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M6 25h20M8 23l3-13h10l3 13M11 10c1-4 9-4 10 0M13 15h6M12 19h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Print-day ingredients</h3>
+        </div>
+        <p class="calendar-recipe-lead">Sponsorship forms, donation commitments, and electronically submitted high-resolution vector logos (Adobe Illustrator files) are due October 14 for banner and T-shirt printing.</p>
+      </section>
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4 19 12l8-4-4 8 5 4-9 1-3 7-3-7-9-1 5-4-4-8 8 4 3-8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <h3>Sponsorship levels</h3>
+        </div>
+        <ul class="calendar-recipe-list calendar-tier-list">
+          <li><span>Eagle Legacy Partner</span><strong>$7,500 and up</strong></li>
+          <li><span>Eagle Champion</span><strong>$5,000</strong></li>
+          <li><span>Eagle Advocate</span><strong>$2,000</strong></li>
+          <li><span>Eagle Supporter</span><strong>$1,000</strong></li>
+        </ul>
+      </section>
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 27S5 21 5 13a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 14-11 14Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 15h4l2-4 3 8 2-4h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Recognition and giving</h3>
+        </div>
+        <p>Recognition includes the fundraising banner, Hitt Road banners, website fundraising banner, and T-shirt logos. Fuller tier benefits are in the original sponsor form.</p>
+        <p>Corporate donations submitted through the fundraiser count toward student goals. Donations are tax deductible; Covenant Christian School is a 501(c)(3).</p>
+      </section>
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 8h22v17H5zM9 12h14M9 16h9M9 20h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m20 21 2 2 5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Send the form</h3>
+        </div>
+        <p>Make checks payable to Covenant Christian School. Submit the form and check to 7150 Hitt Road, Mobile, AL 36695, Attn: Lynn Lugo / 15th Annual Fundraiser.</p>
+        <p>Questions: <a href="tel:+12516338055;ext=1006">251-633-8055 ext. 1006</a> or <a href="mailto:llugo@covenantschool.com">llugo@covenantschool.com</a>.</p>
+      </section>
+      <p class="calendar-dialog-source">Sources: 2026 Recipe Report and 2026 corporate sponsor form.</p>
+      <a class="calendar-dialog-link" href="#sponsors" data-calendar-anchor>View sponsor details and download the form</a>
+    </template>
+    <template id="calendar-detail-weekly">
+      <section class="calendar-prize-note calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M8 5c3 3 3 6 0 9l11 11M22 5l5 5-10 10M6 20l5-5M19 24l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Chef of the Week · Student</h3>
+        </div>
+        <p>Awarded to the student with the highest donations that week—not cumulative totals.</p>
+        <ul class="calendar-recipe-list calendar-prize-dates">
+          <li><strong>October 16:</strong> Great American Cookie.</li>
+          <li><strong>October 23:</strong> A milkshake of choice.</li>
+          <li><strong>October 30:</strong> Lunch of choice (Chick-fil-A, Moe’s, McDonald’s, etc.).</li>
+        </ul>
+      </section>
+      <section class="calendar-prize-note calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 26V9l11-5 11 5v17H5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11 26v-8h10v8M10 11h3M19 11h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Five Star Class</h3>
+        </div>
+        <ul class="calendar-recipe-list calendar-prize-dates">
+          <li><strong>October 16:</strong> A donut party for the class with the most students registered.</li>
+          <li><strong>October 23:</strong> A popcorn and juice box party for the class with the most students who donated $50 or more.</li>
+          <li><strong>October 30:</strong> A Favorite Sneaker Pass for the class with the highest donations received.</li>
+        </ul>
+      </section>
+      <section class="calendar-prize-note calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M9 5c0 5 1 8 4 10v12M8 5v6M12 5v6M16 5v6c0 2-1 3-3 4M23 5c-2 3-2 7 0 10l3 2v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Golden Spoon · Family</h3>
+        </div>
+        <p>Awarded to the family with the highest pledges that week—not cumulative totals.</p>
+        <ul class="calendar-recipe-list calendar-prize-dates">
+          <li><strong>October 23:</strong> A $50 gift card to Azteca’s Restaurant &amp; Cantina.</li>
+          <li><strong>October 30:</strong> A $50 gift card to First Watch.</li>
+        </ul>
+      </section>
+      <p class="calendar-dialog-source">Source: 2026 Recipe Report.</p>
+    </template>
+    <template id="calendar-detail-grand">
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 9h22v15H5zM9 13h6M9 18h4M23 9v15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m18 14 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Entry recipe</h3>
+        </div>
+        <p class="calendar-recipe-lead">November 9 at 3 p.m. Central is the entry deadline—not the drawing date.</p>
+        <p>Meet your $250 FAMILY goal for one entry; each additional $100 above the goal earns another entry.</p>
+      </section>
+      <section class="calendar-recipe-card calendar-prize-note">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="m16 4 3 7 8 1-6 5 2 9-7-4-7 4 2-9-6-5 8-1 3-7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <h3>Grand prizes</h3>
+        </div>
+        <ul class="calendar-recipe-list calendar-tier-list">
+          <li><span>Enrollment-fee award</span><strong>$500</strong><span class="calendar-tier-detail">Off 2027–2028 enrollment fees</span></li>
+          <li><span>Enrollment-fee award</span><strong>$300</strong><span class="calendar-tier-detail">Off 2027–2028 enrollment fees</span></li>
+          <li><span>Enrollment-fee award</span><strong>$200</strong><span class="calendar-tier-detail">Off 2027–2028 enrollment fees</span></li>
+        </ul>
+        <p>These prizes apply to enrollment fees, not tuition credit.</p>
+      </section>
+      <section class="calendar-recipe-card calendar-parking-note">
+        <p>Every family meeting its goal also enters a drawing for reserved front-row parking.</p>
+      </section>
+      <p class="calendar-dialog-source">Source: 2026 Recipe Report.</p>
+    </template>
+    <template id="calendar-detail-familyday">
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M6 15h20l-2 11H8L6 15ZM5 11h22M9 7l2 4M16 5v6M23 7l-2 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Family Fun Day</h3>
+        </div>
+        <p class="calendar-recipe-lead">Family Fun Day celebration at Camp Grace.</p>
+      </section>
+      <section class="calendar-recipe-card">
+        <div class="calendar-recipe-card-head">
+          <svg class="calendar-recipe-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M9 5h14l2 22H7L9 5ZM12 10h8M11 15h10M10 20h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Class prizes</h3>
+        </div>
+        <ul class="calendar-recipe-list">
+          <li>Huck Finn Ride for the class with the highest overall fundraising total and highest participation percentage.</li>
+          <li>Pizza Party for the class with the highest percentage of students meeting or exceeding the family goal.</li>
+          <li>Ice Cream Treat for any class with 100% registration and participation, when each student raises at least $50.</li>
+        </ul>
+      </section>
+      <p class="calendar-dialog-source">Source: 2026 Recipe Report.</p>
+    </template>
   </div>
 </section>
 <section class="recipe-section blue-wash" id="prizes"><div class="recipe-wrap"><div class="recipe-heading"><span class="recipe-kicker">A little extra sprinkle</span><h2>Every effort gets a cheer</h2></div><div class="recipe-prizes"><article class="prize-recipe"><h3>Family goal grand-prize drawing</h3><p>Meet your $250 family goal for one entry. Each additional $100 raised earns another entry. Grand prizes apply toward 2027–2028 enrollment fees.</p><ul class="grand-prize-list"><li>1st prize<b>$500</b></li><li>2nd prize<b>$300</b></li><li>3rd prize<b>$200</b></li></ul><p>Families meeting their goal are also entered in the reserved front-row parking drawing.</p></article><article class="prize-recipe"><h3>Weekly student prizes</h3><p>Highest weekly donations—not cumulative—earn:</p><ul><li>October 16: Great American Cookie</li><li>October 23: milkshake of choice</li><li>October 30: lunch of choice (Chick-fil-A, Moe’s, McDonald’s, etc.)</li></ul></article></div><details class="recipe-details"><summary>Open the recipe box for class and family prizes</summary><div class="recipe-details-body"><div><h3>Class recognition</h3><p>October 16: most students registered earns a donut party.</p><p>October 23: most students donating at least $50 earns popcorn and juice.</p><p>October 30: highest donations earns a Favorite Sneaker Pass.</p><p>Final class prizes: highest overall total and participation percentage earns a Huck Finn ride; highest percentage meeting family goal earns pizza; 100% registration and participation, with each student raising at least $50, earns ice cream.</p></div><div><h3>Family recognition</h3><p>October 23: highest weekly family pledges earns a $50 Azteca’s Restaurant &amp; Cantina gift card.</p><p>October 30: highest weekly family pledges earns a $50 First Watch gift card. Weekly, not cumulative.</p><p>Booster level prizes run October 26–30. See the full parent newsletter for details.</p></div></div></details><div class="recipe-paperlinks"><a class="recipe-btn paper" data-pdf="newsletter" href="/pdfs/fall-fundraiser-parent-newsletter-2026.pdf" download="Recipe-Report-2026.pdf">Download the parent newsletter (PDF)</a></div></div></section>
@@ -3793,78 +4468,1284 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 })();
 </script>
 <style>
-/* Decorative student-goal oven: scoped to this one replacement card. */
-#main-content .recipe-oven-card{max-width:440px;margin:0 auto;padding:0;transform:none}
-#main-content .recipe-oven-card,
-#main-content .recipe-oven-card *{box-sizing:border-box}
-#main-content .oven-preview{--oven-ink:#173d70;--oven-coral:#d9554a;--oven-gold:#ffd966;position:relative;width:100%;padding:20px 19px 18px;border:2px solid var(--oven-ink);border-radius:25px 25px 16px 16px;background:#f6ede0;box-shadow:7px 8px 0 #b8dce4;color:var(--oven-ink);overflow:hidden}
-#main-content .oven-preview::before{content:"";position:absolute;inset:0 0 auto;height:12px;background:repeating-linear-gradient(135deg,#e8d9c1 0 8px,#f8f0e5 8px 16px);border-bottom:1px solid #d5c5a9}
-#main-content .oven-topline{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 13px;font-size:.68rem;line-height:1.2;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
-#main-content .oven-goal-tag{padding:5px 8px;border-radius:20px;background:#fffaf0;border:1px solid #c8bda5;letter-spacing:.04em}
-#main-content .oven-controls-top{display:flex;align-items:center;justify-content:center;gap:clamp(14px,5vw,32px);margin:0 auto 13px}
-#main-content .oven-knob{position:relative;width:39px;height:39px;flex:0 0 39px;border:3px solid #173d70;border-radius:50%;background:radial-gradient(circle at 34% 29%,#fffdf7 0 8%,#ded7cc 10% 33%,#aaa398 37% 100%);box-shadow:inset 0 1px 2px #fff,0 2px 0 #8b8377}
-#main-content .oven-knob{display:block}
-#main-content .oven-knob::after{content:"";position:absolute;top:4px;left:16px;width:3px;height:9px;border-radius:3px;background:#173d70}
-#main-content .oven-knob-label{font-size:.55rem;display:block;text-align:center;font-weight:900;letter-spacing:.08em;margin-top:4px}
-#main-content .oven-clock{min-width:116px;padding:6px 10px 7px;border:3px solid #173d70;border-radius:7px;background:#183742;color:#ffda79;text-align:center;font:700 1.58rem/1.1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em;box-shadow:inset 0 0 0 2px #295864}
-#main-content .oven-clock-label{display:block;margin-top:3px;color:#c9e9d5;font:700 .53rem/1.2 system-ui,sans-serif;letter-spacing:.12em}
-#main-content .oven-door{position:relative;padding:12px;border:5px solid #173d70;border-radius:19px 19px 10px 10px;background:#d8e0dc;box-shadow:inset 0 2px 5px #fff,0 4px 0 #9cabb0}
-#main-content .oven-window{position:relative;min-height:171px;display:grid;place-items:center;overflow:hidden;border:5px solid #506773;border-radius:10px;background:linear-gradient(180deg,#304d58 0%,#1d3943 60%,#132e39 100%);box-shadow:inset 0 0 0 2px #78909a,inset 0 7px 15px #122932;color:#fffaf0}
-#main-content .oven-window::before{content:"";position:absolute;inset:auto 0 0;height:58%;background:radial-gradient(ellipse at 50% 100%,#ffd36c 0,rgba(255,152,71,.72) 18%,rgba(222,88,55,.2) 51%,transparent 75%);opacity:.35;transform:scaleY(.65);transform-origin:bottom;transition:opacity .35s ease,transform .35s ease}
-#main-content .oven-preview.is-warm .oven-window::before{opacity:.95;transform:scaleY(1)}
-#main-content .oven-window::after{content:"";position:absolute;inset:8px 10px auto auto;width:23%;height:34%;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.23),transparent 70%);pointer-events:none}
-#main-content .oven-shelf{position:absolute;left:12%;right:12%;bottom:20%;height:5px;border-radius:5px;background:#b9c7c7;box-shadow:0 3px 0 #607780}
-#main-content .oven-tray{position:absolute;left:21%;right:21%;bottom:24%;height:12px;border-radius:50% 50% 4px 4px;background:#e6b66b;border:2px solid #f9d78c;box-shadow:0 0 17px #ffb04a}
-#main-content .oven-window-copy{position:relative;z-index:1;text-align:center;padding:14px 9px 42px;text-shadow:0 1px 5px #10252b}
-#main-content .oven-amount{display:block;font:clamp(2.7rem,8vw,3.9rem)/.95 Impact,'Arial Narrow',system-ui,sans-serif;letter-spacing:.02em;color:#fff3c9;text-shadow:0 2px 0 #bd653c,0 0 14px #ffb450}
-#main-content .oven-amount-caption{display:block;margin-top:7px;font-size:.7rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
-#main-content .oven-register{display:flex;width:100%;margin-top:18px;text-align:center}
-@media(max-width:480px){#main-content .oven-preview{padding:19px 14px 15px}#main-content .oven-window{min-height:154px}#main-content .oven-door{padding:9px}}
-@media(prefers-reduced-motion:reduce){#main-content .oven-window::before{transition:none}}
-body.a11y-no-anim #main-content .oven-window::before{transition:none}
+/* The gym-floor goal is a hand-drawn measuring jug, not a progress dashboard. */
+#main-content.recipe-page #the-need{scroll-margin-top:130px}
+#main-content .recipe-measuring-card{width:100%;max-width:440px;min-width:0;margin:0 auto;padding:0;transform:none;background:transparent;box-shadow:none}
+#main-content .recipe-measuring-card,
+#main-content .recipe-measuring-card *{box-sizing:border-box}
+#main-content .measuring-illustration{
+  position:relative;
+  width:min(100%,440px);
+  height:420px;
+  margin:0 auto;
+  color:#102b4f;
+  isolation:isolate;
+}
+#main-content .measuring-goal{
+  position:absolute;
+  z-index:5;
+  top:2px;
+  left:55%;
+  right:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  padding:0 4px 8px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  color:#102b4f;
+  font:700 16px/1.3 'Lilita One',Impact,sans-serif;
+  text-align:center;
+  transform:translateX(-50%);
+  isolation:isolate;
+}
+#main-content .measuring-goal::after{
+  position:absolute;
+  z-index:0;
+  right:0;
+  bottom:3px;
+  left:0;
+  height:5px;
+  border-radius:5px;
+  background:#ffd966;
+  content:"";
+  transform:rotate(-2deg);
+}
+#main-content .measuring-goal .goal-amount{
+  position:relative;
+  z-index:1;
+  display:block;
+  color:#173d70;
+  font:700 clamp(2rem,4vw,2.5rem)/.9 'Lilita One',Impact,sans-serif;
+  letter-spacing:-.03em;
+}
+#main-content .measuring-goal .goal-caption{
+  position:relative;
+  z-index:1;
+  display:block;
+  color:#102b4f;
+  font:800 16px/1.1 var(--sans);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+#main-content .measuring-jug{
+  position:absolute;
+  z-index:1;
+  left:8%;
+  bottom:1%;
+  width:82%;
+  height:88%;
+  overflow:visible;
+}
+#main-content .measuring-handle{
+  position:absolute;
+  z-index:0;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+#main-content .measuring-vessel{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  overflow:hidden;
+  border:0;
+  border-radius:0;
+  background:rgba(223,242,246,.72);
+  clip-path:polygon(26% 11%,95% 11%,95% 81%,93% 89%,85% 93%,35% 93%,33% 90%,32% 83%,26% 22%);
+}
+#main-content .measuring-glass-outline{
+  position:absolute;
+  z-index:5;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
+}
+#main-content .measuring-glass-outline path{
+  fill:none;
+  stroke:#173d70;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+#main-content .measuring-glass-outline .jug-outline{stroke-width:5}
+#main-content .measuring-glass-outline .jug-lip-highlight{
+  stroke:#20a8dc;
+  stroke-width:2.5;
+}
+#main-content .measuring-liquid{
+  position:absolute;
+  z-index:1;
+  right:0;
+  bottom:0;
+  left:0;
+  height:82%;
+  background:linear-gradient(90deg,#8ed5ed 0%,#20a8dc 44%,#48bce2 100%);
+  clip-path:polygon(27% 0,94% 0,94% 76%,89% 89%,84% 97%,36% 97%,31% 89%,27% 76%);
+  transform:scaleY(0);
+  transform-origin:bottom center;
+  will-change:transform;
+}
+#main-content .measuring-liquid::before{
+  content:"";
+  position:absolute;
+  top:-6px;
+  left:-4%;
+  width:108%;
+  height:14px;
+  border:2px solid rgba(16,43,79,.32);
+  border-radius:50%;
+  background:#8ed5ed;
+}
+#main-content .measuring-glass-shine{
+  position:absolute;
+  z-index:3;
+  top:17%;
+  bottom:22%;
+  left:32%;
+  width:4px;
+  border-radius:8px;
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.12));
+  pointer-events:none;
+}
+#main-content .measuring-levels{
+  position:absolute;
+  z-index:4;
+  inset:0;
+}
+#main-content .measuring-level{
+  position:absolute;
+  left:37%;
+  right:8%;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#102b4f;
+}
+#main-content .measuring-level:nth-child(1){top:18%}
+#main-content .measuring-level:nth-child(2){top:33%}
+#main-content .measuring-level:nth-child(3){top:48%}
+#main-content .measuring-level:nth-child(4){top:63%}
+#main-content .measuring-level:nth-child(5){top:78%}
+#main-content .measuring-level:nth-child(6){top:93%}
+#main-content .measuring-level{transform:translateY(-50%)}
+#main-content .measuring-level:nth-child(6){right:16%}
+#main-content .measuring-level:nth-child(6) span{transform:translateY(-10px)}
+#main-content .measuring-level span{
+  color:#102b4f;
+  font-family:var(--sans);
+  font-size:max(14px,1rem);
+  font-weight:700;
+  line-height:1.2;
+  white-space:nowrap;
+  text-shadow:0 1px 2px #fffaf0;
+}
+#main-content .measuring-level i{
+  display:block;
+  flex:1 1 auto;
+  min-width:18px;
+  height:2px;
+  border-radius:2px;
+  background:#102b4f;
+}
+#main-content .measuring-counter{
+  position:absolute;
+  right:9%;
+  bottom:3%;
+  left:9%;
+  height:8px;
+  border-radius:8px;
+  background:#20a8dc;
+  box-shadow:0 4px 0 #ffd966;
+}
+#main-content .measuring-register{
+  box-sizing:border-box;
+  display:inline-flex;
+  width:auto;
+  max-width:100%;
+  min-height:48px;
+  margin-top:18px;
+  text-align:center;
+}
+@media(max-width:480px){
+  #main-content .measuring-illustration{height:370px}
+  #main-content .measuring-goal{left:50%}
+  #main-content .measuring-jug{left:0;bottom:1%;width:88.5%;height:82%}
+}
+@media(max-width:767px){
+  #main-content .recipe-story-copy .measuring-register{
+    display:flex;
+    width:100%;
+    min-height:48px;
+  }
+}
+</style>
+<style id="fundraiser-readability">
+/* WCAG AA text contrast; keep small labels readable and allow text zoom. */
+#main-content.recipe-page{
+  --recipe-red:#a12d25;
+  --readable-ink:#102b4f;
+  font-size:max(1rem,16px);
+  line-height:1.6;
+}
+#main-content.recipe-page p,
+#main-content.recipe-page li,
+#main-content.recipe-page summary,
+#main-content.recipe-page .recipe-btn{
+  font-size:max(1rem,16px);
+  line-height:1.55;
+}
+#main-content.recipe-page p,
+#main-content.recipe-page .prize-recipe li{color:#283d4b}
+#main-content.recipe-page .recipe-kicker{
+  font-size:max(.9rem,14px);line-height:1.45;letter-spacing:.08em;
+}
+#main-content.recipe-page .recipe-side-note{font-size:max(1rem,16px);line-height:1.6}
+#main-content.recipe-page .recipe-tape,
+#main-content.recipe-page .mix-number,
+#main-content.recipe-page .sponsor-board-head,
+#main-content.recipe-page #dates .calendar-month-heading{color:var(--readable-ink)}
+#main-content.recipe-page .sponsor-board-head p{color:var(--readable-ink)}
+#main-content.recipe-page .countdown-label,
+#main-content.recipe-page .countdown-deadline,
+#main-content.recipe-page .countdown-unit small,
+#main-content.recipe-page #dates .calendar-month-heading>span,
+#main-content.recipe-page .recipe-tier span{
+  font-size:max(.9rem,14px);line-height:1.4;letter-spacing:.03em;
+}
+#main-content.recipe-page .countdown-unit{min-width:64px;box-sizing:border-box}
+#main-content.recipe-page .countdown-unit small{color:white}
+#main-content.recipe-page #dates .calendar-month-heading{flex-wrap:wrap;gap:8px;padding:12px 14px}
+#main-content.recipe-page #dates .calendar-month-heading>span{flex:1 1 150px;text-align:right}
+#main-content.recipe-page #dates .date-recipe h4{font-size:max(1.125rem,18px);line-height:1.3}
+#main-content.recipe-page #dates .date-recipe p{font-size:max(1rem,16px);line-height:1.5;color:#283d4b}
+#main-content.recipe-page #dates .calendar-dates{font-size:max(1rem,16px);line-height:1.3}
+#main-content.recipe-page #dates .calendar-list{
+  background-image:linear-gradient(to right,transparent 0 21px,rgba(204,111,88,.2) 21px 22px,transparent 22px);
+}
+#main-content.recipe-page #dates .calendar-dates{background-image:linear-gradient(90deg,rgba(201,107,85,.12) 0 5px,transparent 5px)}
+#main-content.recipe-page #dates .deadline-event .calendar-dates,
+#main-content.recipe-page #dates .final-event .calendar-dates{background-image:none}
+#main-content.recipe-page .recipe-tier{grid-template-columns:minmax(135px,.65fr) minmax(0,1fr)}
+#main-content.recipe-page .sponsor-note .recipe-btn{box-sizing:border-box}
+#main-content.recipe-page .recipe-story-copy p,
+#main-content.recipe-page .recipe-heading p{line-height:1.6}
+#main-content.recipe-page .recipe-finish p{color:#e3f5f8}
+#main-content.recipe-page .measuring-level span{font-size:max(1rem,16px);line-height:1.4}
+#main-content.recipe-page .measuring-goal{font-size:max(1rem,16px);line-height:1.4}
+#main-content.recipe-page a:focus-visible,
+#main-content.recipe-page summary:focus-visible{outline:3px solid #a12d25!important;outline-offset:4px!important}
+/* Keep the shared shell's markup/layout, but repair its faint text. */
+body:has(#main-content.recipe-page) .page-footer .text-widget-content,
+body:has(#main-content.recipe-page) .page-footer .text-widget-content span,
+body:has(#main-content.recipe-page) .page-footer .text-widget-content a{
+  color:#e6edf2!important;font-size:max(1rem,16px)!important;
+}
+body:has(#main-content.recipe-page) .page-footer .text-widget-content p{line-height:1.6!important}
+body:has(#main-content.recipe-page) .page-footer .text-widget-content h4,
+body:has(#main-content.recipe-page) .page-footer .text-widget-content h4 span{
+  font-size:max(1.4rem,22px)!important;font-weight:700!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.theme-button,
+body:has(#main-content.recipe-page) .header-widget a.theme-button span{color:#102b4f!important}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  min-height:52px;
+  padding:13px 22px!important;
+  border:2px solid #8f302b!important;
+  border-radius:5px 16px!important;
+  background:#bd453b!important;
+  box-shadow:4px 4px 0 #ffd966!important;
+  color:#fff!important;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important;
+  font-size:max(1rem,16px)!important;
+  font-weight:950!important;
+  line-height:1.55!important;
+  letter-spacing:normal!important;
+  text-transform:none!important;
+  text-decoration:none!important;
+  transition:transform .16s ease,box-shadow .16s ease!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register span{
+  color:#fff!important;font-family:inherit!important;font-weight:inherit!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register:hover{
+  transform:translate(2px,2px)!important;
+  box-shadow:2px 2px 0 #ffd966!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register:focus-visible{
+  outline:3px solid #a93630!important;outline-offset:5px!important;
+}
+body.a11y-no-anim:has(#main-content.recipe-page) .header-widget a.fundraiser-register{
+  transition:none!important;transform:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(#main-content.recipe-page) .header-widget a.fundraiser-register{transition:none!important;transform:none!important}
+}
+body:has(#main-content.recipe-page) .page-footer a:focus-visible{outline-color:#ffd966!important}
+#a11y-panel .a11y-toggle,
+#a11y-panel-reset,
+#a11y-textsize-row>label,
+#a11y-size-val{font-size:max(.875rem,14px)!important;line-height:1.4!important;white-space:normal!important}
+/* Apply contrast mode to whole surfaces, never boxes behind individual words. */
+body.a11y-high-contrast #main-content.recipe-page,
+body.a11y-high-contrast #main-content.recipe-page :is(
+  .recipe-section,.recipe-hero,.recipe-hero-in,.recipe-hero-copy,.recipe-tape,.mix-card,
+  .recipe-goal,.recipe-side-note>li,.calendar-month,.calendar-month-heading,.calendar-list,
+  .deadline-event,.final-event,.prize-recipe,.recipe-details,
+  .recipe-faq details,.sponsor-note,.sponsor-board,.sponsor-board-head,
+  .recipe-contact,.recipe-finish,.measuring-vessel
+){background:#060e1c!important;background-image:none!important;border-color:#e6edf2!important}
+body.a11y-high-contrast #main-content.recipe-page *{
+  color:#fff!important;text-shadow:none!important;
+}
+body.a11y-high-contrast #main-content.recipe-page :is(.calendar-dates,.countdown-unit,.mix-number){
+  background:#173d70!important;color:#fff!important;
+}
+body.a11y-high-contrast #main-content.recipe-page a:not(.recipe-btn){color:#7dd3fc!important}
+body.a11y-high-contrast #main-content.recipe-page a.recipe-btn,
+body.a11y-high-contrast #main-content.recipe-page a.recipe-btn *{
+  background:#ffd966!important;color:#102b4f!important;
+}
+body.a11y-high-contrast #main-content.recipe-page :is(a,summary):focus-visible{outline-color:#ffd966!important}
+@media(max-width:800px){
+  #main-content.recipe-page .recipe-tier{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  #main-content.recipe-page #dates .date-recipe{grid-template-columns:100px minmax(0,1fr);gap:10px}
+}
+/* Page-only palette rebalance: school blue/navy lead; coral stays a tiny accent. */
+#main-content.recipe-page .recipe-kicker,
+#main-content.recipe-page .recipe-hero .recipe-kicker{
+  color:#173d70!important;
+}
+#main-content.recipe-page .recipe-title span{
+  color:#0879a8!important;
+}
+#main-content.recipe-page .recipe-hero .recipe-lede>strong{
+  color:#126184!important;
+}
+#main-content.recipe-page .recipe-tier span,
+#main-content.recipe-page .grand-prize-list b{
+  color:#173d70!important;
+}
+#main-content.recipe-page .script-note{color:#126184!important}
+#main-content.recipe-page #dates .recipe-heading .fundraiser-season{
+  font-family:'Kalam','Comic Sans MS',cursive;
+  font-size:clamp(22px,2.1vw,26px);
+  font-weight:700;
+  line-height:1.4;
+  color:#126184;
+  text-decoration:none;
+  max-width:780px;
+  margin:12px auto 0;
+}
+body.a11y-high-contrast #main-content.recipe-page #dates .recipe-heading .fundraiser-season{
+  color:#fff!important;
+}
+#main-content.recipe-page .recipe-actions .recipe-btn.sun{
+  border-color:#173d70!important;
+  background:#087ba8!important;
+  box-shadow:4px 4px 0 #ffd966!important;
+  color:#fff!important;
+}
+#main-content.recipe-page .recipe-actions .recipe-btn.sun:hover{
+  color:#fff!important;
+}
+#main-content.recipe-page a:focus-visible,
+#main-content.recipe-page summary:focus-visible{
+  outline-color:#173d70!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register{
+  border-color:#173d70!important;
+  background:#087ba8!important;
+  color:#fff!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register span{
+  color:#fff!important;
+}
+body:has(#main-content.recipe-page) .header-widget a.fundraiser-register:focus-visible{
+  outline-color:#173d70!important;
+}
+#main-content.recipe-page .recipe-tape,
+#main-content.recipe-page .calendar-month-heading,
+#main-content.recipe-page .sponsor-board-head{
+  color:#102b4f!important;
+}
+#main-content.recipe-page .mix-number{
+  color:#102b4f!important;
+}
+#main-content.recipe-page .measuring-illustration{color:#102b4f}
+body.a11y-high-contrast #main-content.recipe-page :is(
+  .recipe-kicker,.recipe-title span,.recipe-hero .recipe-lede>strong,
+  .script-note,.recipe-tier span,.grand-prize-list b,.recipe-tape,
+  .calendar-month-heading,.sponsor-board-head,.mix-number
+){color:#fff!important}
+body.a11y-high-contrast:has(#main-content.recipe-page) .header-widget a.fundraiser-register:focus-visible{
+  outline-color:#ffd966!important;
+}
+/* A compact countertop timer: one connected display, not four action cards. */
+#main-content.recipe-page .recipe-tape{
+  box-sizing:border-box;
+  padding:clamp(23px,3vw,34px) 0!important;
+  border-block:3px solid #173d70!important;
+  background:#e3f5f8!important;
+  color:#173d70!important;
+}
+#main-content.recipe-page .recipe-tape-in{
+  box-sizing:border-box;
+  display:grid!important;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  align-items:center;
+  justify-content:space-between;
+  gap:clamp(22px,4vw,52px);
+  width:min(1120px,calc(100% - 38px));
+  margin:0 auto;
+  flex-wrap:nowrap!important;
+  text-align:left;
+  font-family:var(--sans);
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:normal;
+  line-height:1.4;
+  text-transform:none;
+}
+#main-content.recipe-page .recipe-tape-in>span:first-child{
+  max-width:390px;
+  color:#173d70!important;
+  font-family:'Lilita One',Impact,sans-serif;
+  font-size:clamp(1.45rem,2.7vw,2.15rem);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:normal;
+  text-transform:none;
+}
+#main-content.recipe-page .fundraiser-countdown{
+  box-sizing:border-box;
+  position:relative;
+  display:block!important;
+  width:100%;
+  max-width:660px;
+  margin:0 auto;
+  padding:19px 17px 14px;
+  border:3px solid #173d70;
+  border-radius:18px 18px 10px 10px;
+  background:#fffaf0;
+  box-shadow:0 6px 0 #20a8dc,5px 9px 0 #ffd966;
+}
+#main-content.recipe-page .fundraiser-countdown::before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  left:50%;
+  width:46px;
+  height:12px;
+  border:3px solid #173d70;
+  border-bottom:0;
+  border-radius:14px 14px 0 0;
+  background:#e3f5f8;
+  transform:translateX(-50%);
+}
+#main-content.recipe-page .countdown-dial{
+  position:absolute;
+  z-index:1;
+  top:-24px;
+  right:21px;
+  display:block;
+  width:39px;
+  height:39px;
+  pointer-events:none;
+}
+#main-content.recipe-page .countdown-label,
+#main-content.recipe-page .countdown-deadline{
+  display:none!important;
+}
+#main-content.recipe-page .countdown-units{
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+  width:100%;
+  padding:4px;
+  border:2px solid #102b4f;
+  border-radius:9px;
+  background:#173d70;
+  overflow:hidden;
+}
+#main-content.recipe-page .countdown-unit{
+  box-sizing:border-box;
+  display:flex!important;
+  min-width:0!important;
+  min-height:68px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  margin:0!important;
+  padding:7px 3px!important;
+  border:0;
+  border-right:2px solid #20a8dc;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#fffaf0!important;
+  text-align:center;
+}
+#main-content.recipe-page .countdown-unit:last-child{border-right:0}
+#main-content.recipe-page .countdown-unit strong{
+  display:block;
+  color:#20a8dc!important;
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-size:clamp(1.5rem,3vw,2.4rem)!important;
+  font-weight:800;
+  line-height:1.05!important;
+  font-variant-numeric:tabular-nums;
+}
+#main-content.recipe-page .countdown-unit small{
+  display:block;
+  color:#fffaf0!important;
+  font-family:var(--sans);
+  font-size:clamp(14px,1.1vw,16px)!important;
+  font-weight:700;
+  line-height:1.3!important;
+}
+#main-content.recipe-page .countdown-ended{
+  display:block;
+  margin-top:10px;
+  color:#173d70;
+  font-size:1.1rem;
+  font-weight:800;
+  text-align:center;
+}
+#main-content.recipe-page .countdown-tick{
+  animation:countdown-tick .18s ease-out both;
+}
+@keyframes countdown-tick{
+  from{opacity:.45;transform:translateY(-4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:760px){
+  #main-content.recipe-page .recipe-tape{padding:25px 0 29px!important}
+  #main-content.recipe-page .recipe-tape-in{
+    grid-template-columns:minmax(0,1fr);
+    justify-items:center;
+    gap:25px;
+    text-align:center;
+  }
+  #main-content.recipe-page .recipe-tape-in>span:first-child{
+    max-width:520px;
+    text-align:center;
+  }
+  #main-content.recipe-page .fundraiser-countdown{
+    max-width:560px;
+    padding:18px 12px 12px;
+  }
+  #main-content.recipe-page .countdown-unit{min-height:64px}
+}
+@media(max-width:220px){
+  #main-content.recipe-page .countdown-units{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #main-content.recipe-page .countdown-unit:nth-child(2){border-right:0}
+  #main-content.recipe-page .countdown-unit:nth-child(-n+2){border-bottom:2px solid #20a8dc}
+}
+@media(prefers-reduced-motion:reduce){
+  #main-content.recipe-page .countdown-tick{animation:none!important}
+}
+body.a11y-no-anim #main-content.recipe-page .countdown-tick{
+  animation:none!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .fundraiser-countdown{
+  border-color:#e6edf2!important;
+  background:#060e1c!important;
+  box-shadow:0 6px 0 #20a8dc,5px 9px 0 #ffd966!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .countdown-units{
+  border-color:#e6edf2!important;
+  background:#173d70!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .countdown-unit,
+body.a11y-high-contrast #main-content.recipe-page .countdown-unit strong,
+body.a11y-high-contrast #main-content.recipe-page .countdown-unit small,
+body.a11y-high-contrast #main-content.recipe-page .countdown-ended{
+  color:#fff!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .measuring-vessel{
+  background:#060e1c!important;
+  box-shadow:none!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .measuring-goal{
+  background:#ffd966!important;
+  color:#102b4f!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .measuring-goal::after{
+  background:#173d70!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .measuring-goal .goal-amount,
+body.a11y-high-contrast #main-content.recipe-page .measuring-goal .goal-caption{
+  color:#102b4f!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .measuring-level span{
+  border:1px solid #e6edf2;
+  border-radius:3px;
+  background:#060e1c!important;
+  color:#fff!important;
+  text-shadow:none!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .measuring-level i,
+body.a11y-high-contrast #main-content.recipe-page .measuring-handle path,
+body.a11y-high-contrast #main-content.recipe-page .measuring-glass-outline path{
+  background:#e6edf2!important;
+  stroke:#e6edf2!important;
+}
+body.a11y-high-contrast #main-content.recipe-page .recipe-hero-in::before,
+body.a11y-high-contrast #main-content.recipe-page .recipe-hero-in::after{
+  filter:brightness(0) invert(1);
+  opacity:.95;
+}
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-navy,
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-cream,
+body.a11y-high-contrast #main-content #dates .month-margin-art .margin-navy,
+body.a11y-high-contrast #main-content #dates .month-margin-art .margin-cream{
+  fill:#fff!important;
+}
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-blue,
+body.a11y-high-contrast #main-content #dates .month-margin-art .margin-blue{
+  fill:#20a8dc!important;
+}
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-yellow,
+body.a11y-high-contrast #main-content #dates .month-margin-art .margin-yellow{
+  fill:#ffd966!important;
+}
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-outline,
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-highlight,
+body.a11y-high-contrast #main-content #dates .month-kitchen-art .kitchen-detail,
+body.a11y-high-contrast #main-content #dates .month-margin-art .margin-outline{
+  stroke:#fff!important;
+}
+</style>
+<style id="recipe-calendar-lightboxes">
+#main-content #dates .date-recipe.calendar-detail-entry{
+  display:block;
+  padding:0 2px;
+}
+#main-content #dates .deadline-event.calendar-detail-entry,
+#main-content #dates .final-event.calendar-detail-entry{padding:12px 9px}
+#main-content #dates .calendar-entry-button{
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:112px minmax(0,1fr);
+  align-items:start;
+  gap:12px;
+  width:100%;
+  padding:13px 0;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:#102b4f;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+#main-content #dates .deadline-event .calendar-entry-button,
+#main-content #dates .final-event .calendar-entry-button{padding:0}
+#main-content #dates .calendar-entry-button:hover{background:#e8f5f7}
+#main-content #dates .calendar-entry-button:focus-visible{
+  position:relative;
+  z-index:2;
+  outline:3px solid #173d70;
+  outline-offset:3px;
+}
+#main-content #dates .calendar-entry-button>.calendar-dates{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:1px 3px;
+  min-height:30px;
+  padding:4px 6px;
+  border:1.5px solid var(--recipe-ink);
+  border-radius:3px 9px 4px 8px;
+  background-color:#f8dc91;
+  background-image:linear-gradient(90deg,rgba(32,168,220,.16) 0 5px,transparent 5px),repeating-linear-gradient(to bottom,transparent 0 12px,rgba(23,69,105,.1) 13px,transparent 14px);
+  box-shadow:inset 0 0 0 2px rgba(255,250,240,.4);
+  color:var(--recipe-ink);
+  font:1rem/1.08 'Lilita One',Impact,sans-serif;
+  font-variant-numeric:tabular-nums;
+  text-align:center;
+}
+#main-content #dates .deadline-event .calendar-entry-button>.calendar-dates{background:#b8443c;color:#fffaf0}
+#main-content #dates .final-event .calendar-entry-button>.calendar-dates{background:var(--recipe-ink);color:#fffaf0}
+#main-content #dates .calendar-entry-button .calendar-dates time,
+#main-content #dates .calendar-entry-button .calendar-dates .date-separator{font:inherit}
+#main-content #dates .calendar-entry-copy{display:block;min-width:0}
+#main-content #dates .calendar-entry-heading{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:3px 8px;
+}
+#main-content #dates .calendar-entry-title{
+  display:block;
+  color:var(--recipe-ink);
+  font:1.12rem/1.08 'Lilita One',Impact,sans-serif;
+}
+#main-content #dates .calendar-entry-preview{
+  display:block;
+  margin-top:3px;
+  color:#536771;
+  font-size:max(1rem,16px);
+  line-height:1.35;
+}
+#main-content #dates .calendar-detail-hint{
+  color:#145c7d;
+  font:800 16px/1.2 var(--sans);
+  text-decoration:underline;
+  text-decoration-color:#20a8dc;
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+  white-space:nowrap;
+}
+#main-content #dates .calendar-event-dialog:not([open]){display:none}
+#main-content #dates .calendar-event-dialog[open]{
+  position:fixed;
+  inset:0;
+  display:block;
+  box-sizing:border-box;
+  width:min(680px,calc(100vw - 28px));
+  max-width:none;
+  max-height:min(820px,calc(100dvh - 28px));
+  margin:auto;
+  padding:0;
+  overflow:auto;
+  overscroll-behavior:contain;
+  border:2px solid #173d70;
+  border-radius:16px 30px 18px 30px;
+  background:#fffaf0;
+  box-shadow:8px 8px 0 #ffd966,0 28px 80px rgba(16,43,79,.32);
+  color:#102b4f;
+}
+#main-content #dates .calendar-event-dialog::backdrop{background:rgba(16,43,79,.72)}
+#main-content #dates .calendar-dialog-sticky{
+  position:sticky;
+  z-index:5;
+  top:0;
+  display:flex;
+  justify-content:flex-end;
+  padding:10px 12px 4px;
+  background:#fffaf0;
+}
+#main-content #dates .calendar-dialog-close{
+  display:grid;
+  place-items:center;
+  flex:0 0 48px;
+  width:48px;
+  height:48px;
+  padding:0;
+  border:2px solid #173d70;
+  border-radius:13px 17px 13px 17px;
+  background:#ffd966;
+  color:#102b4f;
+  cursor:pointer;
+}
+#main-content #dates .calendar-dialog-close svg{display:block;width:22px;height:22px}
+#main-content #dates .calendar-dialog-close:hover{background:#f3ca59}
+#main-content #dates .calendar-dialog-body{padding:2px clamp(20px,5vw,40px) 30px}
+#main-content #dates .calendar-dialog-date{
+  margin:0 0 5px;
+  color:#145c7d;
+  font:700 18px/1.25 'Kalam','Comic Sans MS',cursive;
+}
+#main-content #dates .calendar-event-dialog h2{
+  margin:0 0 18px;
+  color:#173d70;
+  font:clamp(2rem,5vw,2.7rem)/1 'Lilita One',Impact,sans-serif;
+}
+#main-content #dates .calendar-dialog-content p,
+#main-content #dates .calendar-dialog-content li{
+  color:#273e50;
+  font-size:max(1rem,16px);
+  line-height:1.55;
+}
+#main-content #dates .calendar-dialog-content{
+  display:grid;
+  gap:14px;
+}
+#main-content #dates .calendar-dialog-content p{margin:0 0 12px}
+#main-content #dates .calendar-dialog-content p:last-child{margin-bottom:0}
+#main-content #dates .calendar-recipe-card{
+  position:relative;
+  margin:0;
+  padding:19px 20px 17px;
+  border:1.5px solid #20a8dc;
+  border-radius:13px 19px 12px 20px;
+  background:repeating-linear-gradient(to bottom,transparent 0 34px,rgba(32,168,220,.055) 35px,transparent 36px),#fffdf7;
+  box-shadow:4px 4px 0 #d7edf1;
+}
+#main-content #dates .calendar-recipe-card::before{
+  position:absolute;
+  top:-7px;
+  left:27px;
+  width:50px;
+  height:13px;
+  border:1px solid rgba(23,61,112,.16);
+  border-radius:2px;
+  background:#ffd966;
+  content:"";
+  opacity:.9;
+  pointer-events:none;
+  transform:rotate(-2deg);
+}
+#main-content #dates .calendar-recipe-card-head{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin:0 0 12px;
+  padding:0 0 10px;
+  border-bottom:1px dashed #a9cbd2;
+}
+#main-content #dates .calendar-recipe-icon{
+  display:block;
+  flex:0 0 38px;
+  width:38px;
+  height:38px;
+  padding:5px;
+  border:1px solid #a9d4de;
+  border-radius:50%;
+  background:#e9f7f8;
+  color:#173d70;
+}
+#main-content #dates .calendar-dialog-content h3{
+  margin:0;
+  color:#173d70;
+  font:1.32rem/1.15 'Lilita One',Impact,sans-serif;
+}
+#main-content #dates .calendar-recipe-lead{
+  padding:12px 14px;
+  border-left:4px solid #20a8dc;
+  border-radius:3px 10px 10px 3px;
+  background:#eaf7f8;
+}
+#main-content #dates .calendar-recipe-list{
+  display:grid;
+  gap:0;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+#main-content #dates .calendar-recipe-list>li{
+  position:relative;
+  margin:0;
+  padding:10px 8px 10px 19px;
+  border-bottom:1px dashed #c1d9dc;
+}
+#main-content #dates .calendar-recipe-list>li:last-child{border-bottom:0}
+#main-content #dates .calendar-recipe-list:not(.calendar-prize-dates):not(.calendar-tier-list)>li::before{
+  position:absolute;
+  top:19px;
+  left:3px;
+  width:7px;
+  height:7px;
+  border:1px solid #173d70;
+  border-radius:50%;
+  background:#ffd966;
+  content:"";
+}
+#main-content #dates .calendar-recipe-list.calendar-prize-dates>li{
+  display:grid;
+  grid-template-columns:minmax(86px,.42fr) minmax(0,1fr);
+  gap:6px 10px;
+  align-items:start;
+  padding:10px 4px;
+}
+#main-content #dates .calendar-prize-dates>li strong{
+  color:#145c7d;
+  font:700 16px/1.45 'Kalam','Comic Sans MS',cursive;
+  white-space:nowrap;
+}
+#main-content #dates .calendar-tier-list>li{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) max-content;
+  gap:4px 12px;
+  align-items:baseline;
+  margin:0 0 8px;
+  padding:10px 12px;
+  border:1px dashed #9bcbd5;
+  border-radius:7px 12px;
+  background:#edf8fa;
+}
+#main-content #dates .calendar-tier-list>li:last-child{margin-bottom:0}
+#main-content #dates .calendar-tier-list>li strong{
+  color:#173d70;
+  font:1.08rem/1.25 'Lilita One',Impact,sans-serif;
+  white-space:nowrap;
+}
+#main-content #dates .calendar-tier-detail{
+  grid-column:1/-1;
+  color:#425a69;
+  font-size:16px;
+}
+#main-content #dates .calendar-prize-note{
+  border-color:#86bdc8;
+  background:repeating-linear-gradient(to bottom,transparent 0 34px,rgba(32,168,220,.06) 35px,transparent 36px),#f5fbf8;
+}
+#main-content #dates .calendar-prize-note>p{margin:0 0 12px}
+#main-content #dates .calendar-prize-note>p:last-child{margin-bottom:0}
+#main-content #dates .calendar-parking-note{
+  border-color:#d2b13e;
+  background:#fff5c9;
+}
+#main-content #dates .calendar-parking-note p{
+  margin:0;
+  color:#173d70;
+  font-weight:700;
+}
+#main-content #dates .calendar-shirt-art{
+  box-sizing:border-box;
+  width:min(100%,300px);
+  margin:20px auto 2px;
+  padding:10px;
+  border:2px dashed #20a8dc;
+  border-radius:11px 19px;
+  background:#fffaf0;
+  text-align:center;
+}
+#main-content #dates .calendar-shirt-art img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:7px 12px;
+}
+#main-content #dates .calendar-shirt-art figcaption{
+  margin-top:12px;
+  color:#273e50;
+  font-size:16px;
+  line-height:1.5;
+}
+#main-content #dates .calendar-dialog-content .calendar-dialog-source{
+  justify-self:start;
+  margin:1px 0;
+  padding:9px 13px;
+  border-left:3px solid #d3b13a;
+  border-bottom:1px dashed #cfb94f;
+  border-radius:0 9px 2px 0;
+  background:#fff5c9;
+  color:#425a69;
+  font-size:16px;
+  font-weight:700;
+  transform:rotate(-.35deg);
+}
+#main-content #dates .calendar-dialog-link{
+  justify-self:start;
+  display:inline-block;
+  min-height:44px;
+  padding:10px 0;
+  color:#145c7d;
+  font-size:16px;
+  font-weight:850;
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+}
+#main-content #dates .calendar-entry-button:focus-visible,
+#main-content #dates .calendar-event-dialog :focus-visible{
+  outline:3px solid #173d70;
+  outline-offset:3px;
+}
+@media(max-width:480px){
+  #main-content #dates .calendar-entry-button{grid-template-columns:100px minmax(0,1fr);gap:10px}
+  #main-content #dates .calendar-recipe-card{padding:17px 14px 15px}
+  #main-content #dates .calendar-recipe-list.calendar-prize-dates>li{grid-template-columns:minmax(82px,.4fr) minmax(0,1fr);gap:5px 7px}
+  #main-content #dates .calendar-tier-list>li{gap:4px 7px;padding:9px}
+  #main-content #dates .calendar-event-dialog[open]{
+    width:calc(100vw - 20px);
+    max-height:calc(100dvh - 20px);
+    border-radius:13px 22px 13px 22px;
+  }
+  #main-content #dates .calendar-dialog-body{padding-right:18px;padding-left:18px}
+}
+body.a11y-high-contrast #main-content #dates .calendar-entry-button,
+body.a11y-high-contrast #main-content #dates .calendar-entry-title,
+body.a11y-high-contrast #main-content #dates .calendar-entry-preview{
+  color:#fff!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-entry-button>.calendar-dates,
+body.a11y-high-contrast #main-content #dates .deadline-event .calendar-entry-button>.calendar-dates,
+body.a11y-high-contrast #main-content #dates .final-event .calendar-entry-button>.calendar-dates{
+  border-color:#e6edf2!important;
+  background:#173d70!important;
+  color:#fff!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-detail-hint,
+body.a11y-high-contrast #main-content #dates .calendar-dialog-date,
+body.a11y-high-contrast #main-content #dates .calendar-dialog-content .calendar-dialog-source{
+  color:#ffd966!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-entry-button:hover,
+body.a11y-high-contrast #main-content #dates .calendar-prize-note{
+  background:#142c4d!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-recipe-card,
+body.a11y-high-contrast #main-content #dates .calendar-shirt-art{
+  border-color:#e6edf2!important;
+  background:#060e1c!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-recipe-card::before{
+  border-color:#e6edf2;
+  background:#ffd966;
+}
+body.a11y-high-contrast #main-content #dates .calendar-recipe-card-head,
+body.a11y-high-contrast #main-content #dates .calendar-recipe-list>li{
+  border-color:#e6edf2;
+}
+body.a11y-high-contrast #main-content #dates .calendar-recipe-icon{
+  border-color:#e6edf2;
+  background:#142c4d;
+}
+body.a11y-high-contrast #main-content #dates .calendar-recipe-lead,
+body.a11y-high-contrast #main-content #dates .calendar-parking-note,
+body.a11y-high-contrast #main-content #dates .calendar-tier-list>li,
+body.a11y-high-contrast #main-content #dates .calendar-dialog-content .calendar-dialog-source{
+  border-color:#e6edf2!important;
+  background:#142c4d!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-recipe-list:not(.calendar-prize-dates):not(.calendar-tier-list)>li::before{
+  border-color:#e6edf2;
+  background:#ffd966;
+}
+body.a11y-high-contrast #main-content #dates .calendar-event-dialog[open]{
+  border-color:#e6edf2;
+  background:#060e1c;
+  box-shadow:0 0 0 2px #060e1c;
+  color:#fff;
+}
+body.a11y-high-contrast #main-content #dates .calendar-dialog-sticky{
+  border-bottom:1px solid #e6edf2;
+  background:#060e1c;
+}
+body.a11y-high-contrast #main-content #dates .calendar-dialog-close{
+  border-color:#e6edf2;
+  background:#ffd966;
+  color:#102b4f!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-dialog-close *{
+  color:#102b4f!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-event-dialog h2,
+body.a11y-high-contrast #main-content #dates .calendar-dialog-content h3,
+body.a11y-high-contrast #main-content #dates .calendar-dialog-content p,
+body.a11y-high-contrast #main-content #dates .calendar-dialog-content li,
+body.a11y-high-contrast #main-content #dates .calendar-shirt-art figcaption{
+  color:#fff!important;
+}
+body.a11y-high-contrast #main-content #dates .calendar-dialog-content .calendar-dialog-source{color:#ffd966!important}
+body.a11y-high-contrast #main-content #dates .calendar-dialog-link{color:#7dd3fc!important}
+body.a11y-high-contrast #main-content #dates .calendar-prize-note{border-color:#9bcbe0!important}
+body.a11y-high-contrast #main-content #dates .calendar-entry-button:focus-visible,
+body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visible{
+  outline-color:#ffd966!important;
+}
 </style>
 <script>
 (function(){
   'use strict';
-  var card=document.querySelector('#the-need .recipe-photo-card');
-  if(!card)return;
-
-  var panel=card.querySelector('[data-oven-preview]');
-  var amount=card.querySelector('[data-oven-amount]');
-  var completed=false,started=false,raf=0,startTime=0,duration=4200;
-  function setValue(value){
-    value=Math.max(0,Math.min(250,Math.round(value/5)*5));
-    amount.textContent='$'+value;
-    panel.classList.toggle('is-warm',value>0);
+  var illustration=document.querySelector('#the-need [data-measuring-glass]');
+  if(!illustration)return;
+  var liquid=illustration.querySelector('[data-measuring-liquid]');
+  if(!liquid)return;
+  var completed=false,started=false,raf=0,startTime=null,duration=4200;
+  function motionDisabled(){
+    return document.body.classList.contains('a11y-no-anim')||
+      (window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   }
-  function finishDemo(){
+  function setFill(ratio){
+    liquid.style.transform='scaleY('+Math.max(0,Math.min(1,ratio))+')';
+  }
+  function finishFill(){
     if(raf)cancelAnimationFrame(raf);
     raf=0;completed=true;started=true;
-    setValue(250);
+    setFill(1);
+    liquid.style.willChange='auto';
   }
   function animate(now){
-    if(document.body.classList.contains('a11y-no-anim')||window.matchMedia('(prefers-reduced-motion: reduce)').matches){finishDemo();return}
-    if(!startTime)startTime=now;
+    if(motionDisabled()){finishFill();return}
+    if(startTime===null)startTime=now;
     var t=Math.min(1,(now-startTime)/duration);
-    setValue(Math.floor((250*(1-Math.pow(1-t,3)))/5)*5);
+    setFill(1-Math.pow(1-t,3));
     if(t<1){raf=requestAnimationFrame(animate)}
-    else{raf=0;completed=true}
+    else{raf=0;completed=true;liquid.style.willChange='auto'}
   }
-  function startDemo(){
+  function startFill(){
     if(started)return;
     started=true;
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.body.classList.contains('a11y-no-anim')){finishDemo();return}
-    panel.classList.add('is-warm');
+    if(motionDisabled()){finishFill();return}
     raf=requestAnimationFrame(animate);
   }
-  var motionObserver=new MutationObserver(function(){
-    if(document.body.classList.contains('a11y-no-anim')&&started&&!completed)finishDemo();
-  });
-  motionObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
-  var observer=('IntersectionObserver'in window)?new IntersectionObserver(function(entries){
-    if(entries.some(function(entry){return entry.isIntersecting})){startDemo();observer.disconnect()}
+  var motionObserver=typeof MutationObserver==='function'?new MutationObserver(function(){
+    if(motionDisabled()&&started&&!completed)finishFill();
+  }):null;
+  if(motionObserver)motionObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
+  var observer=typeof IntersectionObserver==='function'?new IntersectionObserver(function(entries){
+    if(entries.some(function(entry){return entry.isIntersecting})){startFill();observer.disconnect()}
   },{threshold:.28}):null;
-  if(observer)observer.observe(panel);else startDemo();
+  if(observer)observer.observe(illustration);else startFill();
+}());
+</script>
+<template id="recipe-participation-list">
+  <ul class="recipe-side-note">
+    <li>
+      <span class="recipe-note-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-8-4.8-8-10.2C4 5 9 3.8 12 8c3-4.2 8-3 8 1.8C20 15.2 12 20 12 20Z" fill="#d9554a"/></svg>
+      </span>
+      <span class="recipe-note-label">Family goal: $250</span>
+    </li>
+    <li>
+      <span class="recipe-note-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 12 9-5M7 12l9 5" fill="none" stroke="#173d70" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="12" r="3" fill="#20a8dc"/><circle cx="17" cy="6" r="3" fill="#ffd966"/><circle cx="17" cy="18" r="3" fill="#173d70"/></svg>
+      </span>
+      <span class="recipe-note-label">Invite 10 people</span>
+    </li>
+    <li>
+      <span class="recipe-note-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 11h17l-1.6 7.1a2 2 0 0 1-2 1.6H7.1a2 2 0 0 1-2-1.6L3.5 11Z" fill="#8ed5ed" stroke="#173d70" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 9.5c0-1 4-1.7 9-1.7s9 .7 9 1.7-4 1.7-9 1.7-9-.7-9-1.7Z" fill="#fffaf0" stroke="#173d70" stroke-width="1.5"/><path d="M12 10.3c-2.3-1.3-3.2-2.7-2.2-3.8 1-.9 2.3-.2 2.2 1.1.2-1.3 1.6-2 2.5-1 1 1.1 0 2.4-2.5 3.7Z" fill="#20a8dc"/></svg>
+      </span>
+      <span class="recipe-note-label">Every gift helps renew the gym.</span>
+    </li>
+  </ul>
+</template>
+<script>
+(function(){
+  var heroLogo=document.querySelector('#main-content.recipe-page .recipe-hero-logo');
+  if(!heroLogo)return;
+  var logoData=heroLogo.getAttribute('src');
+  var logoAlt='Covenant Christian School Recipe for Success 2026 fundraiser logo';
+  document.querySelectorAll('.header-widget[data-type="headers/Logo"] img').forEach(function(img){
+    img.setAttribute('src',logoData);
+    img.setAttribute('alt',logoAlt);
+  });
+  var footerLogo=document.querySelector('.page-footer #image-widget-1719518529376 img');
+  if(footerLogo){
+    footerLogo.setAttribute('src',logoData);
+    footerLogo.setAttribute('alt',logoAlt);
+    var footerImage=footerLogo.closest('.widget-preserving-ratio-inner');
+    if(footerImage)footerImage.setAttribute('data-slide',logoData);
+  }
+  document.querySelectorAll('.header-widget[data-type="headers/Button"] a.theme-button[href="/new-student-application"]').forEach(function(link){
+    link.setAttribute('href','https://mybooster.com/v3');
+    link.classList.add('fundraiser-register');
+    var label=link.querySelector('.bold')||link;
+    label.textContent='Register';
+  });
+  var sideNote=document.querySelector('#main-content.recipe-page .recipe-side-note');
+  var noteTemplate=document.getElementById('recipe-participation-list');
+  if(sideNote&&sideNote.tagName!=='UL'&&noteTemplate){
+    sideNote.replaceWith(noteTemplate.content.firstElementChild.cloneNode(true));
+  }
+}());
+</script>
+<script>
+(function(){
+  'use strict';
+  var dialog=document.getElementById('calendar-event-dialog');
+  var dialogDate=document.getElementById('calendar-dialog-date');
+  var dialogTitle=document.getElementById('calendar-dialog-title');
+  var dialogContent=document.getElementById('calendar-dialog-content');
+  if(!dialog||!dialogDate||!dialogTitle||!dialogContent||typeof dialog.showModal!=='function')return;
+  var closeButton=dialog.querySelector('.calendar-dialog-close');
+  var opener=null;
+  var pendingHash=null;
+  var savedScrollY=0;
+  var savedBodyOverflow=null;
+  var savedRootOverflow=null;
+  var body=document.body;
+  var root=document.documentElement;
+  function snapshotOverflow(element){
+    return {
+      value:element.style.getPropertyValue('overflow'),
+      priority:element.style.getPropertyPriority('overflow')
+    };
+  }
+  function restoreOverflow(element,snapshot){
+    if(snapshot.value)element.style.setProperty('overflow',snapshot.value,snapshot.priority);
+    else element.style.removeProperty('overflow');
+  }
+  function lockBackground(){
+    savedScrollY=window.scrollY||window.pageYOffset||0;
+    savedBodyOverflow=snapshotOverflow(body);
+    savedRootOverflow=snapshotOverflow(root);
+    body.style.setProperty('overflow','hidden');
+    root.style.setProperty('overflow','hidden');
+  }
+  function restoreFocus(){
+    if(!opener||!opener.isConnected)return;
+    try{opener.focus({preventScroll:true})}
+    catch(error){opener.focus()}
+  }
+  dialog.addEventListener('close',function(){
+    var anchor=pendingHash;
+    pendingHash=null;
+    if(savedBodyOverflow)restoreOverflow(body,savedBodyOverflow);
+    if(savedRootOverflow)restoreOverflow(root,savedRootOverflow);
+    if(!anchor)window.scrollTo(0,savedScrollY);
+    dialogContent.replaceChildren();
+    restoreFocus();
+    opener=null;
+    if(anchor)window.location.hash=anchor;
+  });
+  document.querySelectorAll('#dates .calendar-entry-button[data-event-key]').forEach(function(button){
+    button.addEventListener('click',function(){
+      if(dialog.open)return;
+      var key=button.getAttribute('data-event-key');
+      var template=document.getElementById('calendar-detail-'+key);
+      if(!template)return;
+      opener=button;
+      dialogDate.textContent=button.getAttribute('data-event-date')||'';
+      dialogTitle.textContent=button.getAttribute('data-event-title')||'';
+      dialogContent.replaceChildren(template.content.cloneNode(true));
+      var shirtArtwork=dialogContent.querySelector('[data-calendar-shirt-logo]');
+      if(shirtArtwork){
+        var fundraiserLogo=document.querySelector('#main-content.recipe-page .recipe-hero-logo');
+        shirtArtwork.src=fundraiserLogo.getAttribute('src');
+      }
+      lockBackground();
+      try{dialog.showModal()}
+      catch(error){
+        if(savedBodyOverflow)restoreOverflow(body,savedBodyOverflow);
+        if(savedRootOverflow)restoreOverflow(root,savedRootOverflow);
+        opener=null;
+        return;
+      }
+      dialog.scrollTop=0;
+      if(closeButton)closeButton.focus();
+    });
+  });
+  if(closeButton)closeButton.addEventListener('click',function(){dialog.close()});
+  dialog.addEventListener('click',function(event){
+    var anchor=event.target.closest&&event.target.closest('a[data-calendar-anchor]');
+    if(anchor){
+      event.preventDefault();
+      pendingHash=anchor.getAttribute('href');
+      dialog.close();
+      return;
+    }
+    if(event.target!==dialog)return;
+    var rect=dialog.getBoundingClientRect();
+    if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom){
+      dialog.close();
+    }
+  });
 }());
 </script>
 </body></html>
