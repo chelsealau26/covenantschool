@@ -1,0 +1,1 @@
+- [Fall fundraiser approval](fall-fundraiser.md) — keep the fundraiser page unlinked until the user approves the full design.
