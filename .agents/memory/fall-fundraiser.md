@@ -25,7 +25,7 @@ The user also requested automatic removal of the sitewide fundraiser bar and hid
 
 **Why:** The user changed the discovery restriction and requested schema and search setup.
 
-**How to apply:** Allow search indexing and include the fundraiser in public discovery metadata and the sitewide announcement bar. This does not automatically publish or push the project. Use concise, informative copy following the StoryBrand framework for this page.
+**How to apply:** Allow search indexing and include the fundraiser in public discovery metadata and the announcement bar. The user explicitly wants the bar on all other pages, but NOT on the fundraiser page itself. This does not automatically publish or push the project. Use concise, informative copy following the StoryBrand framework for this page.
 
 For this page, match the parent newsletter's cute, fun cooking theme, including the hero. The user explicitly repeated that the hero must stay “fun and cutesy.”
 

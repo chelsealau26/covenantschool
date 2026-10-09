@@ -8,6 +8,7 @@ assert.equal(hasEnded(end), true);
 assert.equal(hasEnded(end + 1), true);
 for (const file of fs.readdirSync("pages").filter(f => f.endsWith(".html"))) {
   const html = fs.readFileSync("pages/" + file, "utf8");
+  assert.equal(html.includes('<aside class="fundraiser-announcement"'), file !== "fall-fundraiser.html", "Banner placement: " + file);
   assert.equal(removeBanner(html).includes('<aside class="fundraiser-announcement"'), false, file);
   assert.equal(removeBanner(html).match(/<footer[\s\S]*?<\/footer>/)?.[0], html.match(/<footer[\s\S]*?<\/footer>/)?.[0]);
 }
@@ -33,4 +34,4 @@ try {
   const sitemap = await worker.fetch(new Request("https://example.com/sitemap.xml"),env);
   assert.ok(!(await sitemap.text()).includes("/fall-fundraiser"));
 } finally { Date.now = realNow; }
-console.log("PASS: exact Central-time cutoff, all 18 banners, page aliases/410, sitemap removal and intact footers.");
+console.log("PASS: exact cutoff, banner on other pages only, page aliases/410, sitemap removal and intact footers.");
