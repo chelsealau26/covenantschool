@@ -3983,7 +3983,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
 </style>
 <style id="fundraiser-supplied-utensil-watermarks">
   /* Individual, user-supplied transparent doodles used as quiet section watermarks. */
-  #main-content.recipe-page :is(#how-to-help,#faq,.recipe-finish)::before{
+  #main-content.recipe-page :is(#how-to-help,.recipe-finish)::before{
     content:"";
     position:absolute;
     z-index:0;
@@ -4003,21 +4003,12 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     opacity:.1;
     transform:translateY(-50%) rotate(-9deg);
   }
-  #main-content.recipe-page #faq::before{
-    left:max(4px,calc((100vw - 1120px)/2 - 82px));
-    top:52%;
-    width:78px;
-    height:70px;
-    background-image:url("/assets/fundraiser-utensils/mixing-bowl-navy.png");
-    opacity:.3;
-    transform:translateY(-50%) rotate(-3deg);
-  }
   #main-content.recipe-page .recipe-finish::before{
     right:20px;
     bottom:14px;
     width:240px;
     height:205px;
-    background-image:url("/assets/fundraiser-utensils/frying-pan-white.png");
+    background-image:url("/assets/fundraiser-utensils/mixing-bowl-white.png");
     opacity:.43;
     transform:rotate(-7deg);
   }
@@ -4032,18 +4023,6 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     position:relative;
     z-index:1;
   }
-  @media(max-width:1279px){
-    #main-content.recipe-page #faq{padding-bottom:112px}
-    #main-content.recipe-page #faq::before{
-      top:auto;
-      right:18px;
-      bottom:14px;
-      left:auto;
-      width:90px;
-      height:80px;
-      transform:none;
-    }
-  }
   @media(max-width:900px){
     #main-content.recipe-page #how-to-help::before{
       top:65px;
@@ -4053,12 +4032,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
       transform:rotate(-9deg);
       opacity:.08;
     }
-    #main-content.recipe-page #faq{padding-bottom:102px}
-    #main-content.recipe-page #faq::before{right:14px;bottom:12px;width:78px;height:69px}
     #main-content.recipe-page .recipe-finish::before{display:none}
-  }
-  @media(max-width:390px){
-    #main-content.recipe-page #faq::before{width:68px;height:60px;right:12px}
   }
   body.a11y-high-contrast #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
     display:none!important;

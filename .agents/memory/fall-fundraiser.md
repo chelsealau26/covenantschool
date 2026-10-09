@@ -143,11 +143,11 @@ The user rejected the spatula watermark beside the prizes section and the servin
 
 **How to apply:** Do not restore those decorations when updating the broader utensil theme; this does not remove the meaningful prize illustrations or other approved watermarks.
 
-The user wants the whisk as a larger background watermark and the frying pan enlarged without touching text.
+The user wants the whisk as a larger background watermark. They subsequently requested replacing the closing-section frying pan with the FAQ mixing bowl and removing the bowl from the FAQ.
 
 **Why:** They requested these specific changes rather than removing all kitchen artwork.
 
-**How to apply:** Keep the whisk faint and behind content; preserve clear space between the frying pan and readable copy or buttons.
+**How to apply:** Keep the whisk faint and behind content; use the white mixing bowl in the navy closing section with clear space around text and buttons. Do not restore the FAQ bowl or closing frying pan.
 
 Lightbox icons should match each point's meaning, not use kitchen utensils. Do not use knives.
 
