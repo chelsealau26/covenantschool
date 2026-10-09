@@ -131,6 +131,18 @@ The user subsequently requested a large, transparent Chef Izzy at the hero's bot
 
 **How to apply:** Use the provided real mascot without a background or replacement artwork. The user allows him to overlap the card a bit, but not any text. Reserve space so the full hat, copy, buttons and participation notes remain visible at every screen size; respect reduced-motion settings for his entrance.
 
+The user rejected the spatula watermark beside the prizes section and the serving-dish/cloche above the sponsors.
+
+**Why:** They provided screenshots of those specific decorations and said “remove this.”
+
+**How to apply:** Do not restore those decorations when updating the broader utensil theme; this does not remove the meaningful prize illustrations or other approved watermarks.
+
+The user wants the whisk as a larger background watermark and the frying pan enlarged without touching text.
+
+**Why:** They requested these specific changes rather than removing all kitchen artwork.
+
+**How to apply:** Keep the whisk faint and behind content; preserve clear space between the frying pan and readable copy or buttons.
+
 Lightbox icons should match each point's meaning, not use kitchen utensils. Do not use knives.
 
 **Why:** After reviewing kitchen-icon alternatives, the user said, “forget the kitchen icons for the lightboxes, just use icons that make sense for each point.” They also explicitly said “no knives.”

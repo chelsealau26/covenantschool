@@ -7361,7 +7361,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
 </style>
 <style id="fundraiser-supplied-utensil-watermarks">
   /* Individual, user-supplied transparent doodles used as quiet section watermarks. */
-  #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
+  #main-content.recipe-page :is(#how-to-help,#faq,.recipe-finish)::before{
     content:"";
     position:absolute;
     z-index:0;
@@ -7373,30 +7373,13 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     user-select:none;
   }
   #main-content.recipe-page #how-to-help::before{
-    left:max(4px,calc((100vw - 1120px)/2 - 78px));
-    top:49%;
-    width:74px;
-    height:130px;
+    left:max(-60px,calc((100vw - 1120px)/2 - 260px));
+    top:53%;
+    width:300px;
+    height:520px;
     background-image:url("/assets/fundraiser-utensils/whisk-navy.png");
-    opacity:.31;
-    transform:translateY(-50%) rotate(-5deg);
-  }
-  #main-content.recipe-page #prizes::before{
-    right:max(4px,calc((100vw - 1120px)/2 - 70px));
-    top:48%;
-    width:62px;
-    height:124px;
-    background-image:url("/assets/fundraiser-utensils/spatula-navy.png");
-    opacity:.3;
-    transform:translateY(-50%) rotate(4deg);
-  }
-  #main-content.recipe-page #sponsors::before{
-    right:22px;
-    top:14px;
-    width:124px;
-    height:78px;
-    background-image:url("/assets/fundraiser-utensils/cloche-navy.png");
-    opacity:.29;
+    opacity:.1;
+    transform:translateY(-50%) rotate(-9deg);
   }
   #main-content.recipe-page #faq::before{
     left:max(4px,calc((100vw - 1120px)/2 - 82px));
@@ -7410,37 +7393,24 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   #main-content.recipe-page .recipe-finish::before{
     right:20px;
     bottom:14px;
-    width:140px;
-    height:120px;
+    width:240px;
+    height:205px;
     background-image:url("/assets/fundraiser-utensils/frying-pan-white.png");
     opacity:.43;
     transform:rotate(-7deg);
   }
   #main-content.recipe-page .recipe-finish{position:relative}
-  #main-content.recipe-page #sponsors{padding-top:104px}
+  @media(min-width:1200px){
+    #main-content.recipe-page .recipe-finish{padding-bottom:110px}
+  }
+  @media(min-width:901px) and (max-width:1199px){
+    #main-content.recipe-page .recipe-finish{padding-bottom:245px}
+  }
   #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)>.recipe-wrap{
     position:relative;
     z-index:1;
   }
   @media(max-width:1279px){
-    #main-content.recipe-page #how-to-help,
-    #main-content.recipe-page #prizes{padding-top:126px}
-    #main-content.recipe-page #how-to-help::before{
-      top:15px;
-      right:18px;
-      left:auto;
-      width:54px;
-      height:96px;
-      transform:rotate(-5deg);
-    }
-    #main-content.recipe-page #prizes::before{
-      top:16px;
-      right:auto;
-      left:18px;
-      width:46px;
-      height:92px;
-      transform:rotate(4deg);
-    }
     #main-content.recipe-page #faq{padding-bottom:112px}
     #main-content.recipe-page #faq::before{
       top:auto;
@@ -7451,33 +7421,21 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
       height:80px;
       transform:none;
     }
-    #main-content.recipe-page #sponsors{padding-top:94px}
-    #main-content.recipe-page #sponsors::before{top:12px;right:18px;width:112px;height:70px}
   }
   @media(max-width:900px){
-    #main-content.recipe-page #how-to-help,
-    #main-content.recipe-page #prizes{padding-top:116px}
     #main-content.recipe-page #how-to-help::before{
-      top:13px;
-      right:14px;
-      width:46px;
-      height:82px;
-    }
-    #main-content.recipe-page #prizes::before{
-      top:13px;
-      left:14px;
-      width:40px;
-      height:80px;
+      top:65px;
+      left:-55px;
+      width:220px;
+      height:380px;
+      transform:rotate(-9deg);
+      opacity:.08;
     }
     #main-content.recipe-page #faq{padding-bottom:102px}
     #main-content.recipe-page #faq::before{right:14px;bottom:12px;width:78px;height:69px}
-    #main-content.recipe-page #sponsors{padding-top:78px}
-    #main-content.recipe-page #sponsors::before{top:10px;right:12px;width:72px;height:46px}
     #main-content.recipe-page .recipe-finish::before{display:none}
   }
   @media(max-width:390px){
-    #main-content.recipe-page #how-to-help::before{width:40px;height:72px;right:12px}
-    #main-content.recipe-page #prizes::before{width:36px;height:72px;left:12px}
     #main-content.recipe-page #faq::before{width:68px;height:60px;right:12px}
   }
   body.a11y-high-contrast #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
