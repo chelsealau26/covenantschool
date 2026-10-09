@@ -1,2 +1,3 @@
 - [Fall fundraiser approval](fall-fundraiser.md) — keep the fundraiser page unlinked until the user approves the full design.
 - [Mascot image transparency](mascot-transparency.md) — verify real transparency; a successful background-removal response may leave the newsletter artwork unchanged.
+- [Inline artwork validation](inline-artwork-validation.md) — valid image markup does not guarantee valid embedded artwork; decode final data URIs before delivery.

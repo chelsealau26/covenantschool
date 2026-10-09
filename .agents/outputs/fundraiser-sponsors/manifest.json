@@ -1,0 +1,37 @@
+[
+  {
+    "id": "cj-machine",
+    "logoPath": ".agents/outputs/fundraiser-sponsors/cj-machine.jpg",
+    "width": 400,
+    "height": 267,
+    "name": "C & J Machine"
+  },
+  {
+    "id": "facts",
+    "logoPath": ".agents/outputs/fundraiser-sponsors/facts.png",
+    "width": 287,
+    "height": 87,
+    "name": "FACTS"
+  },
+  {
+    "id": "joe-cowart",
+    "logoPath": ".agents/outputs/fundraiser-sponsors/joe-cowart.png",
+    "width": 400,
+    "height": 210,
+    "name": "Joe Cowart, Inc."
+  },
+  {
+    "id": "little-monkey-toes",
+    "logoPath": ".agents/outputs/fundraiser-sponsors/little-monkey-toes.png",
+    "width": 400,
+    "height": 244,
+    "name": "Little Monkey Toes"
+  },
+  {
+    "id": "mw-counseling",
+    "logoPath": ".agents/outputs/fundraiser-sponsors/mw-counseling.jpg",
+    "width": 364,
+    "height": 400,
+    "name": "MW Counseling, LLC"
+  }
+]

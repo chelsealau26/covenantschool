@@ -51,13 +51,13 @@ Keep the shared site header/footer structure and navigation, except for the fund
 
 **How to apply:** Preserve shared navigation/contact information and behavior. Use the fundraiser logo for all header variants and the footer here, and link the main header Register buttons to Booster. Do not change other pages or admissions submenu links.
 
-The goal visual should be a non-interactive measuring glass filling to the $250 student goal, not a school-wide or personal donation tracker.
+The measuring jug now tracks the school-wide total against an $80,000 goal, not the $250 student/family goal.
 
-**Why:** The user withdrew the school-goal idea and explicitly requested no interactive controls or explanatory tracking message. After making the countdown a kitchen timer, they requested a measuring glass to avoid too many similar oven clocks.
+**Why:** The user changed the jug to the total fundraiser goal, set $80,000 “for now,” and said the school will supply fundraising totals as the fundraiser progresses. The jug remains visually distinct from the countdown's kitchen timer.
 
 The user explicitly approved the animated measuring-glass concept (“love it!”), then supplied simple measuring-jug icon references to correct the shape. This is approval of that concept, not full-page design approval.
 
-**How to apply:** Keep this as a decorative student-goal encouragement visual, with an animation that fills to $250. Do not add weekly totals, sliders, or tracking disclaimers; preserve reduced-motion support.
+**How to apply:** Fill only to the confirmed raised total's share of the school goal. Until a total is provided, show an awaiting-update state instead of inventing donations or implying the goal is reached. Preserve the $250 family participation/prize requirements elsewhere, the approved jug design, and reduced-motion support. Apply new school totals when the user shares them; do not imply automatic synchronization.
 
 Keep the goal-section registration CTA beneath the explanatory copy, not beneath the measuring jug; the jug should remain prominent.
 
@@ -83,8 +83,32 @@ The user explicitly approved the calendar lightboxes (“love the light boxes”
 
 **How to apply:** Preserve lightboxes for entries with useful supplied details, and carry the newsletter's kitchen theme into their content while keeping information easy to scan.
 
-Keep decorative kitchen icons out of the hero and the calendar itself.
+Keep decorative icons out of the hero and the calendar itself.
 
 **Why:** After trying replacement illustrations, the user explicitly requested removing icons from both areas.
 
-**How to apply:** Do not reintroduce corner illustrations, month-header art or margin utensils there without a new request. This does not remove the approved recipe-themed lightbox styling.
+**How to apply:** Do not reintroduce corner illustrations, month-header art or margin utensils without a new request. Preserve playful typography, recipe-card styling, meaningful artwork and functional controls such as the X close button.
+
+Lightbox icons should match each point's meaning, not use kitchen utensils. Do not use knives.
+
+**Why:** After reviewing kitchen-icon alternatives, the user said, “forget the kitchen icons for the lightboxes, just use icons that make sense for each point.” They also explicitly said “no knives.”
+
+**How to apply:** Use recognizable standard icons related to the content, while retaining the approved cutesy recipe-card presentation.
+
+Add confirmed weekly winner updates to the prize section when the user supplies them.
+
+**Why:** The user said the school might send weekly winners and wants them added “in here,” referring to “Every effort gets a cheer.”
+
+**How to apply:** Celebrate supplied winners in that section without inventing names, implying automatic Booster synchronization, or treating possible future updates as already confirmed.
+
+The user wants this year's sponsor ticker beneath the local-business sponsorship section, updated as new sponsors come in.
+
+**Why:** The user explicitly requested that placement and ongoing updates using supplied sponsor logos.
+
+**How to apply:** Add confirmed businesses when the user supplies updates. Recognize a business once even when alternate logo files are provided, and do not infer sponsorship tiers from logos.
+
+Keep business sponsorship useful but compact and secondary to the main fundraiser. It must look clearly different from awards: one coherent section, not random small award-style cards.
+
+**Why:** The user said the businesses section seemed like “A LOT,” asked that it not take away from the rest of the page, and repeated emphatically that sponsorship must be distinct from awards.
+
+**How to apply:** Keep the invitation, deadline and form easy to find; disclose longer sponsorship benefits and instructions on demand rather than expanding them into another major page feature.
