@@ -11,6 +11,7 @@ from email.mime.text import MIMEText
 from pathlib import Path
 import email.parser
 import email.policy
+from fundraiser_lifecycle import has_ended, retire_content, prepare_html
 
 PORT = 5000
 PAGES_DIR = Path(__file__).parent / "pages"
@@ -67,6 +68,16 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split("?")[0].rstrip("/")
+        if has_ended() and path.lower() in ("/fall-fundraiser", "/fall-fundraiser.html", "/pages/fall-fundraiser.html"):
+            body = b'<!doctype html><html lang="en"><head><meta name="robots" content="noindex"><title>Fundraiser ended</title></head><body><h1>This fundraiser has ended.</h1><p>Thank you for supporting Covenant Christian School.</p><a href="/">Return to the school website</a></body></html>'
+            self.send_response(410)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("X-Robots-Tag", "noindex")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
 
         if path.startswith("/assets/"):
             rel = path[len("/assets/"):]
@@ -214,6 +225,7 @@ COMMENTS / QUALIFICATIONS
             self.wfile.write(b"Not found")
             return
         content_types = {
+            '.mjs': 'application/javascript',
             '.txt': 'text/plain; charset=utf-8',
             '.xml': 'application/xml; charset=utf-8',
             '.html': 'text/html; charset=utf-8',
@@ -232,6 +244,10 @@ COMMENTS / QUALIFICATIONS
         }
         content_type = content_types.get(path.suffix.lower(), 'application/octet-stream')
         data = path.read_bytes()
+        if path.suffix == ".html":
+            data = prepare_html(data.decode("utf-8")).encode("utf-8")
+        if has_ended() and path.suffix in (".html", ".xml"):
+            data = retire_content(data.decode("utf-8")).encode("utf-8")
         self.send_response(200)
         self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', str(len(data)))

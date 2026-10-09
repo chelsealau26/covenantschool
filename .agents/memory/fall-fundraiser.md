@@ -17,6 +17,12 @@ Use the supplied Recipe Report newsletter and fundraiser logo as the source of t
 
 The user originally requested an unlinked review page, but subsequently explicitly approved public discovery: “yes, i want this page publicly discoverable now.”
 
+The user also requested automatic removal of the sitewide fundraiser bar and hiding the fundraiser page when the fundraiser ends.
+
+**Why:** They want the seasonal promotion retired without manual intervention.
+
+**How to apply:** Use the stated November 9, 2026, 3 p.m. Central ending; preserve source files for reuse and stop public indexing/access afterward. Ensure the runtime retirement handler is deployed, not only the static HTML.
+
 **Why:** The user changed the discovery restriction and requested schema and search setup.
 
 **How to apply:** Allow search indexing and include the fundraiser in public discovery metadata and the sitewide announcement bar. This does not automatically publish or push the project. Use concise, informative copy following the StoryBrand framework for this page.
