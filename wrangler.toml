@@ -1,5 +1,8 @@
 name = "covenantschool"
 compatibility_date = "2026-08-04"
 
+[build]
+command = "python3 scripts/build-static.py"
+
 [assets]
-directory = "./pages"
+directory = "./dist"

@@ -21,7 +21,7 @@ assert.ok(
   'Do not change the shared footer typography or colors only on this page.'
 );
 assert.ok(
-  fundraiser.includes("img.setAttribute('src','/assets/fundraiser-header-logo-transparent.png')"),
-  'Keep the approved transparent fundraiser header logo.'
+  fundraiser.slice(0, fundraiser.indexOf('<main id="main-content"')).includes('src="/assets/fundraiser-header-logo-transparent.png"'),
+  'Render the approved transparent fundraiser header logo in the initial HTML.'
 );
 console.log('PASS: exact shared footer markup/logo, no fundraiser-only footer overrides, header branding retained.');

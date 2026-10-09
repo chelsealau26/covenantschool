@@ -1,3 +1,4 @@
-- [Fall fundraiser approval](fall-fundraiser.md) — keep the fundraiser page unlinked until the user approves the full design.
+- [Fall fundraiser decisions](fall-fundraiser.md) — source branding, artwork preferences, and the explicitly authorized sitewide fundraiser announcement bar.
 - [Mascot image transparency](mascot-transparency.md) — verify real transparency; a successful background-removal response may leave the newsletter artwork unchanged.
 - [Inline artwork validation](inline-artwork-validation.md) — valid image markup does not guarantee valid embedded artwork; decode final data URIs before delivery.
+- [Static site delivery](static-site-delivery.md) — prevent old-branding flashes and include local images/PDFs in static exports, not just the Python preview.

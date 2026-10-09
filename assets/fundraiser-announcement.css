@@ -1,0 +1,90 @@
+.fundraiser-announcement{
+  position:relative;
+  box-sizing:border-box;
+  width:100%;
+  padding:0 0 7px;
+  background:#1d3a5f;
+  color:#f4f3ed;
+  font-family:Lexend,ui-sans-serif,system-ui,sans-serif;
+}
+.fundraiser-announcement::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:7px;
+  background-color:#f4f3ed;
+  background-image:linear-gradient(90deg,rgba(43,171,226,.65) 50%,transparent 50%),linear-gradient(rgba(43,171,226,.65) 50%,transparent 50%);
+  background-size:12px 12px;
+  pointer-events:none;
+}
+.fundraiser-announcement-inner{
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px 24px;
+  width:calc(100% - 32px);
+  max-width:1120px;
+  min-width:0;
+  margin:0 auto;
+  padding:9px 0;
+}
+.fundraiser-announcement-copy{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:2px 16px;
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+.fundraiser-announcement-copy strong{
+  color:inherit;
+  font-family:"Lilita One","Paytone One",Lexend,ui-sans-serif,system-ui,sans-serif;
+  font-size:20px;
+  font-weight:400;
+  line-height:1.25;
+}
+.fundraiser-announcement-copy span{
+  color:inherit;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.35;
+}
+.fundraiser-announcement a.fundraiser-announcement-cta{
+  box-sizing:border-box;
+  display:inline-flex;
+  flex:0 0 auto;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  max-width:50%;
+  padding:9px 18px;
+  border:2px solid #f8b810;
+  border-radius:7px 12px 7px 12px;
+  background:#f8b810;
+  color:#0a2b4e;
+  font:700 16px/1.25 Lexend,ui-sans-serif,system-ui,sans-serif;
+  text-decoration:none;
+}
+.fundraiser-announcement a.fundraiser-announcement-cta:hover{
+  background:#f4f3ed;
+  color:#0a2b4e;
+}
+.fundraiser-announcement a.fundraiser-announcement-cta:focus-visible{
+  outline:3px solid #2babe2;
+  outline-offset:4px;
+}
+/* Keep native absolute overlay headers relative to their own page, below the banner.
+   Fixed headers retain their original viewport positioning and scroll behavior. */
+.fundraiser-announcement + .page-layout{position:relative}
+@media(max-width:600px){
+  .fundraiser-announcement-inner{gap:12px;padding:8px 0}
+  .fundraiser-announcement-copy{display:block}
+  .fundraiser-announcement-copy strong{display:block;font-size:18px}
+  .fundraiser-announcement-copy span{display:block;margin-top:2px}
+  .fundraiser-announcement a.fundraiser-announcement-cta{padding:9px 12px}
+}
+body.a11y-high-contrast .fundraiser-announcement{background:#000!important;color:#fff!important}
+body.a11y-high-contrast .fundraiser-announcement::after{background:#fff!important}
+body.a11y-high-contrast .fundraiser-announcement a.fundraiser-announcement-cta{background:#fff!important;border-color:#fff!important;color:#000!important}
+body.a11y-high-contrast .fundraiser-announcement a.fundraiser-announcement-cta:focus-visible{outline-color:#fff!important}

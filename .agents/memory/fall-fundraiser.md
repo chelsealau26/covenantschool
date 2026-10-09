@@ -15,11 +15,11 @@ Use the supplied Recipe Report newsletter and fundraiser logo as the source of t
 
 **How to apply:** Match the newsletter's navy, blue, light paper tones and restrained warm accents rather than introducing unrelated theme colors. Recolor decorative utensils consistently, but preserve the authentic sponsor logos, source artwork and the standard website footer. Keep accessible contrast and the user's white sponsor-section background.
 
-The user requested a page named `fall-fundraiser` and said, “do not link it anywhere until i have approved the full design.”
+The user originally requested an unlinked review page, but subsequently explicitly approved public discovery: “yes, i want this page publicly discoverable now.”
 
-**Why:** The user wants to review the entire design before visitors can discover it through the site.
+**Why:** The user changed the discovery restriction and requested schema and search setup.
 
-**How to apply:** Do not add links from menus, footers, or other pages before explicit full-design approval. A direct preview route is acceptable for review. Use concise, informative copy following the StoryBrand framework for this page.
+**How to apply:** Allow search indexing and include the fundraiser in public discovery metadata and the sitewide announcement bar. This does not automatically publish or push the project. Use concise, informative copy following the StoryBrand framework for this page.
 
 For this page, match the parent newsletter's cute, fun cooking theme, including the hero. The user explicitly repeated that the hero must stay “fun and cutesy.”
 

@@ -214,6 +214,8 @@ COMMENTS / QUALIFICATIONS
             self.wfile.write(b"Not found")
             return
         content_types = {
+            '.txt': 'text/plain; charset=utf-8',
+            '.xml': 'application/xml; charset=utf-8',
             '.html': 'text/html; charset=utf-8',
             '.css': 'text/css',
             '.js': 'application/javascript',
@@ -233,6 +235,7 @@ COMMENTS / QUALIFICATIONS
         self.send_response(200)
         self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', str(len(data)))
+        self.send_header('Cache-Control', 'no-cache')
         self.end_headers()
         self.wfile.write(data)
 
