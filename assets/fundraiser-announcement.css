@@ -2,9 +2,9 @@
   position:relative;
   box-sizing:border-box;
   width:100%;
-  padding:4px 0 0;
-  border-bottom:1px solid #e0d8c6;
-  background:#f4f3ed;
+  padding:6px 0 0;
+  border-bottom:1px solid #1d3a5f;
+  background:#f8b810;
   color:#1d3a5f;
   font-family:Lexend,ui-sans-serif,system-ui,sans-serif;
 }
@@ -12,25 +12,28 @@
   content:"";
   position:absolute;
   inset:0 0 auto;
-  height:4px;
-  background-color:#f4f3ed;
-  background-image:linear-gradient(90deg,rgba(43,171,226,.55) 50%,transparent 50%),linear-gradient(rgba(43,171,226,.55) 50%,transparent 50%);
-  background-size:8px 8px;
+  height:6px;
+  background-color:#2babe2;
+  background-image:linear-gradient(90deg,rgba(29,58,95,.6) 50%,transparent 50%),linear-gradient(rgba(29,58,95,.6) 50%,transparent 50%);
+  background-size:12px 12px;
   pointer-events:none;
 }
 .fundraiser-announcement-inner{
   box-sizing:border-box;
-  display:flex;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  grid-template-areas:"copy dates cta";
   align-items:center;
   justify-content:space-between;
-  gap:10px 20px;
+  gap:12px 24px;
   width:calc(100% - 24px);
   max-width:1120px;
   min-width:0;
   margin:0 auto;
-  padding:1px 0 2px;
+  padding:4px 0;
 }
 .fundraiser-announcement-copy{
+  grid-area:copy;
   position:relative;
   box-sizing:border-box;
   display:flex;
@@ -41,7 +44,7 @@
   padding:4px 12px 4px 18px;
   border:1px dashed #1d598e;
   border-radius:3px 8px 4px 6px;
-  background:#fff;
+  background:#f8b810;
   overflow-wrap:anywhere;
 }
 .fundraiser-announcement-copy::before{
@@ -77,12 +80,21 @@
   line-height:1.25;
 }
 .fundraiser-announcement-copy span{
-  color:#1d598e;
+  color:#1d3a5f;
   font-size:16px;
   font-weight:600;
   line-height:1.35;
 }
+.fundraiser-announcement-dates{
+  grid-area:dates;
+  justify-self:center;
+  min-width:0;
+  color:#1d3a5f;
+  font:700 16px/1.25 Lexend,ui-sans-serif,system-ui,sans-serif;
+  text-align:center;
+}
 .fundraiser-announcement a.fundraiser-announcement-cta{
+  grid-area:cta;
   position:relative;
   box-sizing:border-box;
   display:inline-flex;
@@ -90,12 +102,11 @@
   align-items:center;
   justify-content:center;
   min-height:44px;
-  max-width:50%;
   padding:6px 16px;
   border:2px solid #1d3a5f;
   border-radius:5px 10px 5px 8px;
-  background:#f8b810;
-  color:#0a2b4e;
+  background:#1d3a5f;
+  color:#f4f3ed;
   font:700 16px/1.25 Lexend,ui-sans-serif,system-ui,sans-serif;
   text-decoration:none;
   box-shadow:2px 2px 0 #2babe2;
@@ -104,7 +115,7 @@
   content:"";
   position:absolute;
   inset:3px;
-  border:1px dashed #1d3a5f;
+  border:1px dashed #f4f3ed;
   border-radius:2px 7px 2px 5px;
   pointer-events:none;
 }
@@ -113,15 +124,22 @@
   color:#0a2b4e;
 }
 .fundraiser-announcement a.fundraiser-announcement-cta:focus-visible{
-  outline:3px solid #1d598e;
+  outline:3px solid #1d3a5f;
   outline-offset:3px;
 }
 /* Keep native absolute overlay headers relative to their own page, below the banner.
    Fixed headers retain their original viewport positioning and scroll behavior. */
 .fundraiser-announcement + .page-layout{position:relative}
+@media(max-width:900px){
+  .fundraiser-announcement-inner{
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"copy cta" "dates dates";
+    gap:2px 10px;
+    padding:2px 0;
+  }
+}
 @media(max-width:600px){
-  .fundraiser-announcement-inner{gap:10px;padding:3px 0}
-  .fundraiser-announcement-copy{display:block;padding:3px 6px}
+  .fundraiser-announcement-copy{display:block;padding:2px 6px}
   .fundraiser-announcement-copy::before{left:12px;width:24px;height:7px}
   .fundraiser-announcement-copy::after{display:none}
   .fundraiser-announcement-copy strong{display:block;font-size:18px;letter-spacing:-.025em;line-height:1.2}
@@ -135,6 +153,7 @@ body.a11y-high-contrast .fundraiser-announcement{background:#000!important;color
 body.a11y-high-contrast .fundraiser-announcement::before{background:#fff!important}
 body.a11y-high-contrast .fundraiser-announcement-copy{background:#000!important;border-color:#fff!important}
 body.a11y-high-contrast .fundraiser-announcement-copy span{color:#fff!important}
+body.a11y-high-contrast .fundraiser-announcement-dates{color:#fff!important}
 body.a11y-high-contrast .fundraiser-announcement-copy::before,
 body.a11y-high-contrast .fundraiser-announcement-copy::after{display:none}
 body.a11y-high-contrast .fundraiser-announcement a.fundraiser-announcement-cta{background:#fff!important;border-color:#fff!important;color:#000!important;box-shadow:none}
