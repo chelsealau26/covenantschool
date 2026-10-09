@@ -14,10 +14,11 @@ function setup({ reduced = false, supplied = config } = {}) {
     setAttribute(k, v) { this.attrs[k] = v; }
     removeAttribute(k) { delete this.attrs[k]; }
   }
-  const illustration = new Node(), liquid = new Node(), amount = new Node();
+  const illustration = new Node(), liquid = new Node(), amount = new Node(), fillTrigger = new Node();
   const total = new Node(), updated = new Node();
   const marks = Array.from({ length: 5 }, () => new Node());
-  illustration.querySelector = selector => selector === '.goal-amount' ? amount : liquid;
+  illustration.querySelector = selector => selector === '.goal-amount' ? amount :
+    selector === '.measuring-fill-trigger' ? fillTrigger : liquid;
   illustration.querySelectorAll = () => marks;
   let disabledByWidget = false, onBodyChange, onIntersect;
   const media = { matches: reduced, addEventListener: (_, callback) => media.change = callback };
@@ -43,8 +44,11 @@ function setup({ reduced = false, supplied = config } = {}) {
       observe() {}
     },
     IntersectionObserver: class {
-      constructor(callback) { onIntersect = callback; }
-      observe() {}
+      constructor(callback, options) {
+        onIntersect = callback;
+        assert.equal(options.rootMargin, '-112px 0px -24px 0px');
+      }
+      observe(target) { assert.equal(target, fillTrigger, 'Wait until the bottom of the jug is visible.'); }
       disconnect() {}
     },
     console: { error: (...args) => errors.push(args) },
@@ -65,14 +69,22 @@ function setup({ reduced = false, supplied = config } = {}) {
 
 const page = setup();
 assert.equal(page.amount.textContent, '$80,000');
-assert.equal(page.total.textContent, 'Awaiting the first total');
+assert.equal(page.total.textContent, '');
+assert.equal(page.total.hidden, true);
 assert.equal(page.illustration.attrs.role, 'img');
 assert.equal(page.illustration.attrs['aria-valuenow'], undefined);
 assert.equal(page.api.getFill(), 0);
 assert.equal(page.frames.size, 0);
 assert.deepEqual(page.marks.map(m => m.textContent), ['$80,000', '$60,000', '$40,000', '$20,000', '$0']);
 page.enter();
+page.frame(0); page.frame(2100);
+assert(page.api.getFill() > 0 && page.api.getFill() < 0.12);
+page.frame(4200);
+assert.equal(page.api.getFill(), 0.12);
+assert.equal(page.api.getState().raised, null, 'Decorative water never becomes a donation total.');
+assert.match(page.illustration.attrs['aria-label'], /not a reported fundraising total/);
 page.api.update({ goal: 80000, raised: 20000, updatedAt: '2026-10-15' });
+assert.equal(page.total.hidden, false);
 assert.equal(page.total.textContent, '$20,000 raised · 25% of our goal');
 assert.equal(page.updated.textContent, 'Updated October 15, 2026');
 assert.equal(page.illustration.attrs['aria-valuenow'], '20000');
@@ -115,12 +127,17 @@ for (const invalid of [
 ]) assert.throws(() => page.api.update(invalid));
 assert.equal(page.api.getState().raised, 50000, 'Bad data leaves confirmed progress intact');
 page.api.update({ goal: 80000, raised: null });
-assert.equal(page.api.getFill(), 0);
+assert.equal(page.api.getFill(), 0.12);
+assert.equal(page.total.hidden, true);
 assert.equal(page.illustration.attrs['aria-valuenow'], undefined);
 assert.equal(page.updated.hidden, true);
 const reducedPage = setup({ reduced: true, supplied: { goal: 80000, raised: 20000 } });
 assert.equal(reducedPage.api.getFill(), 0.25);
 assert.equal(reducedPage.frames.size, 0);
+const reducedPreview = setup({ reduced: true });
+assert.equal(reducedPreview.api.getFill(), 0.12);
+assert.equal(reducedPreview.frames.size, 0);
+assert.equal(reducedPreview.total.hidden, true);
 const widgetPage = setup({ supplied: { goal: 80000, raised: 40000 } });
 widgetPage.enter(); widgetPage.widget(true);
 assert.equal(widgetPage.api.getFill(), 0.5);
@@ -128,6 +145,7 @@ assert.equal(widgetPage.frames.size, 0);
 const badPage = setup({ supplied: { goal: 80000, raised: -1 } });
 assert.equal(badPage.total.textContent, 'Fundraising total unavailable');
 assert.equal(badPage.total.attrs.role, 'alert');
+assert.equal(badPage.total.hidden, false);
 assert.equal(badPage.errors.length, 1);
 assert.equal(page.errors.length, 0);
 console.log('School goal: unknown/zero totals, proportional animation, updates, dates, changing goal, above-goal clamping, accessibility, reduced motion and invalid-data checks passed.');

@@ -340,7 +340,7 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 
 
 #main-content.recipe-page{--sans:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font:16px/1.58 var(--sans);color:#283d4b}
-#main-content{--recipe-ink:#173d70;--recipe-blue:#20a8dc;--recipe-paper:#fffaf0;--recipe-yellow:#ffd966;--recipe-red:#d9554a}
+#main-content.recipe-page{--recipe-ink:#1d3a5f;--recipe-blue:#2babe2;--recipe-paper:#f4f3ed;--recipe-yellow:#f8b810;--recipe-red:#d9554a;--recipe-secondary:#1d598e;--recipe-dark:#0a2b4e;--recipe-pale-sky:#d2dfee;--recipe-paper-edge:#e0d8c6;--recipe-soft-gold:#fff0c5}
 #main-content{background-color:var(--recipe-paper);background-image:radial-gradient(#c8bda5 .65px,transparent .65px);background-size:8px 8px;color:#283d4b}
 #main-content .recipe-wrap{width:min(1120px,calc(100% - 38px));margin:auto}
 #main-content .recipe-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border:2px solid var(--recipe-ink);border-radius:12px 22px;background:var(--recipe-ink);box-shadow:4px 4px 0 var(--recipe-yellow);color:white;text-decoration:none;font-weight:950;line-height:1.18;transition:transform .16s ease,box-shadow .16s ease}
@@ -849,7 +849,7 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 body.a11y-high-contrast #main-content.recipe-page .recipe-hero-logo{
   mix-blend-mode:normal;
 }
-/* These page-only shell marks use the same embedded original artwork. */
+/* Header-only sizing; the footer uses the standard website styles. */
 body:has(#main-content.recipe-page) .theme-logo img{
   width:auto!important;
   max-width:92px!important;
@@ -858,28 +858,6 @@ body:has(#main-content.recipe-page) .theme-logo img{
 }
 @media(max-width:768px){
   body:has(#main-content.recipe-page) .theme-logo img{max-height:78px!important}
-}
-body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .image-box{
-  max-width:126px!important;
-}
-body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .widget-preserving-ratio-outer{
-  padding-bottom:120%!important;
-}
-body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .widget-preserving-ratio-inner>a{
-  position:absolute!important;
-  inset:0!important;
-  display:grid!important;
-  place-items:center!important;
-  padding:7px!important;
-  box-sizing:border-box!important;
-  border-radius:9px;
-  background:#fffaf0!important;
-}
-body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .widget-preserving-ratio-inner img{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:contain!important;
 }
 #main-content.recipe-page .recipe-side-note{
   box-sizing:border-box;
@@ -971,7 +949,7 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
   bottom:0;
   width:98%;
   height:7px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7c34-5 42 3 75-1s47-3 78 0 49 3 81-1' fill='none' stroke='%23bd8f19' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7c34-5 42 3 75-1s47-3 78 0 49 3 81-1' fill='none' stroke='%23f8b810' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
   pointer-events:none;
 }
 </style>
@@ -2766,6 +2744,15 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
 <div class="recipe-tape"><div class="recipe-wrap recipe-tape-in"><span>Mix together and watch amazing things happen!</span><div class="fundraiser-countdown"><span class="countdown-label">Fundraiser ends in</span><div id="fundraiser-countdown" class="countdown-units" role="timer" aria-live="off" aria-label="Time remaining until the fundraiser ends"><span class="countdown-unit"><strong data-unit="days">--</strong><small>Days</small></span><span class="countdown-unit"><strong data-unit="hours">--</strong><small>Hours</small></span><span class="countdown-unit"><strong data-unit="minutes">--</strong><small>Minutes</small></span><span class="countdown-unit"><strong data-unit="seconds">--</strong><small>Seconds</small></span></div><span class="countdown-deadline">November 9, 2026 · 3 p.m. Central</span></div></div></div>
 <script>
 (function () {
+  var hero = document.querySelector('#main-content.recipe-page .recipe-hero');
+  if (hero && !hero.querySelector('.recipe-hero-izzy')) {
+    var izzy = document.createElement('img');
+    izzy.className = 'recipe-hero-izzy';
+    izzy.src = '/assets/fundraiser-chef-izzy-hero.png';
+    izzy.alt = 'Chef Izzy the Covenant eagle wearing a chef hat';
+    izzy.setAttribute('decoding', 'async');
+    hero.appendChild(izzy);
+  }
   var deadline = Date.parse('2026-11-09T15:00:00-06:00');
   var timer = document.getElementById('fundraiser-countdown');
   if (!timer) return;
@@ -2847,11 +2834,12 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
 <section class="recipe-section paper" id="the-need">
   <div class="recipe-wrap recipe-story">
     <div class="recipe-photo-card recipe-measuring-card">
-      <div class="measuring-illustration" data-measuring-glass role="img" aria-label="School-wide fundraising goal: $80,000. Awaiting the first total from the school.">
+      <div class="measuring-illustration" data-measuring-glass role="img" aria-label="School-wide fundraising goal: $80,000. Small decorative water animation; not a reported fundraising total.">
         <span class="measuring-goal" aria-hidden="true"><strong class="goal-amount">$80,000</strong><small class="goal-caption">School-wide goal</small></span>
         <div class="measuring-jug">
           <svg class="measuring-handle" viewBox="0 0 232 260" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M220 58 H236 Q252 58 252 74 V194 Q252 210 236 210 H216" fill="none" stroke="#173d70" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M220 58 H236 Q252 58 252 74 V194 Q252 210 236 210 H216" fill="none" stroke="#8ed5ed" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="measuring-vessel"><div class="measuring-liquid" data-measuring-liquid></div><div class="measuring-glass-shine" aria-hidden="true"></div></div>
+          <span class="measuring-fill-trigger" aria-hidden="true"></span>
           <div class="measuring-levels" aria-hidden="true">
             <div class="measuring-level"><span>$80,000</span><i></i></div>
             <div class="measuring-level"><span>$60,000</span><i></i></div>
@@ -2863,7 +2851,7 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
         </div>
         <span class="measuring-counter" aria-hidden="true"></span>
       </div>
-      <p class="measuring-total" data-school-goal-total role="status" aria-live="polite" aria-atomic="true">Awaiting the first total</p>
+      <p class="measuring-total" data-school-goal-total role="status" aria-live="polite" aria-atomic="true" hidden></p>
       <p class="measuring-update-date" data-school-goal-date hidden></p>
     </div>
     <div class="recipe-story-copy"><span class="recipe-kicker">The big thing we’re making</span><h2>A fresh floor for every Eagle.</h2><p>The original gym floor has served Covenant Christian School since <b>1999</b>—more than 25 years of learning, playing, competing and gathering.</p><p>Now we’re raising funds to replace it and ready a well-loved space for future PE classes, games, school events and community celebrations. Every donation helps.</p><a class="recipe-btn sun measuring-register" href="https://mybooster.com/v3" target="_blank" rel="noopener">Register with Booster</a></div>
@@ -2877,7 +2865,7 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
     <div class="recipe-heading">
       <span class="recipe-kicker">Pin it to the fridge</span>
       <h2>Dates from the Recipe Report</h2>
-      <p class="script-note fundraiser-season">Fundraiser season runs October 7–November 9, 2026.</p>
+      <p class="script-note fundraiser-season">Fundraiser season runs <span class="season-dates">October 7–November 9, 2026.</span></p>
     </div>
     <div class="recipe-calendar" role="group" aria-label="Fundraiser calendar">
       <section class="calendar-month" aria-labelledby="calendar-october">
@@ -3483,17 +3471,17 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
   <div class="recipe-wrap recipe-sponsor sponsor-recipe">
     <div class="sponsor-pitch-grid">
       <div class="sponsor-appeal">
-        <span class="recipe-kicker">A place for our community</span>
-        <h2>Help make room to grow.</h2>
-        <p>Partner with Covenant Christian School to renew the gym. Corporate donations through the fundraiser count toward participating student goals.</p>
-        <p class="sponsor-deadline-note"><strong>October 14, 2026</strong><span>Commitment form and high-resolution vector Adobe Illustrator logo due.</span></p>
+        <span class="recipe-kicker">A community recipe for a stronger school</span>
+        <h2>Local businesses, pull up a chair!</h2>
+        <p>Your support helps renew the Covenant gym. Corporate donations submitted through the fundraiser count toward participating student goals.</p>
+        <p class="sponsor-deadline-note"><strong><time datetime="2026-10-14">October 14, 2026</time></strong><span>Sponsor commitment form and high-resolution vector Adobe Illustrator logo due.</span></p>
         <a class="recipe-btn sponsor-form-cta" data-pdf="sponsor" href="/pdfs/fall-fundraiser-sponsor-form-2026.pdf" download="Covenant-2026-Corporate-Sponsor-Form.pdf">Download sponsor form (PDF)</a>
       </div>
     </div>
     <section class="sponsor-wall" aria-labelledby="sponsor-wall-title" data-sponsor-ticker>
       <div class="sponsor-wall-heading">
         <div>
-          <h3 id="sponsor-wall-title">Our 2026 sponsors</h3>
+          <h3 id="sponsor-wall-title">Our community recipe partners</h3>
         </div>
         <button class="sponsor-ticker-control" type="button" aria-label="Pause sponsor ticker" aria-pressed="false" aria-controls="fundraiser-sponsor-track" hidden>Pause</button>
       </div>
@@ -3540,8 +3528,8 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
         </div>
       </div>
     </section>
-    <details class="sponsor-options">
-      <summary>Sponsorship options &amp; details <span aria-hidden="true">+</span></summary>
+    <section class="sponsor-options" aria-labelledby="sponsor-options-heading">
+      <h3 class="sponsor-options-heading" id="sponsor-options-heading">Sponsorship options &amp; details</h3>
       <div class="sponsor-levels">
       <div class="sponsor-tier-list">
         <details class="sponsor-level">
@@ -3572,7 +3560,7 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
       </aside>
       <p class="fine sponsor-tax-note">The sponsor form states the school is a 501(c)(3) and donations are tax deductible. Consult your tax professional with questions.</p>
       </div>
-    </details>
+    </section>
   </div>
   <script>
     (function(){
@@ -3748,6 +3736,226 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
       #main-content #sponsors .sponsor-wall-heading{align-items:flex-start}
       #main-content #sponsors .sponsor-levels{padding:9px}
     }
+    /* A bounded recipe-book spread: gingham header, note-sheet copy, then a sponsor shelf. */
+    #main-content #sponsors{
+      padding-block:32px;
+      background:#fff;
+      border-block:3px solid #20a8dc;
+    }
+    #main-content #sponsors .recipe-sponsor{
+      position:relative;
+      box-sizing:border-box;
+      overflow:hidden;
+      gap:0;
+      padding:24px 24px 19px;
+      border:2px solid #173d70;
+      border-radius:18px 5px 17px 6px;
+      background:#fffaf0;
+      box-shadow:0 6px 0 #20a8dc;
+    }
+    #main-content #sponsors .recipe-sponsor::before{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:13px;
+      border-radius:16px 3px 0 0;
+      background-color:#fffaf0;
+      background-image:
+        linear-gradient(45deg,rgba(32,168,220,.36) 25%,transparent 25%,transparent 75%,rgba(32,168,220,.36) 75%),
+        linear-gradient(45deg,rgba(32,168,220,.36) 25%,transparent 25%,transparent 75%,rgba(32,168,220,.36) 75%);
+      background-position:0 0,7px 7px;
+      background-size:14px 14px;
+      border-bottom:1px solid #9bcfe0;
+      content:"";
+      pointer-events:none;
+    }
+    #main-content #sponsors .sponsor-pitch-grid{margin-top:2px}
+    #main-content #sponsors .sponsor-appeal{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) max-content;
+      grid-template-areas:"kicker kicker" "title title" "copy copy" "deadline cta";
+      align-items:center;
+      gap:2px 18px;
+      padding:0 0 17px;
+    }
+    #main-content #sponsors .sponsor-appeal .recipe-kicker{
+      grid-area:kicker;
+      color:#075d85;
+      font-size:15px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    #main-content #sponsors .sponsor-appeal h2{
+      grid-area:title;
+      margin:2px 0 4px;
+      color:#173d70;
+      font:clamp(1.8rem,3.5vw,2.3rem)/1.08 'Lilita One',Impact,sans-serif;
+    }
+    #main-content #sponsors .sponsor-appeal>p:not(.sponsor-deadline-note){
+      grid-area:copy;
+      max-width:760px;
+      margin:0 0 9px;
+      color:#283d4b;
+      font-size:17px;
+      line-height:1.5;
+    }
+    #main-content #sponsors .sponsor-deadline-note{
+      position:relative;
+      grid-area:deadline;
+      align-self:center;
+      box-sizing:border-box;
+      min-width:0;
+      max-width:610px;
+      margin:7px 0 2px;
+      padding:13px 14px 11px;
+      border:1px dashed #c39b42;
+      border-radius:5px 13px 7px 11px;
+      background-color:#fff4ce;
+      background-image:
+        linear-gradient(135deg,transparent 49%,#ead99f 50% 100%),
+        repeating-linear-gradient(to bottom,transparent 0 25px,rgba(184,151,64,.12) 25px 26px);
+      background-position:right bottom,0 0;
+      background-size:14px 14px,100% 26px;
+      background-repeat:no-repeat,repeat;
+      color:#173d70;
+      box-shadow:2px 3px 0 rgba(23,61,112,.12);
+    }
+    #main-content #sponsors .sponsor-deadline-note::before{
+      position:absolute;
+      top:-6px;
+      left:18px;
+      z-index:1;
+      width:58px;
+      height:15px;
+      border:1px solid rgba(23,61,112,.16);
+      background-color:#c8eaf1;
+      background-image:
+        linear-gradient(45deg,rgba(32,168,220,.32) 25%,transparent 25%,transparent 75%,rgba(32,168,220,.32) 75%),
+        linear-gradient(45deg,rgba(32,168,220,.32) 25%,transparent 25%,transparent 75%,rgba(32,168,220,.32) 75%);
+      background-position:0 0,4px 4px;
+      background-size:8px 8px;
+      content:"";
+      transform:rotate(-3deg);
+    }
+    #main-content #sponsors .sponsor-deadline-note::after{
+      position:absolute;
+      top:-5px;
+      right:18px;
+      z-index:1;
+      width:39px;
+      height:13px;
+      border:1px solid rgba(23,61,112,.12);
+      background:rgba(255,217,102,.75);
+      content:"";
+      transform:rotate(4deg);
+    }
+    #main-content #sponsors .sponsor-deadline-note strong{
+      display:block;
+      margin-bottom:2px;
+      color:#173d70;
+      font:700 24px/1.18 'Kalam',cursive;
+    }
+    #main-content #sponsors .sponsor-deadline-note span{display:block;color:#283d4b;font-size:16px;line-height:1.4}
+    #main-content #sponsors .sponsor-form-cta{
+      grid-area:cta;
+      justify-self:end;
+      min-height:48px;
+      border:2px solid #173d70;
+      border-radius:5px 13px;
+      background:#ffd966;
+      color:#102b4f;
+      box-shadow:3px 3px 0 #20a8dc;
+    }
+    #main-content #sponsors .sponsor-options{
+      margin:0 0 15px;
+      border:1px solid #7fb5ca;
+      border-radius:5px 12px;
+      background:#f1f9f8;
+    }
+    #main-content #sponsors .sponsor-options>summary{
+      min-height:50px;
+      padding-inline:14px;
+      color:#173d70;
+      font:1.08rem/1.35 'Lilita One',Impact,sans-serif;
+    }
+    #main-content #sponsors .sponsor-options>summary span{
+      border-color:#173d70;
+      background:#ffd966;
+    }
+    #main-content #sponsors .sponsor-options[open]>summary{color:#173d70}
+    #main-content #sponsors section.sponsor-options{background:#fffaf0}
+    #main-content #sponsors .sponsor-options-heading{
+      margin:0;
+      padding:15px 14px;
+      border-bottom:1px dashed #8fc6d4;
+      color:#173d70;
+      font:1.08rem/1.35 'Lilita One',Impact,sans-serif;
+    }
+    body.a11y-high-contrast #main-content #sponsors .sponsor-options-heading{color:#fff!important}
+    #main-content #sponsors .sponsor-levels{background:#fffaf0}
+    #main-content #sponsors .sponsor-wall{
+      margin:0;
+      padding:12px 14px 10px;
+      border:1px solid #9ac9d7;
+      border-bottom:5px solid #ffd966;
+      border-radius:5px 14px 9px 10px;
+      background:#fff;
+      box-shadow:0 3px 0 rgba(23,61,112,.12);
+    }
+    #main-content #sponsors .sponsor-wall-heading{
+      min-height:40px;
+      align-items:center;
+      margin-bottom:6px;
+      padding-bottom:7px;
+      border-bottom:1px dashed #b7d8df;
+    }
+    #main-content #sponsors .sponsor-wall-heading h3{
+      color:#173d70;
+      font:1.4rem/1.15 'Lilita One',Impact,sans-serif;
+    }
+    #main-content #sponsors .sponsor-ticker-control{
+      border:1px solid #173d70;
+      border-radius:4px 10px;
+      background:#173d70;
+      color:#fff;
+    }
+    #main-content #sponsors .sponsor-logo-card{
+      height:110px;
+      gap:4px;
+      padding:4px 10px;
+      border:0;
+      border-right:1px solid #d3e3e6;
+      border-radius:0;
+      background:transparent;
+    }
+    #main-content #sponsors .sponsor-logo-stage{
+      height:68px;
+      background:transparent;
+    }
+    #main-content #sponsors .sponsor-logo-stage img{max-height:66px}
+    #main-content #sponsors .sponsor-logo-name{
+      color:#173d70;
+      font-size:16px;
+      font-weight:800;
+    }
+    #main-content.recipe-page #sponsors :is(.sponsor-options>summary,.sponsor-form-cta,.sponsor-ticker-control,.sponsor-logo-link):focus-visible{
+      outline:3px solid #173d70!important;
+      outline-offset:3px!important;
+    }
+    @media(max-width:700px){
+      #main-content #sponsors .recipe-sponsor{padding:22px 15px 15px}
+      #main-content #sponsors .sponsor-appeal{
+        grid-template-columns:minmax(0,1fr);
+        grid-template-areas:"kicker" "title" "copy" "deadline" "cta";
+        gap:3px;
+      }
+      #main-content #sponsors .sponsor-form-cta{justify-self:start;margin-top:7px}
+      #main-content #sponsors .sponsor-wall{padding:10px 9px 8px}
+      #main-content #sponsors .sponsor-wall-heading{gap:9px}
+      #main-content #sponsors .sponsor-wall-heading h3{font-size:1.2rem}
+    }
     @media(prefers-reduced-motion:reduce){
       #main-content #sponsors .sponsor-ticker-track{display:block!important;width:auto!important;transform:none!important;animation:none!important}
       #main-content #sponsors .sponsor-ticker-list:not(.sponsor-ticker-clone){display:grid!important;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));width:auto;padding:0}
@@ -3772,8 +3980,10 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
     body.a11y-high-contrast #main-content #sponsors .sponsor-level-benefits p,
     body.a11y-high-contrast #main-content #sponsors .sponsor-tax-note{color:#fff!important}
     body.a11y-high-contrast #main-content #sponsors .sponsor-deadline-note,
-    body.a11y-high-contrast #main-content #sponsors .sponsor-deadline-note span,
     body.a11y-high-contrast #main-content #sponsors .sponsor-level-amount{background:#ffd966!important;color:#102b4f!important}
+    body.a11y-high-contrast #main-content #sponsors .sponsor-deadline-note span{background:transparent!important;color:#102b4f!important}
+    body.a11y-high-contrast #main-content #sponsors .sponsor-deadline-note::before,
+    body.a11y-high-contrast #main-content #sponsors .sponsor-deadline-note::after{border-color:#102b4f!important;background:#fff!important}
     body.a11y-high-contrast #main-content #sponsors .sponsor-ticker-control,
     body.a11y-high-contrast #main-content #sponsors .sponsor-level-toggle{background:#ffd966!important;color:#102b4f!important;border-color:#fff!important}
     body.a11y-high-contrast #main-content #sponsors .sponsor-level-benefits{border-color:#fff!important}
@@ -5330,6 +5540,14 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
   transform-origin:bottom center;
   will-change:transform;
 }
+#main-content .measuring-fill-trigger{
+  position:absolute;
+  left:50%;
+  bottom:7%;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+}
 #main-content .measuring-liquid::before{
   content:"";
   position:absolute;
@@ -5437,7 +5655,7 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
 /* WCAG AA text contrast; keep small labels readable and allow text zoom. */
 #main-content.recipe-page{
   --recipe-red:#a12d25;
-  --readable-ink:#102b4f;
+  --readable-ink:#0a2b4e;
   font-size:max(1rem,16px);
   line-height:1.6;
 }
@@ -5488,17 +5706,7 @@ body:has(#main-content.recipe-page) .page-footer #image-widget-1719518529376 .wi
 #main-content.recipe-page .measuring-goal{font-size:max(1rem,16px);line-height:1.4}
 #main-content.recipe-page a:focus-visible,
 #main-content.recipe-page summary:focus-visible{outline:3px solid #a12d25!important;outline-offset:4px!important}
-/* Keep the shared shell's markup/layout, but repair its faint text. */
-body:has(#main-content.recipe-page) .page-footer .text-widget-content,
-body:has(#main-content.recipe-page) .page-footer .text-widget-content span,
-body:has(#main-content.recipe-page) .page-footer .text-widget-content a{
-  color:#e6edf2!important;font-size:max(1rem,16px)!important;
-}
-body:has(#main-content.recipe-page) .page-footer .text-widget-content p{line-height:1.6!important}
-body:has(#main-content.recipe-page) .page-footer .text-widget-content h4,
-body:has(#main-content.recipe-page) .page-footer .text-widget-content h4 span{
-  font-size:max(1.4rem,22px)!important;font-weight:700!important;
-}
+/* Fundraiser header controls; preserve the shared footer's original styling. */
 body:has(#main-content.recipe-page) .header-widget a.theme-button,
 body:has(#main-content.recipe-page) .header-widget a.theme-button span{color:#102b4f!important}
 body:has(#main-content.recipe-page) .header-widget a.fundraiser-register{
@@ -5538,7 +5746,6 @@ body.a11y-no-anim:has(#main-content.recipe-page) .header-widget a.fundraiser-reg
 @media(prefers-reduced-motion:reduce){
   body:has(#main-content.recipe-page) .header-widget a.fundraiser-register{transition:none!important;transform:none!important}
 }
-body:has(#main-content.recipe-page) .page-footer a:focus-visible{outline-color:#ffd966!important}
 #a11y-panel .a11y-toggle,
 #a11y-panel-reset,
 #a11y-textsize-row>label,
@@ -5573,36 +5780,43 @@ body.a11y-high-contrast #main-content.recipe-page :is(a,summary):focus-visible{o
 /* Page-only palette rebalance: school blue/navy lead; coral stays a tiny accent. */
 #main-content.recipe-page .recipe-kicker,
 #main-content.recipe-page .recipe-hero .recipe-kicker{
-  color:#173d70!important;
+  color:#1d3a5f!important;
 }
 #main-content.recipe-page .recipe-title span{
-  color:#0879a8!important;
+  color:#1d598e!important;
 }
 #main-content.recipe-page .recipe-hero .recipe-lede>strong{
-  color:#126184!important;
+  color:#1d598e!important;
 }
 #main-content.recipe-page .recipe-tier span,
 #main-content.recipe-page .grand-prize-list b{
   color:#173d70!important;
 }
-#main-content.recipe-page .script-note{color:#126184!important}
+#main-content.recipe-page .script-note{color:#1d598e!important}
 #main-content.recipe-page #dates .recipe-heading .fundraiser-season{
   font-family:'Kalam','Comic Sans MS',cursive;
   font-size:clamp(22px,2.1vw,26px);
   font-weight:700;
   line-height:1.4;
-  color:#126184;
+  color:#1d598e;
   text-decoration:none;
   max-width:780px;
   margin:12px auto 0;
+}
+@media(max-width:768px){
+  #main-content.recipe-page #dates .fundraiser-season .season-dates{
+    display:block;
+    white-space:nowrap;
+    font-size:clamp(18px,5.5vw,22px);
+  }
 }
 body.a11y-high-contrast #main-content.recipe-page #dates .recipe-heading .fundraiser-season{
   color:#fff!important;
 }
 #main-content.recipe-page .recipe-actions .recipe-btn.sun{
-  border-color:#173d70!important;
-  background:#087ba8!important;
-  box-shadow:4px 4px 0 #ffd966!important;
+  border-color:#1d3a5f!important;
+  background:#1d598e!important;
+  box-shadow:4px 4px 0 #f8b810!important;
   color:#fff!important;
 }
 #main-content.recipe-page .recipe-actions .recipe-btn.sun:hover{
@@ -5613,8 +5827,8 @@ body.a11y-high-contrast #main-content.recipe-page #dates .recipe-heading .fundra
   outline-color:#173d70!important;
 }
 body:has(#main-content.recipe-page) .header-widget a.fundraiser-register{
-  border-color:#173d70!important;
-  background:#087ba8!important;
+  border-color:#1d3a5f!important;
+  background:#1d598e!important;
   color:#fff!important;
 }
 body:has(#main-content.recipe-page) .header-widget a.fundraiser-register span{
@@ -6315,6 +6529,160 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   outline-color:#ffd966!important;
 }
 </style>
+<style id="fundraiser-header-logo-size">
+  body:has(#main-content.recipe-page) .main-header-wrapper .header-widget[data-type="headers/Logo"],
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"]{
+    position:relative;
+    z-index:40;
+  }
+  body:has(#main-content.recipe-page) .main-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a,
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a{
+    position:relative;
+    display:block;
+    width:170px;
+    height:82px;
+    overflow:visible;
+  }
+  body:has(#main-content.recipe-page) .main-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo img,
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo img{
+    position:absolute!important;
+    top:-13px;
+    left:0;
+    z-index:1;
+    width:auto!important;
+    max-width:170px!important;
+    max-height:128px!important;
+    object-fit:contain!important;
+    object-position:left center;
+    transition:none!important;
+  }
+  body:has(#main-content.recipe-page) .mobile-menu-logo .header-widget[data-type="headers/Logo"] .theme-logo img{
+    position:static!important;
+    width:auto!important;
+    max-width:155px!important;
+    max-height:115px!important;
+    object-fit:contain!important;
+    transform:none!important;
+  }
+  @media(max-width:768px){
+    body:has(#main-content.recipe-page) .main-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a,
+    body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a{
+      width:148px;
+      height:66px;
+    }
+    body:has(#main-content.recipe-page) .main-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo img,
+    body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo img{
+      top:-8px;
+      max-width:148px!important;
+      max-height:110px!important;
+    }
+  }
+</style>
+<style id="fundraiser-sticky-header">
+  /* Keep the framework's .visible scroll behavior; never overhang the compact bar. */
+  body:has(#main-content.recipe-page) .fixed-header-wrapper{
+    background:#fff!important;
+    overflow:visible!important;
+    pointer-events:none;
+    box-shadow:0 3px 12px rgba(23,61,112,.13);
+    border-bottom:2px solid #d4edf4;
+  }
+  body:has(#main-content.recipe-page) .fixed-header-wrapper.visible{pointer-events:auto}
+  #main-content.recipe-page>section[id]{scroll-margin-top:120px}
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-row-main{
+    background:#fff!important;
+  }
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-row-space{
+    height:6px!important;
+  }
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .flex-header{
+    min-height:96px;
+    height:auto!important;
+    align-items:center;
+  }
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a{
+    display:flex;
+    align-items:center;
+    width:128px;
+    height:96px;
+  }
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a>span{
+    display:block;
+    line-height:0;
+  }
+  body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo img{
+    position:static!important;
+    display:block;
+    top:auto!important;
+    left:auto!important;
+    max-width:118px!important;
+    max-height:96px!important;
+    transform:none!important;
+    margin:0;
+  }
+  @media(max-width:768px){
+    #main-content.recipe-page>section[id]{scroll-margin-top:112px}
+    body:has(#main-content.recipe-page) .fixed-header-wrapper .flex-header{min-height:88px}
+    body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo>a{
+      width:110px;
+      height:88px;
+    }
+    body:has(#main-content.recipe-page) .fixed-header-wrapper .header-widget[data-type="headers/Logo"] .theme-logo img{
+      max-width:105px!important;
+      max-height:86px!important;
+    }
+  }
+  body.a11y-high-contrast:has(#main-content.recipe-page) .fixed-header-wrapper,
+  body.a11y-high-contrast:has(#main-content.recipe-page) .fixed-header-wrapper .header-row-main{
+    background:#060e1c!important;
+  }
+  body.a11y-high-contrast:has(#main-content.recipe-page) .fixed-header-wrapper .theme-logo img{
+    filter:drop-shadow(0 0 1px #fff);
+  }
+</style>
+<style id="fundraiser-hero-izzy">
+  #main-content.recipe-page .recipe-hero{
+    position:relative;
+    overflow:visible!important;
+  }
+  #main-content.recipe-page .recipe-hero-izzy{
+    position:absolute;
+    right:0;
+    bottom:0;
+    z-index:3;
+    display:block;
+    width:clamp(260px,23vw,320px);
+    height:auto;
+    max-width:none;
+    max-height:none;
+    object-fit:contain;
+    object-position:center bottom;
+    filter:drop-shadow(4px 5px 0 rgba(23,61,112,.18));
+    pointer-events:none;
+    opacity:1;
+    transform:translateY(0);
+    animation:izzyHeroArrive 1.1s cubic-bezier(.2,.75,.3,1) .18s both;
+  }
+  @keyframes izzyHeroArrive{
+    from{opacity:0;transform:translateY(65px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @media(max-width:1250px){
+    #main-content.recipe-page .recipe-hero{
+      --hero-izzy-width:clamp(190px,27vw,270px);
+      padding-bottom:calc(var(--hero-izzy-width) * 1.26852 - 22px)!important;
+    }
+    #main-content.recipe-page .recipe-hero-izzy{
+      right:5px;
+      bottom:5px;
+      width:var(--hero-izzy-width);
+    }
+  }
+  @media(prefers-reduced-motion:reduce){
+    #main-content.recipe-page .recipe-hero-izzy{animation:none!important;transition:none!important}
+  }
+  body.a11y-no-anim #main-content.recipe-page .recipe-hero-izzy{animation:none!important;transition:none!important}
+</style>
 <script>
 (function(){
   'use strict';
@@ -6327,6 +6695,8 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   if(!liquid||!total||!updated||!config)throw new Error('School-goal display is incomplete.');
   var state=null,visible=false,raf=0,startTime=null,duration=4200;
   var currentRatio=0,targetRatio=0,fromRatio=0;
+  // A small visible decorative splash, never stored or announced as donations.
+  var previewRatio=0.12;
   var motion=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
   var money=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:2});
   var percent=new Intl.NumberFormat('en-US',{maximumFractionDigits:1});
@@ -6371,7 +6741,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   }
   function startFill(){
     stopAnimation();
-    if(motionDisabled()||state.raised===null||currentRatio===targetRatio){finishFill();return}
+    if(motionDisabled()||currentRatio===targetRatio){finishFill();return}
     fromRatio=currentRatio;
     liquid.style.willChange='transform';
     raf=requestAnimationFrame(animate);
@@ -6380,17 +6750,18 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     var next=validateProgress(data);
     stopAnimation();
     state=next;
-    targetRatio=next.raised===null?0:Math.min(1,next.raised/next.goal);
+    targetRatio=next.raised===null?previewRatio:Math.min(1,next.raised/next.goal);
     illustration.querySelector('.goal-amount').textContent=money.format(next.goal);
     illustration.querySelectorAll('.measuring-level span').forEach(function(label,index){
       label.textContent=money.format(next.goal*(4-index)/4);
     });
     var label;
+    total.hidden=next.raised===null;
     if(next.raised===null){
-      total.textContent='Awaiting the first total';
+      total.textContent='';
       illustration.setAttribute('role','img');
       ['aria-valuemin','aria-valuemax','aria-valuenow','aria-valuetext'].forEach(function(attribute){illustration.removeAttribute(attribute)});
-      label='School-wide fundraising goal: '+money.format(next.goal)+'. Awaiting the first total from the school.';
+      label='School-wide fundraising goal: '+money.format(next.goal)+'. Small decorative water animation; not a reported fundraising total.';
     }else{
       var percentage=next.raised/next.goal*100;
       var share=percentage>0&&percentage<1?'<1%':percent.format(percentage)+'%';
@@ -6405,7 +6776,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     updated.hidden=next.updatedAt===null;
     updated.textContent=next.updatedAt===null?'':'Updated '+new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(next.updatedAt+'T00:00:00Z'));
     illustration.setAttribute('aria-label',label+(updated.hidden?'':' '+updated.textContent+'.'));
-    if(visible||motionDisabled()||next.raised===null)startFill();
+    if(visible||motionDisabled())startFill();
     else setFill(0);
     return {goal:next.goal,raised:next.raised,updatedAt:next.updatedAt};
   }
@@ -6413,6 +6784,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   try{updateProgress(JSON.parse(config.textContent))}
   catch(error){
     finishFill();
+    total.hidden=false;
     total.textContent='Fundraising total unavailable';
     total.setAttribute('role','alert');
     illustration.setAttribute('aria-label','School-wide fundraising progress is unavailable.');
@@ -6429,8 +6801,8 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   }
   var observer=typeof IntersectionObserver==='function'?new IntersectionObserver(function(entries){
     if(entries.some(function(entry){return entry.isIntersecting})){visible=true;startFill();observer.disconnect()}
-  },{threshold:.28}):null;
-  if(observer)observer.observe(illustration);else{visible=true;startFill()}
+  },{threshold:0,rootMargin:'-112px 0px -24px 0px'}):null;
+  if(observer)observer.observe(illustration.querySelector('.measuring-fill-trigger'));else{visible=true;startFill()}
 }());
 </script>
 <template id="recipe-participation-list">
@@ -6459,19 +6831,11 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
 (function(){
   var heroLogo=document.querySelector('#main-content.recipe-page .recipe-hero-logo');
   if(!heroLogo)return;
-  var logoData=heroLogo.getAttribute('src');
   var logoAlt='Covenant Christian School Recipe for Success 2026 fundraiser logo';
   document.querySelectorAll('.header-widget[data-type="headers/Logo"] img').forEach(function(img){
-    img.setAttribute('src',logoData);
+    img.setAttribute('src','/assets/fundraiser-header-logo-transparent.png');
     img.setAttribute('alt',logoAlt);
   });
-  var footerLogo=document.querySelector('.page-footer #image-widget-1719518529376 img');
-  if(footerLogo){
-    footerLogo.setAttribute('src',logoData);
-    footerLogo.setAttribute('alt',logoAlt);
-    var footerImage=footerLogo.closest('.widget-preserving-ratio-inner');
-    if(footerImage)footerImage.setAttribute('data-slide',logoData);
-  }
   document.querySelectorAll('.header-widget[data-type="headers/Button"] a.theme-button[href="/new-student-application"]').forEach(function(link){
     link.setAttribute('href','https://mybooster.com/v3');
     link.classList.add('fundraiser-register');
@@ -6577,5 +6941,705 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     }
   });
 }());
+</script>
+<style id="fundraiser-gingham-parallax-style">
+  #main-content.recipe-page .recipe-hero{
+    --gingham-scroll-offset:0px;
+    background-position:0 var(--gingham-scroll-offset),22px calc(22px + var(--gingham-scroll-offset))!important;
+  }
+  @media(prefers-reduced-motion:reduce){
+    #main-content.recipe-page .recipe-hero{background-position:0 0,22px 22px!important}
+  }
+  body.a11y-no-anim #main-content.recipe-page .recipe-hero{
+    background-position:0 0,22px 22px!important;
+  }
+</style>
+<script id="fundraiser-gingham-parallax">
+(function(){
+  var hero=document.querySelector('#main-content.recipe-page .recipe-hero');
+  if(!hero)return;
+  var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var scheduled=false;
+  var lastOffset=null;
+  function update(){
+    scheduled=false;
+    var offset=0;
+    if(!motion.matches&&!document.body.classList.contains('a11y-no-anim')){
+      var bounds=hero.getBoundingClientRect();
+      if(bounds.bottom<=0||bounds.top>=window.innerHeight)return;
+      offset=Math.max(0,window.scrollY||window.pageYOffset||0)*0.18;
+    }
+    var value=offset.toFixed(2)+'px';
+    if(value!==lastOffset){
+      hero.style.setProperty('--gingham-scroll-offset',value);
+      lastOffset=value;
+    }
+  }
+  function schedule(){
+    if(scheduled)return;
+    scheduled=true;
+    window.requestAnimationFrame(update);
+  }
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('pageshow',schedule);
+  if(motion.addEventListener)motion.addEventListener('change',schedule);
+  else if(motion.addListener)motion.addListener(schedule);
+  if(typeof MutationObserver!=='undefined'){
+    new MutationObserver(schedule).observe(document.body,{attributes:true,attributeFilter:['class']});
+  }
+  schedule();
+})();
+</script>
+<style id="fundraiser-calendar-noticeboard">
+  /* Two month collections of pinned recipe slips, not a timetable. */
+  #main-content.recipe-page #dates .recipe-calendar{
+    box-sizing:border-box;
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);
+    align-items:start;
+    gap:26px;
+    max-width:1120px;
+    padding:24px;
+    border:3px solid #173d70;
+    border-radius:18px;
+    background-color:#e3f1f1;
+    background-image:linear-gradient(90deg,rgba(32,168,220,.075) 50%,transparent 50%),linear-gradient(rgba(32,168,220,.075) 50%,transparent 50%);
+    background-size:24px 24px;
+    box-shadow:0 6px 0 #b7d5df;
+  }
+  #main-content.recipe-page #dates .calendar-month{
+    min-width:0;
+    overflow:visible;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+  }
+  #main-content.recipe-page #dates .calendar-month-heading{
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:3px 14px;
+    margin:0 0 17px;
+    padding:0 0 9px;
+    border:0;
+    border-bottom:2px dashed #7eaebc;
+    background:transparent;
+    color:#173d70;
+  }
+  #main-content.recipe-page #dates .calendar-month-heading h3{
+    font:400 2.25rem/1.1 'Lilita One',sans-serif;
+    letter-spacing:0;
+    color:#173d70;
+  }
+  #main-content.recipe-page #dates .calendar-month-heading>span{
+    flex:1 1 auto;
+    text-align:left;
+    color:#173d70;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:0;
+    text-transform:none;
+  }
+  #main-content.recipe-page #dates .calendar-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    align-items:stretch;
+    gap:15px;
+    margin:0;
+    padding:0;
+    list-style:none;
+    background:none;
+  }
+  #main-content.recipe-page #dates .calendar-month:last-child .calendar-list{grid-template-columns:minmax(0,1fr)}
+  #main-content.recipe-page #dates .date-recipe{
+    box-sizing:border-box;
+    position:relative;
+    display:block;
+    min-width:0;
+    min-height:188px;
+    margin:0;
+    padding:19px 15px 15px;
+    border:1.5px solid #9bbbc5;
+    border-radius:3px 11px 3px 11px;
+    background:#fff9e9;
+    box-shadow:3px 4px 0 rgba(23,61,112,.1);
+  }
+  #main-content.recipe-page #dates .date-recipe:last-child{border-bottom:1.5px solid #9bbbc5}
+  #main-content.recipe-page #dates .date-recipe::before{
+    content:"";
+    position:absolute;
+    z-index:2;
+    top:-6px;
+    left:calc(50% - 23px);
+    width:46px;
+    height:12px;
+    background:#f4d773;
+    border-left:2px dotted #e5c455;
+    border-right:2px dotted #e5c455;
+    opacity:.9;
+    transform:rotate(-4deg);
+    pointer-events:none;
+  }
+  #main-content.recipe-page #dates .date-recipe:nth-child(even)::before{transform:rotate(4deg);background:#b4deea;border-color:#9ac8d8}
+  #main-content.recipe-page #dates .calendar-month:last-child .date-recipe{min-height:0}
+  #main-content.recipe-page #dates .date-recipe.calendar-detail-entry{padding:0}
+  #main-content.recipe-page #dates .calendar-entry-button{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:9px;
+    height:100%;
+    min-height:inherit;
+    width:100%;
+    padding:19px 15px 15px;
+    border:0;
+    border-radius:3px 11px 3px 11px;
+    background:transparent;
+    color:#173d70;
+    text-align:left;
+  }
+  #main-content.recipe-page #dates .calendar-entry-button:hover{background:#edf8fb}
+  #main-content.recipe-page #dates .calendar-entry-button:focus-visible{
+    z-index:3;
+    outline:3px solid #173d70;
+    outline-offset:4px;
+  }
+  #main-content.recipe-page #dates .date-recipe .calendar-dates{
+    box-sizing:border-box;
+    display:flex;
+    align-items:baseline;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:0 4px;
+    min-height:0;
+    margin:0;
+    padding:0 0 7px;
+    border:0;
+    border-bottom:1px dashed #a9c6cd;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    color:#173d70;
+    font:700 21px/1.2 'Kalam',cursive;
+    text-align:left;
+  }
+  #main-content.recipe-page #dates .date-recipe>.calendar-dates+div{margin-top:9px;min-width:0}
+  #main-content.recipe-page #dates .calendar-entry-copy{display:flex;flex-direction:column;flex:1;min-width:0}
+  #main-content.recipe-page #dates .calendar-entry-heading{display:contents}
+  #main-content.recipe-page #dates .calendar-entry-title,
+  #main-content.recipe-page #dates .date-recipe h4{
+    order:0;
+    margin:0 0 4px;
+    color:#173d70;
+    font:400 20px/1.18 'Lilita One',sans-serif;
+    overflow-wrap:break-word;
+  }
+  #main-content.recipe-page #dates .calendar-entry-preview,
+  #main-content.recipe-page #dates .date-recipe p{
+    order:1;
+    margin:0;
+    color:#283d4b;
+    font-size:max(1rem,16px);
+    line-height:1.4;
+  }
+  #main-content.recipe-page #dates .calendar-detail-hint{
+    order:2;
+    align-self:flex-start;
+    margin-top:auto;
+    padding-top:10px;
+    color:#173d70;
+    font-size:16px;
+    line-height:1.3;
+    text-decoration-color:#173d70;
+  }
+  #main-content.recipe-page #dates .deadline-event{background:#fff1c9;border-color:#bd9950}
+  #main-content.recipe-page #dates .final-event{background:#e9f7fb;border-color:#6ba7ba}
+  @media(max-width:980px){
+    #main-content.recipe-page #dates .recipe-calendar{grid-template-columns:minmax(0,1fr);gap:26px}
+    #main-content.recipe-page #dates .calendar-month:last-child .calendar-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    #main-content.recipe-page #dates .date-recipe{min-height:170px}
+  }
+  @media(max-width:560px){
+    #main-content.recipe-page #dates .recipe-calendar{padding:18px 12px;gap:24px;border-radius:12px}
+    #main-content.recipe-page #dates .calendar-month-heading{gap:4px 10px;margin-bottom:15px}
+    #main-content.recipe-page #dates .calendar-month-heading h3{font-size:2rem}
+    #main-content.recipe-page #dates .calendar-month-heading>span{flex-basis:100%}
+    #main-content.recipe-page #dates .calendar-list,
+    #main-content.recipe-page #dates .calendar-month:last-child .calendar-list{grid-template-columns:minmax(0,1fr);gap:14px}
+    #main-content.recipe-page #dates .date-recipe,
+    #main-content.recipe-page #dates .calendar-entry-button{
+      display:grid;
+      grid-template-columns:minmax(76px,.43fr) minmax(0,1fr);
+      align-items:start;
+      gap:12px;
+      min-height:0;
+      padding:16px 12px 13px;
+    }
+    #main-content.recipe-page #dates .date-recipe.calendar-detail-entry{display:block;padding:0}
+    #main-content.recipe-page #dates .date-recipe .calendar-dates{
+      justify-content:center;
+      padding:1px 7px 0 0;
+      border-bottom:0;
+      border-right:1px dashed #a9c6cd;
+      text-align:center;
+      font-size:18px;
+    }
+    #main-content.recipe-page #dates .calendar-dates:has(.date-separator) time:first-child{flex-basis:100%}
+    #main-content.recipe-page #dates .date-recipe>.calendar-dates+div{margin-top:0}
+    #main-content.recipe-page #dates .calendar-detail-hint{margin-top:0;padding-top:8px}
+  }
+  body.a11y-high-contrast #main-content.recipe-page #dates .recipe-calendar{
+    background:#060e1c!important;
+    background-image:none!important;
+    border-color:#fff!important;
+    box-shadow:none;
+  }
+  body.a11y-high-contrast #main-content.recipe-page #dates .date-recipe{
+    background:#060e1c!important;
+    border-color:#fff!important;
+    box-shadow:none;
+  }
+  body.a11y-high-contrast #main-content.recipe-page #dates .date-recipe .calendar-dates{
+    background:transparent!important;
+    border-color:#fff!important;
+    color:#fff!important;
+  }
+  body.a11y-high-contrast #main-content.recipe-page #dates .calendar-entry-button:focus-visible{outline-color:#ffd966!important}
+</style>
+<style id="fundraiser-rolling-pin-goal">
+  #main-content.recipe-page .recipe-goal{
+    position:relative;
+    isolation:isolate;
+    box-sizing:border-box;
+    width:calc(100% - 150px);
+    max-width:860px;
+    min-height:118px;
+    margin:42px auto 0;
+    padding:19px clamp(38px,5vw,60px);
+    align-items:center;
+    gap:20px;
+    overflow:visible;
+    border:3px solid #173d70;
+    border-radius:13px;
+    background:#f6d15b;
+    box-shadow:none;
+  }
+  #main-content.recipe-page .recipe-goal::before,
+  #main-content.recipe-page .recipe-goal::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    z-index:0;
+    width:74px;
+    height:42px;
+    background:#173d70;
+    clip-path:polygon(0 27%,7% 13%,18% 5%,29% 9%,72% 34%,100% 34%,100% 66%,72% 66%,29% 91%,18% 95%,7% 87%,0 73%);
+    transform:translateY(-50%);
+    pointer-events:none;
+  }
+  #main-content.recipe-page .recipe-goal::before{left:-77px}
+  #main-content.recipe-page .recipe-goal::after{right:-77px;transform:translateY(-50%) scaleX(-1)}
+  #main-content.recipe-page .recipe-goal>div,
+  #main-content.recipe-page .recipe-goal>.recipe-btn{position:relative;z-index:1}
+  #main-content.recipe-page .recipe-goal strong{
+    display:block;
+    color:#173d70;
+    font-family:'Lilita One',Impact,sans-serif;
+    font-size:clamp(1.75rem,2.7vw,2.3rem);
+    font-weight:400;
+    line-height:1.05;
+  }
+  #main-content.recipe-page .recipe-goal p{color:#173d70}
+  @media(max-width:560px){
+    #main-content.recipe-page .recipe-goal{
+      display:block;
+      width:calc(100% - 88px);
+      min-height:158px;
+      margin-bottom:82px;
+      padding:17px 19px;
+      text-align:center;
+    }
+    #main-content.recipe-page .recipe-goal::before,
+    #main-content.recipe-page .recipe-goal::after{width:46px;height:30px}
+    #main-content.recipe-page .recipe-goal::before{left:-44px}
+    #main-content.recipe-page .recipe-goal::after{right:-44px}
+    #main-content.recipe-page .recipe-goal strong{font-size:1.55rem;line-height:1.04}
+    #main-content.recipe-page .recipe-goal p{margin-top:7px;font-size:1rem;line-height:1.35}
+    #main-content.recipe-page .recipe-goal>.recipe-btn{
+      position:absolute;
+      z-index:2;
+      left:50%;
+      bottom:-76px;
+      width:max-content;
+      box-sizing:border-box;
+      max-width:calc(100vw - 70px);
+      white-space:normal;
+      text-align:center;
+      transform:translateX(-50%);
+    }
+    #main-content.recipe-page .recipe-goal>.recipe-btn:hover{transform:translate(calc(-50% + 2px),2px)}
+  }
+  body.a11y-high-contrast #main-content.recipe-page .recipe-goal::before,
+  body.a11y-high-contrast #main-content.recipe-page .recipe-goal::after{
+    background:#fff!important;
+    box-shadow:none!important;
+  }
+</style>
+<style id="fundraiser-supplied-utensil-watermarks">
+  /* Individual, user-supplied transparent doodles used as quiet section watermarks. */
+  #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
+    content:"";
+    position:absolute;
+    z-index:0;
+    display:block;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    pointer-events:none;
+    user-select:none;
+  }
+  #main-content.recipe-page #how-to-help::before{
+    left:max(4px,calc((100vw - 1120px)/2 - 78px));
+    top:49%;
+    width:74px;
+    height:130px;
+    background-image:url("/assets/fundraiser-utensils/whisk-navy.png");
+    opacity:.31;
+    transform:translateY(-50%) rotate(-5deg);
+  }
+  #main-content.recipe-page #prizes::before{
+    right:max(4px,calc((100vw - 1120px)/2 - 70px));
+    top:48%;
+    width:62px;
+    height:124px;
+    background-image:url("/assets/fundraiser-utensils/spatula-navy.png");
+    opacity:.3;
+    transform:translateY(-50%) rotate(4deg);
+  }
+  #main-content.recipe-page #sponsors::before{
+    right:22px;
+    top:14px;
+    width:124px;
+    height:78px;
+    background-image:url("/assets/fundraiser-utensils/cloche-navy.png");
+    opacity:.29;
+  }
+  #main-content.recipe-page #faq::before{
+    left:max(4px,calc((100vw - 1120px)/2 - 82px));
+    top:52%;
+    width:78px;
+    height:70px;
+    background-image:url("/assets/fundraiser-utensils/mixing-bowl-navy.png");
+    opacity:.3;
+    transform:translateY(-50%) rotate(-3deg);
+  }
+  #main-content.recipe-page .recipe-finish::before{
+    right:20px;
+    bottom:14px;
+    width:140px;
+    height:120px;
+    background-image:url("/assets/fundraiser-utensils/frying-pan-white.png");
+    opacity:.43;
+    transform:rotate(-7deg);
+  }
+  #main-content.recipe-page .recipe-finish{position:relative}
+  #main-content.recipe-page #sponsors{padding-top:104px}
+  #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)>.recipe-wrap{
+    position:relative;
+    z-index:1;
+  }
+  @media(max-width:1279px){
+    #main-content.recipe-page #how-to-help,
+    #main-content.recipe-page #prizes{padding-top:126px}
+    #main-content.recipe-page #how-to-help::before{
+      top:15px;
+      right:18px;
+      left:auto;
+      width:54px;
+      height:96px;
+      transform:rotate(-5deg);
+    }
+    #main-content.recipe-page #prizes::before{
+      top:16px;
+      right:auto;
+      left:18px;
+      width:46px;
+      height:92px;
+      transform:rotate(4deg);
+    }
+    #main-content.recipe-page #faq{padding-bottom:112px}
+    #main-content.recipe-page #faq::before{
+      top:auto;
+      right:18px;
+      bottom:14px;
+      left:auto;
+      width:90px;
+      height:80px;
+      transform:none;
+    }
+    #main-content.recipe-page #sponsors{padding-top:94px}
+    #main-content.recipe-page #sponsors::before{top:12px;right:18px;width:112px;height:70px}
+  }
+  @media(max-width:900px){
+    #main-content.recipe-page #how-to-help,
+    #main-content.recipe-page #prizes{padding-top:116px}
+    #main-content.recipe-page #how-to-help::before{
+      top:13px;
+      right:14px;
+      width:46px;
+      height:82px;
+    }
+    #main-content.recipe-page #prizes::before{
+      top:13px;
+      left:14px;
+      width:40px;
+      height:80px;
+    }
+    #main-content.recipe-page #faq{padding-bottom:102px}
+    #main-content.recipe-page #faq::before{right:14px;bottom:12px;width:78px;height:69px}
+    #main-content.recipe-page #sponsors{padding-top:78px}
+    #main-content.recipe-page #sponsors::before{top:10px;right:12px;width:72px;height:46px}
+    #main-content.recipe-page .recipe-finish::before{display:none}
+  }
+  @media(max-width:390px){
+    #main-content.recipe-page #how-to-help::before{width:40px;height:72px;right:12px}
+    #main-content.recipe-page #prizes::before{width:36px;height:72px;left:12px}
+    #main-content.recipe-page #faq::before{width:68px;height:60px;right:12px}
+  }
+  body.a11y-high-contrast #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
+    display:none!important;
+    content:none!important;
+  }
+</style>
+<style id="fundraiser-newsletter-palette">
+  /* Color-only normalization to the supplied Recipe Report. Artwork and metallic prizes are untouched. */
+  body:not(.a11y-high-contrast) #main-content.recipe-page{color:var(--recipe-dark)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(h1,h2,h3,h4,h5,.calendar-entry-title,.recipe-kicker,.calendar-dates,.grand-prize-list b,.recipe-tier span,.measuring-goal,.measuring-total,.measuring-update-date){
+    color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(p,li,summary,.calendar-entry-preview,.calendar-detail-hint,.sponsor-deadline-note span){
+    color:var(--recipe-dark)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.script-note,.recipe-title span,.recipe-hero .recipe-lede>strong){
+    color:var(--recipe-secondary)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.recipe-goal strong,.sponsor-logo-name,.sponsor-level-amount,.prize-feature-icon,.calendar-recipe-icon,.recipe-note-icon){
+    color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-title{
+    text-shadow:3px 3px 0 var(--recipe-pale-sky),-2px -2px 0 var(--recipe-paper);
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page #prizes .recipe-heading h2{text-shadow:2px 2px 0 var(--recipe-soft-gold)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.recipe-finish h2,.recipe-finish p,.grand-prize-feature h3,.grand-prize-feature p:not(.prize-parking-note)){
+    color:#f4f3ed!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.recipe-section.paper,.recipe-hero-in,.mix-card,.student-prize-feature,.calendar-event-dialog,.calendar-dialog-sticky,.calendar-recipe-card,.calendar-shirt-art,.prize-detail-column,.recipe-faq details,.sponsor-recipe,.sponsor-wall,.fundraiser-countdown){
+    background-color:var(--recipe-paper)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-section.blue-wash{background-color:#e9eff6!important}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #sponsors{background-color:#fff!important}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-hero{
+    background-color:var(--recipe-pale-sky)!important;
+    background-image:linear-gradient(45deg,var(--recipe-paper) 25%,transparent 25%,transparent 75%,var(--recipe-paper) 75%),linear-gradient(45deg,var(--recipe-paper) 25%,transparent 25%,transparent 75%,var(--recipe-paper) 75%)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.recipe-hero-in,.mix-card,.prize-feature,.prize-details,.recipe-details,.recipe-faq details,.fundraiser-countdown,.countdown-units,.sponsor-recipe,.sponsor-options,.sponsor-level,.calendar-event-dialog,.calendar-recipe-card,.recipe-goal){
+    border-color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.grand-prize-feature,.countdown-units,.recipe-finish,.sponsor-ticker-control){
+    background-color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .sponsor-ticker-control{color:#fff!important;border-color:var(--recipe-ink)!important}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .countdown-unit{
+    color:#f4f3ed!important;
+    border-right-color:var(--recipe-blue)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .countdown-unit small{color:#f4f3ed!important}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-tape{
+    background-color:var(--recipe-pale-sky)!important;
+    border-color:var(--recipe-ink)!important;
+    color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-tape-in>span:first-child{color:var(--recipe-ink)!important}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .fundraiser-countdown{
+    box-shadow:0 6px 0 var(--recipe-blue),5px 9px 0 var(--recipe-soft-gold);
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .grand-prize-feature{box-shadow:7px 8px 0 var(--recipe-soft-gold)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .student-prize-feature{box-shadow:7px 8px 0 var(--recipe-pale-sky)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .grand-prize-feature::before{
+    background:repeating-linear-gradient(135deg,var(--recipe-soft-gold) 0 10px,var(--recipe-blue) 10px 20px);
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .fundraiser-countdown::before{
+    background-color:var(--recipe-pale-sky);
+    border-color:var(--recipe-ink);
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.mix-number,.weekly-prize-list li strong){
+    background-color:var(--recipe-blue)!important;
+    color:var(--recipe-dark)!important;
+    border-color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.weekly-winners-board,.calendar-prize-note,.prize-detail-note,.weekly-prize-list li){
+    background-color:#e9eff6!important;
+    border-color:var(--recipe-pale-sky)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(.prize-parking-note,.prize-date-tag,.prize-booster-note,.sponsor-deadline-note,.calendar-dialog-close){
+    background-color:var(--recipe-soft-gold)!important;
+    color:var(--recipe-dark)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-goal{background-color:#ffe08a!important}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-goal::before,
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-goal::after{background-color:var(--recipe-ink)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .recipe-calendar{
+    border-color:var(--recipe-ink);
+    background-color:var(--recipe-pale-sky);
+    background-image:linear-gradient(90deg,rgba(43,171,226,.075) 50%,transparent 50%),linear-gradient(rgba(43,171,226,.075) 50%,transparent 50%);
+    box-shadow:0 6px 0 var(--recipe-paper-edge);
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .date-recipe{background-color:var(--recipe-paper);border-color:#9cb0c3}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .deadline-event{background-color:var(--recipe-soft-gold)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .final-event{background-color:#e9eff6}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .calendar-month-heading{color:var(--recipe-ink);border-color:#9cb0c3}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .calendar-month-heading>span{color:var(--recipe-ink)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .calendar-entry-button:hover{background-color:#e9eff6}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .date-recipe .calendar-dates{color:var(--recipe-ink);border-color:#9cb0c3}
+  body:not(.a11y-high-contrast) #main-content.recipe-page #dates .calendar-detail-hint{text-decoration-color:var(--recipe-secondary)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .measuring-glass-outline .jug-outline,
+  body:not(.a11y-high-contrast) #main-content.recipe-page .measuring-handle>path:first-child{stroke:var(--recipe-ink)}
+  body:not(.a11y-high-contrast) #main-content.recipe-page .measuring-liquid{
+    background-color:var(--recipe-blue);
+    background-image:linear-gradient(90deg,var(--recipe-pale-sky) 0%,var(--recipe-blue) 44%,#69c5eb 100%);
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-btn:not(.paper):not(.sun):not(.sponsor-form-cta),
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-actions .recipe-btn.sun,
+  body:not(.a11y-high-contrast) #main-content.recipe-page .measuring-register{
+    background-color:var(--recipe-secondary)!important;
+    border-color:var(--recipe-ink)!important;
+    color:#fff!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-btn.paper{
+    background-color:var(--recipe-paper)!important;
+    color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page .sponsor-form-cta,
+  body:not(.a11y-high-contrast) #main-content.recipe-page .recipe-finish .recipe-btn.sun{
+    background-color:var(--recipe-yellow)!important;
+    color:var(--recipe-dark)!important;
+    border-color:var(--recipe-ink)!important;
+  }
+  body:not(.a11y-high-contrast) #main-content.recipe-page :is(a,button,summary):focus-visible{outline-color:var(--recipe-ink)!important}
+  body:not(.a11y-high-contrast):has(#main-content.recipe-page) .header-widget a.fundraiser-register{
+    background:#1d598e!important;
+    border-color:#1d3a5f!important;
+    box-shadow:4px 4px 0 #f8b810!important;
+    color:#fff!important;
+  }
+  body:not(.a11y-high-contrast):has(#main-content.recipe-page) .header-widget a.fundraiser-register:hover{box-shadow:2px 2px 0 #f8b810!important}
+  body:not(.a11y-high-contrast):has(#main-content.recipe-page) .header-widget a.fundraiser-register:focus-visible{outline-color:#1d3a5f!important}
+</style>
+<style id="fundraiser-page-motion-style">
+  @keyframes fundraiser-note-arrive{
+    from{opacity:0;translate:0 16px}
+    to{opacity:1;translate:0 0}
+  }
+  @keyframes fundraiser-doodle-drift{
+    0%,100%{translate:0 0}
+    50%{translate:0 -6px}
+  }
+  @keyframes fundraiser-water-ripple{
+    0%,100%{translate:0 0}
+    50%{translate:3px 0}
+  }
+  #main-content.recipe-page .fundraiser-motion-in{
+    animation:fundraiser-note-arrive 560ms cubic-bezier(.2,.72,.25,1) both;
+    animation-delay:var(--fundraiser-motion-delay,0ms);
+  }
+  #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
+    animation:fundraiser-doodle-drift 6.2s ease-in-out infinite;
+  }
+  #main-content.recipe-page .measuring-liquid::before{
+    animation:fundraiser-water-ripple 4.4s ease-in-out infinite;
+  }
+  @media(prefers-reduced-motion:reduce){
+    #main-content.recipe-page .fundraiser-motion-in,
+    #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before,
+    #main-content.recipe-page .measuring-liquid::before{
+      animation:none!important;
+      translate:none!important;
+    }
+    #main-content.recipe-page .fundraiser-motion-in{opacity:1!important}
+  }
+  body.a11y-no-anim #main-content.recipe-page .fundraiser-motion-in,
+  body.a11y-no-anim #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before,
+  body.a11y-no-anim #main-content.recipe-page .measuring-liquid::before{
+    animation:none!important;
+    translate:none!important;
+  }
+  body.a11y-no-anim #main-content.recipe-page .fundraiser-motion-in{opacity:1!important}
+</style>
+<script id="fundraiser-page-motion">
+(function(window,document){
+  'use strict';
+  var root=document.querySelector('#main-content.recipe-page');
+  if(!root)return;
+  var media=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
+  var observer=null;
+  var groups=[
+    '.mix-card',
+    '#dates .date-recipe',
+    '#prizes .prize-feature, #prizes .weekly-winners-board, #prizes .prize-detail-column',
+    '#sponsors .sponsor-appeal, #sponsors .sponsor-options, #sponsors .sponsor-level, #sponsors .sponsor-ticker-list[aria-label="2026 business sponsors"] > .sponsor-logo-card',
+    '.recipe-faq details'
+  ];
+  function clearMotion(){
+    if(observer){observer.disconnect();observer=null}
+    root.querySelectorAll('.fundraiser-motion-in').forEach(function(element){
+      element.classList.remove('fundraiser-motion-in');
+      element.style.removeProperty('--fundraiser-motion-delay');
+    });
+  }
+  function setupMotion(){
+    clearMotion();
+    if(!window.IntersectionObserver||
+       (media&&media.matches)||
+       (document.body&&document.body.classList.contains('a11y-no-anim')))return;
+    try{
+      var activeObserver=new window.IntersectionObserver(function(entries){
+        if(observer!==activeObserver||
+           (media&&media.matches)||
+           document.body.classList.contains('a11y-no-anim'))return;
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting)return;
+          activeObserver.unobserve(entry.target);
+          entry.target.classList.add('fundraiser-motion-in');
+        });
+      },{threshold:.12,rootMargin:'0px 0px -28px 0px'});
+      observer=activeObserver;
+      groups.forEach(function(selector){
+        root.querySelectorAll(selector).forEach(function(element,index){
+          element.style.setProperty('--fundraiser-motion-delay',Math.min(index,5)*62+'ms');
+          observer.observe(element);
+        });
+      });
+    }catch(error){
+      clearMotion();
+    }
+  }
+  setupMotion();
+  if(media){
+    if(media.addEventListener)media.addEventListener('change',setupMotion);
+    else if(media.addListener)media.addListener(setupMotion);
+  }
+  if(window.MutationObserver&&document.body){
+    var preferenceObserver=new window.MutationObserver(function(records){
+      for(var i=0;i<records.length;i++){
+        if(records[i].attributeName==='class'){setupMotion();break}
+      }
+    });
+    preferenceObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
+  }
+}(window,document));
 </script>
 </body></html>
