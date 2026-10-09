@@ -11,6 +11,7 @@ def has_ended(now=None):
     return (now or datetime.now(timezone.utc)) >= END_TIME
 
 def retire_content(text):
+    text = re.sub(r'<p class="fundraiser-footer-link"[^>]*>[\s\S]*?</p>', '', text)
     text = re.sub(r'<aside\b[^>]*class="fundraiser-announcement"[\s\S]*?</aside>', '', text)
     return re.sub(r'<url>\s*<loc>https://covenantschool\.com/fall-fundraiser</loc>[\s\S]*?</url>', '', text)
 

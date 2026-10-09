@@ -10,7 +10,10 @@ for (const file of fs.readdirSync("pages").filter(f => f.endsWith(".html"))) {
   const html = fs.readFileSync("pages/" + file, "utf8");
   assert.equal(html.includes('<aside class="fundraiser-announcement"'), file !== "fall-fundraiser.html", "Banner placement: " + file);
   assert.equal(removeBanner(html).includes('<aside class="fundraiser-announcement"'), false, file);
-  assert.equal(removeBanner(html).match(/<footer[\s\S]*?<\/footer>/)?.[0], html.match(/<footer[\s\S]*?<\/footer>/)?.[0]);
+  assert.equal((html.match(/class="fundraiser-footer-link"/g) || []).length, 1, file);
+  assert.ok(!removeBanner(html).includes('class="fundraiser-footer-link"'), file);
+  const expectedFooter = html.match(/<footer[\s\S]*?<\/footer>/)?.[0].replace(/<p class="fundraiser-footer-link"[^>]*>[\s\S]*?<\/p>/g, "");
+  assert.equal(removeBanner(html).match(/<footer[\s\S]*?<\/footer>/)?.[0], expectedFooter);
 }
 const realNow = Date.now;
 const html = fs.readFileSync("pages/index.html", "utf8");

@@ -19,6 +19,8 @@ The user originally requested an unlinked review page, but subsequently explicit
 
 The user also requested automatic removal of the sitewide fundraiser bar and hiding the fundraiser page when the fundraiser ends.
 
+The user explicitly requested a Fall Fundraiser link in the footer throughout the website, including the fundraiser page. Preserve the shared footer design; the seasonal link should retire with the campaign.
+
 **Why:** They want the seasonal promotion retired without manual intervention.
 
 **How to apply:** Use the stated November 9, 2026, 3 p.m. Central ending; preserve source files for reuse and stop public indexing/access afterward. Ensure the runtime retirement handler is deployed, not only the static HTML.
