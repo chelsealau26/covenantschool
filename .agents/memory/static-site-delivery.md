@@ -14,3 +14,9 @@ Static hosting must include local assets and PDFs, not just HTML.
 **Why:** The Python preview serves root-level asset directories separately, while the previous static export served only pages. Images could work in preview but be missing from the deployed bundle.
 
 **How to apply:** Validate the actual built output against the page's image/download URLs. Do not treat successful preview requests as proof that a static deployment contains the files.
+
+Keep committed npm lockfile download URLs accessible outside Replit.
+
+**Why:** Replit's internal package firewall URLs caused Cloudflare dependency installation to fail with ENOTFOUND, leaving the live site on an older build despite successful GitHub pushes.
+
+**How to apply:** After dependency updates, check lockfile resolved URLs for internal hosts. Use public registry URLs while preserving package versions and integrity hashes, and verify downloads. Check Cloudflare's GitHub build status before blaming browser caching for missing updates.
