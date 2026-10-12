@@ -9,12 +9,30 @@ OUT = Path("/tmp/fundraiser-welcome")
 OUT.mkdir(exist_ok=True)
 KEY = "covenant:fundraiser-welcome:2026:until"
 
+def set_time(page, iso):
+    # Freeze Date only. Playwright's clock replaces Performance and removes real
+    # navigation entries, which would make an actual reload look like no reload.
+    script = f"""window.__testNow ??= Date.parse('{iso}');
+        if (!window.__nativeDate) {{
+          window.__nativeDate = Date;
+          window.Date = class extends window.__nativeDate {{
+            constructor(...args) {{ super(...(args.length ? args : [window.__testNow])); }}
+            static now() {{ return window.__testNow; }}
+          }};
+        }}"""
+    if page.url == "about:blank":
+        page.add_init_script(script)
+        page.evaluate("() => {" + script + "}")
+    else:
+        change = f"window.__testNow = Date.parse('{iso}');"
+        page.add_init_script(change)
+        page.evaluate("() => {" + change + "}")
 
 def visit(browser, width=1200, height=900, init="", route="/", reduced=False):
     ctx = browser.new_context(viewport={"width": width, "height": height},
                               reduced_motion="reduce" if reduced else "no-preference")
     page = ctx.new_page()
-    page.clock.set_fixed_time("2026-10-12T15:00:00Z")
+    set_time(page, "2026-10-12T15:00:00Z")
     if init:
         page.add_init_script(init)
     page.goto(BASE + route, wait_until="load")
@@ -37,7 +55,7 @@ with sync_playwright() as p:
         expect(page.locator("[data-welcome-raised]")).to_have_text("$11,000")
         expect(page.locator("[data-welcome-goal]")).to_have_text("$50,000")
         expect(page.locator("[data-welcome-percent]")).to_have_text("22%")
-        assert page.locator(".welcome-chef img").evaluate("e=>e.complete&&e.naturalWidth>0")
+        assert page.locator(".welcome-chef").count() == 0
         page.keyboard.press("Shift+Tab")
         assert page.evaluate("document.querySelector('#fundraiser-welcome').contains(document.activeElement)")
         dialog.evaluate("e=>e.scrollTop=e.scrollHeight")
@@ -50,8 +68,15 @@ with sync_playwright() as p:
         assert page.evaluate("document.body.style.position") == ""
         assert page.evaluate(f"Number(localStorage.getItem('{KEY}'))-Date.now()") == 604800000
         page.reload(wait_until="load")
+        expect(dialog).to_be_visible(timeout=12000)
+        page.locator(".welcome-close").click()
+        page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
         page.wait_for_timeout(2400)
-        expect(dialog).not_to_be_visible()
+        expect(dialog).not_to_be_visible()  # No second display in this load.
+        page.goto(BASE + "/ways-to-give")
+        page.goto(BASE + "/")
+        page.wait_for_timeout(2400)
+        expect(dialog).not_to_be_visible()  # Ordinary return still suppressed.
         ctx.close()
         print("PASS layout, focus, dismiss and suppression", width, height, flush=True)
 
@@ -84,7 +109,7 @@ with sync_playwright() as p:
         ctx, page = visit(browser, init=init, reduced=True)
         dialog = page.locator("#fundraiser-welcome")
         if mode == "expired":
-            page.clock.set_fixed_time("2026-11-09T21:00:00Z")
+            set_time(page, "2026-11-09T21:00:00Z")
             page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
             assert dialog.count() == 0
         else:
@@ -94,7 +119,7 @@ with sync_playwright() as p:
                 page.evaluate("document.body.classList.add('a11y-high-contrast')")
                 assert dialog.evaluate("e=>getComputedStyle(e).backgroundColor") == "rgb(0, 0, 0)"
                 page.screenshot(path=str(OUT / "contrast.png"))
-                page.clock.set_fixed_time("2026-11-09T21:00:00Z")
+                set_time(page, "2026-11-09T21:00:00Z")
                 page.evaluate("document.dispatchEvent(new Event('visibilitychange'))")
                 assert dialog.count() == 0
             else:
@@ -112,6 +137,30 @@ with sync_playwright() as p:
     page.wait_for_timeout(2500)
     expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
     ctx.close()
+    # Reload ignores persisted limits, but not interaction, hashes or expiry.
+    for mode in ["keyboard", "dialog", "hash", "expired", "hidden"]:
+        ctx, page = visit(browser, init=f"localStorage.setItem('{KEY}',String(Date.now()+86400000))")
+        page.wait_for_timeout(2400)
+        expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
+        if mode == "hash":
+            page.goto(BASE + "/#main-content")
+        if mode == "expired":
+            set_time(page, "2026-11-09T21:00:00Z")
+        page.reload(wait_until="load")
+        if mode == "keyboard":
+            page.keyboard.press("Tab")
+        elif mode == "dialog":
+            page.evaluate("document.querySelector('#a11y-panel').classList.add('open')")
+        elif mode == "hidden":
+            page.evaluate("""Object.defineProperty(document,'hidden',{configurable:true,value:true});
+                document.dispatchEvent(new Event('visibilitychange'));""")
+        page.wait_for_timeout(2400)
+        expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
+        if mode == "hidden":
+            page.evaluate("""Object.defineProperty(document,'hidden',{configurable:true,value:false});
+                document.dispatchEvent(new Event('visibilitychange'));""")
+            expect(page.locator("#fundraiser-welcome")).to_be_visible(timeout=12000)
+        ctx.close()
     ctx = browser.new_context(java_script_enabled=False)
     page = ctx.new_page()
     page.goto(BASE, wait_until="load")

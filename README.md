@@ -88,8 +88,16 @@ prevent delivery. Compare clicks with impressions by device to assess popup
 engagement; do not describe clicks as completed registrations or donations.
 
 The homepage offers a compact desktop dialog and a full-screen mobile dialog.
-Dismissal or following its CTA suppresses it for seven days in that browser,
-and it does not reopen within the same tab session. Clearing or blocking
+It opens half a second after the page markup is ready, without waiting for all
+images and external assets to finish loading.
+Dismissal or following its CTA suppresses ordinary return visits for seven days
+in that browser, and ordinary navigation does not reopen it within the same tab
+session. Refreshing the homepage reopens it after the usual delay, including a
+hard refresh: browsers report both normal and hard refresh as reload navigation.
+Reload overrides saved frequency limits only for that load, without clearing
+dismissal history. It never bypasses campaign expiry, hash exclusions, or active
+keyboard/menu/dialog safeguards, and cannot reopen twice on one load.
+Clearing or blocking
 browser storage can prevent cross-visit suppression. There is no personal
 information collection. Existing banner/footer links remain usable without JS.
 

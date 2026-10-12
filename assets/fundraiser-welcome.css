@@ -1,28 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Lilita+One&display=swap");
 
-/* A little recipe card, not a replacement for the school homepage. */
+/* Kitchen poster on the campaign hero's pale-sky gingham.
+   Palette mirrors fundraiser-newsletter-palette in fall-fundraiser.html. */
 #fundraiser-welcome {
   --welcome-ink: #1d3a5f;
   --welcome-paper: #f4f3ed;
+  --welcome-cream: #fffaf0;
+  --welcome-pale-sky: #d2dfee;
   --welcome-sky: #2babe2;
   --welcome-gold: #f8b810;
+  --welcome-soft-gold: #fff0c5;
   display: none;
   box-sizing: border-box;
-  width: min(760px, calc(100% - 40px));
+  width: min(600px, calc(100% - 40px));
   max-width: none;
+  max-height: calc(100vh - 40px);
   max-height: calc(100dvh - 40px);
   margin: auto;
   padding: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  border: 2px solid var(--welcome-sky);
-  border-radius: 24px 24px 32px 24px;
-  background: var(--welcome-ink);
-  background-image: radial-gradient(#f4f3ed25 1px, transparent 1px);
-  background-size: 16px 16px;
-  color: var(--welcome-paper);
+  border: 2px solid var(--welcome-ink);
+  border-radius: 12px 28px 14px 28px;
+  background-color: var(--welcome-pale-sky);
+  background-image: linear-gradient(45deg, var(--welcome-paper) 25%, transparent 25%, transparent 75%, var(--welcome-paper) 75%), linear-gradient(45deg, var(--welcome-paper) 25%, transparent 25%, transparent 75%, var(--welcome-paper) 75%);
+  background-position: 0 0, 22px 22px;
+  background-size: 44px 44px;
+  color: var(--welcome-ink);
   font: 400 15px/1.6 Lexend, ui-sans-serif, system-ui, sans-serif;
-  box-shadow: 0 24px 80px #0a2b4e66;
+  box-shadow: 6px 7px 0 var(--welcome-gold), 0 24px 80px #0a2b4e66;
 }
 #fundraiser-welcome[open] { display: block; animation: welcome-arrive .28s ease-out both; }
 #fundraiser-welcome::backdrop { background: #0a2b4eb3; }
@@ -35,12 +41,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-height: 66px;
-  padding: 10px 16px 10px 28px;
-  border-bottom: 1px dashed #f4f3ed66;
-  background: var(--welcome-ink);
+  min-height: 62px;
+  padding: 9px 18px 9px 30px;
+  border-bottom: 0;
+  background: var(--welcome-cream);
 }
-#fundraiser-welcome .welcome-eyebrow { margin: 0; color: var(--welcome-paper); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+#fundraiser-welcome .welcome-eyebrow { margin: 0; color: var(--welcome-ink); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 #fundraiser-welcome .welcome-close {
   display: inline-flex;
   align-items: center;
@@ -49,39 +55,38 @@
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid #f4f3ed66;
+  border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--welcome-paper);
+  color: var(--welcome-ink);
   cursor: pointer;
 }
-#fundraiser-welcome .welcome-close svg { width: 20px; height: 20px; }
-#fundraiser-welcome .welcome-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: center; gap: 28px; padding: 30px 32px 26px; }
-#fundraiser-welcome .welcome-chef { align-self: center; margin: 0; text-align: center; }
-#fundraiser-welcome .welcome-chef img { display: block; width: 100%; height: auto; max-height: 290px; object-fit: contain; }
-#fundraiser-welcome .welcome-chef figcaption {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 4px 17px;
-  border: 1px dashed var(--welcome-ink);
-  border-radius: 6px 10px 6px 10px;
-  outline: 4px solid var(--welcome-gold);
-  background: var(--welcome-gold);
-  color: var(--welcome-ink);
-  font: 400 20px/1.2 "Lilita One", Lexend, sans-serif;
-  transform: rotate(-4deg);
-}
-#fundraiser-welcome .welcome-title { margin: 0 0 13px; color: var(--welcome-paper); font: 400 39px/1.06 "Lilita One", "Paytone One", Lexend, sans-serif; letter-spacing: .005em; }
-#fundraiser-welcome .welcome-title span { color: var(--welcome-gold); }
-#fundraiser-welcome .welcome-description { margin: 0 0 14px; color: var(--welcome-paper); font: inherit; }
-#fundraiser-welcome .welcome-dates { margin: 0 0 20px; color: var(--welcome-paper); font-size: 13px; font-weight: 600; }
-#fundraiser-welcome .welcome-progress { padding: 15px 18px; border-radius: 4px 14px 7px 12px; background: var(--welcome-paper); color: var(--welcome-ink); }
+#fundraiser-welcome .welcome-close svg { width: 24px; height: 24px; }
+#fundraiser-welcome .welcome-close:focus:not(:focus-visible) { outline: none !important; box-shadow: none !important; }
+#fundraiser-welcome .welcome-layout { display: grid; grid-template-columns: minmax(0, 1fr); padding: 0 18px 20px; }
+#fundraiser-welcome .welcome-content { min-width: 0; padding: 12px 30px 16px; border: 0; border-radius: 0 0 10px 20px; background: var(--welcome-cream); box-shadow: none; }
+#fundraiser-welcome .welcome-poster-heading { display: block; text-align: center; margin-bottom: 20px; }
+#fundraiser-welcome .welcome-title { margin: 0; color: var(--welcome-ink); font: 400 30px/1.08 "Lilita One", "Paytone One", Lexend, sans-serif; letter-spacing: .005em; }
+#fundraiser-welcome .welcome-title span { display: block; }
+#fundraiser-welcome .welcome-title .welcome-title-lead { font-size: 25px; }
+#fundraiser-welcome .welcome-title .welcome-title-accent { width: fit-content; margin: 5px auto 8px; font-size: 64px; line-height: .98; letter-spacing: -.025em; background: linear-gradient(transparent 74%, var(--welcome-gold) 74%); transform: rotate(-2deg); }
+#fundraiser-welcome .welcome-title .welcome-title-tail { font-size: 31px; }
+#fundraiser-welcome .welcome-utensils { display: flex; flex-direction: column; align-items: center; gap: 14px; pointer-events: none; }
+#fundraiser-welcome .welcome-utensils img { display: block; object-fit: contain; }
+#fundraiser-welcome .welcome-whisk { width: 42px; height: 86px; transform: rotate(16deg); }
+#fundraiser-welcome .welcome-bowl { width: 64px; height: 52px; transform: rotate(-8deg); }
+#fundraiser-welcome .welcome-description { margin: 0 0 24px; text-align: center; color: var(--welcome-ink); font: inherit; }
+#fundraiser-welcome .welcome-dates { position: relative; width: fit-content; max-width: 100%; margin: 0 auto 25px; text-align: center; padding: 10px 15px; border: 0; border-radius: 2px; background: var(--welcome-soft-gold); color: var(--welcome-ink); font-size: 13px; font-weight: 600; box-shadow: 2px 3px 0 var(--welcome-gold); transform: rotate(-3deg); }
+#fundraiser-welcome .welcome-dates::before, #fundraiser-welcome .welcome-dates::after { content: ""; position: absolute; width: 34px; height: 13px; background: var(--welcome-pale-sky); opacity: .85; pointer-events: none; }
+#fundraiser-welcome .welcome-dates::before { left: -9px; top: -5px; transform: rotate(-22deg); }
+#fundraiser-welcome .welcome-dates::after { right: -8px; bottom: -5px; transform: rotate(-22deg); }
+#fundraiser-welcome .welcome-progress { padding: 16px 0 0; border: 0; border-top: 2px dashed var(--welcome-pale-sky); border-radius: 0; background: transparent; color: var(--welcome-ink); }
 #fundraiser-welcome .welcome-progress-copy { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 10px; }
 #fundraiser-welcome .welcome-progress-copy p { margin: 0; color: var(--welcome-ink); font-size: 12px; }
-#fundraiser-welcome .welcome-progress-copy strong { font-size: 22px; font-weight: 700; }
-#fundraiser-welcome .welcome-meter { display: block; width: 100%; height: 12px; margin: 10px 0 5px; overflow: hidden; border: 1px solid var(--welcome-ink); border-radius: 20px; background: #d2dfee; }
+#fundraiser-welcome .welcome-progress-copy strong { font: 400 38px/1.15 "Lilita One", Lexend, sans-serif; }
+#fundraiser-welcome .welcome-meter { display: block; width: 100%; height: 16px; margin: 10px 0 7px; overflow: hidden; border: 1px solid var(--welcome-ink); border-radius: 20px; background: var(--welcome-pale-sky); }
 #fundraiser-welcome .welcome-meter-fill { display: block; height: 100%; width: var(--welcome-progress, 22%); background: var(--welcome-sky); border-right: 1px solid var(--welcome-ink); }
-#fundraiser-welcome .welcome-progress-note { margin: 0; color: var(--welcome-ink); font-size: 11px; font-weight: 500; }
+#fundraiser-welcome .welcome-progress-note { margin: 0; color: var(--welcome-ink); font-size: 12px; font-weight: 500; }
 #fundraiser-welcome .welcome-actions { margin-top: 20px; }
 #fundraiser-welcome .welcome-cta {
   position: relative;
@@ -91,43 +96,61 @@
   gap: 12px;
   min-height: 52px;
   padding: 12px 19px;
-  border: 2px solid var(--welcome-gold);
-  border-radius: 9px 15px 9px 13px;
+  border: 2px solid var(--welcome-ink);
+  border-radius: 30px 12px 28px 12px;
   background: var(--welcome-gold);
   color: var(--welcome-ink);
-  font: 700 15px/1.4 Lexend, sans-serif;
+  font: 400 22px/1.2 "Lilita One", Lexend, sans-serif;
   text-decoration: none;
-  box-shadow: 3px 3px 0 var(--welcome-sky);
+  box-shadow: 3px 3px 0 var(--welcome-ink);
+  transition: transform .16s ease;
 }
-#fundraiser-welcome .welcome-cta::before { content: ""; position: absolute; inset: 3px; border: 1px dashed var(--welcome-ink); border-radius: 5px 11px 5px 9px; pointer-events: none; }
 #fundraiser-welcome .welcome-cta svg { width: 20px; height: 20px; flex-shrink: 0; }
-#fundraiser-welcome .welcome-continue { display: block; min-height: 44px; margin: 8px auto 0; padding: 10px 8px; border: 0; background: transparent; color: var(--welcome-paper); font: 400 13px/1.5 Lexend, sans-serif; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
-#fundraiser-welcome .welcome-cta:hover { background: var(--welcome-paper); border-color: var(--welcome-paper); }
-#fundraiser-welcome .welcome-close:hover { border-color: var(--welcome-paper); }
-#fundraiser-welcome :is(a, button):focus-visible { outline: 3px solid var(--welcome-paper); outline-offset: 4px; }
+#fundraiser-welcome .welcome-continue { display: block; min-height: 44px; margin: 8px auto 0; padding: 10px 8px; border: 0; background: transparent; color: var(--welcome-ink); font: 400 13px/1.5 Lexend, sans-serif; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+#fundraiser-welcome .welcome-cta:hover { background: var(--welcome-soft-gold); transform: translateY(-2px); }
+#fundraiser-welcome .welcome-close:hover { background: var(--welcome-gold); }
+#fundraiser-welcome .welcome-continue:hover { text-decoration-thickness: 2px; }
+#fundraiser-welcome :is(a, button):focus-visible { outline: 3px solid var(--welcome-ink); outline-offset: 4px; }
+/* Beat the school's broad focus rules without outlining the SVG as well. */
+#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome .welcome-close:focus-visible { outline: 3px solid var(--welcome-ink) !important; outline-offset: 2px !important; border-radius: 50% !important; }
+#fundraiser-welcome[open] .welcome-whisk { animation: welcome-whisk-arrive .65s ease-out both; }
+@keyframes welcome-whisk-arrive { from { opacity: 0; transform: translateY(8px) rotate(6deg); } to { opacity: 1; transform: translateY(0) rotate(16deg); } }
 @keyframes welcome-arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 767px) {
-  #fundraiser-welcome { width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border: 0; border-radius: 0; }
+  #fundraiser-welcome { inset: 0; width: 100%; height: 100vh; height: 100dvh; max-height: 100vh; max-height: 100dvh; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
   #fundraiser-welcome .welcome-top { padding: calc(10px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(20px, env(safe-area-inset-left)); }
-  #fundraiser-welcome .welcome-layout { grid-template-columns: minmax(0, 1fr); gap: 22px; max-width: 440px; margin: auto; padding: 23px max(24px, env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
-  #fundraiser-welcome .welcome-chef { display: flex; align-items: center; justify-content: center; gap: 20px; }
-  #fundraiser-welcome .welcome-chef img { width: 115px; max-height: 146px; }
-  #fundraiser-welcome .welcome-chef figcaption { margin: 0; font-size: 22px; }
-  #fundraiser-welcome .welcome-title { font-size: clamp(32px, 8.8vw, 39px); }
-  #fundraiser-welcome .welcome-description { font-size: 14px; }
+  #fundraiser-welcome .welcome-layout { max-width: 540px; margin: auto; padding: 0 max(16px, env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  #fundraiser-welcome .welcome-content { padding: 22px 20px 18px; }
+  #fundraiser-welcome .welcome-poster-heading { grid-template-columns: minmax(0, 1fr) 42px; gap: 8px; }
+  #fundraiser-welcome .welcome-title .welcome-title-lead { font-size: clamp(20px, 5.5vw, 25px); }
+  #fundraiser-welcome .welcome-title .welcome-title-accent { font-size: clamp(42px, 10.5vw, 64px); }
+  #fundraiser-welcome .welcome-title .welcome-title-tail { font-size: clamp(24px, 6.3vw, 31px); }
+  #fundraiser-welcome .welcome-whisk { width: 32px; height: 72px; }
+  #fundraiser-welcome .welcome-bowl { width: 42px; height: 36px; }
 }
-@media (prefers-reduced-motion: reduce) { #fundraiser-welcome[open] { animation: none; } }
+@media (prefers-reduced-motion: reduce) { #fundraiser-welcome[open] { animation: none; } #fundraiser-welcome .welcome-cta { transition: none; transform: none; } }
+@media (prefers-reduced-motion: reduce) { #fundraiser-welcome[open] .welcome-whisk { animation: none; } }
 body.a11y-no-anim #fundraiser-welcome[open] { animation: none; }
+body.a11y-no-anim #fundraiser-welcome[open] .welcome-whisk { animation: none; }
+body.a11y-no-anim #fundraiser-welcome .welcome-cta { transition: none; transform: none; }
 /* IDs intentionally match the specificity of the existing accessibility widget. */
 body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome,
 body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome * { background-image: none !important; background-color: #000 !important; color: #fff !important; border-color: #fff !important; text-shadow: none !important; box-shadow: none !important; }
 body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome .welcome-cta,
-body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome .welcome-chef figcaption,
 body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome .welcome-meter-fill { background: #fff !important; color: #000 !important; outline-color: #fff !important; }
 body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome .welcome-cta svg { background: transparent !important; color: #000 !important; }
 body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome .welcome-cta::before { border-color: #000 !important; }
+body.a11y-high-contrast #fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome#fundraiser-welcome :is(a, button):focus-visible { outline-color: #fff !important; }
+body.a11y-high-contrast #fundraiser-welcome .welcome-utensils { display: none; }
+body.a11y-high-contrast #fundraiser-welcome .welcome-poster-heading { grid-template-columns: minmax(0, 1fr); }
+body.a11y-high-contrast #fundraiser-welcome .welcome-dates::before,
+body.a11y-high-contrast #fundraiser-welcome .welcome-dates::after { display: none; }
 @media (forced-colors: active) {
   #fundraiser-welcome { border: 2px solid CanvasText; box-shadow: none; }
   #fundraiser-welcome .welcome-meter-fill { background: Highlight; forced-color-adjust: none; }
   #fundraiser-welcome .welcome-cta { border-color: LinkText; box-shadow: none; }
+  #fundraiser-welcome .welcome-utensils,
+  #fundraiser-welcome .welcome-dates::before,
+  #fundraiser-welcome .welcome-dates::after { display: none; }
+  #fundraiser-welcome .welcome-poster-heading { grid-template-columns: minmax(0, 1fr); }
 }

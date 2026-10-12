@@ -17,6 +17,9 @@ const trackWelcome = (event, device, method) => {
 };
 
 if (dialog) {
+  // Browsers expose both regular and hard refresh as "reload".
+  // Ignore persisted frequency limits only on that load, never in-memory limits.
+  const reloadVisit = performance.getEntriesByType("navigation")[0]?.type === "reload";
   let timer;
   let interrupted = false;
   let shown = false;
@@ -46,8 +49,8 @@ if (dialog) {
     if (persist) write("localStorage", STORAGE_KEY, String(Date.now() + WEEK));
   };
   const isSuppressed = () => memorySuppressed ||
-    read("sessionStorage", SESSION_KEY) === "1" ||
-    Number(read("localStorage", STORAGE_KEY)) > Date.now();
+    (!reloadVisit && (read("sessionStorage", SESSION_KEY) === "1" ||
+    Number(read("localStorage", STORAGE_KEY)) > Date.now()));
   const eligible = () => /^\/(?:(?:pages\/)?index(?:\.html)?)?\/?$/i.test(location.pathname) && !location.hash;
   const visible = element => !!element.getClientRects().length &&
     getComputedStyle(element).visibility !== "hidden" && getComputedStyle(element).display !== "none" &&
@@ -180,7 +183,7 @@ if (dialog) {
         eventDevice = window.matchMedia("(max-width: 767px)").matches ? "mobile" : "desktop";
         trackWelcome("fundraiser_popup_impression", eventDevice);
       } catch { restore(); stop(); }
-    }, 2000);
+    }, 500);
   };
   document.addEventListener("visibilitychange", () => {
     if (hasEnded()) retire();
@@ -188,6 +191,6 @@ if (dialog) {
     else schedule();
   });
   if (hasEnded()) retire();
-  else if (document.readyState === "complete") schedule();
-  else window.addEventListener("load", schedule, { once: true });
+  else if (document.readyState !== "loading") schedule();
+  else document.addEventListener("DOMContentLoaded", schedule, { once: true });
 }

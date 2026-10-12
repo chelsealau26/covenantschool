@@ -1,6 +1,6 @@
 ---
 name: Browser scroll restoration checks
-description: Avoid testing automation scrolling instead of the dialog's saved scroll position.
+description: Browser tests must preserve real scroll and navigation signals.
 ---
 
 Center an event trigger first, let scrolling settle, then use pointer coordinates
@@ -13,3 +13,12 @@ produced false restoration failures on desktop and phone.
 **How to apply:** Do not loosen restoration assertions to hide the mismatch.
 Avoid automation-driven scroll between the snapshot and the opening click;
 keep full-page screenshots after geometry measurements.
+
+Use a Date-only test clock when asserting navigation-dependent behavior.
+
+**Why:** In this environment, Playwright clock mocking exposed no native
+Performance navigation entries, causing actual refreshes to be classified as
+ordinary visits. The popup itself worked with real browser navigation timing.
+
+**How to apply:** Preserve the real Performance API in reload/back-navigation
+tests; freeze Date separately to keep fundraiser tests before the deadline.

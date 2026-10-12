@@ -38,7 +38,8 @@ with sync_playwright() as p:
                 data["method"] = action
             events.append({"name": "fundraiser_popup_click" if action == "click" else "fundraiser_popup_dismiss", "data": data})
         assert page.evaluate("events") == events
-        page.reload()
+        page.goto(BASE + "/ways-to-give")
+        page.goto(BASE + "/")
         page.wait_for_timeout(2600)
         expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
         assert page.evaluate("events") == []
