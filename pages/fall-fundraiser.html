@@ -2790,8 +2790,10 @@ body.a11y-high-contrast #main-content.recipe-page :is(.calendar-dates,.countdown
   background:#173d70!important;color:#fff!important;
 }
 body.a11y-high-contrast #main-content.recipe-page a:not(.recipe-btn){color:#7dd3fc!important}
-body.a11y-high-contrast #main-content.recipe-page a.recipe-btn,
-body.a11y-high-contrast #main-content.recipe-page a.recipe-btn *{
+/* Outrank the shared accessibility rule's five :not(#id) selectors,
+   without changing the shared footer or normal fundraiser colors. */
+body.a11y-high-contrast #main-content#main-content#main-content#main-content#main-content.recipe-page a.recipe-btn,
+body.a11y-high-contrast #main-content#main-content#main-content#main-content#main-content.recipe-page a.recipe-btn *{
   background:#ffd966!important;color:#102b4f!important;
 }
 body.a11y-high-contrast #main-content.recipe-page :is(a,summary):focus-visible{outline-color:#ffd966!important}
@@ -4032,7 +4034,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
       transform:rotate(-9deg);
       opacity:.08;
     }
-    #main-content.recipe-page .recipe-finish::before{display:none}
+    #main-content.recipe-page :is(#how-to-help,.recipe-finish).recipe-finish::before{display:none}
   }
   body.a11y-high-contrast #main-content.recipe-page :is(#how-to-help,#prizes,#sponsors,#faq,.recipe-finish)::before{
     display:none!important;
