@@ -186,3 +186,9 @@ When the user asks for a cutesier design, improve the visual styling rather than
 **Why:** The user emphatically corrected the deadline refinement: “I WANT THE DESIGN TO BE MORE CUTESY, NOT THE WORDS.”
 
 **How to apply:** Preserve straightforward deadline and submission copy. Use the newsletter's paper, textile, typography and decorative treatments to create the requested charm; do not add extra reminder phrases as a substitute.
+
+The homepage fundraiser welcome must be a full-screen popup on mobile, not an in-flow announcement card; desktop can retain a compact dialog.
+
+**Why:** The user explicitly changed the recommended mobile card to a full-screen popup.
+
+**How to apply:** Preserve this mobile presentation when refining the welcome feature; retain accessible dismissal and frequency limits.

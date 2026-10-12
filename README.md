@@ -24,3 +24,17 @@ server. Uploading only `dist/` to a purely static host provides the browser
 fallback but **cannot enforce the server-side 410 or sitemap removal**.
 The automation must be deployed before the deadline; no further deployment
 is needed at the cutoff.
+
+## Homepage fundraiser welcome
+
+The homepage offers a compact desktop dialog and a full-screen mobile dialog.
+Dismissal or following its CTA suppresses it for seven days in that browser,
+and it does not reopen within the same tab session. Clearing or blocking
+browser storage can prevent cross-visit suppression. There is no personal
+information collection. Existing banner/footer links remain usable without JS.
+
+Update school-confirmed progress in `assets/fundraiser-progress.json`, then
+rebuild and publish through the normal process. The Python preview and static
+build inject this one source into both the homepage welcome and fundraiser jug.
+Generated HTML is not a second source to maintain. The popup uses the same
+campaign cutoff as the banner and is retired by the server and in open tabs.

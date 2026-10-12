@@ -2,6 +2,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 import re
+from fundraiser_progress import prepare_progress
 
 _source = (Path(__file__).parent / "assets/fundraiser-lifecycle.mjs").read_text()
 END_TIME = datetime.fromisoformat(re.search(r'END_TIME = "([^"]+)"', _source)[1].replace("Z", "+00:00"))
@@ -11,9 +12,11 @@ def has_ended(now=None):
     return (now or datetime.now(timezone.utc)) >= END_TIME
 
 def retire_content(text):
+    text = re.sub(r'<dialog\b[^>]*id="fundraiser-welcome"[\s\S]*?</dialog>', '', text)
     text = re.sub(r'<p class="fundraiser-footer-link"[^>]*>[\s\S]*?</p>', '', text)
     text = re.sub(r'<aside\b[^>]*class="fundraiser-announcement"[\s\S]*?</aside>', '', text)
     return re.sub(r'<url>\s*<loc>https://covenantschool\.com/fall-fundraiser</loc>[\s\S]*?</url>', '', text)
 
 def prepare_html(text):
+    text = prepare_progress(text)
     return text if SCRIPT in text else text.replace("</head>", SCRIPT + "</head>", 1)

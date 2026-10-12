@@ -955,6 +955,8 @@
   ]
   </script>
 <link rel="stylesheet" href="/assets/fundraiser-announcement.css">
+<link rel="stylesheet" href="/assets/fundraiser-welcome.css">
+<script type="module" src="/assets/fundraiser-welcome.mjs"></script>
 </head>
     <body class="theme live-theme " data-resources="https://static.web-repository.com" data-content="https://content.app-sources.com/" data-locale="en" data-ver="1195" data-minor="1195.8592.1234509.-1745094565"  data-ali="0">
       <aside class="fundraiser-announcement" aria-label="Fall fundraiser announcement"><div class="fundraiser-announcement-inner"><div class="fundraiser-announcement-copy"><strong>Recipe for Success</strong><span>Fall Fundraiser</span></div><span class="fundraiser-announcement-dates">October 7–November 9, 2026</span><a class="fundraiser-announcement-cta" href="/fall-fundraiser">Learn more</a></div></aside>
@@ -6309,5 +6311,35 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
 })();
 
   </script>
+<!-- Shared confirmed progress is injected into both campaign and homepage by the build/server. -->
+<script type="application/json" id="fundraiser-school-progress">{"goal":50000,"raised":11000,"updatedAt":null}</script>
+<dialog id="fundraiser-welcome" aria-labelledby="fundraiser-welcome-title" aria-describedby="fundraiser-welcome-description">
+  <div class="welcome-top">
+    <p class="welcome-eyebrow">Recipe for Success · Fall Fundraiser</p>
+    <button class="welcome-close" type="button" data-welcome-dismiss aria-label="Close fundraiser welcome" autofocus>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="welcome-layout">
+    <figure class="welcome-chef">
+      <img src="/assets/fundraiser-chef-izzy-hero.png" width="325" height="400" alt="Chef Izzy, Covenant's eagle mascot wearing a chef's hat">
+      <figcaption>Chef Izzy</figcaption>
+    </figure>
+    <div class="welcome-content">
+      <h2 class="welcome-title" id="fundraiser-welcome-title">Help create a <span>fresh floor</span> for every Eagle</h2>
+      <p class="welcome-description" id="fundraiser-welcome-description">Join our Covenant families in raising funds for a new gym floor where every Eagle can play, grow and belong.</p>
+      <p class="welcome-dates">October 7–November 9, 2026</p>
+      <div class="welcome-progress">
+        <div class="welcome-progress-copy"><p><strong data-welcome-raised>$11,000</strong> raised</p><p>of <span data-welcome-goal>$50,000</span> goal</p></div>
+        <div class="welcome-meter" role="progressbar" aria-label="School-wide fundraiser progress" aria-valuemin="0" aria-valuemax="50000" aria-valuenow="11000" aria-valuetext="$11,000 raised toward $50,000; 22% of goal"><span class="welcome-meter-fill"></span></div>
+        <p class="welcome-progress-note"><span data-welcome-percent>22%</span> of our school-wide goal · Every gift helps.</p>
+      </div>
+      <div class="welcome-actions">
+        <a class="welcome-cta" href="/fall-fundraiser">Explore the fundraiser<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+        <button class="welcome-continue" type="button" data-welcome-dismiss>Continue to website</button>
+      </div>
+    </div>
+  </div>
+</dialog>
 </body>
   </html>

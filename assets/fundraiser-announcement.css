@@ -42,10 +42,10 @@
 .fundraiser-announcement-copy strong{
   color:inherit;
   font-family:"Lilita One","Paytone One",Lexend,ui-sans-serif,system-ui,sans-serif;
-  font-size:20px;
+   font-size:22px;
   font-weight:400;
   line-height:1.25;
-  text-shadow:1px 1px 0 #2babe2;
+   text-shadow:none;
 }
 .fundraiser-announcement-copy span{
   color:#f4f3ed;
