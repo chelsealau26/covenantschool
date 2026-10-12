@@ -83,9 +83,9 @@ The user wants more animation across the fundraiser page, beyond the existing ju
 
 **How to apply:** Keep the page lively through decorative movement and card entrances without moving readable text continuously or changing the approved layout. Preserve the source palette, complete artwork and reduced-motion controls.
 
-The measuring jug now tracks the school-wide total against an $80,000 goal, not the $250 student/family goal.
+The measuring jug tracks the school-wide total against a $50,000 goal, not the $250 student/family goal. The user corrected the earlier $80,000 placeholder and supplied a current total of $11,000.
 
-**Why:** The user changed the jug to the total fundraiser goal, set $80,000 “for now,” and said the school will supply fundraising totals as the fundraiser progresses. The jug remains visually distinct from the countdown's kitchen timer.
+**Why:** The user confirmed the actual goal and said the school will supply fundraising totals as the fundraiser progresses. The jug remains visually distinct from the countdown's kitchen timer.
 
 The user explicitly approved the animated measuring-glass concept (“love it!”), then supplied simple measuring-jug icon references to correct the shape. This is approval of that concept, not full-page design approval.
 

@@ -5,8 +5,8 @@ const html = fs.readFileSync('pages/fall-fundraiser.html', 'utf8');
 const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
   .find(match => match[1].includes('function validateProgress'))[1];
 const config = JSON.parse(html.match(/id="fundraiser-school-progress">([\s\S]*?)<\/script>/)[1]);
-assert.equal(config.goal, 80000);
-assert.equal(config.raised, null);
+assert.equal(config.goal, 50000);
+assert.equal(config.raised, 11000);
 
 function setup({ reduced = false, supplied = config } = {}) {
   class Node {
@@ -67,7 +67,14 @@ function setup({ reduced = false, supplied = config } = {}) {
   };
 }
 
-const page = setup();
+const currentPage = setup({ reduced: true });
+assert.equal(currentPage.amount.textContent, '$50,000');
+assert.equal(currentPage.total.textContent, '$11,000 raised · 22% of our goal');
+assert.equal(currentPage.total.hidden, false);
+assert.equal(currentPage.api.getFill(), 0.22);
+assert.equal(currentPage.illustration.attrs['aria-valuenow'], '11000');
+assert.deepEqual(currentPage.marks.map(m => m.textContent), ['$50,000', '$37,500', '$25,000', '$12,500', '$0']);
+const page = setup({ supplied: { goal: 80000, raised: null } });
 assert.equal(page.amount.textContent, '$80,000');
 assert.equal(page.total.textContent, '');
 assert.equal(page.total.hidden, true);
@@ -134,7 +141,7 @@ assert.equal(page.updated.hidden, true);
 const reducedPage = setup({ reduced: true, supplied: { goal: 80000, raised: 20000 } });
 assert.equal(reducedPage.api.getFill(), 0.25);
 assert.equal(reducedPage.frames.size, 0);
-const reducedPreview = setup({ reduced: true });
+const reducedPreview = setup({ reduced: true, supplied: { goal: 80000, raised: null } });
 assert.equal(reducedPreview.api.getFill(), 0.12);
 assert.equal(reducedPreview.frames.size, 0);
 assert.equal(reducedPreview.total.hidden, true);
