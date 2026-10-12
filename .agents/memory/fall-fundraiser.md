@@ -192,3 +192,9 @@ The homepage fundraiser welcome must be a full-screen popup on mobile, not an in
 **Why:** The user explicitly changed the recommended mobile card to a full-screen popup.
 
 **How to apply:** Preserve this mobile presentation when refining the welcome feature; retain accessible dismissal and frequency limits.
+
+The user wants the homepage fundraiser popup to reappear when the page is hard refreshed.
+
+**Why:** The user explicitly requested this after reporting that the desktop popup no longer appeared.
+
+**How to apply:** Preserve a refresh override when refining suppression; do not let it bypass campaign expiry or make the popup appear on other pages.
