@@ -1,0 +1,47 @@
+/* Mobile header layout (theme switches to its mobile header at 768px and below):
+   eagle logo on the left, menu button on the right. Applies to the top header
+   and to the sticky header that appears while scrolling. */
+@media (max-width: 768px) {
+  /* Menu button: move from the left edge to the right edge. */
+  .page-layout .mobile-menu .navToggle.mobile-burger,
+  .page-layout .fixed-header-wrapper .navToggle.mobile-burger {
+    left: auto;
+    right: 20px;
+  }
+  /* The menu drawer slides in from the left and pushes the page right; while it
+     is open, keep the close (X) button at the drawer's edge so it stays on screen. */
+  .page-layout.open .mobile-menu .navToggle.mobile-burger,
+  .page-layout.open .fixed-header-wrapper .navToggle.mobile-burger {
+    left: 20px;
+    right: auto;
+  }
+
+  /* Top header logo: align left, clear of the menu button. */
+  .page-layout .mobile-menu .mobile-menu-logo .theme-logo {
+    box-sizing: border-box;
+    justify-content: flex-start;
+    padding: 0 82px 0 20px;
+  }
+  .page-layout .mobile-menu .mobile-menu-logo .theme-logo a {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .page-layout .mobile-menu .mobile-menu-logo .theme-logo a,
+  .page-layout .mobile-menu .mobile-menu-logo .theme-logo span {
+    text-align: left;
+  }
+
+  /* Sticky header logo: align left to match. */
+  .page-layout .fixed-header-wrapper .theme-logo {
+    box-sizing: border-box;
+    padding-right: 62px;
+  }
+  .page-layout .fixed-header-wrapper .theme-logo a {
+    margin-left: 5px;
+    margin-right: auto;
+  }
+  .page-layout .fixed-header-wrapper .theme-logo a,
+  .page-layout .fixed-header-wrapper .theme-logo span {
+    text-align: left;
+  }
+}
