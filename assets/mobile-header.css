@@ -8,12 +8,24 @@
     left: auto;
     right: 20px;
   }
-  /* The menu drawer slides in from the left and pushes the page right; while it
-     is open, keep the close (X) button at the drawer's edge so it stays on screen. */
-  .page-layout.open .mobile-menu .navToggle.mobile-burger,
-  .page-layout.open .fixed-header-wrapper .navToggle.mobile-burger {
-    left: 20px;
-    right: auto;
+  /* Menu drawer: slide in from the right instead of the left. The theme opens it
+     by adding .open to .page-layout, moving the 270px drawer to the left edge and
+     pushing the page 240px right; this mirrors both movements. The close (X)
+     button then lands on the drawer's edge, as it did on the left. */
+  .page-layout .mobile-menu .mobile-header-wrapper {
+    left: auto;
+    right: -290px;
+    transition: right .5s;
+  }
+  .page-layout.open .mobile-menu .mobile-header-wrapper {
+    left: auto;
+    right: 0;
+  }
+  /* !important: the theme's own "push page right" rule outranks ours otherwise. */
+  .page-layout.open > .content.slide,
+  .page-layout.open > .mobile-menu,
+  .page-layout.open > .fixed-header-wrapper {
+    left: -240px !important;
   }
 
   /* Top header logo: align left, clear of the menu button. */
@@ -29,6 +41,12 @@
   .page-layout .mobile-menu .mobile-menu-logo .theme-logo a,
   .page-layout .mobile-menu .mobile-menu-logo .theme-logo span {
     text-align: left;
+  }
+  /* Top header logo size: between the sticky header's (52px) and the theme's 90px.
+     !important is needed to beat the builder's inline max-height on the image. */
+  .page-layout .mobile-menu .mobile-menu-logo .theme-logo img {
+    max-height: 68px !important;
+    width: auto;
   }
 
   /* Sticky header logo: align left to match. */
