@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Run `python3 scripts/build-static.py` and publish the generated `dist/` directory. It contains the HTML pages plus the `assets/` and `pdfs/` directories. Publishing `pages/` alone omits the fundraiser's local logos, illustrations and downloads.",
+  "scripts": {
+    "test": "node .agents/scripts/test-fundraiser-palette.cjs",
+    "test:palette:static": "node .agents/scripts/test-fundraiser-palette.cjs --static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chelsealau26/covenantschool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chelsealau26/covenantschool/issues"
+  },
+  "homepage": "https://github.com/chelsealau26/covenantschool#readme",
+  "dependencies": {
+    "color-name": "^1.1.4",
+    "postcss": "^8.5.29",
+    "postcss-value-parser": "^4.2.0"
+  }
+}

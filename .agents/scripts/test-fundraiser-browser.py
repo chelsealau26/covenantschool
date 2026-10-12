@@ -141,11 +141,22 @@ def dialogs(page):
 
 def jug(page, reduced):
     source = json.loads((Path(__file__).resolve().parents[2] / "assets/fundraiser-progress.json").read_text())
-    target = min(source["raised"] / source["goal"], 1)
-    assert page.evaluate("FundraiserSchoolGoal.getState().raised") == source["raised"]
-    expect(page.locator("[data-school-goal-total]")).to_be_visible()
-    assert page.locator("[data-measuring-glass]").get_attribute("role") == "progressbar"
-    assert float(page.locator("[data-measuring-glass]").get_attribute("aria-valuenow")) == source["raised"]
+    supplied = page.evaluate("JSON.parse(document.getElementById('fundraiser-school-progress').textContent)")
+    assert supplied == source, "Page must use the canonical school progress"
+    state = page.evaluate("FundraiserSchoolGoal.getState()")
+    assert state == supplied, "Controller must use the supplied school progress"
+    target = .12 if supplied["raised"] is None else min(1, supplied["raised"] / supplied["goal"])
+    total = page.locator("[data-school-goal-total]")
+    glass = page.locator("[data-measuring-glass]")
+    if supplied["raised"] is None:
+        expect(total).to_be_hidden()
+        assert glass.get_attribute("role") == "img"
+        assert "not a reported fundraising total" in glass.get_attribute("aria-label")
+    else:
+        expect(total).to_be_visible()
+        assert glass.get_attribute("role") == "progressbar"
+        assert float(glass.get_attribute("aria-valuenow")) == supplied["raised"]
+        assert float(glass.get_attribute("aria-valuemax")) == supplied["goal"]
     if reduced:
         assert page.evaluate("FundraiserSchoolGoal.getFill()") == target
         return
@@ -157,10 +168,14 @@ def jug(page, reduced):
     settle(page)
     assert page.evaluate("FundraiserSchoolGoal.getFill()") == 0, "Fill starts before the bottom enters"
     page.evaluate("scrollBy(0,100)")
-    page.wait_for_function("FundraiserSchoolGoal.getFill()>0")
-    assert page.evaluate("FundraiserSchoolGoal.getFill()") < target, "Expected gradual fill"
-    page.wait_for_function("target=>FundraiserSchoolGoal.getFill()===target", arg=target, timeout=6000)
-    expect(page.locator("[data-school-goal-total]")).to_be_visible()
+    if target:
+        page.wait_for_function("FundraiserSchoolGoal.getFill()>0")
+        assert page.evaluate("FundraiserSchoolGoal.getFill()") < target, "Expected gradual fill"
+    page.wait_for_function("(target)=>FundraiserSchoolGoal.getFill()===target", arg=target, timeout=6000)
+    if supplied["raised"] is None:
+        expect(total).to_be_hidden()
+    else:
+        expect(total).to_be_visible()
 
 
 def readable(page):

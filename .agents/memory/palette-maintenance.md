@@ -18,3 +18,14 @@ the local contrast rule explicitly requested dark text.
 
 **How to apply:** Check computed foreground/background contrast with the widget
 enabled; keep necessary overrides scoped to fundraiser content, not the footer.
+
+Edit the central definition rule when testing dependent palette tokens, rather
+than setting a base token on a descendant.
+
+**Why:** Inherited custom properties containing `var()` have already resolved at
+their defining ancestor; a descendant override can misleadingly appear not to
+affect a correctly wired derived tint.
+
+**How to apply:** Mutate and restore the definition using CSSOM and assert the
+resulting computed component colors. Relative RGB can render with one-channel
+rounding differences from legacy RGBA even with equivalent computed values.

@@ -11,6 +11,36 @@ Wrangler runs this build automatically. For a dashboard-configured static
 hosting project, use the same build command and `dist` output directory.
 The Replit preview continues to use `python server.py`.
 
+
+## Fundraiser palette checks
+
+Run `npm ci`, then `npm test` with the preview server running. The registered
+`fundraiser-palette` validation runs the same command. It rejects CSS color
+literals outside the central palette and tests real token edits in Chromium at
+1440px and 390px. `BASE_URL` can override the preview address.
+
+For a quick parser/fixture check without a server, run `npm run test:palette:static`.
+For color-only maintenance, save the pre-edit HTML outside the public site and run
+`node .agents/scripts/test-fundraiser-palette.cjs /tmp/pre-edit.html`. This also
+compares all computed element/pseudo-element styles, layout, open calendar and
+high-contrast states. Outputs go to ignored `generated-artifacts/`.
+
+Keep literal definitions in `fundraiser-newsletter-palette`, not in component
+rules (including inline CSS, media queries and keyframes). Authentic artwork
+URLs/SVG presentation attributes, the three approved metallic prize gradients,
+positive high-contrast selectors and exact approved shared-site rules are
+exceptions. Shared rule fingerprints in
+`.agents/scripts/fundraiser-shared-css.json` must only change after deliberate
+review; do not refresh them to silence a fundraiser color failure.
+The guard also checks Register-button inline styles (including their labels)
+and `assets/fundraiser-announcement.css`. The announcement has a scoped
+`--announcement-*` palette because it appears on pages without fundraiser-page
+tokens. Only the imported Register anchors' original non-important white text
+and gray border literals are grandfathered; new inline colors are rejected.
+Announcement inline markup is checked across every HTML page. Palette definition
+values must also be present in `.agents/scripts/fundraiser-approved-colors.cjs`;
+do not auto-refresh that reviewed list from the page when validation fails.
+
 ## Automatic fundraiser retirement
 
 The cutoff is November 9, 2026 at 3 p.m. Central (21:00 UTC), defined in

@@ -89,7 +89,7 @@ The user wants more animation across the fundraiser page, beyond the existing ju
 
 **How to apply:** Keep the page lively through decorative movement and card entrances without moving readable text continuously or changing the approved layout. Preserve the source palette, complete artwork and reduced-motion controls.
 
-The measuring jug tracks the school-wide total against a $50,000 goal, not the $250 student/family goal. The user corrected the earlier $80,000 placeholder and supplied a current total of $11,000.
+The measuring jug tracks the school-wide total, not the student/family goal. Use school-confirmed goals and raised totals rather than placeholders.
 
 **Why:** The user confirmed the actual goal and said the school will supply fundraising totals as the fundraiser progresses. The jug remains visually distinct from the countdown's kitchen timer.
 

@@ -1,6 +1,6 @@
-/* Dependency-free Chromium comparison for color-only maintenance.
- * Usage: node .agents/scripts/test-fundraiser-palette.cjs [pre-change.html]
- * Without a baseline, checks the palette's static maintenance invariants.
+/* Palette guard + real Chromium token mutation checks.
+ * Usage: node .agents/scripts/test-fundraiser-palette.cjs [pre-change.html|--static]
+ * Optional baseline adds computed appearance comparisons; never a public page.
  * The baseline is intercepted in-browser, never added as a public page.
  */
 const fs = require('node:fs');
@@ -8,57 +8,40 @@ const assert = require('node:assert/strict');
 const { spawn } = require('node:child_process');
 const os = require('node:os');
 const path = require('node:path');
-const baseline = process.argv[2];
+const baseline = process.argv[2] === '--static' ? null : process.argv[2];
 const current = fs.readFileSync('pages/fall-fundraiser.html', 'utf8');
 const previous = baseline ? fs.readFileSync(baseline, 'utf8') : null;
 // Assets, copy, scripts, and all non-style markup must remain byte-for-byte.
 const withoutStyles = html => html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, '');
 if (previous) assert.equal(withoutStyles(current), withoutStyles(previous), 'Non-CSS content changed');
-const palette = current.match(/<style id="fundraiser-newsletter-palette">([\s\S]*?)<\/style>/)[1];
-const brandColors = require('./fundraiser-palette-rules.cjs');
-for (const style of current.matchAll(/<style\b([^>]*)>([\s\S]*?)<\/style>/g)) {
-  if (style[1].includes('fundraiser-newsletter-palette')) continue;
-  for (const rule of style[2].matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
-    // Shared header/footer, contrast rules and inline artwork are explicit exceptions.
-    if (!rule[1].includes('#main-content') || rule[1].includes('a11y-high-contrast')
-      || rule[1].includes('.fixed-header-wrapper')) continue;
-    for (const color of rule[2].matchAll(/#[\da-f]{3,8}\b/gi)) {
-      assert(!brandColors[color[0].toLowerCase()], `Unapproved brand literal ${color[0]} in ${rule[1].trim()}`);
-    }
-  }
+const { checkPalette, checkAnnouncementMarkup } = require('./fundraiser-palette-rules.cjs');
+assert.deepEqual(checkPalette(current), [], 'Unapproved CSS literals (use central palette tokens)');
+for (const entry of fs.readdirSync('pages', { recursive: true })) {
+  if (entry.endsWith('.html')) assert.deepEqual(
+    checkAnnouncementMarkup(fs.readFileSync(path.join('pages', entry), 'utf8')), [],
+    `${entry}: unapproved inline announcement colors`);
 }
-for (const [selector, token] of [
-  ['#main-content #sponsors', 'detail-blue'],
-  ['#main-content #sponsors .recipe-sponsor', 'detail-blue'],
-  ['#main-content #sponsors .sponsor-levels', 'warm-paper'],
-  ['#main-content.recipe-page .countdown-unit', 'detail-blue'],
-]) {
-  const css = [...current.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)]
-    .map(match => match[1]).join('\n').replace(/\/\*[\s\S]*?\*\//g, '');
-  const rules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
-    .filter(rule => rule[1].trim() === selector);
-  assert(rules.some(rule => rule[2].includes(`var(--recipe-${token})`)),
-    `${selector} must respond to --recipe-${token}`);
-}
-assert(!/#[\da-f]{3,8}\b|rgba?\(/i.test(palette.slice(palette.indexOf('body:not'))),
-  'Normal-mode palette rules must use named tokens, not literal colors');
-for (const token of ['ink', 'blue', 'paper', 'yellow', 'red', 'secondary', 'dark']) {
-  assert.equal((current.match(new RegExp(`--recipe-${token}\\s*:`, 'g')) || []).length, 1,
-    `Define --recipe-${token} once`);
-}
-if (!baseline) {
-  console.log('PASS: fundraiser palette tokens are defined once; normal-mode palette rules use tokens');
+require('./test-fundraiser-palette-fixtures.cjs')(current);
+console.log('PASS: palette definitions, literal rejection and exception fixtures');
+if (process.argv.includes('--static')) {
   process.exit(0);
 }
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'palette-browser-'));
 const chrome = spawn('chromium', ['--headless', '--no-sandbox', '--disable-dev-shm-usage',
-  '--remote-debugging-port=9223', `--user-data-dir=${profile}`], { stdio: 'ignore' });
+  '--remote-debugging-port=0', `--user-data-dir=${profile}`], { stdio: 'ignore' });
 let ws;
+let launchError;
+chrome.on('error', error => { launchError = error; });
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const timeout = setTimeout(() => { console.error('Palette browser timed out'); chrome.kill(); process.exit(1); }, 180000);
 (async () => {
   let targets;
   for (let i = 0; i < 100; i++) {
-    try { targets = await (await fetch('http://127.0.0.1:9223/json')).json(); break; }
+    if (launchError) throw launchError;
+    try {
+      const port = fs.readFileSync(path.join(profile, 'DevToolsActivePort'), 'utf8').split('\n')[0];
+      targets = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); break;
+    }
     catch { await sleep(100); }
   }
   assert(targets, 'Chromium did not start');
@@ -108,22 +91,28 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     return [...document.body.querySelectorAll('*')].filter(el => !['SCRIPT','STYLE'].includes(el.tagName))
       .map(el => [el.tagName, el.id, ...['', '::before', '::after'].map(pseudo => {
         const s = getComputedStyle(el, pseudo || null);
-        return properties.map(p => s[p]);
+        // Chromium serializes relative RGB as color(srgb); canonicalize only
+        // that equivalent representation for pre/post computed comparisons.
+        return properties.map(p => s[p].replace(/color\\(srgb ([\\d.]+) ([\\d.]+) ([\\d.]+) \\/ ([\\d.]+)\\)/g,
+          (_,r,g,b,a) => 'rgba(' + [r,g,b].map(v=>Math.round(v*255)).join(', ') + ', ' + a + ')'));
       }), ...['x','y','width','height'].map(k => Math.round(el.getBoundingClientRect()[k] * 100) / 100)]);
   })()`);
   };
-  fs.mkdirSync('.agents/outputs/palette-comparison', { recursive: true });
+  const output = 'generated-artifacts/palette-comparison';
+  fs.mkdirSync(output, { recursive: true });
   for (const width of [1440, 390]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false });
     const results = [];
-    for (const [label, html] of [['before', previous], ['after', current]]) {
+    for (const [label, html] of (baseline ? [['before', previous], ['after', current]] : [['after', current]])) {
       source = html;
-      await send('Page.navigate', { url: `https://${process.env.REPLIT_DEV_DOMAIN}/fall-fundraiser` });
+      const baseUrl = process.env.BASE_URL || `https://${process.env.REPLIT_DEV_DOMAIN}`;
+      await send('Page.navigate', { url: `${baseUrl}/fall-fundraiser` });
       for (let i = 0; i < 100; i++) {
         if (await evaluate(`document.readyState === 'complete' && !!document.querySelector('.recipe-goal')`)) break;
         await sleep(100);
       }
       await evaluate('document.fonts.ready.then(() => true)');
+      assert(await evaluate(`!!document.querySelector('.recipe-goal')`), 'Fundraiser page did not load');
       await evaluate(`Promise.all([...document.images].map(img => img.decode().catch(() => {}))).then(() => true)`);
       await evaluate(`(() => {
         const style = document.createElement('style');
@@ -140,21 +129,34 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       results.push(states);
       await evaluate(`document.body.classList.remove('a11y-high-contrast')`);
       await sleep(300);
+      if (label === 'after') {
+        const mutationErrors = await evaluate(`(${require('./fundraiser-token-probes.cjs').toString()})()`);
+        assert.deepEqual(mutationErrors, [], width + 'px: token mutations must change computed component colors');
+        console.log(width + 'px: representative components and sponsor gingham respond to token edits');
+      }
+      if (!baseline) continue;
       const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true,
         clip: { x: 0, y: 0, width, height: await evaluate('document.documentElement.scrollHeight'), scale: 1 } });
-      fs.writeFileSync(`.agents/outputs/palette-comparison/${label}-${width}.png`, Buffer.from(shot.data, 'base64'));
+      fs.writeFileSync(`${output}/${label}-${width}.png`, Buffer.from(shot.data, 'base64'));
     }
+    if (!baseline) continue;
     const differences = [];
     for (const state of Object.keys(results[0])) {
+      assert.equal(results[0][state].length, results[1][state].length, 'Element count changed');
       results[0][state].forEach((value, index) => {
         if (JSON.stringify(value) !== JSON.stringify(results[1][state][index])) {
           differences.push({ state, index, before: value, after: results[1][state][index] });
         }
       });
     }
-    fs.writeFileSync(`.agents/outputs/palette-comparison/differences-${width}.json`, JSON.stringify(differences, null, 2));
+    fs.writeFileSync(`${output}/differences-${width}.json`, JSON.stringify(differences, null, 2));
     assert.equal(differences.length, 0, `${width}px: computed appearance differs; see differences-${width}.json`);
     console.log(`${width}px: all elements, pseudo-elements, layout, dialog and high-contrast styles unchanged`);
   }
 })().catch(error => { console.error(error); process.exitCode = 1; })
-  .finally(() => { if (ws) ws.close(); chrome.kill(); });
+  .finally(() => {
+    clearTimeout(timeout);
+    if (ws) ws.close();
+    chrome.kill();
+    chrome.once('exit', () => fs.rmSync(profile, { recursive: true, force: true }));
+  });
