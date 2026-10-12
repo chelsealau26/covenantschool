@@ -2,3 +2,5 @@ urls.txt
 images.txt
 images-full.txt
 dist/
+node_modules/
+/generated-artifacts/
