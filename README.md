@@ -57,6 +57,36 @@ is needed at the cutoff.
 
 ## Homepage fundraiser welcome
 
+### Optional popup analytics
+
+The welcome popup calls an existing `window.umami.track` only when available;
+it does not install a tracker, send personal data, queue events for later, or
+wait for analytics before opening, closing, or following the CTA.
+
+| Event | Meaning |
+| --- | --- |
+| `fundraiser_popup_impression` | Successfully displayed popup |
+| `fundraiser_popup_dismiss` | Explicit close, Continue to website, or Escape |
+| `fundraiser_popup_click` | Explore the fundraiser link activated (not a confirmed destination pageview) |
+
+Each event has `device: desktop` or `mobile`, captured at display using the
+popup's 767px breakpoint. Dismissals also have `method: close`, `continue`, or
+`escape`. CTA clicks are not counted as dismissals. Expiry, page navigation
+cleanup and suppressed displays are not dismissal/impression events.
+One displayed popup produces at most one outcome event.
+
+Access to Replit analytics was verified during implementation, but this project
+had no Replit publication at that time. To collect on a supported Replit
+publication, enable analytics in Publishing settings and publish or republish.
+The Cloudflare Worker/static export does **not** receive Replit's injected
+tracker; on those hosts these calls remain no-ops unless a compatible tracker
+is separately configured. Existing Google consent bootstrap code is not proof
+of an installed analytics collector. No second tracker was added.
+
+Counts are best-effort: blockers, a late-loading tracker, or navigation may
+prevent delivery. Compare clicks with impressions by device to assess popup
+engagement; do not describe clicks as completed registrations or donations.
+
 The homepage offers a compact desktop dialog and a full-screen mobile dialog.
 Dismissal or following its CTA suppresses it for seven days in that browser,
 and it does not reopen within the same tab session. Clearing or blocking

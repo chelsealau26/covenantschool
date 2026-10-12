@@ -5,6 +5,17 @@ const STORAGE_KEY = "covenant:fundraiser-welcome:2026:until";
 const SESSION_KEY = "covenant:fundraiser-welcome:2026:seen";
 const WEEK = 7 * 24 * 60 * 60 * 1000;
 
+// Optional existing tracker only: never install a second tracker or wait for it.
+const trackWelcome = (event, device, method) => {
+  try {
+    const data = { device };
+    if (method) data.method = method;
+    const result = window.umami?.track(event, data);
+    // Some tracker versions return a promise; rejection must remain harmless.
+    Promise.resolve(result).catch(() => {});
+  } catch { /* Analytics cannot interrupt the popup or navigation. */ }
+};
+
 if (dialog) {
   let timer;
   let interrupted = false;
@@ -13,6 +24,13 @@ if (dialog) {
   let scrollState;
   let retired = false;
   let memorySuppressed = false;
+  let eventDevice;
+  let outcomeRecorded = false;
+  const recordOutcome = (event, method) => {
+    if (!shown || !dialog.open || retired || outcomeRecorded) return;
+    outcomeRecorded = true;
+    trackWelcome(event, eventDevice, method);
+  };
   const read = (storage, key) => {
     try { return window[storage].getItem(key); } catch { return null; }
   };
@@ -107,7 +125,11 @@ if (dialog) {
   };
   document.addEventListener("fundraiser:ended", retire);
   dialog.addEventListener("close", () => { suppress(!retired); restore(); });
-  dialog.addEventListener("cancel", event => { event.preventDefault(); dismiss(); });
+  dialog.addEventListener("cancel", event => {
+    event.preventDefault();
+    recordOutcome("fundraiser_popup_dismiss", "escape");
+    dismiss();
+  });
   dialog.addEventListener("keydown", event => {
     if (event.key !== "Tab") return;
     const controls = [...dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')].filter(visible);
@@ -118,8 +140,14 @@ if (dialog) {
       (event.shiftKey ? last : first)?.focus();
     }
   });
-  dialog.querySelectorAll("[data-welcome-dismiss]").forEach(button => button.addEventListener("click", () => dismiss()));
-  dialog.querySelector(".welcome-cta").addEventListener("click", () => dismiss());
+  dialog.querySelectorAll("[data-welcome-dismiss]").forEach(button => button.addEventListener("click", () => {
+    recordOutcome("fundraiser_popup_dismiss", button.classList.contains("welcome-close") ? "close" : "continue");
+    dismiss();
+  }));
+  dialog.querySelector(".welcome-cta").addEventListener("click", () => {
+    recordOutcome("fundraiser_popup_click");
+    dismiss();
+  });
 
   const stop = () => { interrupted = true; clearTimeout(timer); };
   const interaction = event => {
@@ -149,6 +177,8 @@ if (dialog) {
         shown = true;
         suppress(); // Never reopen in this session, including browser back.
         dialog.querySelector(".welcome-close").focus({ preventScroll: true });
+        eventDevice = window.matchMedia("(max-width: 767px)").matches ? "mobile" : "desktop";
+        trackWelcome("fundraiser_popup_impression", eventDevice);
       } catch { restore(); stop(); }
     }, 2000);
   };
