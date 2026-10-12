@@ -21,6 +21,12 @@ The user also requested automatic removal of the sitewide fundraiser bar and hid
 
 The user explicitly requested a Fall Fundraiser link in the footer throughout the website, including the fundraiser page. Preserve the shared footer design; the seasonal link should retire with the campaign.
 
+Life Psychiatry and Blaze Pizza must not appear in the website's sponsor displays.
+
+**Why:** The user explicitly said both sponsor logos can be permanently removed.
+
+**How to apply:** Do not restore these sponsors when rebuilding sponsor lists or importing older school-site content.
+
 **Why:** They want the seasonal promotion retired without manual intervention.
 
 **How to apply:** Use the stated November 9, 2026, 3 p.m. Central ending; preserve source files for reuse and stop public indexing/access afterward. Ensure the runtime retirement handler is deployed, not only the static HTML.
