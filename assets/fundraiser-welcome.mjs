@@ -1,9 +1,12 @@
 import { hasEnded } from "./fundraiser-lifecycle.mjs";
 
 const dialog = document.getElementById("fundraiser-welcome");
-const STORAGE_KEY = "covenant:fundraiser-welcome:2026:until";
-const SESSION_KEY = "covenant:fundraiser-welcome:2026:seen";
-const WEEK = 7 * 24 * 60 * 60 * 1000;
+// Older versions remembered a dismissal for 7 days / the whole session under these keys.
+// The popup now shows on every home page visit, so clear any leftovers.
+const LEGACY_KEYS = [
+  ["localStorage", "covenant:fundraiser-welcome:2026:until"],
+  ["sessionStorage", "covenant:fundraiser-welcome:2026:seen"]
+];
 
 // Optional existing tracker only: never install a second tracker or wait for it.
 const trackWelcome = (event, device, method) => {
@@ -17,15 +20,16 @@ const trackWelcome = (event, device, method) => {
 };
 
 if (dialog) {
-  // Browsers expose both regular and hard refresh as "reload".
-  // Ignore persisted frequency limits only on that load, never in-memory limits.
-  const reloadVisit = performance.getEntriesByType("navigation")[0]?.type === "reload";
+  LEGACY_KEYS.forEach(([storage, key]) => { try { window[storage].removeItem(key); } catch {} });
+
   let timer;
   let interrupted = false;
   let shown = false;
   let previousFocus;
   let scrollState;
   let retired = false;
+  // Only stops the popup from reopening during the same page view.
+  // Every new visit to the home page (link, typed URL, refresh, Back/Forward) shows it again.
   let memorySuppressed = false;
   let eventDevice;
   let outcomeRecorded = false;
@@ -34,23 +38,8 @@ if (dialog) {
     outcomeRecorded = true;
     trackWelcome(event, eventDevice, method);
   };
-  const read = (storage, key) => {
-    try { return window[storage].getItem(key); } catch { return null; }
-  };
-  const write = (storage, key, value) => {
-    try { window[storage].setItem(key, value); } catch {
-      // Session + memory still prevent repeat prompts where available.
-      // Blocked/cleared storage cannot guarantee suppression across visits.
-    }
-  };
-  const suppress = (persist = false) => {
-    memorySuppressed = true;
-    write("sessionStorage", SESSION_KEY, "1");
-    if (persist) write("localStorage", STORAGE_KEY, String(Date.now() + WEEK));
-  };
-  const isSuppressed = () => memorySuppressed ||
-    (!reloadVisit && (read("sessionStorage", SESSION_KEY) === "1" ||
-    Number(read("localStorage", STORAGE_KEY)) > Date.now()));
+  const suppress = () => { memorySuppressed = true; };
+  const isSuppressed = () => memorySuppressed;
   const eligible = () => /^\/(?:(?:pages\/)?index(?:\.html)?)?\/?$/i.test(location.pathname) && !location.hash;
   const visible = element => !!element.getClientRects().length &&
     getComputedStyle(element).visibility !== "hidden" && getComputedStyle(element).display !== "none" &&
@@ -115,19 +104,19 @@ if (dialog) {
     if (previousFocus?.isConnected && typeof previousFocus.focus === "function") previousFocus.focus({ preventScroll: true });
     previousFocus = null;
   };
-  const dismiss = (persist = true) => {
+  const dismiss = () => {
     clearTimeout(timer);
-    suppress(persist);
+    suppress();
     if (dialog.open) dialog.close();
     restore(); // Native close events are queued; expiry cleanup must be synchronous.
   };
   const retire = () => {
     retired = true;
-    dismiss(false);
+    dismiss();
     dialog.remove();
   };
   document.addEventListener("fundraiser:ended", retire);
-  dialog.addEventListener("close", () => { suppress(!retired); restore(); });
+  dialog.addEventListener("close", () => { suppress(); restore(); });
   dialog.addEventListener("cancel", event => {
     event.preventDefault();
     recordOutcome("fundraiser_popup_dismiss", "escape");
@@ -161,14 +150,13 @@ if (dialog) {
   ["keydown", "pointerdown", "focusin"].forEach(type => document.addEventListener(type, interaction, true));
   window.addEventListener("hashchange", stop);
   window.addEventListener("popstate", stop);
-  window.addEventListener("pagehide", () => { stop(); if (dialog.open) dismiss(false); });
-  window.addEventListener("pageshow", event => { if (event.persisted) { stop(); if (dialog.open) dismiss(false); } });
+  window.addEventListener("pagehide", () => { stop(); if (dialog.open) dismiss(); });
 
   const schedule = () => {
     clearTimeout(timer);
     if (hasEnded()) { retire(); return; }
     if (retired || shown || interrupted || !eligible() || isSuppressed() || document.hidden ||
-      typeof dialog.showModal !== "function" || performance.getEntriesByType("navigation")[0]?.type === "back_forward") return;
+      typeof dialog.showModal !== "function") return;
     timer = setTimeout(() => {
       if (hasEnded()) { retire(); return; }
       if (retired || shown || interrupted || !eligible() || isSuppressed() || document.hidden) return;
@@ -178,13 +166,25 @@ if (dialog) {
         lockScroll();
         dialog.showModal();
         shown = true;
-        suppress(); // Never reopen in this session, including browser back.
+        suppress(); // Don't reopen during this same page view.
         dialog.querySelector(".welcome-close").focus({ preventScroll: true });
         eventDevice = window.matchMedia("(max-width: 767px)").matches ? "mobile" : "desktop";
         trackWelcome("fundraiser_popup_impression", eventDevice);
       } catch { restore(); stop(); }
     }, 500);
   };
+
+  // Coming back with Back/Forward restores the page from the browser's cache without reloading it.
+  // Treat that as a new visit so the popup shows again.
+  window.addEventListener("pageshow", event => {
+    if (!event.persisted || retired) return;
+    if (dialog.open) dismiss();
+    shown = false;
+    interrupted = false;
+    memorySuppressed = false;
+    outcomeRecorded = false;
+    schedule();
+  });
   document.addEventListener("visibilitychange", () => {
     if (hasEnded()) retire();
     else if (document.hidden) clearTimeout(timer);

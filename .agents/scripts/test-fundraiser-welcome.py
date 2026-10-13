@@ -4,10 +4,13 @@ import shutil
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
-BASE = "https://" + os.environ["REPLIT_DEV_DOMAIN"]
+BASE = os.environ.get("BASE_URL") or "https://" + os.environ["REPLIT_DEV_DOMAIN"]
 OUT = Path("/tmp/fundraiser-welcome")
 OUT.mkdir(exist_ok=True)
+# Legacy frequency-limit keys. The popup now shows on every homepage visit and
+# clears these if an older version saved them.
 KEY = "covenant:fundraiser-welcome:2026:until"
+SESSION_KEY = "covenant:fundraiser-welcome:2026:seen"
 
 def set_time(page, iso):
     # Freeze Date only. Playwright's clock replaces Performance and removes real
@@ -66,7 +69,8 @@ with sync_playwright() as p:
         page.keyboard.press("Escape")
         expect(dialog).not_to_be_visible()
         assert page.evaluate("document.body.style.position") == ""
-        assert page.evaluate(f"Number(localStorage.getItem('{KEY}'))-Date.now()") == 604800000
+        # No dismissal is remembered between visits.
+        assert page.evaluate(f"[localStorage.getItem('{KEY}'), sessionStorage.getItem('{SESSION_KEY}')]") == [None, None]
         page.reload(wait_until="load")
         expect(dialog).to_be_visible(timeout=12000)
         page.locator(".welcome-close").click()
@@ -75,10 +79,9 @@ with sync_playwright() as p:
         expect(dialog).not_to_be_visible()  # No second display in this load.
         page.goto(BASE + "/ways-to-give")
         page.goto(BASE + "/")
-        page.wait_for_timeout(2400)
-        expect(dialog).not_to_be_visible()  # Ordinary return still suppressed.
+        expect(dialog).to_be_visible(timeout=12000)  # Every return to the homepage shows it again.
         ctx.close()
-        print("PASS layout, focus, dismiss and suppression", width, height, flush=True)
+        print("PASS layout, focus, dismiss and every-visit display", width, height, flush=True)
 
     for route in ["/index", "/index.html"]:
         ctx, page = visit(browser, route=route)
@@ -86,11 +89,14 @@ with sync_playwright() as p:
         page.locator(".welcome-cta").click()
         page.wait_for_url("**/fall-fundraiser")
         page.go_back(wait_until="load")
-        page.wait_for_timeout(2300)
-        expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
+        expect(page.locator("#fundraiser-welcome")).to_be_visible(timeout=12000)  # Back to the homepage shows it again.
         ctx.close()
+    # A suppression saved by an older version is cleared and does not hide the popup.
+    ctx, page = visit(browser, init=f"localStorage.setItem('{KEY}',String(Date.now()+86400000));sessionStorage.setItem('{SESSION_KEY}','1')")
+    expect(page.locator("#fundraiser-welcome")).to_be_visible(timeout=12000)
+    assert page.evaluate(f"[localStorage.getItem('{KEY}'), sessionStorage.getItem('{SESSION_KEY}')]") == [None, None]
+    ctx.close()
     for init, route in [
-        (f"localStorage.setItem('{KEY}',String(Date.now()+86400000))", "/"),
         ("", "/#main-content"),
         ("", "/ways-to-give"),
     ]:
@@ -137,10 +143,11 @@ with sync_playwright() as p:
     page.wait_for_timeout(2500)
     expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
     ctx.close()
-    # Reload ignores persisted limits, but not interaction, hashes or expiry.
+    # A new visit still respects interaction, hashes, hidden tabs and expiry.
     for mode in ["keyboard", "dialog", "hash", "expired", "hidden"]:
-        ctx, page = visit(browser, init=f"localStorage.setItem('{KEY}',String(Date.now()+86400000))")
-        page.wait_for_timeout(2400)
+        ctx, page = visit(browser)
+        expect(page.locator("#fundraiser-welcome")).to_be_visible(timeout=12000)
+        page.locator(".welcome-close").click()
         expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
         if mode == "hash":
             page.goto(BASE + "/#main-content")

@@ -198,3 +198,9 @@ The user wants the homepage fundraiser popup to reappear when the page is hard r
 **Why:** The user explicitly requested this after reporting that the desktop popup no longer appeared.
 
 **How to apply:** Preserve a refresh override when refining suppression; do not let it bypass campaign expiry or make the popup appear on other pages.
+
+The user subsequently required the popup to appear on every homepage visit: “MAKE SURE THE POP UP APPEARS EVERY TIME THE HOME PAGE IS VISITED AGAIN.”
+
+**Why:** This replaces the earlier seven-day and same-session frequency limits.
+
+**How to apply:** Do not reintroduce cross-visit or same-session suppression. Dismissal only prevents a second opening during the same page view. Keep campaign expiry, homepage-only display, hash exclusions and keyboard/menu/dialog safeguards.
