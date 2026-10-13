@@ -4,3 +4,4 @@
 - [Static site delivery](static-site-delivery.md) — prevent old-branding flashes and include local images/PDFs in static exports, not just the Python preview.
 - [Palette maintenance](palette-maintenance.md) — preserve high-contrast cascade behavior separately when removing redundant fundraiser colors.
 - [Browser scroll checks](browser-scroll-checks.md) — avoid locator auto-scroll between the pre-open snapshot and the dialog trigger click.
+- [Site accessibility and SEO](site-accessibility.md) — shared a11y stylesheet, header landmark wrapper, alt-text and privacy policy rules.

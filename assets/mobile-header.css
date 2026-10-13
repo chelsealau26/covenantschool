@@ -21,10 +21,13 @@
     left: auto;
     right: 0;
   }
-  /* !important: the theme's own "push page right" rule outranks ours otherwise. */
+  /* !important: the theme's own "push page right" rule outranks ours otherwise.
+     The header parts sit inside the <header class="ccs-site-header"> landmark. */
   .page-layout.open > .content.slide,
   .page-layout.open > .mobile-menu,
-  .page-layout.open > .fixed-header-wrapper {
+  .page-layout.open > .fixed-header-wrapper,
+  .page-layout.open > .ccs-site-header > .mobile-menu,
+  .page-layout.open > .ccs-site-header > .fixed-header-wrapper {
     left: -240px !important;
   }
 

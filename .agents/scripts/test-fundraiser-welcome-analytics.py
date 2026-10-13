@@ -3,7 +3,7 @@ import os
 import shutil
 from playwright.sync_api import sync_playwright, expect
 
-BASE = "https://" + os.environ["REPLIT_DEV_DOMAIN"]
+BASE = os.environ.get("BASE_URL") or "https://" + os.environ["REPLIT_DEV_DOMAIN"]
 STUB = """window.events=[];
 window.umami={track:(name,data)=>{events.push({name,data});return Promise.resolve();}};"""
 
@@ -40,9 +40,9 @@ with sync_playwright() as p:
         assert page.evaluate("events") == events
         page.goto(BASE + "/ways-to-give")
         page.goto(BASE + "/")
-        page.wait_for_timeout(2600)
-        expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
-        assert page.evaluate("events") == []
+        # Every homepage visit shows the popup again: one fresh impression, no stale outcome.
+        expect(page.locator("#fundraiser-welcome")).to_be_visible(timeout=15000)
+        assert page.evaluate("events") == [{"name": "fundraiser_popup_impression", "data": {"device": device}}]
         ctx.close()
 
     for tracker in [
@@ -62,8 +62,8 @@ with sync_playwright() as p:
         expect(page.locator("#fundraiser-welcome")).not_to_be_visible()
         page.wait_for_timeout(100)
         assert not errors, errors
-        assert page.evaluate("Number(localStorage.getItem('covenant:fundraiser-welcome:2026:until')) > Date.now()")
+        assert page.evaluate("localStorage.getItem('covenant:fundraiser-welcome:2026:until')") is None
         assert page.evaluate("document.body.style.position") != "fixed"
         ctx.close()
     browser.close()
-print("PASS: impression, dismissal methods, CTA, device, deduplication, suppression, expiry and tracker failures")
+print("PASS: impression, dismissal methods, CTA, device, deduplication, every-visit display, expiry and tracker failures")

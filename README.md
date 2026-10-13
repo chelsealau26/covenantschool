@@ -90,19 +90,41 @@ engagement; do not describe clicks as completed registrations or donations.
 The homepage offers a compact desktop dialog and a full-screen mobile dialog.
 It opens half a second after the page markup is ready, without waiting for all
 images and external assets to finish loading.
-Dismissal or following its CTA suppresses ordinary return visits for seven days
-in that browser, and ordinary navigation does not reopen it within the same tab
-session. Refreshing the homepage reopens it after the usual delay, including a
-hard refresh: browsers report both normal and hard refresh as reload navigation.
-Reload overrides saved frequency limits only for that load, without clearing
-dismissal history. It never bypasses campaign expiry, hash exclusions, or active
-keyboard/menu/dialog safeguards, and cannot reopen twice on one load.
-Clearing or blocking
-browser storage can prevent cross-visit suppression. There is no personal
-information collection. Existing banner/footer links remain usable without JS.
+It appears on every visit to the homepage: arriving from another page, a typed
+URL, a normal or hard refresh, and Back/Forward (including pages restored from
+the browser's back/forward cache). Dismissing it only prevents it from reopening
+during the same page view; nothing is remembered between visits, and any
+suppression keys saved by earlier versions are cleared. It never bypasses
+campaign expiry, hash exclusions, or active keyboard/menu/dialog safeguards.
+There is no personal information collection. Existing banner/footer links remain usable without JS.
 
 Update school-confirmed progress in `assets/fundraiser-progress.json`, then
 rebuild and publish through the normal process. The Python preview and static
 build inject this one source into both the homepage welcome and fundraiser jug.
 Generated HTML is not a second source to maintain. The popup uses the same
 campaign cutoff as the banner and is retired by the server and in open tabs.
+
+## Accessibility and SEO
+
+Every page loads `assets/site-a11y.css` last. It holds the site-wide WCAG 2.2 AA
+fixes: navy text on gold buttons, a deeper gold (`.ccs-gold-text`) for gold text
+on light backgrounds, darker gray buttons, a visible keyboard focus ring,
+reduced-motion support, the `.sr-only` utility and the privacy policy's
+document styling. The fundraiser page keeps its own tested focus, motion and
+Register-button colors; the shared rules are scoped so they don't change it.
+
+Page structure: the site header parts are wrapped in
+`<header class="ccs-site-header">` (one banner landmark) and page content in
+`<main id="main-content">`, which is also the skip link's target. Rules that
+position header parts with `>` must account for the wrapper (see
+`assets/mobile-header.css`). Footer section headings use `aria-level="2"` on
+every page so the shared footer stays identical site-wide.
+
+Images: describe only what is visible in the photo. Stock photos beside a heading
+that already says the same thing use `alt=""` so screen readers skip them.
+
+SEO: each page has its own title (60 characters or fewer) and description
+(about 155 characters or fewer), matching Open Graph/Twitter tags and
+WebPage + BreadcrumbList structured data. `pages/sitemap.xml` lists all public
+pages; the privacy policy stays `noindex`. After deploying, submit the sitemap
+in Google Search Console.
