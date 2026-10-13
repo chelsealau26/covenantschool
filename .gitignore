@@ -4,3 +4,4 @@ images-full.txt
 dist/
 node_modules/
 /generated-artifacts/
+__pycache__/
