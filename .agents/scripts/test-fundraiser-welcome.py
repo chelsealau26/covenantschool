@@ -55,9 +55,9 @@ with sync_playwright() as p:
         assert dialog.evaluate("e=>{let r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1&&r.top>=0&&r.bottom<=innerHeight+1}")
         if width < 768:
             assert abs(dialog.bounding_box()["height"] - height) < 2
-        expect(page.locator("[data-welcome-raised]")).to_have_text("$11,000")
+        expect(page.locator("[data-welcome-raised]")).to_have_text("$36,321")
         expect(page.locator("[data-welcome-goal]")).to_have_text("$50,000")
-        expect(page.locator("[data-welcome-percent]")).to_have_text("22%")
+        expect(page.locator("[data-welcome-percent]")).to_have_text("73%")
         assert page.locator(".welcome-chef").count() == 0
         page.keyboard.press("Shift+Tab")
         assert page.evaluate("document.querySelector('#fundraiser-welcome').contains(document.activeElement)")

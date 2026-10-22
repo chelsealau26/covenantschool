@@ -10,7 +10,7 @@ ASSETS = ROOT / "attached_assets"
 
 
 def prepare(pixmap, identifier):
-    if pixmap.colorspace.n != 3:
+    if pixmap.colorspace is None or pixmap.colorspace.n != 3:
         pixmap = pymupdf.Pixmap(pymupdf.csRGB, pixmap)
     samples = pixmap.samples
     channels = pixmap.n
@@ -64,6 +64,23 @@ specs = [
     ("joe-cowart", "Joe Cowart, Inc.", pymupdf.Pixmap(str(ASSETS / "Joe_Cowart_Inc._1791504525762.png"))),
     ("little-monkey-toes", "Little Monkey Toes", pymupdf.Pixmap(str(ASSETS / "Little_Monkey_Toes_1791504525763.png"))),
     ("mw-counseling", "MW Counseling, LLC", pymupdf.Pixmap(str(ASSETS / "Unknown_1791504525763.png"))),
+]
+# October 22, 2026 additions supplied by the school.
+S = "1791504525764"
+page_pixmap = lambda name, zoom: pymupdf.open(ASSETS / name)[0].get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), alpha=False)
+image = lambda name: pymupdf.Pixmap(str(ASSETS / name))
+specs += [
+    ("anchor-point-therapy", "Anchor Point Therapy", page_pixmap(f"Anchor_Point_Therapy_{S}.pdf", 3)),
+    ("belzona", "Belzona", image(f"Belzona_{S}.png")),
+    ("christian-warehouse-store", "Christian Warehouse Store", image(f"Christian_Warehouse_Bookstore_{S}.png")),
+    ("covenant-church", "Covenant Church", image(f"Covenant_Church_{S}.png")),
+    ("eivar-ofelia-designs", "Eivar Ofelia Designs", image(f"Eivar_Ofelia_Designs_{S}.png")),
+    ("le-yataco-services", "L&E Yataco Services, LLC", page_pixmap(f"LE_Yataco_Services_{S}.pdf", 1)),
+    ("mobile-appliance", "Mobile Appliance", image(f"Mobile_Appliance_{S}.png")),
+    ("moes-southwest-grill", "Moe's Southwest Grill", image(f"Moes_Southwest_Grill_{S}.png")),
+    ("saad-healthcare", "SAAD Healthcare", image(f"Saad_Healthcare_{S}.png")),
+    ("vandals", "Vandals", image(f"Vandals_{S}.png")),
+    ("zoghbys", "Zoghby's", image(f"Zoghbys_{S}.png")),
 ]
 manifest = []
 for identifier, name, pixmap in specs:

@@ -2142,8 +2142,8 @@ body.fundraiser-route .theme-logo img{
     #main-content #sponsors .sponsor-ticker-track{display:block;width:auto;transform:none}
     #main-content #sponsors .sponsor-ticker-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:13px;margin:0;padding:0;list-style:none}
     #main-content #sponsors .sponsor-ticker-list.sponsor-ticker-clone{display:none}
-    #main-content #sponsors .sponsor-logo-card{box-sizing:border-box;display:flex;min-width:0;height:116px;flex:0 0 180px;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;padding:5px 8px;border:0;border-right:1px solid var(--recipe-sponsor-logo-card-border-right);border-radius:0;background:transparent}
-    #main-content #sponsors .sponsor-logo-stage{display:grid;width:100%;height:70px;place-items:center;overflow:hidden;background:transparent}
+    #main-content #sponsors .sponsor-logo-card{box-sizing:border-box;display:flex;min-width:0;min-height:116px;height:auto;flex:0 0 180px;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;padding:5px 8px;border:0;border-right:1px solid var(--recipe-sponsor-logo-card-border-right);border-radius:0;background:transparent}
+    #main-content #sponsors .sponsor-logo-stage{display:grid;flex:0 0 70px;width:100%;height:70px;place-items:center;overflow:hidden;background:transparent}
     #main-content #sponsors .sponsor-logo-stage img{display:block;width:100%;height:100%;max-width:165px;max-height:70px;object-fit:contain;object-position:center}
     #main-content #sponsors .sponsor-logo-name{max-width:100%;color:var(--recipe-detail-ink);font-size:16px;font-weight:900;line-height:1.25;text-align:center;overflow-wrap:anywhere}
     #main-content #sponsors .sponsor-logo-link{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;gap:5px;color:var(--recipe-detail-ink);text-decoration:none;border-radius:5px}
@@ -2665,6 +2665,11 @@ body.fundraiser-route .theme-logo img{
 }
 #main-content .measuring-total{font-weight:800}
 #main-content .measuring-update-date[hidden]{display:none}
+#main-content .measuring-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 0;padding:0;list-style:none}
+#main-content .measuring-stats[hidden]{display:none}
+#main-content .measuring-stat{display:flex;flex-direction:column;align-items:center;gap:2px;margin:0;padding:10px 8px;border:2px dashed var(--recipe-ink);border-radius:6px 16px;background:var(--recipe-white);text-align:center}
+#main-content .measuring-stat strong{color:var(--recipe-ink);font:clamp(1.6rem,3vw,2rem)/1 'Lilita One',Impact,sans-serif}
+#main-content .measuring-stat span{color:var(--recipe-dark);font-size:16px;font-weight:700;line-height:1.3}
 @media(max-width:480px){
   #main-content .measuring-illustration{height:370px}
   #main-content .measuring-goal{left:50%}
@@ -3033,6 +3038,9 @@ body.a11y-high-contrast #main-content.recipe-page .measuring-vessel{
   background:#060e1c!important;
   box-shadow:none!important;
 }
+body.a11y-high-contrast #main-content.recipe-page .measuring-stat{background:transparent!important;border-color:currentColor!important}
+body.a11y-high-contrast #main-content.recipe-page .measuring-stat strong,
+body.a11y-high-contrast #main-content.recipe-page .measuring-stat span{color:inherit!important}
 body.a11y-high-contrast #main-content.recipe-page .measuring-goal{
   background:#ffd966!important;
   color:#102b4f!important;
@@ -5311,7 +5319,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
 <section class="recipe-section paper" id="the-need">
   <div class="recipe-wrap recipe-story">
     <div class="recipe-photo-card recipe-measuring-card">
-      <div class="measuring-illustration" data-measuring-glass role="progressbar" aria-valuemin="0" aria-valuemax="50000" aria-valuenow="11000" aria-label="$11,000 raised toward our $50,000 school-wide goal; 22%.">
+      <div class="measuring-illustration" data-measuring-glass role="progressbar" aria-valuemin="0" aria-valuemax="50000" aria-valuenow="36321" aria-label="$36,321 raised toward our $50,000 school-wide goal; 72.6%. Updated October 22, 2026.">
         <span class="measuring-goal" aria-hidden="true"><strong class="goal-amount">$50,000</strong><small class="goal-caption">School-wide goal</small></span>
         <div class="measuring-jug">
           <svg class="measuring-handle" viewBox="0 0 232 260" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M220 58 H236 Q252 58 252 74 V194 Q252 210 236 210 H216" fill="none" stroke="#173d70" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M220 58 H236 Q252 58 252 74 V194 Q252 210 236 210 H216" fill="none" stroke="#8ed5ed" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -5328,14 +5336,18 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
         </div>
         <span class="measuring-counter" aria-hidden="true"></span>
       </div>
-      <p class="measuring-total" data-school-goal-total role="status" aria-live="polite" aria-atomic="true">$11,000 raised · 22% of our goal</p>
-      <p class="measuring-update-date" data-school-goal-date hidden></p>
+      <p class="measuring-total" data-school-goal-total role="status" aria-live="polite" aria-atomic="true">$36,321 raised · 72.6% of our goal</p>
+      <p class="measuring-update-date" data-school-goal-date>Updated October 22, 2026</p>
+      <ul class="measuring-stats" data-school-participation aria-label="Fundraiser participation">
+        <li class="measuring-stat"><strong data-stat="studentsRegisteredPercent">71%</strong><span>of students registered</span></li>
+        <li class="measuring-stat"><strong data-stat="participantsDonatingPercent">46%</strong><span>of participants with donations</span></li>
+      </ul>
     </div>
     <div class="recipe-story-copy"><span class="recipe-kicker">The big thing we’re making</span><h2>A fresh floor for every Eagle.</h2><p>The original gym floor has served Covenant Christian School since <b>1999</b>—more than 25 years of learning, playing, competing and gathering.</p><p>Now we’re raising funds to replace it and ready a well-loved space for future PE classes, games, school events and community celebrations. Every donation helps.</p><a class="recipe-btn sun measuring-register" href="https://mybooster.com/v3" target="_blank" rel="noopener">Register with Booster</a></div>
   </div>
 </section>
 <!-- Update with school-confirmed totals only. -->
-<script type="application/json" id="fundraiser-school-progress">{"goal":50000,"raised":11000,"updatedAt":null}</script>
+<script type="application/json" id="fundraiser-school-progress">{"goal":50000,"raised":36321,"updatedAt":"2026-10-22","studentsRegisteredPercent":71,"participantsDonatingPercent":46}</script>
 <section class="recipe-section blue-wash" id="how-to-help"><div class="recipe-wrap"><div class="recipe-heading"><span class="recipe-kicker">Three easy ingredients</span><h2>Your family’s recipe for success</h2><p>Register, share your personal Booster link with ten people, and work toward your $250 family goal. Matching gifts are welcome; business donations submitted through the fundraiser count toward participating student goals.</p><div class="script-note">Let’s do this together!</div></div><div class="recipe-mix"><article class="mix-card"><span class="mix-number">1</span><h3>Register your student</h3><p>Create a Booster account—or sign in—and get your personal sharing link.</p></article><article class="mix-card"><span class="mix-number">2</span><h3>Invite ten people</h3><p>Share with friends, family, neighbors or local businesses. Personal invitations make it easy to help.</p></article><article class="mix-card"><span class="mix-number">3</span><h3>Raise $250 together</h3><p>Track your progress and celebrate milestones. Employer matching gifts can help your effort go further.</p></article></div><div class="recipe-goal"><div><strong>One family · One big-hearted goal</strong><p>Every gift moves the gym-floor project forward.</p></div><a class="recipe-btn" href="https://mybooster.com/v3" target="_blank" rel="noopener">Start your family recipe ↗</a></div></div></section>
 <section class="recipe-section paper" id="dates">
   <div class="recipe-wrap">
@@ -5902,11 +5914,41 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
       <div class="sponsor-ticker-window" aria-label="Covenant Christian School’s 2026 business sponsors">
         <div class="sponsor-ticker-track" id="fundraiser-sponsor-track">
           <ul class="sponsor-ticker-list" aria-label="2026 business sponsors">
+            <li class="sponsor-logo-card" data-sponsor-id="anchor-point-therapy">
+              <a class="sponsor-logo-link" href="https://www.google.com/search?q=anchor+point+therapy+mobile+al" target="_blank" rel="noopener noreferrer" aria-label="Find Anchor Point Therapy on Google (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/anchor-point-therapy.jpg" alt="" width="400" height="200" decoding="async"></div>
+              <span class="sponsor-logo-name">Anchor Point Therapy</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="belzona">
+              <a class="sponsor-logo-link" href="https://belzonaalabama.com/en/" target="_blank" rel="noopener noreferrer" aria-label="Visit Belzona (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/belzona.png" alt="" width="400" height="89" decoding="async"></div>
+              <span class="sponsor-logo-name">Belzona</span>
+              </a>
+            </li>
             <li class="sponsor-logo-card" data-sponsor-id="cj-machine">
               <a class="sponsor-logo-link" href="https://www.google.com/search?q=c+%26+j+machine+%26+welding+inc" target="_blank" rel="noopener noreferrer" aria-label="Find C &amp; J Machine on Google (opens in a new tab)">
               <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/cj-machine.jpg" alt="" decoding="async"></div>
               
               <span class="sponsor-logo-name">C &amp; J Machine</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="christian-warehouse-store">
+              <a class="sponsor-logo-link" href="https://www.google.com/search?q=christian+warehouse+store+mobile+al" target="_blank" rel="noopener noreferrer" aria-label="Find Christian Warehouse Store on Google (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/christian-warehouse-store.png" alt="" width="400" height="188" decoding="async"></div>
+              <span class="sponsor-logo-name">Christian Warehouse Store</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="covenant-church">
+              <a class="sponsor-logo-link" href="https://covenantmobile.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Covenant Church (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/covenant-church.png" alt="" width="400" height="137" decoding="async"></div>
+              <span class="sponsor-logo-name">Covenant Church</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="eivar-ofelia-designs">
+              <a class="sponsor-logo-link" href="https://eivarofeliadesigns.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Eivar Ofelia Designs (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/eivar-ofelia-designs.png" alt="" width="400" height="305" decoding="async"></div>
+              <span class="sponsor-logo-name">Eivar Ofelia Designs</span>
               </a>
             </li>
             <li class="sponsor-logo-card" data-sponsor-id="facts">
@@ -5922,10 +5964,28 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
               <span class="sponsor-logo-name">Joe Cowart, Inc.</span>
               </a>
             </li>
+            <li class="sponsor-logo-card" data-sponsor-id="le-yataco-services">
+              <a class="sponsor-logo-link" href="https://www.leyatacoservicesllc.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit L&amp;E Yataco Services, LLC (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/le-yataco-services.jpg" alt="" width="400" height="230" decoding="async"></div>
+              <span class="sponsor-logo-name">L&amp;E Yataco Services, LLC</span>
+              </a>
+            </li>
             <li class="sponsor-logo-card" data-sponsor-id="little-monkey-toes">
               <a class="sponsor-logo-link" href="https://littlemonkeytoes.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Little Monkey Toes (opens in a new tab)">
               <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/little-monkey-toes.png" alt="" decoding="async"></div>
               <span class="sponsor-logo-name">Little Monkey Toes</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="mobile-appliance">
+              <a class="sponsor-logo-link" href="https://mobileappliance.net/" target="_blank" rel="noopener noreferrer" aria-label="Visit Mobile Appliance (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/mobile-appliance.png" alt="" width="400" height="370" decoding="async"></div>
+              <span class="sponsor-logo-name">Mobile Appliance</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="moes-southwest-grill">
+              <a class="sponsor-logo-link" href="https://locations.moes.com/al/mobile/390-schillinger-rd-s" target="_blank" rel="noopener noreferrer" aria-label="Visit Moe&#x27;s Southwest Grill (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/moes-southwest-grill.png" alt="" width="400" height="264" decoding="async"></div>
+              <span class="sponsor-logo-name">Moe's Southwest Grill</span>
               </a>
             </li>
             <li class="sponsor-logo-card" data-sponsor-id="mw-counseling">
@@ -5938,6 +5998,24 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
               <a class="sponsor-logo-link" href="https://pittsconstruction.net/" target="_blank" rel="noopener noreferrer" aria-label="Visit Pitts Properties LLC (opens in a new tab)">
               <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/pitts-properties.png" alt="" width="640" height="384" decoding="async"></div>
               <span class="sponsor-logo-name">Pitts Properties LLC</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="saad-healthcare">
+              <a class="sponsor-logo-link" href="https://saadhealthcare.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit SAAD Healthcare (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/saad-healthcare.png" alt="" width="400" height="202" decoding="async"></div>
+              <span class="sponsor-logo-name">SAAD Healthcare</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="vandals">
+              <a class="sponsor-logo-link" href="https://www.google.com/search?q=vandals+street+kitchen+mobile+al" target="_blank" rel="noopener noreferrer" aria-label="Find Vandals on Google (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/vandals.jpg" alt="" width="400" height="200" decoding="async"></div>
+              <span class="sponsor-logo-name">Vandals</span>
+              </a>
+            </li>
+            <li class="sponsor-logo-card" data-sponsor-id="zoghbys">
+              <a class="sponsor-logo-link" href="https://zoghbyuniforms.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Zoghby&#x27;s (opens in a new tab)">
+              <div class="sponsor-logo-stage"><img src="/assets/fundraiser-sponsors/zoghbys.png" alt="" width="400" height="116" decoding="async"></div>
+              <span class="sponsor-logo-name">Zoghby's</span>
               </a>
             </li>
           </ul>
@@ -7499,6 +7577,8 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   var total=document.querySelector('[data-school-goal-total]');
   var updated=document.querySelector('[data-school-goal-date]');
   var config=document.getElementById('fundraiser-school-progress');
+  var stats=document.querySelector('[data-school-participation]');
+  var statKeys=['studentsRegisteredPercent','participantsDonatingPercent'];
   if(!liquid||!total||!updated||!config)throw new Error('School-goal display is incomplete.');
   var state=null,visible=false,raf=0,startTime=null,duration=4200;
   var currentRatio=0,targetRatio=0,fromRatio=0;
@@ -7509,7 +7589,8 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
   var percent=new Intl.NumberFormat('en-US',{maximumFractionDigits:1});
   function validateProgress(data){
     if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('School progress must be an object.');
-    if(Object.keys(data).some(function(key){return ['goal','raised','updatedAt'].indexOf(key)===-1}))throw new Error('Unexpected school-progress field.');
+    if(Object.keys(data).some(function(key){return ['goal','raised','updatedAt'].concat(statKeys).indexOf(key)===-1}))throw new Error('Unexpected school-progress field.');
+    statKeys.forEach(function(key){var value=data[key];if(value!==undefined&&value!==null&&(typeof value!=='number'||!Number.isFinite(value)||value<0||value>100))throw new Error('Participation percentages must be between 0 and 100.')});
     if(typeof data.goal!=='number'||!Number.isFinite(data.goal)||data.goal<=0||data.goal>Number.MAX_SAFE_INTEGER)throw new Error('The school goal must be a positive number.');
     if(data.raised!==null&&(typeof data.raised!=='number'||!Number.isFinite(data.raised)||data.raised<0||data.raised>Number.MAX_SAFE_INTEGER))throw new Error('The raised total must be null or a nonnegative number.');
     var date=data.updatedAt===undefined?null:data.updatedAt;
@@ -7519,7 +7600,9 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
       if(!Number.isFinite(parsed.getTime())||parsed.toISOString().slice(0,10)!==date)throw new Error('The update date is invalid.');
       if(data.raised===null)throw new Error('An update date requires a confirmed raised total.');
     }
-    return {goal:data.goal,raised:data.raised,updatedAt:date};
+    var result={goal:data.goal,raised:data.raised,updatedAt:date};
+    statKeys.forEach(function(key){result[key]=data[key]===undefined?null:data[key]});
+    return result;
   }
   function motionDisabled(){
     return document.body.classList.contains('a11y-no-anim')||
@@ -7583,9 +7666,20 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
     updated.hidden=next.updatedAt===null;
     updated.textContent=next.updatedAt===null?'':'Updated '+new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(next.updatedAt+'T00:00:00Z'));
     illustration.setAttribute('aria-label',label+(updated.hidden?'':' '+updated.textContent+'.'));
+    if(stats){
+      var shown=0;
+      statKeys.forEach(function(key){
+        var value=stats.querySelector('[data-stat="'+key+'"]');
+        if(!value)return;
+        var item=value.parentNode;
+        item.hidden=next[key]===null;
+        if(next[key]!==null){value.textContent=percent.format(next[key])+'%';shown++}
+      });
+      stats.hidden=shown===0;
+    }
     if(visible||motionDisabled())startFill();
     else setFill(0);
-    return {goal:next.goal,raised:next.raised,updatedAt:next.updatedAt};
+    return Object.assign({},next);
   }
   window.FundraiserSchoolGoal={validate:validateProgress,update:updateProgress,getState:function(){return state&&Object.assign({},state)},getFill:function(){return currentRatio}};
   try{updateProgress(JSON.parse(config.textContent))}

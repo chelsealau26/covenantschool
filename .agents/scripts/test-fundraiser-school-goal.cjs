@@ -6,7 +6,9 @@ const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
   .find(match => match[1].includes('function validateProgress'))[1];
 const config = JSON.parse(html.match(/id="fundraiser-school-progress">([\s\S]*?)<\/script>/)[1]);
 assert.equal(config.goal, 50000);
-assert.equal(config.raised, 11000);
+assert.equal(config.raised, 36321);
+assert.equal(config.studentsRegisteredPercent, 71);
+assert.equal(config.participantsDonatingPercent, 46);
 
 function setup({ reduced = false, supplied = config } = {}) {
   class Node {
@@ -69,10 +71,10 @@ function setup({ reduced = false, supplied = config } = {}) {
 
 const currentPage = setup({ reduced: true });
 assert.equal(currentPage.amount.textContent, '$50,000');
-assert.equal(currentPage.total.textContent, '$11,000 raised · 22% of our goal');
+assert.equal(currentPage.total.textContent, '$36,321 raised · 72.6% of our goal');
 assert.equal(currentPage.total.hidden, false);
-assert.equal(currentPage.api.getFill(), 0.22);
-assert.equal(currentPage.illustration.attrs['aria-valuenow'], '11000');
+assert.equal(currentPage.api.getFill(), 0.72642);
+assert.equal(currentPage.illustration.attrs['aria-valuenow'], '36321');
 assert.deepEqual(currentPage.marks.map(m => m.textContent), ['$50,000', '$37,500', '$25,000', '$12,500', '$0']);
 const page = setup({ supplied: { goal: 80000, raised: null } });
 assert.equal(page.amount.textContent, '$80,000');

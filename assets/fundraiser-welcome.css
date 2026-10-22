@@ -85,7 +85,7 @@
 #fundraiser-welcome .welcome-progress-copy p { margin: 0; color: var(--welcome-ink); font-size: 12px; }
 #fundraiser-welcome .welcome-progress-copy strong { font: 400 38px/1.15 "Lilita One", Lexend, sans-serif; }
 #fundraiser-welcome .welcome-meter { display: block; width: 100%; height: 16px; margin: 10px 0 7px; overflow: hidden; border: 1px solid var(--welcome-ink); border-radius: 20px; background: var(--welcome-pale-sky); }
-#fundraiser-welcome .welcome-meter-fill { display: block; height: 100%; width: var(--welcome-progress, 22%); background: var(--welcome-sky); border-right: 1px solid var(--welcome-ink); }
+#fundraiser-welcome .welcome-meter-fill { display: block; height: 100%; width: var(--welcome-progress, 73%); background: var(--welcome-sky); border-right: 1px solid var(--welcome-ink); }
 #fundraiser-welcome .welcome-progress-note { margin: 0; color: var(--welcome-ink); font-size: 12px; font-weight: 500; }
 #fundraiser-welcome .welcome-actions { margin-top: 20px; }
 #fundraiser-welcome .welcome-cta {
