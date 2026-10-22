@@ -47,7 +47,7 @@ track.appendChild(canonical);
 track.querySelector = () => canonical;
 root.querySelector = selector => ({
   '.sponsor-ticker-track': track,
-  '.sponsor-ticker-control': control,
+  '.sponsor-ticker-control:not(.sponsor-ticker-step)': control,
 })[selector];
 root.contains = node => node === control;
 doc.body = body;

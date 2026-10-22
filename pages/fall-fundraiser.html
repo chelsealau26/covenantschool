@@ -2133,10 +2133,12 @@ body.fundraiser-route .theme-logo img{
     #main-content #sponsors .sponsor-options[open]>summary span::after{content:"−";font-size:21px}
     #main-content #sponsors .sponsor-options>summary:focus-visible{outline:3px solid var(--recipe-pin-yellow);outline-offset:3px}
     #main-content #sponsors .sponsor-wall{order:3;margin:14px 0 0;padding:12px 14px 10px;border:0;background:var(--recipe-warm-paper)}
-    #main-content #sponsors .sponsor-wall-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:9px}
+    #main-content #sponsors .sponsor-wall-heading{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;margin-bottom:9px}
     #main-content #sponsors .sponsor-wall-heading h3{margin:0;color:var(--recipe-detail-ink);font:1.4rem/1.12 'Lilita One',Impact,sans-serif}
     #main-content #sponsors .sponsor-ticker-control{display:inline-flex;min-width:104px;min-height:44px;align-items:center;justify-content:center;padding:9px 15px;border:2px solid var(--recipe-detail-ink);border-radius:3px;background:var(--recipe-detail-ink);color:var(--recipe-warm-paper);font-size:16px;font-weight:900;cursor:pointer}
     #main-content #sponsors .sponsor-ticker-control[hidden]{display:none!important}
+    #main-content #sponsors .sponsor-ticker-buttons{display:flex;flex:0 0 auto;align-items:center;gap:8px}
+    #main-content #sponsors .sponsor-ticker-control.sponsor-ticker-step{min-width:44px;padding:9px 12px;font-size:20px;line-height:1}
     #main-content #sponsors .sponsor-wall{box-sizing:border-box;min-width:0;max-width:100%}
     #main-content #sponsors .sponsor-ticker-window{box-sizing:border-box;overflow:hidden;width:100%;padding:3px 2px 10px}
     #main-content #sponsors .sponsor-ticker-track{display:block;width:auto;transform:none}
@@ -2148,9 +2150,9 @@ body.fundraiser-route .theme-logo img{
     #main-content #sponsors .sponsor-logo-name{max-width:100%;color:var(--recipe-detail-ink);font-size:16px;font-weight:900;line-height:1.25;text-align:center;overflow-wrap:anywhere}
     #main-content #sponsors .sponsor-logo-link{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;gap:5px;color:var(--recipe-detail-ink);text-decoration:none;border-radius:5px}
     #main-content #sponsors .sponsor-logo-link:hover .sponsor-logo-name{text-decoration:underline;text-underline-offset:3px}    #main-content #sponsors .sponsor-logo-link:focus-visible{outline:3px solid var(--recipe-detail-ink);outline-offset:3px}
-    #main-content #sponsors .sponsor-wall:focus-within .sponsor-ticker-track{display:block!important;width:auto!important;transform:none!important;animation:none!important}
-    #main-content #sponsors .sponsor-wall:focus-within .sponsor-ticker-list:not(.sponsor-ticker-clone){display:grid!important;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));width:auto!important;padding:0!important}
-    #main-content #sponsors .sponsor-wall:focus-within .sponsor-ticker-clone{display:none!important}
+    #main-content #sponsors .sponsor-wall:has(.sponsor-logo-link:focus-visible) .sponsor-ticker-track{display:block!important;width:auto!important;transform:none!important;animation:none!important}
+    #main-content #sponsors .sponsor-wall:has(.sponsor-logo-link:focus-visible) .sponsor-ticker-list:not(.sponsor-ticker-clone){display:grid!important;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));width:auto!important;padding:0!important}
+    #main-content #sponsors .sponsor-wall:has(.sponsor-logo-link:focus-visible) .sponsor-ticker-clone{display:none!important}
     #main-content #sponsors .sponsor-ticker-ready .sponsor-ticker-track{display:flex;width:max-content;animation:sponsorLogoRibbon var(--sponsor-ticker-duration,34s) linear infinite}
     #main-content #sponsors .sponsor-ticker-ready .sponsor-ticker-list{display:flex;flex:0 0 auto;gap:14px;width:max-content;padding:0 14px 0 0}
     #main-content #sponsors .sponsor-ticker-ready .sponsor-logo-card{flex:0 0 180px;width:180px}
@@ -5909,7 +5911,11 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
         <div>
           <h3 id="sponsor-wall-title">Our community recipe partners</h3>
         </div>
-        <button class="sponsor-ticker-control" type="button" aria-label="Pause sponsor ticker" aria-pressed="false" aria-controls="fundraiser-sponsor-track" hidden>Pause</button>
+        <div class="sponsor-ticker-buttons">
+          <button class="sponsor-ticker-control sponsor-ticker-step" type="button" data-step="-1" aria-label="Show previous sponsors" aria-controls="fundraiser-sponsor-track" hidden><span aria-hidden="true">←</span></button>
+          <button class="sponsor-ticker-control" type="button" aria-label="Pause sponsor ticker" aria-pressed="false" aria-controls="fundraiser-sponsor-track" hidden>Pause</button>
+          <button class="sponsor-ticker-control sponsor-ticker-step" type="button" data-step="1" aria-label="Show next sponsors" aria-controls="fundraiser-sponsor-track" hidden><span aria-hidden="true">→</span></button>
+        </div>
       </div>
       <div class="sponsor-ticker-window" aria-label="Covenant Christian School’s 2026 business sponsors">
         <div class="sponsor-ticker-track" id="fundraiser-sponsor-track">
@@ -6063,7 +6069,33 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
         if(!root||!doc||!win) return null;
         var track=root.querySelector('.sponsor-ticker-track');
         var canonical=track&&track.querySelector('.sponsor-ticker-list');
-        var control=root.querySelector('.sponsor-ticker-control');
+        var control=root.querySelector('.sponsor-ticker-control:not(.sponsor-ticker-step)');
+        var steps=root.querySelectorAll?Array.prototype.slice.call(root.querySelectorAll('.sponsor-ticker-step')||[]):[];
+        var stepFrame=0;
+        function tickerAnimation(){
+          var list=track.getAnimations?track.getAnimations():[];
+          for(var i=0;i<list.length;i++){if(list[i].animationName==='sponsorLogoRibbon')return list[i]}
+          return list[0]||null;
+        }
+        function step(direction){
+          var anim=tickerAnimation(),viewport=root.querySelector('.sponsor-ticker-window');
+          if(!anim||!anim.effect||!viewport)return;
+          var duration=anim.effect.getComputedTiming().duration,loop=canonical.getBoundingClientRect().width;
+          var card=canonical.querySelector('.sponsor-logo-card'),cardWidth=card?card.getBoundingClientRect().width+14:194;
+          if(!(duration>0)||!(loop>0))return;
+          // Jump about one window of logos, always at least one logo.
+          var distance=Math.max(cardWidth,Math.floor(viewport.getBoundingClientRect().width/cardWidth-1)*cardWidth);
+          var from=Number(anim.currentTime)||0,to=from+direction*distance/loop*duration,start=null;
+          if(stepFrame)win.cancelAnimationFrame(stepFrame);
+          function frame(now){
+            if(start===null)start=now;
+            var progress=Math.min(1,(now-start)/450),eased=1-Math.pow(1-progress,3);
+            anim.currentTime=((from+(to-from)*eased)%duration+duration)%duration;
+            stepFrame=progress<1?win.requestAnimationFrame(frame):0;
+          }
+          stepFrame=win.requestAnimationFrame(frame);
+        }
+        steps.forEach(function(button){button.addEventListener('click',function(){step(Number(button.getAttribute('data-step'))||1)})});
         if(!track||!canonical||!control) return null;
         var motion=win.matchMedia?win.matchMedia('(prefers-reduced-motion: reduce)'):null;
         var clone=null,manuallyPaused=false,hoverPaused=false,focusPaused=false,hiddenPaused=!!doc.hidden;
@@ -6092,6 +6124,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
           track.style.removeProperty('--sponsor-ticker-duration');
           removeClone();
           control.hidden=true;
+          steps.forEach(function(button){button.hidden=true});
           manuallyPaused=false;
         }
         function setMoving(){
@@ -6104,6 +6137,7 @@ body.a11y-high-contrast #main-content #dates .calendar-event-dialog :focus-visib
             track.appendChild(clone);
           }
           control.hidden=false;
+          steps.forEach(function(button){button.hidden=false});
           root.classList.add('sponsor-ticker-ready');
           refreshSpeed();
           updatePlayback();
