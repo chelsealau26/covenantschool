@@ -1,8 +1,10 @@
+import { EMPLOYMENT_FORM_PATH, handleEmploymentForm } from "./employment-form.mjs";
 import { hasEnded, isFundraiserPath, removeBanner, removeSitemapEntry, CLOSED_PAGE } from "./assets/fundraiser-lifecycle.mjs";
 
 export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname;
+    if (path === EMPLOYMENT_FORM_PATH) return handleEmploymentForm(request, env);
     if (hasEnded() && isFundraiserPath(decodeURIComponent(path))) {
       return new Response(request.method === "HEAD" ? null : CLOSED_PAGE, {
         status: 410,

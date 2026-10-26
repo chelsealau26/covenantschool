@@ -21,7 +21,7 @@ Describe only what is visible in photos; never invent names, events or awards.
 
 **How to apply:** Write alt text from the image itself. Use `alt=""` for decorative stock photos beside a heading that already conveys the same meaning.
 
-The privacy policy covers only the website. Keep it accurate to what the site actually does (no own cookies; Cloudflare Web Analytics; platform page views; Google Maps, Calendly, Elfsight job application form, Google Fonts, jsDelivr).
+The privacy policy covers only the website. Keep it accurate to what the site actually does (no own cookies; Cloudflare Web Analytics; platform page views; Google Maps, Calendly, job application form via Resend + Cloudflare Turnstile, Google Fonts, jsDelivr).
 
 **Why:** The user said it is “JUST FOR THE WEBSITE USE.”
 

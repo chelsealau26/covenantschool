@@ -2147,9 +2147,95 @@
   </div>
               <div class="widget-row ">
                 <div class="widget widgetResponsive col20" id="employment-form-section" style="margin-top: 3.97727%; margin-left: 0px; padding: 0 10px 20px;">
-                  <!-- Elfsight Contact Form -->
-                  <script src="https://elfsightcdn.com/platform.js" async></script>
-                  <div class="elfsight-app-ce594f4b-0447-455d-b403-d5231a10259e" data-elfsight-app-lazy></div>
+                  <!-- Employment application form (sent by worker.mjs → employment-form.mjs) -->
+                  <style>
+                    #employment-form { max-width: 640px; margin: 0 auto; text-align: left; font-family: Arial, sans-serif; color: #131c24; }
+                    #employment-form .ef-field { margin-bottom: 18px; }
+                    #employment-form label { display: block; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+                    #employment-form .ef-req { color: #b3261e; }
+                    #employment-form input[type=text], #employment-form input[type=email], #employment-form input[type=tel], #employment-form textarea {
+                      width: 100%; box-sizing: border-box; padding: 11px 12px; font-size: 16px; font-family: inherit;
+                      border: 1px solid #8a94a0; border-radius: 6px; background: #fff; color: #131c24;
+                    }
+                    #employment-form textarea { min-height: 140px; resize: vertical; }
+                    #employment-form input:focus, #employment-form textarea:focus { outline: 3px solid rgba(21, 53, 83, 0.35); border-color: rgb(21, 53, 83); }
+                    #employment-form .ef-hint { font-size: 14px; color: #5b6570; margin-top: 4px; }
+                    #employment-form .ef-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+                    #employment-form button { background: rgb(21, 53, 83); color: #fff; border: 0; border-radius: 6px; padding: 13px 30px; font-size: 17px; font-weight: 700; cursor: pointer; }
+                    #employment-form button:hover { background: rgb(14, 37, 58); }
+                    #employment-form button:disabled { opacity: 0.6; cursor: wait; }
+                    #ef-status { margin-top: 16px; font-size: 16px; }
+                    #ef-status.ef-ok { color: #1e6b2e; font-weight: 700; }
+                    #ef-status.ef-err { color: #b3261e; }
+                  </style>
+                  <form id="employment-form" action="/api/employment-application" method="post" enctype="multipart/form-data" novalidate>
+                    <div class="ef-field">
+                      <label for="ef-name">Full name <span class="ef-req" aria-hidden="true">*</span></label>
+                      <input type="text" id="ef-name" name="full_name" autocomplete="name" maxlength="120" required>
+                    </div>
+                    <div class="ef-field">
+                      <label for="ef-email">Email <span class="ef-req" aria-hidden="true">*</span></label>
+                      <input type="email" id="ef-email" name="email" autocomplete="email" maxlength="200" required>
+                    </div>
+                    <div class="ef-field">
+                      <label for="ef-phone">Phone <span class="ef-req" aria-hidden="true">*</span></label>
+                      <input type="tel" id="ef-phone" name="phone" autocomplete="tel" maxlength="40" required>
+                    </div>
+                    <div class="ef-field">
+                      <label for="ef-position">Position you're interested in <span class="ef-req" aria-hidden="true">*</span></label>
+                      <input type="text" id="ef-position" name="position" maxlength="150" required>
+                    </div>
+                    <div class="ef-field">
+                      <label for="ef-comments">Tell us about your experience and qualifications <span class="ef-req" aria-hidden="true">*</span></label>
+                      <textarea id="ef-comments" name="comments" maxlength="5000" required></textarea>
+                    </div>
+                    <div class="ef-field">
+                      <label for="ef-resume">Résumé (optional)</label>
+                      <input type="file" id="ef-resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt,.odt" aria-describedby="ef-resume-hint">
+                      <p class="ef-hint" id="ef-resume-hint">PDF or Word document, up to 5 MB.</p>
+                    </div>
+                    <div class="ef-trap" aria-hidden="true">
+                      <label for="ef-website">Leave this field empty</label>
+                      <input type="text" id="ef-website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="ef-field">
+                      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFnANHdBh57BS4me"></div>
+                    </div>
+                    <button type="submit" id="ef-submit">Submit application</button>
+                    <p id="ef-status" role="status" aria-live="polite"></p>
+                  </form>
+                  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+                  <script>
+                    (function () {
+                      var form = document.getElementById("employment-form");
+                      var button = document.getElementById("ef-submit");
+                      var status = document.getElementById("ef-status");
+                      function show(message, ok) { status.textContent = message; status.className = ok ? "ef-ok" : "ef-err"; }
+                      form.addEventListener("submit", function (event) {
+                        event.preventDefault();
+                        var firstInvalid = form.querySelector("input:invalid, textarea:invalid");
+                        if (firstInvalid) { show("Please fill in all required fields with valid information.", false); firstInvalid.focus(); return; }
+                        var file = form.resume.files[0];
+                        if (file && file.size > 5 * 1024 * 1024) { show("Your résumé file is too large. Please keep it under 5 MB.", false); form.resume.focus(); return; }
+                        button.disabled = true; button.textContent = "Sending…"; show("", true);
+                        fetch(form.action, { method: "POST", body: new FormData(form) })
+                          .then(function (res) { return res.json().catch(function () { return { success: false }; }); })
+                          .then(function (data) {
+                            if (data.success) {
+                              form.reset();
+                              show("Thank you! Your application has been sent. We'll be in touch soon.", true);
+                            } else {
+                              show(data.error || "Something went wrong. Please email us at fboren@covenantschool.com.", false);
+                            }
+                          })
+                          .catch(function () { show("We couldn't reach the server. Please try again or email fboren@covenantschool.com.", false); })
+                          .finally(function () {
+                            button.disabled = false; button.textContent = "Submit application";
+                            if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+                          });
+                      });
+                    })();
+                  </script>
 
                 </div>
               </div>
