@@ -10,7 +10,7 @@ export const EMPLOYMENT_FORM_PATH = "/api/employment-application";
 
 const RECIPIENT = "fboren@covenantschool.com";
 const SENDER = "Covenant School Website <website@covenantschool.com>";
-const FALLBACK = "Please email us directly at info@covenantschool.com.";
+const FALLBACK = "Please email us directly at fboren@covenantschool.com.";
 const MAX_RESUME_BYTES = 5 * 1024 * 1024;
 const ALLOWED_EXTENSIONS = ["pdf", "doc", "docx", "rtf", "txt", "odt"];
 const LIMITS = { full_name: 120, email: 200, phone: 40, position: 150, comments: 5000 };

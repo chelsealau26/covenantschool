@@ -2225,10 +2225,10 @@
                               form.reset();
                               show("Thank you! Your application has been sent. We'll be in touch soon.", true);
                             } else {
-                              show(data.error || "Something went wrong. Please email us at info@covenantschool.com.", false);
+                              show(data.error || "Something went wrong. Please email us at fboren@covenantschool.com.", false);
                             }
                           })
-                          .catch(function () { show("We couldn't reach the server. Please try again or email info@covenantschool.com.", false); })
+                          .catch(function () { show("We couldn't reach the server. Please try again or email fboren@covenantschool.com.", false); })
                           .finally(function () {
                             button.disabled = false; button.textContent = "Submit application";
                             if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
