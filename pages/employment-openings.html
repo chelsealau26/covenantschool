@@ -2153,12 +2153,12 @@
                     #employment-form .ef-field { margin-bottom: 18px; }
                     #employment-form label { display: block; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
                     #employment-form .ef-req { color: #b3261e; }
-                    #employment-form input[type=text], #employment-form input[type=email], #employment-form input[type=tel], #employment-form textarea {
+                    #employment-form input[type=text], #employment-form input[type=email], #employment-form input[type=tel], #employment-form select, #employment-form textarea {
                       width: 100%; box-sizing: border-box; padding: 11px 12px; font-size: 16px; font-family: inherit;
                       border: 1px solid #8a94a0; border-radius: 6px; background: #fff; color: #131c24;
                     }
                     #employment-form textarea { min-height: 140px; resize: vertical; }
-                    #employment-form input:focus, #employment-form textarea:focus { outline: 3px solid rgba(21, 53, 83, 0.35); border-color: rgb(21, 53, 83); }
+                    #employment-form input:focus, #employment-form select:focus, #employment-form textarea:focus { outline: 3px solid rgba(21, 53, 83, 0.35); border-color: rgb(21, 53, 83); }
                     #employment-form .ef-hint { font-size: 14px; color: #5b6570; margin-top: 4px; }
                     #employment-form .ef-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
                     #employment-form button { background: rgb(21, 53, 83); color: #fff; border: 0; border-radius: 6px; padding: 13px 30px; font-size: 17px; font-weight: 700; cursor: pointer; }
@@ -2183,7 +2183,19 @@
                     </div>
                     <div class="ef-field">
                       <label for="ef-position">Position you're interested in <span class="ef-req" aria-hidden="true">*</span></label>
-                      <input type="text" id="ef-position" name="position" maxlength="150" required>
+                      <select id="ef-position" name="position" required>
+                        <option value="" selected disabled>Select a position</option>
+                        <option>Preschool Teacher (K3/K4)</option>
+                        <option>Kindergarten Teacher (K5)</option>
+                        <option>Elementary Teacher (1st–5th)</option>
+                        <option>Middle School Teacher (6th–8th)</option>
+                        <option>Specials Teacher</option>
+                        <option>Substitute Teacher</option>
+                        <option>Aftercare Staff</option>
+                        <option>Coach</option>
+                        <option>Office / Administrative Staff</option>
+                        <option>Other</option>
+                      </select>
                     </div>
                     <div class="ef-field">
                       <label for="ef-comments">Tell us about your experience and qualifications <span class="ef-req" aria-hidden="true">*</span></label>
@@ -2213,7 +2225,7 @@
                       function show(message, ok) { status.textContent = message; status.className = ok ? "ef-ok" : "ef-err"; }
                       form.addEventListener("submit", function (event) {
                         event.preventDefault();
-                        var firstInvalid = form.querySelector("input:invalid, textarea:invalid");
+                        var firstInvalid = form.querySelector("input:invalid, select:invalid, textarea:invalid");
                         if (firstInvalid) { show("Please fill in all required fields with valid information.", false); firstInvalid.focus(); return; }
                         var file = form.resume.files[0];
                         if (file && file.size > 5 * 1024 * 1024) { show("Your résumé file is too large. Please keep it under 5 MB.", false); form.resume.focus(); return; }

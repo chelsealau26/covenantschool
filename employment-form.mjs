@@ -13,6 +13,7 @@ const SENDER = "Covenant School Website <website@covenantschool.com>";
 const FALLBACK = "Please email us directly at fboren@covenantschool.com.";
 const MAX_RESUME_BYTES = 5 * 1024 * 1024;
 const ALLOWED_EXTENSIONS = ["pdf", "doc", "docx", "rtf", "txt", "odt"];
+const POSITIONS = ["Preschool Teacher (K3/K4)", "Kindergarten Teacher (K5)", "Elementary Teacher (1st–5th)", "Middle School Teacher (6th–8th)", "Specials Teacher", "Substitute Teacher", "Aftercare Staff", "Coach", "Office / Administrative Staff", "Other"];
 const LIMITS = { full_name: 120, email: 200, phone: 40, position: 150, comments: 5000 };
 
 function json(data, status = 200) {
@@ -78,6 +79,9 @@ export async function handleEmploymentForm(request, env) {
   }
   if (Object.values(fields).some((v) => !v)) {
     return json({ success: false, error: "Please fill in all required fields." }, 400);
+  }
+  if (!POSITIONS.includes(fields.position)) {
+    return json({ success: false, error: "Please choose a position from the list." }, 400);
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
     return json({ success: false, error: "Please enter a valid email address." }, 400);
