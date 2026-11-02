@@ -71,14 +71,19 @@
 
 /* ---------- Hero ---------- */
 .gv-hero {
-  position: relative; isolation: isolate; color: #fff; padding: 120px 24px 128px; overflow: hidden;
-  background: var(--ink) var(--hero-img) center / cover no-repeat;
+  position: relative; isolation: isolate; color: #fff; padding: 72px 24px 80px; overflow: hidden;
+  background: var(--ink) var(--hero-img) center 30% / cover no-repeat;
+  /* Fill the screen below the site header, content centered */
+  min-height: min(760px, calc(100vh - 180px)); display: flex; align-items: center;
 }
+.gv-hero > .gv-wrap { width: 100%; }
 .gv-hero::before {
+  /* Solid navy behind the text (white text well above 4.5:1), clear on the photo side */
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(100deg, rgba(19, 28, 36, .94) 0%, rgba(21, 53, 83, .86) 45%, rgba(21, 53, 83, .35) 100%);
+  background: linear-gradient(90deg, rgba(19, 28, 36, .94) 0%, rgba(21, 53, 83, .88) 38%, rgba(21, 53, 83, .55) 58%, rgba(21, 53, 83, .12) 82%, rgba(21, 53, 83, 0) 100%);
 }
-.gv-hero-copy { max-width: 640px; }
+.gv-hero h1, .gv-hero .gv-lead { text-shadow: 0 1px 12px rgba(19, 28, 36, .4); }
+.gv-hero-copy { max-width: 600px; }
 .gv-hero h1 { color: #fff; }
 .gv-hero .gv-lead { color: rgba(255, 255, 255, .88); margin-top: 20px; }
 .gv-hero-img { transform: scale(1.06); }
@@ -290,12 +295,6 @@
   .gv-tc-form { padding-top: 28px; }
 }
 
-/* Phones/tablets: the theme's mobile header (88px) overlays the top of the page */
-@media (max-width: 768px) {
-  .content > .gv-hero:first-child { padding-top: 160px; }
-  .content > .gv-tc-top:first-child .gv-tc-hero { padding-top: 160px; }
-}
-
 /* ---------- Motion ---------- */
 .gv-anim [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
 .gv-anim [data-reveal="left"] { transform: translateX(-30px); }
@@ -339,7 +338,8 @@
   .gv h2 { font-size: 30px; }
   .gv-band h2 { font-size: 34px; }
   .gv-section { padding: 64px 16px; }
-  .gv-hero { padding: 72px 16px 84px; }
+  .gv-hero { padding: 72px 16px 84px; min-height: 0; }
+  .gv-hero::before { background: rgba(19, 28, 36, .82); }
   .gv-band { padding: 80px 16px; }
   .gv-lead { font-size: 17px; }
   .gv-head { margin-bottom: 36px; }

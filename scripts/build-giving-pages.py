@@ -115,7 +115,7 @@ def ways_to_give():
         f'<img src="/assets/fundraiser-sponsors/{img}" alt="{name}" loading="lazy"></a></li>'
         for name, url, img in SPONSORS)
     return f'''
-  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-104-9578593.jpg')">
+  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-121-9598740.jpg')">
     <div class="gv-wrap">
       <div class="gv-hero-copy" data-reveal>
         <span class="gv-eyebrow">Ways to Give</span>
@@ -154,7 +154,7 @@ def ways_to_give():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-121-9598740.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["heart"]}</span></div>
+          <div class="gv-card-img"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["heart"]}</span></div>
           <div class="gv-card-body">
             <h3>Donate</h3>
             <p>Your donations make a meaningful difference in the lives of our students, providing essential resources and enriching educational experiences. Join us in shaping the future of our community through your generous support.</p>
@@ -459,8 +459,13 @@ def tax_credit():
 
 
 # ---------------------------------------------------------------- assembly
-def shell(source):
+def shell(source, chrome="scholarship-opportunities.html"):
+    """Page <head> from `source`; body chrome (solid white header, footer) from `chrome`
+    so all giving pages share the same header instead of the transparent overlay one."""
     html = (PAGES / source).read_text()
+    if chrome != source:
+        base = (PAGES / chrome).read_text()
+        html = html[:html.index("</head>")] + base[base.index("</head>"):]
     html = re.sub(r'<section class="eftc eftc-callout"[\s\S]*?</section>\s*', '', html)
     html = html.replace('<link rel="stylesheet" href="/assets/eftc.css"><script src="/assets/eftc.js" defer></script>', '')
     html = html.replace('<link rel="stylesheet" href="/assets/eftc.css">', '')
