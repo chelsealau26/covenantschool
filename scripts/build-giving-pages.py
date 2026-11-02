@@ -115,7 +115,7 @@ def ways_to_give():
         f'<img src="/assets/fundraiser-sponsors/{img}" alt="{name}" loading="lazy"></a></li>'
         for name, url, img in SPONSORS)
     return f'''
-  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-151_1-9523341.jpg')">
+  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-104-9578593.jpg')">
     <div class="gv-wrap">
       <div class="gv-hero-copy" data-reveal>
         <span class="gv-eyebrow">Ways to Give</span>
@@ -166,7 +166,7 @@ def ways_to_give():
   </section>
 {credit_block("Give With Your Federal Taxes", "A new federal tax credit lets you redirect part of your federal income taxes to scholarships for Covenant students through the Alabama Opportunity Scholarship Fund. Supporters in any state can take part.", "covenant-142-9598319.jpg").replace('class="gv-section', 'class="gv gv-section')}
 
-  <section class="gv gv-band" style="--band-img: url('{IMG}covenant-104-9578593.jpg')">
+  <section class="gv gv-band" style="--band-img: url('{IMG}covenant-2-9598822.jpg')">
     <div class="gv-wrap" data-reveal>
       <h2>Your Contribution Makes a Difference!</h2>
       <p>Every donation helps provide resources and enriching experiences for Covenant students.</p>
@@ -352,7 +352,7 @@ def scholarships():
       </div>
     </div>
   </section>
-{credit_block("A New Way Friends and Family Can Help", "Grandparents, relatives and supporters in any state will be able to redirect part of their federal income taxes to AOSF scholarships for Covenant families through the new Education Freedom Tax Credit.", "covenant-151_1-9523341.jpg").replace('class="gv-section', 'class="gv gv-section')}
+{credit_block("A New Way Friends and Family Can Help", "Grandparents, relatives and supporters in any state will be able to redirect part of their federal income taxes to AOSF scholarships for Covenant families through the new Education Freedom Tax Credit.", "covenant-21-9528197.jpg").replace('class="gv-section', 'class="gv gv-section')}
 
   <section class="gv gv-section gv-soft" aria-labelledby="gv-note-title">
     <div class="gv-wrap">
@@ -388,7 +388,7 @@ WIDGET = """<div id="theodore-giving-embed"></div>
 
 def tax_credit():
     return f'''
-  <section class="gv gv-tc-top" aria-labelledby="gv-tc-title" style="--hero-img: url('{IMG}covenant-33-9598535.jpg')">
+  <section class="gv gv-tc-top" aria-labelledby="gv-tc-title" style="--hero-img: url('{IMG}covenant-151_1-9523341.jpg')">
     <div class="gv-wrap gv-tc-grid">
       <div class="gv-tc-hero" data-reveal>
         <span class="gv-badge gv-badge-tan">New in 2027</span>
