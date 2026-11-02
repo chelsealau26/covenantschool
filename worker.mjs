@@ -1,13 +1,23 @@
 import { EMPLOYMENT_FORM_PATH, handleEmploymentForm } from "./employment-form.mjs";
 import { hasEnded, isFundraiserPath, removeBanner, removeSitemapEntry, CLOSED_PAGE } from "./assets/fundraiser-lifecycle.mjs";
+import { isLaunched, isPreview, isEftcPath, hideEftc, hideEftcSitemap, NOT_FOUND_PAGE } from "./assets/eftc-launch.mjs";
 
 export default {
   async fetch(request, env) {
-    const path = new URL(request.url).pathname;
+    const url = new URL(request.url);
+    const path = url.pathname;
     if (path === EMPLOYMENT_FORM_PATH) return handleEmploymentForm(request, env);
     if (hasEnded() && isFundraiserPath(decodeURIComponent(path))) {
       return new Response(request.method === "HEAD" ? null : CLOSED_PAGE, {
         status: 410,
+        headers: {"Content-Type":"text/html; charset=utf-8", "Cache-Control":"no-store", "X-Robots-Tag":"noindex"}
+      });
+    }
+    // Federal Tax Credit page is hidden until its launch time, except via the preview link.
+    const eftcHidden = !isLaunched() && !isPreview(url);
+    if (eftcHidden && isEftcPath(decodeURIComponent(path))) {
+      return new Response(request.method === "HEAD" ? null : NOT_FOUND_PAGE, {
+        status: 404,
         headers: {"Content-Type":"text/html; charset=utf-8", "Cache-Control":"no-store", "X-Robots-Tag":"noindex"}
       });
     }
@@ -19,8 +29,10 @@ export default {
       headers.delete("Content-Length");
       headers.delete("Content-Encoding");
       headers.delete("ETag");
+      if (!isLaunched() && isPreview(url)) headers.set("X-Robots-Tag", "noindex");
       let text = await response.text();
       if (hasEnded()) text = path === "/sitemap.xml" ? removeSitemapEntry(text) : removeBanner(text);
+      if (eftcHidden) text = path === "/sitemap.xml" ? hideEftcSitemap(text) : hideEftc(text);
       return new Response(request.method === "HEAD" ? null : text, {status:response.status, headers});
     }
     return response;

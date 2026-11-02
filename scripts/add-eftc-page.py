@@ -29,8 +29,8 @@ MAIN_SECTION = f"""
   <section class="eftc eftc-main" aria-labelledby="eftc-how">
     <div class="eftc-grid">
       <div class="eftc-intro">
-        <span class="eftc-eyebrow">New in 2027</span>
-        <h2 id="eftc-how">Your taxes can help a Covenant student</h2>
+        <span class="eftc-badge">New in 2027</span>
+        <h2 id="eftc-how">Your Taxes Can Help a Covenant Student</h2>
         <p>The federal Education Freedom Tax Credit gives you a dollar-for-dollar credit on your federal income taxes when you give to a scholarship-granting organization. Covenant Christian School has partnered with the Alabama Opportunity Scholarship Fund (AOSF) so your gift can support scholarships for Covenant families.</p>
 
         <div class="eftc-amounts">
@@ -38,14 +38,15 @@ MAIN_SECTION = f"""
           <div class="eftc-amount"><strong>$3,400</strong><span>married couples filing jointly</span></div>
         </div>
 
+        <h3>How It Works</h3>
         <ol class="eftc-steps">
-          <li><h3>Pledge today</h3><p>Use the form to let us know you plan to give. Pledging now helps us plan scholarships for next year.</p></li>
-          <li><h3>Give through AOSF in 2027</h3><p>When the program opens in January 2027, your gift goes to AOSF with Covenant Christian School selected as your school.</p></li>
-          <li><h3>Claim your credit</h3><p>Claim the credit on your 2027 federal tax return. Your tax professional can confirm how it applies to you.</p></li>
+          <li><h4>Pledge today</h4><p>Use the form to let us know you plan to give. Pledging now helps us plan scholarships for next year.</p></li>
+          <li><h4>Give through AOSF in 2027</h4><p>When the program opens in January 2027, your gift goes to AOSF with Covenant Christian School selected as your school.</p></li>
+          <li><h4>Claim your credit</h4><p>Claim the credit on your 2027 federal tax return. Your tax professional can confirm how it applies to you.</p></li>
         </ol>
 
         <div class="eftc-facts">
-          <h3>Good to know</h3>
+          <h3>Good to Know</h3>
           <ul>
             <li><strong>Open to taxpayers in every state,</strong> not just Alabama. Grandparents, alumni and friends anywhere can take part.</li>
             <li><strong>Credits are first-come, first-served</strong> under a national cap, so pledging early matters.</li>
@@ -57,7 +58,7 @@ MAIN_SECTION = f"""
 
       <aside class="eftc-pledge" id="pledge" aria-labelledby="eftc-pledge-title">
         <div class="eftc-card">
-          <h2 id="eftc-pledge-title">Make Your Pledge</h2>
+          <h3 id="eftc-pledge-title">Make Your Pledge</h3>
           <p>No payment is due today.</p>
           {WIDGET}
           <noscript><p class="eftc-fallback">This form needs JavaScript. Please <a href="/contact">contact our office</a> to pledge.</p></noscript>
@@ -76,7 +77,7 @@ def callout(heading, body, label):
     return f"""<section class="eftc eftc-callout" aria-label="Education Freedom Tax Credit">
     <div class="eftc-callout-inner">
       <div class="eftc-callout-copy">
-        <span class="eftc-eyebrow">Education Freedom Tax Credit &middot; New in 2027</span>
+        <div class="eftc-eyebrow-row"><span class="eftc-eyebrow">Education Freedom Tax Credit</span><span class="eftc-badge">New in 2027</span></div>
         <h2>{heading}</h2>
         <p>{body}</p>
       </div>
@@ -106,7 +107,7 @@ def build_page():
         "Explore two external programs designed to support and enrich your child’s educational journey.",
         "Starting January 2027, you can redirect up to $1,700 of your federal income taxes "
         "($3,400 for married couples filing jointly) to scholarships for Covenant Christian School families.", 1)
-    src = src.replace('href="/scholarship-opportunities#options"', 'href="#pledge"', 1)
+    src = src.replace('href="/scholarship-opportunities#options" \n             target="_self" class="theme-button', 'href="#pledge" \n             target="_self" class="eftc-hero-btn theme-button', 1)
     src = re.sub(r"\n\s*EXPLORE THE OPPORTUNITES</span>", "\n                    MAKE YOUR PLEDGE</span>", src, count=1)
 
     # Keep the hero (first container), replace the rest of the page body.
@@ -118,6 +119,7 @@ def build_page():
     src = src[:cut] + MAIN_SECTION + "\n      </div>\n  </div>\n  " + src[end:]
     # Use a hero photo different from the Scholarship page.
     src = src.replace("covenant-126-9598381.jpg", "covenant-104-9578593.jpg")
+    src = src.replace('<link rel="stylesheet" href="/assets/ccs-tables.css">', '')
     (PAGES / f"{SLUG}.html").write_text(add_css(src))
 
 NAV_ANCHOR = '<a class="website-nav-link" rel="tab" href="/ways-to-give" >Ways to Give</a>\n                          </li>'
@@ -143,12 +145,12 @@ def link_everywhere():
 def add_callouts():
     targets = {
         "ways-to-give.html": callout(
-            "Give with your federal taxes",
+            "Give With Your Federal Taxes",
             "Redirect up to $1,700 of your federal income taxes ($3,400 for couples filing jointly) "
             "to scholarships for Covenant students. Pledge now for January 2027.",
             "Pledge Now"),
         "scholarship-opportunities.html": callout(
-            "A new way friends and family can help",
+            "A New Way Friends and Family Can Help",
             "Grandparents, relatives and supporters in any state can redirect part of their federal taxes "
             "to AOSF scholarships for Covenant families starting in 2027. Share this page with them!",
             "Learn More"),
@@ -156,8 +158,7 @@ def add_callouts():
     for name, block in targets.items():
         page = PAGES / name
         html = page.read_text()
-        if "eftc-callout" in html:
-            continue
+        html = re.sub(r'<section class="eftc eftc-callout"[\s\S]*?</section>\s*', '', html)
         start = html.index('<main id="main-content"')
         # Insert right after the page's hero container (the second top-level container).
         containers = [m.start() for m in re.finditer(r'id="container-widget-\d+"', html[start:])]
