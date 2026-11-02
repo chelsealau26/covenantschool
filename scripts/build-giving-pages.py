@@ -43,12 +43,12 @@ NEW_TAB = ' target="_blank" rel="noopener"'
 SQUARE = "https://checkout.square.site/merchant/904MH0TAGK07M/checkout/XBAPCE4C2MVPSZMTCZOLJ4OE"
 
 
-def credit_block(heading, body, photo):
+def credit_block(heading, body, photo, anchor="tax-credit"):
     """Tax credit feature: a 'coming soon' version and a 'live' version (worker keeps one)."""
     amounts = ('<div class="gv-credit-amounts"><div><strong>$1,700</strong><span>per individual</span></div>'
                '<div><strong>$3,400</strong><span>married filing jointly</span></div></div>')
     return f'''
-  <section class="gv-section gv-white" aria-labelledby="gv-credit-title">
+  <section class="gv-section gv-white" id="{anchor}" aria-labelledby="gv-credit-title">
     <div class="gv-wrap">
       <div class="gv-credit" data-reveal="zoom" style="--credit-img: url('{IMG}{photo}')">
         <div class="gv-credit-copy">
@@ -123,7 +123,7 @@ def ways_to_give():
         <p class="gv-lead">We can't do it without amazing supporters like you! Whether you volunteer your time, partner with us through your business, or donate financially, together we can create a brighter future for our school family.</p>
         <div class="gv-actions">
           <a class="gv-btn gv-btn-gold" href="{SQUARE}"{NEW_TAB}>{ICON["heart"]}Make a Donation</a>
-          <a class="gv-btn gv-btn-ghost" href="#ways">Ways to Help</a>
+          <a class="gv-btn gv-btn-ghost" href="#ways">See All Ways to Give</a>
         </div>
       </div>
     </div>
@@ -133,32 +133,52 @@ def ways_to_give():
     <div class="gv-wrap">
       <div class="gv-head" data-reveal>
         <span class="gv-eyebrow">Get involved</span>
-        <h2 id="gv-ways-title">Three Ways to Help</h2>
-        <p>Every gift of time, partnership or support makes a meaningful difference for our students.</p>
+        <h2 id="gv-ways-title">Four Ways to Give</h2>
+        <p>Every gift of money, time or partnership makes a meaningful difference for our students. Choose the way that fits you best.</p>
       </div>
-      <div class="gv-cards">
+      <div class="gv-cards gv-cards-4">
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-108-9584556.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["hand"]}</span></div>
+          <div class="gv-card-img"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["heart"]}</span></div>
           <div class="gv-card-body">
-            <h3>Volunteer</h3>
-            <p>You can make a direct impact by becoming a substitute teacher. Life happens, and our teachers need your helping hand. Additionally, consider joining the FTP (Family Teacher Partnership) to contribute in various other meaningful ways across our campus. Get in touch to learn more!</p>
-            <div class="gv-actions"><a class="gv-btn" href="/contact">Contact Us</a></div>
+            <h3>Donate</h3>
+            <p>Your donations provide essential resources and enriching educational experiences for our students. Give securely online.</p>
+            <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{SQUARE}"{NEW_TAB}>Make a Donation</a></div>
+          </div>
+        </article>
+        <article class="gv-card" data-reveal>
+          <div class="gv-card-img"><img src="{IMG}covenant-142-9598319.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["receipt"]}</span>
+<!--eftc:soon-->
+            <span class="gv-badge gv-badge-tan gv-badge-soon gv-card-badge">Coming Dec 1</span>
+<!--/eftc:soon-->
+<!--eftc:live-->
+            <span class="gv-badge gv-badge-tan gv-card-badge">New</span>
+<!--/eftc:live-->
+          </div>
+          <div class="gv-card-body">
+            <h3>Give With Your Taxes</h3>
+            <p>Redirect up to $1,700 of your federal income taxes ($3,400 for couples filing jointly) to scholarships for Covenant students through a new federal tax credit.</p>
+<!--eftc:soon-->
+            <div class="gv-actions"><a class="gv-btn" href="#tax-credit">Learn More</a></div>
+<!--/eftc:soon-->
+<!--eftc:live-->
+            <div class="gv-actions"><a class="gv-btn" href="/federal-tax-credit">Pledge Now</a></div>
+<!--/eftc:live-->
           </div>
         </article>
         <article class="gv-card" data-reveal>
           <div class="gv-card-img"><img src="{IMG}covenant-10-9527833.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["handshake"]}</span></div>
           <div class="gv-card-body">
             <h3>Sponsor</h3>
-            <p>With generous donations from our sponsors, we are empowered to make impactful investments into the lives of our students, ensuring they receive the best and most up-to-date resources and opportunities to thrive academically, socially, and personally.</p>
+            <p>Partner with us through your business and invest in the resources and opportunities that help our students thrive academically, socially, and personally.</p>
             <div class="gv-actions"><a class="gv-btn" href="/contact">Become a Sponsor</a><a class="gv-link" href="#sponsors">See our sponsors</a></div>
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["heart"]}</span></div>
+          <div class="gv-card-img"><img src="{IMG}covenant-108-9584556.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["hand"]}</span></div>
           <div class="gv-card-body">
-            <h3>Donate</h3>
-            <p>Your donations make a meaningful difference in the lives of our students, providing essential resources and enriching educational experiences. Join us in shaping the future of our community through your generous support.</p>
-            <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{SQUARE}"{NEW_TAB}>Make a Donation</a></div>
+            <h3>Volunteer</h3>
+            <p>Become a substitute teacher, or join the FTP (Family Teacher Partnership) to help in meaningful ways across our campus.</p>
+            <div class="gv-actions"><a class="gv-btn" href="/contact">Get in Touch</a></div>
           </div>
         </article>
       </div>
