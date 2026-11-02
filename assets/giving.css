@@ -226,18 +226,19 @@
 /* ---------- Tax credit page: hero with the form overlapping ---------- */
 .gv-tc-top { position: relative; isolation: isolate; background: var(--paper); padding: 0 24px 40px; overflow-x: clip; }
 .gv-tc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px); grid-template-rows: auto auto; column-gap: 64px; }
-.gv-tc-hero { grid-column: 1; grid-row: 1; position: relative; color: #fff; padding: 104px 0 72px; }
+.gv-tc-hero { grid-column: 1; grid-row: 1; position: relative; color: #fff; padding: 52px 0 48px; }
 .gv-tc-hero::before { /* full-bleed photo behind the hero copy (and behind the top of the form) */
   content: ""; position: absolute; top: 0; bottom: 0; left: -100vw; right: -100vw; z-index: -1;
   background: linear-gradient(100deg, rgba(19, 28, 36, .95) 0%, rgba(21, 53, 83, .88) 50%, rgba(21, 53, 83, .5) 100%), var(--hero-img) center 30% / cover no-repeat;
 }
-.gv-tc-hero h1 { color: #fff; margin: 18px 0 0; }
-.gv-tc-hero .gv-lead { color: rgba(255, 255, 255, .88); margin-top: 18px; max-width: 580px; }
-.gv-tc-chips { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
-.gv-tc-chips div { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18); border-radius: 14px; padding: 14px 20px; min-width: 180px; }
-.gv-tc-chips strong { display: block; font-family: Anton, Arial, sans-serif; font-weight: 400; font-size: 40px; line-height: 1.05; color: var(--tan); }
+/* Sized so the whole hero (badge, title, intro, amounts) sits above the fold on laptop screens */
+.gv-tc-hero h1 { color: #fff; margin: 14px 0 0; font-size: clamp(34px, 3.3vw, 46px); line-height: 1.12; }
+.gv-tc-hero .gv-lead { color: rgba(255, 255, 255, .88); margin-top: 14px; max-width: 560px; font-size: 17px; line-height: 1.55; }
+.gv-tc-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.gv-tc-chips div { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18); border-radius: 12px; padding: 10px 18px; min-width: 160px; }
+.gv-tc-chips strong { display: block; font-family: Anton, Arial, sans-serif; font-weight: 400; font-size: 32px; line-height: 1.1; color: var(--tan); }
 .gv-tc-chips span { font-size: 14px; color: rgba(255, 255, 255, .85); }
-.gv-tc-form { grid-column: 2; grid-row: 1 / span 2; position: relative; z-index: 1; padding-top: 64px; scroll-margin-top: 90px; }
+.gv-tc-form { grid-column: 2; grid-row: 1 / span 2; position: relative; z-index: 1; padding-top: 40px; scroll-margin-top: 90px; }
 .gv-tc-card { background: #fff; border-radius: 20px; box-shadow: 0 28px 60px rgba(19, 28, 36, .22); overflow: hidden; }
 .gv-tc-card-head { background: var(--navy); color: #fff; padding: 22px 26px 20px; text-align: center; }
 .gv-tc-card-head h2 { color: #fff; font-size: 30px; }
@@ -264,6 +265,15 @@
 .gv-help p a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .gv-help .gv-actions { margin-top: 0; }
 .gv-disclaimer { font-size: 13px; color: var(--muted); font-style: italic; text-align: center; margin-top: 30px !important; }
+
+@media (min-width: 961px) and (max-height: 760px) {
+  .gv-tc-hero { padding: 36px 0 36px; }
+  .gv-tc-hero h1 { font-size: clamp(32px, 3vw, 40px); }
+  .gv-tc-hero .gv-lead { font-size: 16px; }
+  .gv-tc-chips { margin-top: 18px; }
+  .gv-tc-chips strong { font-size: 28px; }
+  .gv-tc-form { padding-top: 28px; }
+}
 
 /* ---------- Motion ---------- */
 .gv-anim [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
