@@ -103,3 +103,23 @@ body:not(.fundraiser-route) .mobile-menu .theme-logo img { max-height: 54px !imp
 #header-widget-1531565926240 .border-at-left nav > ul > li:hover,
 #header-widget-1719811451032 .border-at-left nav > ul > li.active,
 #header-widget-1719811451032 .border-at-left nav > ul > li:hover { border-color: #daad86 !important; }
+
+/* Donation lightbox (assets/donate-lightbox.js): Square checkout on top of the page */
+.ccs-donate { width: min(560px, calc(100vw - 32px)); height: min(860px, calc(100vh - 48px)); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 30px 80px rgba(19, 28, 36, .45); font-family: "Open Sans", Arial, sans-serif; }
+.ccs-donate[open] { display: flex; flex-direction: column; }
+.ccs-donate::backdrop { background: rgba(19, 28, 36, .72); }
+.ccs-donate-bar { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 20px; background: #153553; color: #fff; }
+.ccs-donate-bar h2 { margin: 0; flex: 1; font: 400 22px/1.2 Anton, Arial, sans-serif; color: #fff; letter-spacing: .01em; }
+.ccs-donate-newtab { color: #fff !important; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.ccs-donate-newtab:hover, .ccs-donate-newtab:focus-visible { color: #daad86 !important; }
+.ccs-donate-close { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .14); color: #fff; font-size: 26px; line-height: 40px; cursor: pointer; }
+.ccs-donate-close:hover, .ccs-donate-close:focus-visible { background: #daad86; color: #131c24; outline: none; }
+.ccs-donate-body { position: relative; flex: 1; min-height: 0; }
+.ccs-donate-body iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; opacity: 0; transition: opacity .3s; }
+.ccs-donate.is-loaded iframe { opacity: 1; }
+.ccs-donate-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; color: #4a5561; }
+.ccs-donate-note { margin: 0; padding: 10px 16px; font-size: 12.5px; color: #4a5561; text-align: center; border-top: 1px solid #e4ddd3; }
+html.ccs-donate-open { overflow: hidden; }
+@media (max-width: 640px) {
+  .ccs-donate { width: 100vw; height: 100dvh; border-radius: 0; }
+}
