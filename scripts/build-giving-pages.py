@@ -118,7 +118,7 @@ def ways_to_give():
         f'<img src="/assets/fundraiser-sponsors/{img}" alt="{name}" loading="lazy"></a></li>'
         for name, url, img in SPONSORS)
     return f'''
-  <section class="gv gv-hero" style="--hero-img: url('{IMG}covenant-104-9578593.jpg'); --hero-pos: center 12%">
+  <section class="gv gv-hero" style="--hero-img: url('{IMG}covenant-64-9598590.jpg'); --hero-pos: center 35%">
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Ways to Give</span>
@@ -149,7 +149,7 @@ def ways_to_give():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-64-9598590.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["receipt"]}</span>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["receipt"]}</span>
 <!--eftc:soon-->
             <span class="gv-badge gv-badge-tan gv-badge-soon gv-card-badge">Coming Dec 1</span>
 <!--/eftc:soon-->
