@@ -179,7 +179,8 @@
 .gv-resource-icon { width: 48px; height: 48px; flex: none; border-radius: 12px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; }
 .gv-resource-icon svg { width: 24px; height: 24px; }
 .gv-resource strong { display: block; font-size: 16px; color: var(--navy); }
-.gv-resource span { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
+.gv-resource > span:last-child > span { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
+.gv-resource .gv-resource-icon { display: flex; color: #fff; }
 
 /* Income table */
 .gv-table-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 28px; }
@@ -285,6 +286,12 @@
   .gv-tc-chips { margin-top: 18px; }
   .gv-tc-chips strong { font-size: 28px; }
   .gv-tc-form { padding-top: 28px; }
+}
+
+/* Phones/tablets: the theme's mobile header (88px) overlays the top of the page */
+@media (max-width: 768px) {
+  .content > .gv-hero:first-child { padding-top: 160px; }
+  .content > .gv-tc-top:first-child .gv-tc-hero { padding-top: 160px; }
 }
 
 /* ---------- Motion ---------- */
