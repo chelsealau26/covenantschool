@@ -32,6 +32,7 @@ export const pickCreditVersion = (html, live) =>
   html.replace(live ? /<!--eftc:soon-->[\s\S]*?<!--\/eftc:soon-->\n?/g : /<!--eftc:live-->[\s\S]*?<!--\/eftc:live-->\n?/g, "");
 
 // Redesigned pages awaiting approval: served in place of the current page only on a preview link.
-export const REDESIGNS = {}; // add "/page": "/redesign/page" entries to preview a future redesign
+// "/page": "/redesign/page" entries preview a redesign at its normal URL (homepage = "").
+export const REDESIGNS = { "": "/redesign/index", "/index": "/redesign/index" };
 export const redesignFor = path => REDESIGNS[path.replace(/\.html$|\/$/i, "").toLowerCase()];
 export const isRedesignPath = path => /^\/(?:pages\/)?redesign(?:\/|$)/i.test(path);

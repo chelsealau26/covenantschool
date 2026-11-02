@@ -457,6 +457,88 @@
   .gv-jump a { font-size: 13.5px; padding: 7px 12px; }
 }
 
+/* ===================== Homepage ===================== */
+/* Full-screen hero under the transparent site header; content sits a bit high so it's all above the fold */
+.gv-hero-home { min-height: 100vh; min-height: 100svh; padding: 150px 24px 120px; align-items: center; }
+.gv-hero-home::before { background: rgba(13, 33, 54, .66) !important; }
+.gv-hero-home h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1.02; letter-spacing: .01em; }
+.gv-hero-home .gv-hero-copy { max-width: 920px; }
+.gv .gv-home-tagline { margin: 22px 0 0; font-size: 19px; letter-spacing: .16em; color: var(--tan); }
+.gv-hero-home .gv-lead { max-width: 720px; margin: 16px auto 0; }
+.gv-social { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
+.gv-social a { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .55); color: #fff !important; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s, transform .2s; }
+.gv-social a:hover, .gv-social a:focus-visible { background: var(--tan); border-color: var(--tan); color: var(--ink) !important; transform: translateY(-2px); }
+.gv-social svg { width: 20px; height: 20px; }
+
+/* Quick links row overlapping the bottom of the hero */
+.gv-quicklinks { position: relative; z-index: 2; margin-top: -72px; padding: 0 24px; }
+.gv-quick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.gv-quick {
+  display: flex; align-items: flex-start; gap: 14px; padding: 22px 20px; background: #fff; border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(19, 28, 36, .14); text-decoration: none !important; color: var(--ink) !important;
+  border-bottom: 4px solid transparent; transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.gv-quick:hover, .gv-quick:focus-visible { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(19, 28, 36, .18); border-bottom-color: var(--tan); }
+.gv-quick-icon { width: 48px; height: 48px; flex: none; border-radius: 12px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; }
+.gv-quick-icon svg { width: 24px; height: 24px; }
+.gv-quick-text strong { display: block; font-family: Tahoma, "Open Sans", Arial, sans-serif; font-size: 17px; color: var(--navy); margin-bottom: 4px; }
+.gv-quick-text span { display: block; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.gv-quick-arrow { margin-left: auto; color: var(--tan-deep); font-weight: 700; transition: transform .2s; }
+.gv-quick:hover .gv-quick-arrow { transform: translateX(4px); }
+
+/* Experience the Covenant Difference */
+.gv-stars { display: block; width: 120px; height: auto; margin-bottom: 14px; }
+.gv-info-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+.gv-info { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.gv-info .gv-panel-icon { margin: 0; flex: none; }
+.gv-info h3 { font-size: 20px; margin-bottom: 4px; }
+.gv-info p { color: var(--muted); font-size: 15px; line-height: 1.5; }
+.gv-info .gv-link { margin-top: 8px; font-size: 14px; letter-spacing: .06em; }
+
+/* Photo bands: left-aligned variant (Family Portal) and subheading */
+.gv-band-left { text-align: left; }
+.gv-band-left .gv-wrap { max-width: 1180px; }
+.gv-band-left .gv-wrap > * { max-width: 640px; }
+.gv-band-left p { margin-left: 0; }
+.gv-band-left .gv-actions { justify-content: flex-start; }
+.gv-band-left::before { background: linear-gradient(90deg, rgba(13, 33, 54, .9) 0%, rgba(13, 33, 54, .78) 55%, rgba(13, 33, 54, .45) 100%); }
+.gv .gv-band-sub { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-size: 22px; color: #fff; }
+
+/* CCS Resources */
+.gv-resources-home { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gv-resources-home .gv-resource { padding: 18px 20px; }
+
+/* Testimonials */
+.gv-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.gv-quote { position: relative; margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 30px 30px 26px 30px; display: flex; flex-direction: column; }
+.gv-quote-mark { width: 44px; height: 44px; border-radius: 50%; background: var(--tan); color: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.gv-quote-mark svg { width: 22px; height: 22px; }
+.gv-quote blockquote { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink); flex: 1; }
+.gv-quote blockquote p + p { margin-top: 8px !important; }
+.gv-quote figcaption { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.gv-quote figcaption strong { display: block; font-family: Tahoma, "Open Sans", Arial, sans-serif; color: var(--navy); font-size: 17px; }
+.gv-quote figcaption span { font-size: 14px; color: var(--muted); }
+
+@media (max-width: 1100px) {
+  .gv-quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .gv-hero-home { text-align: center; }
+  .gv-resources-home { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gv-quotes { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .gv-hero-home { padding: 130px 16px 110px; min-height: 0; }
+  .gv .gv-home-tagline { font-size: 15px; }
+  .gv-quicklinks { padding: 0 16px; margin-top: -56px; }
+  .gv-quick-grid { grid-template-columns: 1fr; gap: 12px; }
+  .gv-info-pair { grid-template-columns: 1fr; }
+  .gv-resources-home { grid-template-columns: 1fr; }
+  .gv-band-left { text-align: center; }
+  .gv-band-left .gv-actions { justify-content: center; }
+  .gv-quote { padding: 24px 20px; }
+}
+
 /* ---------- Motion ---------- */
 .gv-anim [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
 .gv-anim [data-reveal="left"] { transform: translateX(-30px); }

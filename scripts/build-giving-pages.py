@@ -41,6 +41,21 @@ ICON = {
     "lock": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
     "calendar": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>',
     "school": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>',
+    "phone": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+    "pin": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+    "compass": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>',
+    "utensils": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
+    "cross": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M6 8h12"/></svg>',
+    "list": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="m3 6 1 1 2-2"/><path d="m3 12 1 1 2-2"/><path d="m3 18 1 1 2-2"/></svg>',
+    "shield": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    "refresh": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M3 21v-5h5"/><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/></svg>',
+    "trophy": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+    "help": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>',
+    "briefcase": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+    "portal": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',
+    "quote": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 5C6 6.7 3.5 9.9 3.5 14.2c0 2.9 1.7 4.8 4 4.8 2 0 3.5-1.5 3.5-3.4 0-1.9-1.4-3.2-3.2-3.2-.3 0-.7 0-.9.1.4-2.2 2.2-4.4 4.2-5.5L9.6 5Zm10 0c-3.6 1.7-6.1 4.9-6.1 9.2 0 2.9 1.7 4.8 4 4.8 2 0 3.5-1.5 3.5-3.4 0-1.9-1.4-3.2-3.2-3.2-.3 0-.7 0-.9.1.4-2.2 2.2-4.4 4.2-5.5L19.6 5Z"/></svg>',
+    "facebook": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.7c0-.8.5-1.2 1.3-1.2H17V2.2h-2.6C11.6 2.2 10.5 4 10.5 6.4v2.1H8v3.3h2.5V22H14V11.8h2.6l.4-3.3Z"/></svg>',
+    "instagram": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
 }
 NEW_TAB = ' target="_blank" rel="noopener"'
 SQUARE = "https://checkout.square.site/merchant/904MH0TAGK07M/checkout/XBAPCE4C2MVPSZMTCZOLJ4OE"
@@ -530,6 +545,177 @@ def tax_credit():
 '''
 
 
+# ---------------------------------------------------------------- Home (same sections and wording, refreshed design)
+HOME_LINKS = {
+    "facts": "https://sis.factsmgt.com/accounts/Account/Login?ReturnUrl=%2Faccounts%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DfamilyPortalCode%26redirect_uri%3Dhttps%253A%252F%252Fsis.factsmgt.com%252Ffamily-portal%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520familyPortalUserInfo%2520familyPortalUserConfig%2520offline_access%2520ftApi%26code_challenge%3DFiul3nN-aztKjGsczQavRZoVMLWZuxwkV5-Mm89Hp18%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639080670995718110.ZDQyODQ0NmUtYWEzMS00OGU5LWFjN2ItMjRiMjk4MTg5MGI1NmE5ZTA1YjMtYjE1NS00NzkwLWJmMWEtMzM3MGJiMmU0N2Vk%26state%3DCfDJ8Lq1N5Cgm6tFnilnlNGlkcEod0V-wCTGxmw71V0Ux6x0cT40BqsZUZKtA5B8_yAnDYQLGNuzKV1VrllGwfqni1QHIX5H9utq8LNhcc9Bd6PPmf33REHdGqkwHkGnIjPPtu8c-N5Aj204dBYeJ7722Rl8O02GXGlKnnvw22icE117EKUsj_phuldyGYYj_aF3InNQp3JeAe3AvqpJhxxoFZoAXeZhT2gpzxB7pWyj3fQRlzibUr1VuvW7sFAURLWIJObzjAMCRZu0N0XH3bLQDx_tr3JWVOIeTYvOGN6FrJjauybBdnZ95Oala1No5BUYaSk942NFX6-0fyHIYavB6DG-eloKjrip56N7qi1B64iUcxT2DZFwrhvEn6Asl3xolG413HM-KPT_lELYIfIhub17SsYmOFUP_DtfNqOxlxyDgyPttuqttx6Q4VMDwvpmDEY1O_PX7flIna8V7CYc_HnqGZgqOK8KteLJFpn2P426-c4tXI8gbN_STDeK8cx-yA%26x-client-SKU%3DID_NET9_0%26x-client-ver%3D8.15.0.0",
+    "renweb": "https://accounts.renweb.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DfamilyPortalCode%26redirect_uri%3Dhttps%253A%252F%252Ffamilyportal.renweb.com%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520familyPortalUserInfo%2520familyPortalUserConfig%2520offline_access%2520ftApi%26code_challenge%3Dh3zkZGPkkCLVNX1RhC9GkU458E9qUe2QqTfvRwIq2qM%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D638554039894875753.OTViYzI2NzYtMGY1OS00OTQzLWJiMTAtYzI1ODhmOTQwOTNkYmZjNDUzMzgtZTkxNC00M2UyLTllZmMtOTIyM2MwYWZhOTIy%26state%3DCfDJ8Lq1N5Cgm6tFnilnlNGlkcG9pjvzW7Ju7Lb7SeBbJnphysOlS2KDITknzClBUj1yi9JW7csUesxjiJsehwCfXeHrw9Lh6Whvt6S2NyN8z67iWTisugrn_fwXf0g0v6E7INBmE0g8nUmAPXrJXS8PZ292innfdBBH86aNJLxQ1wATIgB4l58Q4WGYM7HiIJhdGGlMiKOxSHoX4LqbOHPQMZYxiydaolYK2jkOVg42aYLeTswAmw_RuUH4sFIza86xnWX3JI_WbhyuO0i8L1Jcif5Sg4tFA3TBprfNZiRJWWBkoxmyTYxTW4kMH0fF64YURKEyfHHd5Y8Aj4N554GFc4__DHxeniU_r57C3QgnwkWMC_KuLr22mKHE38HC0ADG23gSWQCMRhiDMXKkvCPFQqOo9JjgraElQRsZDMROava8K9EBd23ijulP_zjAhb_galoLLavjYT9Ag32bXCoGC9g%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D6.10.0.0",
+    "maps": "https://www.google.com/maps?sca_esv=31fe99a6d4a2597d&amp;sxsrf=ADLYWIJeAy9T0v73TUzWe29NXF2LL2lJ9Q:1734622064625&amp;uact=5&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiJGNvdmVuYW50IGNocmlzaXRpYW4gc2Nob29sIG1vYmlsZSBhbDINEC4YgAQYxwEYDRivATIGEAAYFhgeMgYQABgWGB4yCBAAGIAEGKIEMhwQLhiABBjHARgNGK8BGJcFGNwEGN4EGOAE2AEBSPBgUOETWJlfcAt4AJABAJgB2QGgAaAnqgEGNy4zMS4xuAEDyAEA-AEBmAIyoAKUKcICDhAuGIAEGLADGMcBGK8BwgILEAAYgAQYsAMYogTCAggQABiwAxjvBcICChAjGIAEGCcYigXCAhMQLhiABBjHARgnGIoFGI4FGK8BwgIKEAAYgAQYQxiKBcICEBAuGIAEGNEDGEMYxwEYigXCAgsQABiABBixAxiDAcICERAuGIAEGLEDGNEDGIMBGMcBwgIFEAAYgATCAgsQLhiABBiRAhiKBcICChAuGIAEGBQYhwLCAgQQIxgnwgILEAAYgAQYkQIYigXCAg4QABiABBiRAhixAxiKBcICDRAAGIAEGLEDGEMYigXCAhMQLhiABBgUGIcCGMcBGI4FGK8BwgIQEC4YgAQYQxjHARiKBRivAcICDRAAGIAEGLEDGBQYhwLCAhAQABiABBixAxhDGIMBGIoFwgIUEC4YgAQYkQIYxwEYigUYjgUYrwHCAgoQLhiABBhDGIoFwgILEC4YgAQYxwEYrwHCAg0QLhiABBixAxhDGIoFwgIWEC4YgAQYsQMYFBiHAhjHARiOBRivAcICCBAAGIAEGLEDwgIOEAAYgAQYsQMYgwEYigXCAggQLhiABBixA8ICERAuGIAEGJECGMcBGIoFGK8BwgIKEAAYgAQYFBiHAsICDhAuGIAEGMcBGI4FGK8BwgIQEC4YgAQYxwEYChiOBRivAcICBxAAGIAEGArCAgsQABiABBiGAxiKBcICBRAAGO8FwgIfEC4YgAQYxwEYChiOBRivARiXBRjcBBjeBBjgBNgBAcICChAAGIAEGLEDGArCAhAQLhiABBixAxjRAxjHARgKwgINEC4YgAQYxwEYChivAcICIBAuGIAEGJECGMcBGIoFGK8BGJcFGNwEGN4EGOAE2AEBwgIKEAAYgAQYsQMYDcICEBAuGIAEGMcBGA0YjgUYrwHCAgcQABiABBgNmAMAiAYBkAYFugYGCAEQARgUkgcHMTYuMzIuMqAHk5EF&amp;um=1&amp;ie=UTF-8&amp;fb=1&amp;gl=us&amp;sa=X&amp;geocode=KQ396AFZspuIMUjpS63MU0q8&amp;daddr=7150+Hitt+Rd,+Mobile,+AL+36695",
+    "handbook": "/pdfs/2026-27_STUDENT_PARENT_Handbook_Revised_10-28-26.pdf",
+    "uniform": "https://content.app-sources.com/s/641329925069930801/uploads/PDF_Files/Revised_Uniform_Pages_1-8___9-5-25-9502547.pdf",
+    "coppa": "https://content.app-sources.com/s/641329925069930801/uploads/PDF_Files/24-25_CCS_COPPA_COMPLIANCE_PrtForm-2380633.pdf",
+}
+
+
+def home():
+    L = HOME_LINKS
+    def tile(href, icon, title, text, newtab=False):
+        return (f'<a class="gv-quick" data-reveal href="{href}"{NEW_TAB if newtab else ""}>'
+                f'<span class="gv-quick-icon">{ICON[icon]}</span><span class="gv-quick-text"><strong>{title}</strong>'
+                f'<span>{text}</span></span><span class="gv-quick-arrow" aria-hidden="true">&rarr;</span></a>')
+    def res(href, icon, title, newtab=False):
+        return (f'<a class="gv-resource" data-reveal href="{href}"{NEW_TAB if newtab else ""}>'
+                f'<span class="gv-resource-icon">{ICON[icon]}</span><span><strong>{title}</strong></span></a>')
+    def quote(name, role, lines):
+        body = "".join(f"<p>{l}</p>" for l in lines)
+        return (f'<figure class="gv-quote" data-reveal><span class="gv-quote-mark">{ICON["quote"]}</span>'
+                f'<blockquote>{body}</blockquote><figcaption><strong>{name}</strong><span>{role}</span></figcaption></figure>')
+    return f"""
+  <section class="gv gv-hero gv-hero-home" style="--hero-img: url('{IMG}covenant-115-9517621.jpg')">
+    <div class="gv-wrap">
+      <div class="gv-hero-copy">
+        <h1>EMPOWERING MINDS,<br>INSPIRING HEARTS</h1>
+        <p class="gv-eyebrow gv-home-tagline">SUPPORTING THE FAMILY WITH CHRISTIAN EDUCATION</p>
+        <p class="gv-lead">The mission of Covenant Christian School is to graduate students who are prepared to understand their world, to communicate with their world, and to influence their world for Christ through servant leadership.</p>
+        <div class="gv-social">
+          <a href="https://www.facebook.com/covenantchristianschoolmobile"{NEW_TAB} aria-label="Covenant Christian School on Facebook (opens in new tab)">{ICON["facebook"]}</a>
+          <a href="https://www.instagram.com/ccs_eagles_of_al/"{NEW_TAB} aria-label="Covenant Christian School on Instagram (opens in new tab)">{ICON["instagram"]}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gv gv-quicklinks" aria-label="Quick links">
+    <div class="gv-wrap gv-quick-grid">
+      {tile("/calendar", "calendar", "2026-2027 Calendar", "Check out school events, holidays and reminders.")}
+      {tile("/aftercare", "clock", "AfterCare Sign Up", "Sign up by 2:30pm the Friday before week of service.")}
+      {tile("/ways-to-give", "heart", "Ways to Give", "Check out the different ways you can give to enhance our students' education.")}
+      {tile("/contact", "phone", "Contact Us", "Have a question? Call or visit us in the CCS Office.")}
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-paper" id="open-house" aria-labelledby="gv-diff-title">
+    <div class="gv-wrap gv-split">
+      <div class="gv-split-img" data-reveal="left"><img src="{IMG}covenant-78-9798253.jpg" alt="Middle school student in a Covenant sweatshirt taking notes next to her tablet during class" loading="lazy"></div>
+      <div data-reveal="right">
+        <img class="gv-stars" src="{IMG}stars-7250417.png" alt="5 out of 5 stars" width="120" height="24">
+        <h2 id="gv-diff-title">Experience the Covenant Difference</h2>
+        <p class="gv-lead" style="color:var(--muted);margin-top:16px">Experience why Covenant Christian School is the perfect place for your child! Schedule a tour to see firsthand the supportive community, quality education, and vibrant school spirit that make Covenant so special. We look forward to welcoming you and your family!</p>
+        <div class="gv-info-pair">
+          <div class="gv-info">
+            <span class="gv-panel-icon">{ICON["pin"]}</span>
+            <div><h3>Where?</h3><p>7150 Hitt Rd.<br>Mobile, AL 36695</p><a class="gv-link" href="{L['maps']}"{NEW_TAB}>DIRECTIONS</a></div>
+          </div>
+          <div class="gv-info">
+            <span class="gv-panel-icon">{ICON["compass"]}</span>
+            <div><h3>Explore!</h3><p>Tour the campus, visit classrooms, and meet prospective teachers.</p></div>
+          </div>
+        </div>
+        <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/schedule-tour">SCHEDULE A TOUR</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gv gv-band gv-band-left" style="--band-img: url('{IMG}covenant-92-9517625.jpg')" aria-labelledby="gv-portal-title">
+    <div class="gv-wrap" data-reveal>
+      <span class="gv-eyebrow">FAMILY PORTAL</span>
+      <h2 id="gv-portal-title">Your Hub for Student Success and Family Engagement</h2>
+      <p>Welcome to the Covenant Family Portal, your go-to for viewing grades, managing re-enrollment, making payments, and staying connected with school updates—all in one place. Streamline your child's education journey with ease and efficiency.</p>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{L['facts']}"{NEW_TAB}>{ICON["portal"]}VISIT THE FAMILY PORTAL</a></div>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-white">
+    <div class="gv-wrap">
+      <div class="gv-cards gv-cards-2">
+        <article class="gv-card" data-reveal>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-94-9522791.jpg" alt="Two smiling young boys in Covenant uniforms with their arms around each other outdoors, one holding a small basketball" loading="lazy"></span><span class="gv-card-icon">{ICON["utensils"]}</span></div>
+          <div class="gv-card-body">
+            <h3>Order Lunch</h3>
+            <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
+            <div class="gv-actions"><a class="gv-btn" href="https://aware3.net/shortcode?code=covenantchristianschool-f"{NEW_TAB}>DOWNLOAD THE APP</a></div>
+          </div>
+        </article>
+        <article class="gv-card" data-reveal>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-43-8567112.jpg" alt="Elementary students raising their hands to answer a question in class" loading="lazy"></span><span class="gv-card-icon">{ICON["cross"]}</span></div>
+          <div class="gv-card-body">
+            <h3>Our Mission &amp; Values</h3>
+            <p>Covenant Christian School partners with families to provide a Christ-centered education that cultivates academic excellence, spiritual growth, and godly character, equipping students to live for God's purpose.</p>
+            <div class="gv-actions"><a class="gv-btn" href="/mission-values">MORE DETAILS</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-soft" id="resources" aria-labelledby="gv-res-title">
+    <div class="gv-wrap">
+      <div class="gv-head" data-reveal><h2 id="gv-res-title">CCS Resources</h2></div>
+      <div class="gv-resources gv-resources-home">
+        {res(L['handbook'], "file", "Student/Parent Handbook", True)}
+        {res(L['uniform'], "file", "Uniform Policy &amp; Procedure", True)}
+        {res("/school-supplies", "list", "School Supply Lists")}
+        {res(L['coppa'], "shield", "COPPA Policy", True)}
+        {res(L['renweb'], "refresh", "Re-Enrollment", True)}
+        {res("/new-student-application", "pen", "New Student Application")}
+        {res("/tuition", "receipt", "Tuition &amp; Fees")}
+        {res("/athletics", "trophy", "Athletics")}
+        {res("/contact#faq", "help", "FAQs")}
+      </div>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-paper">
+    <div class="gv-wrap">
+      <div class="gv-panels">
+        <div class="gv-panel" data-reveal>
+          <div class="gv-panel-icon">{ICON["list"]}</div>
+          <h4>School Supply Lists</h4>
+          <p>Need to gear up for the start of school—or restock supplies? Our school supply lists are always available in the Parent Portal whenever you need a refresher.</p>
+          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="{L['renweb']}"{NEW_TAB}>VIEW ON PARENT PORTAL</a></div>
+        </div>
+        <div class="gv-panel" data-reveal>
+          <div class="gv-panel-icon">{ICON["users"]}</div>
+          <h4>Join the Family Teacher Partnership</h4>
+          <p>Get involved and make a difference in our school community. Together, we can support our students and enrich their educational experience.</p>
+          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/ftp">LEARN MORE</a></div>
+        </div>
+        <div class="gv-panel" data-reveal>
+          <div class="gv-panel-icon">{ICON["briefcase"]}</div>
+          <h4>Exciting Job Opportunities</h4>
+          <p>Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
+          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/employment-openings">APPLY TODAY</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gv gv-band" style="--band-img: url('{IMG}covenant-118-9528193.jpg')" aria-labelledby="gv-events-title">
+    <div class="gv-wrap" data-reveal>
+      <h2 id="gv-events-title">UPCOMING EVENTS</h2>
+      <p>Explore our calendar of events to stay informed about upcoming activities, important dates, and exciting happenings at Covenant Christian School. Don't miss out on opportunities to support your child's journey and be a part of our thriving community.</p>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/calendar">{ICON["calendar"]}SEE FULL CALENDAR</a></div>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-white" aria-label="What families say">
+    <div class="gv-wrap gv-quotes">
+      {quote("Lanie", "Former Teacher &amp; Parent", ["We love CCS!", "My 3 kids have been loved well and held to a high academic standard!"])}
+      {quote("Marylin", "Current Parent", ["Awesome staff and teachers! Kids learn in a loving Christian environment!"])}
+      {quote("Michael", "Former Parent", ["My kids are receiving a rigorous education based upon Truth. I am very pleased with the academics, staff and students."])}
+      {quote("Elsie", "Grandmother of Former Students", ["5 of our grandchildren attended Covenant. Couldn't have made a better choice. 1 now has his Masters degree, from UAB, triplets are attending UAH, AUBURN! SOUTH ALABAMA, one is in Cottage Hill Christian Academy. They were prepared and are doing great in all areas. God has blessed them."])}
+    </div>
+  </section>
+
+  <section class="gv gv-band" style="--band-img: url('{IMG}covenant-151_1-9523341.jpg')" aria-labelledby="gv-tour-title">
+    <div class="gv-wrap" data-reveal>
+      <h2 id="gv-tour-title">TOUR OUR CAMPUS</h2>
+      <p class="gv-band-sub">Your child's exceptional education experience awaits.</p>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/schedule-tour">SCHEDULE A TOUR</a></div>
+    </div>
+  </section>
+"""
+
+
 # ---------------------------------------------------------------- assembly
 def shell(source, chrome="scholarship-opportunities.html"):
     """Page <head> from `source`; body chrome (solid white header, footer) from `chrome`
@@ -558,7 +744,10 @@ def build():
     # Tax credit page: reuse its current head (title, meta), swap in the new body.
     tc = shell("federal-tax-credit.html")
     (PAGES / "federal-tax-credit.html").write_text(with_main(tc, tax_credit()))
-    print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html")
+    # Homepage refresh: preview only until approved (served on ?preview=... by the worker)
+    (PAGES / "redesign").mkdir(exist_ok=True)
+    (PAGES / "redesign" / "index.html").write_text(with_main(shell("index.html", chrome="index.html"), home()))
+    print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html, redesign/index.html")
 
 
 if __name__ == "__main__":

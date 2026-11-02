@@ -13,6 +13,6 @@ OUTPUT.mkdir(exist_ok=True)
 shutil.copytree(ROOT / "pages", OUTPUT, dirs_exist_ok=True)
 for folder in ("assets", "pdfs"):
     shutil.copytree(ROOT / folder, OUTPUT / folder, dirs_exist_ok=True)
-for page in OUTPUT.glob("*.html"):
+for page in OUTPUT.rglob("*.html"):
     page.write_text(prepare_html(page.read_text()))
 print("Built dist/ with all pages, images and PDF downloads.")
