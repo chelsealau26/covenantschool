@@ -226,10 +226,15 @@
 /* ---------- Tax credit page: hero with the form overlapping ---------- */
 .gv-tc-top { position: relative; isolation: isolate; background: var(--paper); padding: 0 24px 40px; overflow-x: clip; }
 .gv-tc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px); grid-template-rows: auto auto; column-gap: 64px; }
-.gv-tc-hero { grid-column: 1; grid-row: 1; position: relative; color: #fff; padding: 52px 0 48px; }
+.gv-tc-hero {
+  grid-column: 1; grid-row: 1; position: relative; color: #fff; padding: 48px 0 56px;
+  /* Full-screen hero (minus the site header); content is compact so it all sits above the fold */
+  min-height: calc(100vh - 100px); min-height: calc(100svh - 100px);
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+}
 .gv-tc-hero::before { /* full-bleed photo behind the hero copy (and behind the top of the form) */
   content: ""; position: absolute; top: 0; bottom: 0; left: -100vw; right: -100vw; z-index: -1;
-  background: linear-gradient(100deg, rgba(19, 28, 36, .95) 0%, rgba(21, 53, 83, .88) 50%, rgba(21, 53, 83, .5) 100%), var(--hero-img) center 30% / cover no-repeat;
+  background: linear-gradient(100deg, rgba(19, 28, 36, .95) 0%, rgba(21, 53, 83, .88) 50%, rgba(21, 53, 83, .45) 100%), var(--hero-img) center 35% / cover no-repeat;
 }
 /* Sized so the whole hero (badge, title, intro, amounts) sits above the fold on laptop screens */
 .gv-tc-hero h1 { color: #fff; margin: 14px 0 0; font-size: clamp(34px, 3.3vw, 46px); line-height: 1.12; }
@@ -266,8 +271,12 @@
 .gv-help .gv-actions { margin-top: 0; }
 .gv-disclaimer { font-size: 13px; color: var(--muted); font-style: italic; text-align: center; margin-top: 30px !important; }
 
+/* Parallax: the photo stays put while the page scrolls (desktop only; phones scroll it normally) */
+@media (min-width: 961px) {
+  .gv-tc-hero::before, .gv-hero, .gv-band { background-attachment: fixed; background-position: center center; }
+}
 @media (min-width: 961px) and (max-height: 760px) {
-  .gv-tc-hero { padding: 36px 0 36px; }
+  .gv-tc-hero { padding: 32px 0 40px; }
   .gv-tc-hero h1 { font-size: clamp(32px, 3vw, 40px); }
   .gv-tc-hero .gv-lead { font-size: 16px; }
   .gv-tc-chips { margin-top: 18px; }
@@ -309,7 +318,7 @@
   .gv-band { background-attachment: scroll; }
   /* Tax credit page: hero, then the form, then the info */
   .gv-tc-grid { grid-template-columns: 1fr; }
-  .gv-tc-hero { grid-column: 1; grid-row: 1; padding: 72px 0 112px; }
+  .gv-tc-hero { grid-column: 1; grid-row: 1; padding: 72px 0 112px; min-height: 0; }
   .gv-tc-form { grid-column: 1; grid-row: 2; padding-top: 0; margin-top: -72px; max-width: 560px; width: 100%; justify-self: center; }
   .gv-tc-below { grid-row: 3; padding-top: 56px; }
 }
