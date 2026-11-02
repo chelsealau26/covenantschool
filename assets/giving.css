@@ -360,6 +360,14 @@
 .gv-resources-stack { grid-template-columns: 1fr !important; gap: 12px; }
 .gv-resources-stack .gv-resource { padding: 16px 18px; }
 
+/* Tablets/phones: hero content centered (the photo is evenly shaded at these sizes) */
+@media (max-width: 960px) {
+  .gv-hero { text-align: center; }
+  .gv-hero-copy { margin: 0 auto; }
+  .gv-hero .gv-actions { justify-content: center; }
+  .gv-hero::before { background: rgba(19, 28, 36, .8); }
+}
+
 /* Expandable extra details */
 .gv-more { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 14px; }
 .gv-more summary { cursor: pointer; font-weight: 700; color: var(--navy); list-style: none; display: inline-flex; align-items: center; gap: 8px; }
