@@ -336,6 +336,24 @@
 .gv-notice p { color: var(--muted); margin-top: 4px !important; }
 .gv .gv-timeline-label { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
 
+/* One cohesive panel for a program's details (eligibility, timeline, resources) */
+.gv-program { background: #fff; border-radius: 20px; box-shadow: var(--shadow-sm); border-top: 5px solid var(--navy); overflow: hidden; }
+.gv-program-part { padding: 36px 40px; }
+.gv-program-part + .gv-program-part { border-top: 1px solid var(--line); }
+.gv-program-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.gv-program-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
+.gv-program-icon svg { width: 22px; height: 22px; }
+.gv-program-tag { margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+/* Inside the panel, items sit flat on a soft background instead of floating as separate cards */
+.gv-program .gv-table-card, .gv-program .gv-notice, .gv-program .gv-timeline li, .gv-program .gv-resource { box-shadow: none; background: var(--paper); border: 1px solid var(--line); }
+.gv-program .gv-notice { border-left: 5px solid var(--tan); background: #fdf6ee; border-color: #ecd7c2; }
+.gv-program .gv-table-card { padding: 22px; }
+.gv-program .gv-resource:hover { background: #fff; }
+@media (max-width: 640px) {
+  .gv-program-part { padding: 26px 18px; }
+  .gv-program-tag { margin-left: 0; }
+}
+
 /* Expandable extra details */
 .gv-more { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 14px; }
 .gv-more summary { cursor: pointer; font-weight: 700; color: var(--navy); list-style: none; display: inline-flex; align-items: center; gap: 8px; }
@@ -401,14 +419,12 @@
 .gv-section[id] { scroll-margin-top: 80px; }
 
 @media (max-width: 640px) {
-  .gv-jump { padding: 0 0 0 16px; }
-  .gv-jump .gv-wrap { flex-direction: column; align-items: stretch; gap: 10px; padding: 14px 0 12px; }
-  .gv-jump-label { display: flex; justify-content: space-between; margin: 0; padding-right: 16px; }
-  .gv-jump-hint { display: inline; letter-spacing: .04em; text-transform: none; font-weight: 600; color: var(--tan-deep); }
-  /* Chips scroll sideways; the faded right edge shows there's more */
-  .gv-jump-links { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; padding: 2px 40px 6px 0; scroll-snap-type: x proximity;
-    -webkit-mask-image: linear-gradient(90deg, #000 80%, transparent); mask-image: linear-gradient(90deg, #000 80%, transparent); }
-  .gv-jump a { white-space: nowrap; scroll-snap-align: start; }
+  .gv-jump { padding: 0 16px; }
+  .gv-jump .gv-wrap { flex-direction: column; align-items: stretch; gap: 10px; padding: 14px 0 14px; }
+  .gv-jump-label { margin: 0; text-align: center; }
+  /* All links visible at once: they wrap onto rows instead of scrolling sideways */
+  .gv-jump-links { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .gv-jump a { font-size: 13.5px; padding: 7px 12px; }
 }
 
 /* ---------- Motion ---------- */

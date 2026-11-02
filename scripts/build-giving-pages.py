@@ -239,7 +239,7 @@ def scholarships():
 
   <nav class="gv gv-jump" aria-label="On this page">
     <div class="gv-wrap">
-      <span class="gv-jump-label">On this page <span class="gv-jump-hint" aria-hidden="true">Swipe for more &rarr;</span></span>
+      <span class="gv-jump-label">On this page</span>
       <div class="gv-jump-links">
         <a href="#aosf"><span class="gv-num">1</span>AOSF Scholarship</a>
         <a href="#choose"><span class="gv-num">2</span>CHOOSE Act ESA</a>
@@ -372,9 +372,11 @@ def scholarships():
         <h2 id="gv-choose-title">CHOOSE Act Alabama Scholarship</h2>
         <p>The CHOOSE Act establishes Alabama's Education Savings Account (ESA) program, providing eligible families with up to $7,000 per student to cover tuition and other qualifying educational expenses. Funds may be used for approved educational services beginning in the 2026–2027 academic year.</p>
       </div>
-      <div class="gv-split" style="align-items:start">
-        <div data-reveal="left">
-          <h3>Who Qualifies for 2026–2027?</h3>
+      <div class="gv-program" data-reveal>
+        <div class="gv-program-part">
+          <div class="gv-program-head"><span class="gv-program-icon">{ICON["users"]}</span><h3>Who Qualifies</h3><span class="gv-program-tag">2026–2027 criteria</span></div>
+          <div class="gv-split" style="align-items:start;gap:40px">
+        <div>
           <p style="color:var(--muted);margin:10px 0 16px">To be eligible, a student must:</p>
           <ul class="gv-checks">
             <li>Be enrolled in grades K5–12</li>
@@ -390,7 +392,7 @@ def scholarships():
             </ul>
           </details>
         </div>
-        <div class="gv-table-card" data-reveal="right">
+        <div class="gv-table-card">
           <h4>Income Eligibility</h4>
           <p>300% of the 2025 Federal Poverty Level</p>
           <table class="gv-table">
@@ -400,24 +402,24 @@ def scholarships():
           </table>
           <p class="gv-table-note">More than 8 people? Add $16,500 for each additional person.</p>
         </div>
-      </div>
-
-      <div style="margin-top:64px">
-        <h3 data-reveal style="margin-bottom:18px">Application Timeline</h3>
-        <div class="gv-notice" data-reveal>{ICON["calendar"]}<div><strong>2027–2028 applications are not open yet.</strong><p>The state hasn't announced dates for next school year. Check back here for updates. Families are encouraged to apply as early as possible once the portal opens.</p></div></div>
-        <p data-reveal class="gv-timeline-label">For reference, last year's dates (2026–2027):</p>
+        </div>
+        </div>
+        <div class="gv-program-part">
+          <div class="gv-program-head"><span class="gv-program-icon">{ICON["calendar"]}</span><h3>Application Timeline</h3></div>
+        <div class="gv-notice">{ICON["calendar"]}<div><strong>2027–2028 applications are not open yet.</strong><p>The state hasn't announced dates for next school year. Check back here for updates. Families are encouraged to apply as early as possible once the portal opens.</p></div></div>
+        <p class="gv-timeline-label">For reference, last year's dates (2026–2027):</p>
         <ol class="gv-timeline">
-          <li data-reveal><span class="gv-date"><b>Dec</b><span>15</span></span><h4>Renewals opened</h4><p>For current participants: December 15, 2025</p></li>
-          <li data-reveal><span class="gv-date"><b>Jan</b><span>2</span></span><h4>New family applications opened</h4><p>For new families: January 2, 2026</p></li>
+          <li><span class="gv-date"><b>Dec</b><span>15</span></span><h4>Renewals opened</h4><p>For current participants: December 15, 2025</p></li>
+          <li><span class="gv-date"><b>Jan</b><span>2</span></span><h4>New family applications opened</h4><p>For new families: January 2, 2026</p></li>
         </ol>
-      </div>
-
-      <div style="margin-top:56px">
-        <h3 data-reveal style="margin-bottom:22px">Parent Resources</h3>
+        </div>
+        <div class="gv-program-part">
+          <div class="gv-program-head"><span class="gv-program-icon">{ICON["file"]}</span><h3>Parent Resources</h3></div>
         <div class="gv-resources">
-          <a class="gv-resource" data-reveal href="https://classwallet.com/alchoose/assets/CHOOSE_ACT_parent_guide_2026-2027.pdf"{NEW_TAB}><span class="gv-resource-icon">{ICON["file"]}</span><span><strong>Parent Guide (PDF)</strong><span>Program details, approved expenses and step-by-step instructions</span></span></a>
-          <a class="gv-resource" data-reveal href="https://drive.google.com/file/d/1f1fXEO_dFj1NRuJusxzScO4yMQC-Nj_t/view?usp=sharing"{NEW_TAB}><span class="gv-resource-icon">{ICON["play"]}</span><span><strong>Watch the Presentation</strong><span>The CHOOSE Act explained</span></span></a>
-          <a class="gv-resource" data-reveal href="https://classwallet.com/alchoose/"{NEW_TAB}><span class="gv-resource-icon">{ICON["external"]}</span><span><strong>CHOOSE Act Portal</strong><span>Official program website</span></span></a>
+          <a class="gv-resource" href="https://classwallet.com/alchoose/assets/CHOOSE_ACT_parent_guide_2026-2027.pdf"{NEW_TAB}><span class="gv-resource-icon">{ICON["file"]}</span><span><strong>Parent Guide (PDF)</strong><span>Program details, approved expenses and step-by-step instructions</span></span></a>
+          <a class="gv-resource" href="https://drive.google.com/file/d/1f1fXEO_dFj1NRuJusxzScO4yMQC-Nj_t/view?usp=sharing"{NEW_TAB}><span class="gv-resource-icon">{ICON["play"]}</span><span><strong>Watch the Presentation</strong><span>The CHOOSE Act explained</span></span></a>
+          <a class="gv-resource" href="https://classwallet.com/alchoose/"{NEW_TAB}><span class="gv-resource-icon">{ICON["external"]}</span><span><strong>CHOOSE Act Portal</strong><span>Official program website</span></span></a>
+        </div>
         </div>
       </div>
     </div>
