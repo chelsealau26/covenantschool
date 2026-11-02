@@ -115,7 +115,7 @@ def ways_to_give():
         f'<img src="/assets/fundraiser-sponsors/{img}" alt="{name}" loading="lazy"></a></li>'
         for name, url, img in SPONSORS)
     return f'''
-  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-121-9598740.jpg')">
+  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-114-9584701.jpg'); --hero-pos: 70% 22%">
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Ways to Give</span>
@@ -254,7 +254,7 @@ def scholarships():
       </div>
       <div class="gv-cards gv-cards-2">
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-114-9584701.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["school"]}</span></div>
+          <div class="gv-card-img"><img src="{IMG}covenant-121-9598740.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["school"]}</span></div>
           <div class="gv-card-body">
             <span class="gv-card-kicker"><span class="gv-num">1</span>Program 1 &middot; Scholarship</span>
             <h3>Alabama Opportunity Scholarship <span class="gv-nowrap">Fund <small class="gv-abbr">(AOSF)</small></span></h3>

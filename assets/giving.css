@@ -72,7 +72,7 @@
 /* ---------- Hero ---------- */
 .gv-hero {
   position: relative; isolation: isolate; color: #fff; padding: 72px 24px 80px; overflow: hidden;
-  background: var(--ink) var(--hero-img) center 30% / cover no-repeat;
+  background: var(--ink) var(--hero-img) var(--hero-pos, center 25%) / cover no-repeat;
   /* Fill the screen below the site header, content centered */
   min-height: min(760px, calc(100vh - 180px)); display: flex; align-items: center;
 }
@@ -80,7 +80,7 @@
 .gv-hero::before {
   /* Solid navy behind the text (white text well above 4.5:1), clear on the photo side */
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(90deg, rgba(19, 28, 36, .94) 0%, rgba(21, 53, 83, .88) 38%, rgba(21, 53, 83, .55) 58%, rgba(21, 53, 83, .12) 82%, rgba(21, 53, 83, 0) 100%);
+  background: linear-gradient(90deg, rgba(19, 28, 36, .94) 0%, rgba(21, 53, 83, .86) 40%, rgba(21, 53, 83, .4) 56%, rgba(21, 53, 83, .05) 72%, rgba(21, 53, 83, 0) 100%);
 }
 .gv-hero h1, .gv-hero .gv-lead { text-shadow: 0 1px 12px rgba(19, 28, 36, .4); }
 .gv-hero-copy { max-width: 600px; }
@@ -289,7 +289,9 @@
 
 /* Parallax: the photo stays put while the page scrolls (desktop only; phones scroll it normally) */
 @media (min-width: 961px) {
-  .gv-tc-hero::before, .gv-hero, .gv-band { background-attachment: fixed; background-position: center center; }
+  .gv-tc-hero::before, .gv-hero, .gv-band { background-attachment: fixed; }
+  .gv-hero { background-position: var(--hero-pos, center 25%); }
+  .gv-band { background-position: center center; }
   .gv-tc-hero::before { background-position: center, center 8%; } /* keep faces in frame */
 }
 @media (min-width: 961px) and (max-height: 760px) {
