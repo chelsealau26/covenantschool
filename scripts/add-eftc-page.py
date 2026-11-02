@@ -94,6 +94,7 @@ def add_css(html):
 
 def build_page():
     src = (PAGES / "scholarship-opportunities.html").read_text()
+    src = re.sub(r'<section class="eftc eftc-callout"[\s\S]*?</section>\s*', '', src)
     # Head metadata
     src = src.replace("Scholarship Opportunities | Covenant Christian School", TITLE)
     src = src.replace("https://covenantschool.com/scholarship-opportunities", URL)
