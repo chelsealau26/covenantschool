@@ -117,7 +117,7 @@ def ways_to_give():
     return f'''
   <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-121-9598740.jpg')">
     <div class="gv-wrap">
-      <div class="gv-hero-copy" data-reveal>
+      <div class="gv-hero-copy">
         <span class="gv-eyebrow">Ways to Give</span>
         <h1>Join Us in Making a Difference</h1>
         <p class="gv-lead">We can't do it without amazing supporters like you! Whether you volunteer your time, partner with us through your business, or donate financially, together we can create a brighter future for our school family.</p>
@@ -222,7 +222,7 @@ def scholarships():
     return f'''
   <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-126-9598381.jpg')">
     <div class="gv-wrap">
-      <div class="gv-hero-copy" data-reveal>
+      <div class="gv-hero-copy">
         <span class="gv-eyebrow">Scholarship Opportunities</span>
         <h1>Every Child Deserves Access to a Quality Education</h1>
         <p class="gv-lead">We're here to help make quality education accessible through exceptional scholarship opportunities. Explore two external programs designed to support and enrich your child's educational journey.</p>
@@ -438,7 +438,7 @@ def tax_credit():
     return f'''
   <section class="gv gv-tc-top" aria-labelledby="gv-tc-title" style="--hero-img: url('{IMG}covenant-151_1-9523341.jpg')">
     <div class="gv-wrap gv-tc-grid">
-      <div class="gv-tc-hero" data-reveal>
+      <div class="gv-tc-hero">
         <span class="gv-badge gv-badge-tan">New in 2027</span>
         <h1 id="gv-tc-title">Turn Your Federal Taxes Into Scholarships for Covenant Students</h1>
         <p class="gv-lead">The Education Freedom Tax Credit lets you redirect part of your federal income taxes to scholarships for Covenant Christian School families, starting January 2027.</p>
