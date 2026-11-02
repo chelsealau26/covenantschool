@@ -234,18 +234,29 @@ def scholarships():
     </div>
   </section>
 
+  <nav class="gv gv-jump" aria-label="On this page">
+    <div class="gv-wrap">
+      <span class="gv-jump-label">On this page</span>
+      <a href="#aosf"><span class="gv-num">1</span>AOSF Scholarship</a>
+      <a href="#choose"><span class="gv-num">2</span>CHOOSE Act ESA</a>
+      <a href="#compare">Compare</a>
+      <a href="#tax-credit">For friends &amp; family</a>
+      <a href="#notes">Things to note</a>
+    </div>
+  </nav>
+
   <section class="gv gv-section gv-paper" id="options" aria-labelledby="gv-options-title">
     <div class="gv-wrap">
       <div class="gv-head" data-reveal>
         <span class="gv-eyebrow">You have options</span>
-        <h2 id="gv-options-title">Let Us Help You Invest in Your Child's Future</h2>
-        <p>Covenant Christian School offers external scholarships and the new Educational Savings Account (ESA) program to help families make quality Christian education more affordable. Each program has unique application processes, deadlines, and requirements.</p>
+        <h2 id="gv-options-title">Two Separate Programs for Covenant Families</h2>
+        <p>Covenant Christian School families can use two different programs to make a quality Christian education more affordable: an AOSF scholarship and the CHOOSE Act Education Savings Account (ESA). Each has its own application, deadlines, and requirements, so be sure to look at both.</p>
       </div>
       <div class="gv-cards gv-cards-2">
         <article class="gv-card" data-reveal>
           <div class="gv-card-img"><img src="{IMG}covenant-114-9584701.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["school"]}</span></div>
           <div class="gv-card-body">
-            <span class="gv-card-kicker">Scholarship</span>
+            <span class="gv-card-kicker"><span class="gv-num">1</span>Program 1 &middot; Scholarship</span>
             <h3>Alabama Opportunity Scholarship <span class="gv-nowrap">Fund <small class="gv-abbr">(AOSF)</small></span></h3>
             <p class="gv-card-stat">Need-based scholarships</p>
             <ul class="gv-checks">
@@ -259,7 +270,7 @@ def scholarships():
         <article class="gv-card" data-reveal>
           <div class="gv-card-img"><img src="{IMG}covenant-142-9598319.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["receipt"]}</span></div>
           <div class="gv-card-body">
-            <span class="gv-card-kicker">Education Savings Account</span>
+            <span class="gv-card-kicker"><span class="gv-num">2</span>Program 2 &middot; Education Savings Account</span>
             <h3>CHOOSE Act Alabama Scholarship</h3>
             <p class="gv-card-stat">Up to <span data-count="7000" data-prefix="$">$7,000</span> per student</p>
             <ul class="gv-checks">
@@ -271,6 +282,23 @@ def scholarships():
           </div>
         </article>
       </div>
+
+      <div class="gv-compare-wrap" id="compare" data-reveal>
+        <h3>At a Glance</h3>
+        <div class="gv-compare-scroll">
+        <table class="gv-compare">
+          <caption class="sr-only">Comparison of the AOSF scholarship and the CHOOSE Act Education Savings Account</caption>
+          <thead><tr><th scope="col"><span class="sr-only">Detail</span></th><th scope="col"><span class="gv-num">1</span>AOSF Scholarship</th><th scope="col"><span class="gv-num">2</span>CHOOSE Act ESA</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">What it is</th><td>Need-based scholarship from a scholarship-granting organization</td><td>State Education Savings Account (ESA)</td></tr>
+            <tr><th scope="row">Amount</th><td>Some or all tuition costs</td><td>Up to $7,000 per student</td></tr>
+            <tr><th scope="row">Who qualifies</th><td>Income-based; priority for students zoned to a "priority school"</td><td>K5–12 Alabama residents; household income up to 300% of the Federal Poverty Level</td></tr>
+            <tr><th scope="row">When to apply</th><td>Applications typically open in March</td><td>2026–27: renewals opened Dec 15, 2025; new families Jan 2, 2026</td></tr>
+            <tr><th scope="row">Where to apply</th><td><a href="https://www.alabamascholarshipfund.org/" target="_blank" rel="noopener">AOSF website</a></td><td><a href="https://classwallet.com/alchoose/" target="_blank" rel="noopener">CHOOSE Act portal</a></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -278,7 +306,7 @@ def scholarships():
     <div class="gv-wrap">
       <div class="gv-split" style="margin-bottom:56px">
         <div data-reveal="left">
-          <span class="gv-eyebrow">Option 1</span>
+          <span class="gv-eyebrow gv-eyebrow-num"><span class="gv-num">1</span>Program 1 of 2 &middot; Scholarship</span>
           <h2 id="gv-aosf-title">Alabama Opportunity Scholarship Fund</h2>
           <p class="gv-lead" style="color:var(--muted);margin-top:16px">The Alabama Opportunity Scholarship Fund (AOSF) is a scholarship-granting organization (SGO) established under the Alabama Accountability Act of 2013. It provides need-based scholarships for K5–12 students to attend private schools like Covenant Christian School.</p>
           <div class="gv-actions">
@@ -321,7 +349,7 @@ def scholarships():
   <section class="gv gv-section gv-paper" id="choose" aria-labelledby="gv-choose-title">
     <div class="gv-wrap">
       <div class="gv-head" data-reveal>
-        <span class="gv-eyebrow">Option 2</span>
+        <span class="gv-eyebrow gv-eyebrow-num"><span class="gv-num">2</span>Program 2 of 2 &middot; Education Savings Account</span>
         <h2 id="gv-choose-title">CHOOSE Act Alabama Scholarship</h2>
         <p>The CHOOSE Act establishes Alabama's Education Savings Account (ESA) program, providing eligible families with up to $7,000 per student to cover tuition and other qualifying educational expenses. Funds may be used for approved educational services beginning in the 2026–2027 academic year.</p>
       </div>
@@ -374,7 +402,7 @@ def scholarships():
   </section>
 {credit_block("A New Way Friends and Family Can Help", "Grandparents, relatives and supporters in any state will be able to redirect part of their federal income taxes to AOSF scholarships for Covenant families through the new Education Freedom Tax Credit.", "covenant-21-9528197.jpg").replace('class="gv-section', 'class="gv gv-section')}
 
-  <section class="gv gv-section gv-soft" aria-labelledby="gv-note-title">
+  <section class="gv gv-section gv-soft" id="notes" aria-labelledby="gv-note-title">
     <div class="gv-wrap">
       <div class="gv-head" data-reveal><span class="gv-eyebrow">Before you apply</span><h2 id="gv-note-title">Things to Note</h2></div>
       <div class="gv-cards gv-cards-2">
