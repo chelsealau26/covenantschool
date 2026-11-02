@@ -137,8 +137,9 @@
 .gv-card-kicker { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tan-deep); margin-bottom: 12px; }
 .gv .gv-card-stat { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-size: 22px; line-height: 1.3; color: var(--navy); margin: 10px 0 0; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 /* Program cards: program name is the big heading, the key benefit sits under it */
-.gv .gv-cards-2 .gv-card-body h3 { font-family: Anton, "Open Sans", Arial, sans-serif; font-size: 32px; line-height: 1.15; color: var(--ink); margin-bottom: 0; }
-.gv .gv-cards-2 .gv-card-body h3 .gv-abbr { font-family: "Open Sans", Arial, sans-serif; font-size: 16px; color: var(--muted); }
+.gv .gv-cards-2 .gv-card-body h3 { font-family: Anton, "Open Sans", Arial, sans-serif; font-size: 27px; line-height: 1.15; color: var(--ink); margin-bottom: 0; }
+.gv .gv-cards-2 .gv-card-body h3 .gv-abbr { font-family: "Open Sans", Arial, sans-serif; font-size: 14px; color: var(--muted); }
+.gv .gv-cards-2 .gv-card-body { padding-left: 26px; padding-right: 26px; }
 
 /* Icon checklist */
 .gv-checks { list-style: none; display: grid; gap: 12px; }
@@ -323,6 +324,17 @@
   .gv-tc-chips strong { font-size: 28px; }
   .gv-tc-form { padding-top: 28px; }
 }
+
+/* Application status ("not open yet") */
+.gv .gv-status { display: flex; gap: 10px; align-items: flex-start; margin-top: 22px; padding: 12px 14px; border-radius: 10px; background: #fdf6ee; border: 1px solid #ecd7c2; color: var(--ink); font-size: 14.5px; line-height: 1.5; }
+.gv-status svg { width: 18px; height: 18px; flex: none; margin-top: 2px; color: var(--tan-deep); }
+.gv-status strong { color: #7a4f28; }
+.gv-pill { display: inline-block; margin: 0 6px 4px 0; padding: 3px 10px; border-radius: 999px; background: #fdf6ee; border: 1px solid #ecd7c2; color: #7a4f28; font: 700 12px/1.5 "Open Sans", Arial, sans-serif; letter-spacing: .04em; text-transform: uppercase; vertical-align: middle; }
+.gv-notice { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-radius: 14px; background: #fff; border: 1px solid #ecd7c2; border-left: 5px solid var(--tan); box-shadow: var(--shadow-sm); margin-bottom: 22px; }
+.gv-notice svg { width: 24px; height: 24px; flex: none; color: var(--tan-deep); margin-top: 2px; }
+.gv-notice strong { color: var(--navy); font-size: 17px; }
+.gv-notice p { color: var(--muted); margin-top: 4px !important; }
+.gv .gv-timeline-label { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
 
 /* Numbered program markers */
 .gv-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: #fff; font: 700 12px/1 "Open Sans", Arial, sans-serif; letter-spacing: 0; margin-right: 8px; flex: none; }

@@ -270,6 +270,7 @@ def scholarships():
               <li>Covers some or all tuition costs</li>
               <li>Applications typically open in March</li>
             </ul>
+            <p class="gv-status">{ICON["clock"]}<span><strong>Not open yet.</strong> 2027–2028 applications typically open in March. Check back then!</span></p>
             <div class="gv-actions"><a class="gv-btn" href="#aosf">Learn About AOSF</a></div>
           </div>
         </article>
@@ -284,6 +285,7 @@ def scholarships():
               <li>Tuition and other qualifying expenses</li>
               <li>Household income up to 300% of the Federal Poverty Level</li>
             </ul>
+            <p class="gv-status">{ICON["clock"]}<span><strong>Not open yet.</strong> 2027–2028 dates haven't been announced. Check back for updates!</span></p>
             <div class="gv-actions"><a class="gv-btn" href="#choose">Learn About the CHOOSE Act</a></div>
           </div>
         </article>
@@ -299,7 +301,7 @@ def scholarships():
             <tr><th scope="row">What it is</th><td data-label="AOSF Scholarship">Need-based scholarship from a scholarship-granting organization</td><td data-label="CHOOSE Act ESA">State Education Savings Account (ESA)</td></tr>
             <tr class="gv-compare-key"><th scope="row">Amount</th><td data-label="AOSF Scholarship">Some or all tuition costs</td><td data-label="CHOOSE Act ESA">Up to $7,000 per student</td></tr>
             <tr><th scope="row">Who qualifies</th><td data-label="AOSF Scholarship">Income-based; priority for students zoned to a "priority school"</td><td data-label="CHOOSE Act ESA">K5–12 Alabama residents with household income up to 300% of the Federal Poverty Level</td></tr>
-            <tr><th scope="row">When to apply</th><td data-label="AOSF Scholarship">Applications typically open in March</td><td data-label="CHOOSE Act ESA">For 2026–27: renewals opened Dec 15, 2025; new families opened Jan 2, 2026</td></tr>
+            <tr><th scope="row">When to apply</th><td data-label="AOSF Scholarship"><span class="gv-pill">Not open yet</span> 2027–28 applications typically open in March</td><td data-label="CHOOSE Act ESA"><span class="gv-pill">Not open yet</span> 2027–28 dates not announced yet. Last year: renewals Dec 15, new families Jan 2</td></tr>
             <tr><th scope="row">Where to apply</th><td data-label="AOSF Scholarship"><a class="gv-btn gv-btn-line gv-btn-sm" href="https://www.alabamascholarshipfund.org/" target="_blank" rel="noopener">AOSF Website</a></td><td data-label="CHOOSE Act ESA"><a class="gv-btn gv-btn-line gv-btn-sm" href="https://classwallet.com/alchoose/" target="_blank" rel="noopener">CHOOSE Act Portal</a></td></tr>
           </tbody>
         </table>
@@ -343,7 +345,7 @@ def scholarships():
           <div class="gv-panel-icon">{ICON["calendar"]}</div>
           <h4>How to Apply</h4>
           <ul>
-            <li>Applications typically open in March for the 2026–2027 school year.</li>
+            <li><strong>Applications for 2027–2028 are not open yet.</strong> They typically open in March, so check back then.</li>
             <li>Visit the <a href="https://www.alabamascholarshipfund.org/"{NEW_TAB}>AOSF website</a> regularly for updates.</li>
             <li>For assistance, email <a href="mailto:help@alosf.org">help@alosf.org</a>.</li>
           </ul>
@@ -388,12 +390,13 @@ def scholarships():
       </div>
 
       <div style="margin-top:64px">
-        <h3 data-reveal style="margin-bottom:22px">Application Timeline for 2026–2027</h3>
+        <h3 data-reveal style="margin-bottom:18px">Application Timeline</h3>
+        <div class="gv-notice" data-reveal>{ICON["calendar"]}<div><strong>2027–2028 applications are not open yet.</strong><p>The state hasn't announced dates for next school year. Check back here for updates. Families are encouraged to apply as early as possible once the portal opens.</p></div></div>
+        <p data-reveal class="gv-timeline-label">For reference, last year's dates (2026–2027):</p>
         <ol class="gv-timeline">
-          <li data-reveal><span class="gv-date"><b>Dec</b><span>15</span></span><h4>Renewal portal opened</h4><p>For current participants: December 15, 2025</p></li>
+          <li data-reveal><span class="gv-date"><b>Dec</b><span>15</span></span><h4>Renewals opened</h4><p>For current participants: December 15, 2025</p></li>
           <li data-reveal><span class="gv-date"><b>Jan</b><span>2</span></span><h4>New family applications opened</h4><p>For new families: January 2, 2026</p></li>
         </ol>
-        <p data-reveal style="color:var(--muted);margin-top:16px">Families are encouraged to apply as early as possible once the portal opens.</p>
       </div>
 
       <div style="margin-top:56px">
