@@ -162,6 +162,9 @@ def link_everywhere():
             html = html.replace(FOOT_ANCHOR, FOOT_ITEM)
         page.write_text(html)
 
+# Scholarship page: place the callout below the tan "invest in your child's future" band.
+ANCHORS = {"scholarship-opportunities.html": "container-widget-1734628741753"}
+
 def add_callouts():
     targets = {
         "ways-to-give.html": callout(
@@ -180,10 +183,12 @@ def add_callouts():
         html = page.read_text()
         html = re.sub(r'<section class="eftc eftc-callout"[\s\S]*?</section>\s*', '', html)
         start = html.index('<main id="main-content"')
-        # Insert right after the page's hero container (the second top-level container).
-        containers = [m.start() for m in re.finditer(r'id="container-widget-\d+"', html[start:])]
-        second = start + containers[1]
-        cut = html.rindex("<div", start, second)
+        if name in ANCHORS:  # insert before a specific row
+            anchor = html.index(f'id="{ANCHORS[name]}"')
+        else:  # insert right after the page's hero (before the second top-level container)
+            containers = [m.start() for m in re.finditer(r'id="container-widget-\d+"', html[start:])]
+            anchor = start + containers[1]
+        cut = html.rindex("<div", start, anchor)
         html = html[:cut] + block + html[cut:]
         page.write_text(add_css(html))
 
