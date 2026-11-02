@@ -354,6 +354,15 @@
   .gv-program-tag { margin-left: 0; }
 }
 
+/* Desktop: both columns of the CHOOSE "Who Qualifies" block end at the same line */
+@media (min-width: 961px) {
+  .gv-program .gv-split { align-items: stretch !important; }
+  .gv-program .gv-split > div { display: flex; flex-direction: column; }
+  .gv-program .gv-side-resources { margin-top: auto; }
+  .gv-program .gv-split > div > details { margin-bottom: 30px; }
+  .gv-program .gv-table-card { justify-content: space-between; }
+}
+
 /* Parent resources stacked in the eligibility column */
 .gv-side-resources { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
 .gv-side-resources h4 { margin-bottom: 14px; }
