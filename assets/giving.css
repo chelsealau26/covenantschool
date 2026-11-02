@@ -311,8 +311,8 @@
 
 /* Parallax: the photo stays put while the page scrolls (desktop only; phones scroll it normally) */
 @media (min-width: 961px) {
-  .gv-tc-hero::before, .gv-hero, .gv-band { background-attachment: fixed; }
-  .gv-hero { background-position: var(--hero-pos, center 25%); }
+  /* Page heroes scroll normally so the photo is shown at its natural framing (faces stay in view, no extra enlargement) */
+  .gv-tc-hero::before, .gv-band { background-attachment: fixed; }
   .gv-band { background-position: center center; }
   .gv-tc-hero::before { background-position: center, center 8%; } /* keep faces in frame */
 }
