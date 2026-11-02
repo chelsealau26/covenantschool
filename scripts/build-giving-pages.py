@@ -391,6 +391,14 @@ def scholarships():
               <li>Students with family incomes up to 300% of the federal poverty level</li>
             </ul>
           </details>
+          <div class="gv-side-resources">
+            <h4>Parent Resources</h4>
+            <div class="gv-resources gv-resources-stack">
+          <a class="gv-resource" href="https://classwallet.com/alchoose/assets/CHOOSE_ACT_parent_guide_2026-2027.pdf"{NEW_TAB}><span class="gv-resource-icon">{ICON["file"]}</span><span><strong>Parent Guide (PDF)</strong><span>Program details, approved expenses and step-by-step instructions</span></span></a>
+          <a class="gv-resource" href="https://drive.google.com/file/d/1f1fXEO_dFj1NRuJusxzScO4yMQC-Nj_t/view?usp=sharing"{NEW_TAB}><span class="gv-resource-icon">{ICON["play"]}</span><span><strong>Watch the Presentation</strong><span>The CHOOSE Act explained</span></span></a>
+          <a class="gv-resource" href="https://classwallet.com/alchoose/"{NEW_TAB}><span class="gv-resource-icon">{ICON["external"]}</span><span><strong>CHOOSE Act Portal</strong><span>Official program website</span></span></a>
+        </div>
+          </div>
         </div>
         <div class="gv-table-card">
           <h4>Income Eligibility</h4>
@@ -412,14 +420,6 @@ def scholarships():
           <li><span class="gv-date"><b>Dec</b><span>15</span></span><h4>Renewals opened</h4><p>For current participants: December 15, 2025</p></li>
           <li><span class="gv-date"><b>Jan</b><span>2</span></span><h4>New family applications opened</h4><p>For new families: January 2, 2026</p></li>
         </ol>
-        </div>
-        <div class="gv-program-part">
-          <div class="gv-program-head"><span class="gv-program-icon">{ICON["file"]}</span><h3>Parent Resources</h3></div>
-        <div class="gv-resources">
-          <a class="gv-resource" href="https://classwallet.com/alchoose/assets/CHOOSE_ACT_parent_guide_2026-2027.pdf"{NEW_TAB}><span class="gv-resource-icon">{ICON["file"]}</span><span><strong>Parent Guide (PDF)</strong><span>Program details, approved expenses and step-by-step instructions</span></span></a>
-          <a class="gv-resource" href="https://drive.google.com/file/d/1f1fXEO_dFj1NRuJusxzScO4yMQC-Nj_t/view?usp=sharing"{NEW_TAB}><span class="gv-resource-icon">{ICON["play"]}</span><span><strong>Watch the Presentation</strong><span>The CHOOSE Act explained</span></span></a>
-          <a class="gv-resource" href="https://classwallet.com/alchoose/"{NEW_TAB}><span class="gv-resource-icon">{ICON["external"]}</span><span><strong>CHOOSE Act Portal</strong><span>Official program website</span></span></a>
-        </div>
         </div>
       </div>
     </div>
