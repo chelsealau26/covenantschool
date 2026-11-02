@@ -360,6 +360,13 @@
 .gv-resources-stack { grid-template-columns: 1fr !important; gap: 12px; }
 .gv-resources-stack .gv-resource { padding: 16px 18px; }
 
+/* Hero content centered on every screen size. On desktop the shading is concentrated behind the
+   centered text (white text stays above 4.5:1) and fades toward the edges so faces at the sides show. */
+.gv-hero { text-align: center; }
+.gv-hero-copy { margin: 0 auto; max-width: 680px; }
+.gv-hero .gv-actions { justify-content: center; }
+.gv-hero::before { background: linear-gradient(90deg, rgba(19, 28, 36, .5) 0%, rgba(19, 28, 36, .84) 26%, rgba(19, 28, 36, .84) 74%, rgba(21, 53, 83, .22) 92%, rgba(21, 53, 83, .06) 100%); }
+
 /* Tablets/phones: hero content centered (the photo is evenly shaded at these sizes) */
 @media (max-width: 960px) {
   .gv-hero { text-align: center; }
