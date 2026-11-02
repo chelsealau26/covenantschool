@@ -78,3 +78,7 @@ main:focus { outline: none; }
 #image-widget-1719588522832 img { border-radius: 18px; }
 #image-widget-1719588522832 .widget-preserving-ratio-outer { border-radius: 18px; overflow: hidden; }
 .grid-column:has(#image-widget-1719588522832) { border-radius: 18px; }
+
+/* Slightly smaller header logo (was up to 90px tall). The fundraiser page keeps its own approved header logo. */
+body:not(.fundraiser-route) .main-header-wrapper .theme-logo img { max-height: 70px !important; width: auto; }
+body:not(.fundraiser-route) .mobile-menu .theme-logo img { max-height: 54px !important; width: auto; }
