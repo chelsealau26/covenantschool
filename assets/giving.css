@@ -88,6 +88,22 @@
 .gv-hero .gv-lead { color: rgba(255, 255, 255, .88); margin-top: 20px; }
 .gv-hero-img { transform: scale(1.06); }
 
+/* Split hero: text on solid navy, photo shown clearly on the right (no overlay on faces) */
+.gv-hero-split { background: var(--navy); }
+.gv-hero-split::before { display: none; }
+.gv-hero-split .gv-hero-copy { max-width: 540px; position: relative; z-index: 1; }
+.gv-hero-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 52%; background: center 30% / cover no-repeat; }
+.gv-hero-photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy) 0%, rgba(21, 53, 83, 0) 22%); }
+@media (max-width: 960px) {
+  .gv-hero-split { flex-direction: column; align-items: stretch; padding-top: 0; }
+  .gv-hero-photo { position: relative; width: auto; height: 300px; margin: 0 -24px 40px; }
+  .gv-hero-photo::before { background: linear-gradient(0deg, var(--navy) 0%, rgba(21, 53, 83, 0) 35%); }
+  .gv-hero-split .gv-hero-copy { max-width: none; }
+}
+@media (max-width: 640px) {
+  .gv-hero-photo { height: 240px; margin: 0 -16px 32px; }
+}
+
 /* ---------- Cards ---------- */
 .gv-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .gv-cards-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

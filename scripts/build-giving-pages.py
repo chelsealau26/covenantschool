@@ -16,7 +16,10 @@ import re
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "pages"
 OUT = PAGES  # redesigns approved and published 2026-11-02
-HEAD_EXTRA = '<link rel="stylesheet" href="/assets/giving.css"><script src="/assets/giving.js" defer></script>'
+import hashlib
+def _v(name):
+    return hashlib.sha1((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
+HEAD_EXTRA = f'<link rel="stylesheet" href="/assets/giving.css?v={_v("giving.css")}"><script src="/assets/giving.js?v={_v("giving.js")}" defer></script>'
 IMG = "/assets/"
 
 ICON = {
@@ -115,7 +118,8 @@ def ways_to_give():
         f'<img src="/assets/fundraiser-sponsors/{img}" alt="{name}" loading="lazy"></a></li>'
         for name, url, img in SPONSORS)
     return f'''
-  <section class="gv gv-hero gv-hero-img-anim" style="--hero-img: url('{IMG}covenant-114-9584701.jpg'); --hero-pos: 70% 22%">
+  <section class="gv gv-hero gv-hero-split">
+    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-104-9578593.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Ways to Give</span>
@@ -138,7 +142,7 @@ def ways_to_give():
       </div>
       <div class="gv-cards gv-cards-4">
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["heart"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-59-9551512.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["heart"]}</span></div>
           <div class="gv-card-body">
             <h3>Donate</h3>
             <p>Your donations provide essential resources and enriching educational experiences for our students. Give securely online.</p>
@@ -170,7 +174,7 @@ def ways_to_give():
           <div class="gv-card-body">
             <h3>Sponsor</h3>
             <p>Partner with us through your business and invest in the resources and opportunities that help our students thrive academically, socially, and personally.</p>
-            <div class="gv-actions"><a class="gv-btn" href="/contact">Become a Sponsor</a><a class="gv-link" href="#sponsors">See our sponsors</a></div>
+            <div class="gv-actions"><a class="gv-btn" href="#sponsors">See Our Sponsors</a><a class="gv-link" href="/contact">Become a sponsor</a></div>
           </div>
         </article>
         <article class="gv-card" data-reveal>
@@ -268,7 +272,7 @@ def scholarships():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-142-9598319.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["receipt"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-82-9584556.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["receipt"]}</span></div>
           <div class="gv-card-body">
             <span class="gv-card-kicker"><span class="gv-num">2</span>Program 2 &middot; Education Savings Account</span>
             <h3>CHOOSE Act Alabama Scholarship</h3>
@@ -517,8 +521,8 @@ def shell(source, chrome="scholarship-opportunities.html"):
     html = re.sub(r'<section class="eftc eftc-callout"[\s\S]*?</section>\s*', '', html)
     html = html.replace('<link rel="stylesheet" href="/assets/eftc.css"><script src="/assets/eftc.js" defer></script>', '')
     html = html.replace('<link rel="stylesheet" href="/assets/eftc.css">', '')
-    if HEAD_EXTRA not in html:
-        html = html.replace("</head>", HEAD_EXTRA + "</head>", 1)
+    html = re.sub(r'<link rel="stylesheet" href="/assets/giving\.css[^"]*"><script src="/assets/giving\.js[^"]*" defer></script>', '', html)
+    html = html.replace("</head>", HEAD_EXTRA + "</head>", 1)
     return html
 
 
