@@ -371,18 +371,23 @@
 .gv-compare tbody tr:last-child th, .gv-compare tbody tr:last-child td { border-bottom: 0; }
 .gv-btn-sm { min-height: 42px; padding: 10px 18px; font-size: 13px; }
 
-/* Phones: each row becomes a card with both programs labeled */
+/* Phones: the table is replaced by one simple card per program */
+.gv-glance-cards { display: none; }
 @media (max-width: 760px) {
   .gv-compare-wrap { padding: 22px 16px; }
-  .gv-compare, .gv-compare tbody, .gv-compare tr, .gv-compare th, .gv-compare td { display: block; width: 100%; }
-  .gv-compare thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .gv-compare tbody tr { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 14px; }
-  .gv-compare tbody th { background: var(--navy); color: #fff; padding: 12px 16px; border: 0; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
-  .gv-compare td, .gv-compare tbody tr:nth-child(odd) td { background: #fff; border: 0; padding: 14px 16px; }
-  .gv-compare td + td { border-left: 0; border-top: 1px solid var(--line); }
-  .gv-compare td::before { content: attr(data-label); display: block; font: 700 12px/1.4 "Open Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--tan-deep); margin-bottom: 4px; }
-  .gv-compare-key td { font-size: 20px; }
-  .gv-compare .gv-btn-sm { width: 100%; }
+  .gv-compare-scroll { display: none; }
+  .gv-glance-cards { display: grid; gap: 16px; }
+  .gv-glance { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .gv-glance h4 { display: flex; align-items: center; background: var(--navy); color: #fff; padding: 14px 16px; font-size: 18px; }
+  .gv-glance h4 .gv-num { background: var(--tan); color: var(--ink); }
+  .gv-glance dl { margin: 0; }
+  .gv-glance dl > div { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .gv-glance dl > div:nth-child(even) { background: var(--paper); }
+  .gv-glance dt { font: 700 12px/1.4 "Open Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--tan-deep); margin-bottom: 3px; }
+  .gv-glance dd { margin: 0; color: var(--ink); font-size: 16px; line-height: 1.5; }
+  .gv-glance-key dd { font-family: Anton, Arial, sans-serif; font-size: 22px; color: var(--navy); }
+  .gv-glance .gv-btn { display: flex; width: auto; margin: 14px 16px 16px; }
+}
 }
 .gv-section[id] { scroll-margin-top: 80px; }
 

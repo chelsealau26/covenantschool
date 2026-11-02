@@ -305,6 +305,28 @@ def scholarships():
           </tbody>
         </table>
         </div>
+        <div class="gv-glance-cards">
+          <div class="gv-glance">
+            <h4><span class="gv-num">1</span>AOSF Scholarship</h4>
+            <dl>
+              <div><dt>What it is</dt><dd>Need-based scholarship from a scholarship-granting organization</dd></div>
+              <div class="gv-glance-key"><dt>Amount</dt><dd>Some or all tuition costs</dd></div>
+              <div><dt>Who qualifies</dt><dd>Income-based; priority for students zoned to a "priority school"</dd></div>
+              <div><dt>When to apply</dt><dd><span class="gv-pill">Not open yet</span><br>2027–28 applications typically open in March</dd></div>
+            </dl>
+            <a class="gv-btn gv-btn-line gv-btn-sm" href="https://www.alabamascholarshipfund.org/" target="_blank" rel="noopener">AOSF Website</a>
+          </div>
+          <div class="gv-glance">
+            <h4><span class="gv-num">2</span>CHOOSE Act ESA</h4>
+            <dl>
+              <div><dt>What it is</dt><dd>State Education Savings Account (ESA)</dd></div>
+              <div class="gv-glance-key"><dt>Amount</dt><dd>Up to $7,000 per student</dd></div>
+              <div><dt>Who qualifies</dt><dd>K5–12 Alabama residents with household income up to 300% of the Federal Poverty Level</dd></div>
+              <div><dt>When to apply</dt><dd><span class="gv-pill">Not open yet</span><br>2027–28 dates not announced yet</dd></div>
+            </dl>
+            <a class="gv-btn gv-btn-line gv-btn-sm" href="https://classwallet.com/alchoose/" target="_blank" rel="noopener">CHOOSE Act Portal</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
