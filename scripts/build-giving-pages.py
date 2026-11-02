@@ -118,8 +118,7 @@ def ways_to_give():
         f'<img src="/assets/fundraiser-sponsors/{img}" alt="{name}" loading="lazy"></a></li>'
         for name, url, img in SPONSORS)
     return f'''
-  <section class="gv gv-hero gv-hero-split">
-    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-104-9578593.jpg')" aria-hidden="true"></div>
+  <section class="gv gv-hero" style="--hero-img: url('{IMG}covenant-104-9578593.jpg'); --hero-pos: center 30%">
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Ways to Give</span>
