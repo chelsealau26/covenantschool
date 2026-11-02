@@ -135,7 +135,10 @@
 .gv-card-body .gv-actions { margin-top: auto; padding-top: 24px; }
 .gv-card-body .gv-btn { width: 100%; }
 .gv-card-kicker { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tan-deep); margin-bottom: 12px; }
-.gv .gv-card-stat { font-family: Anton, Arial, sans-serif; font-size: 34px; line-height: 1.1; color: var(--navy); margin: 14px 0 22px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.gv .gv-card-stat { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-size: 22px; line-height: 1.3; color: var(--navy); margin: 10px 0 0; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+/* Program cards: program name is the big heading, the key benefit sits under it */
+.gv .gv-cards-2 .gv-card-body h3 { font-family: Anton, "Open Sans", Arial, sans-serif; font-size: 32px; line-height: 1.15; color: var(--ink); margin-bottom: 0; }
+.gv .gv-cards-2 .gv-card-body h3 .gv-abbr { font-family: "Open Sans", Arial, sans-serif; font-size: 16px; color: var(--muted); }
 
 /* Icon checklist */
 .gv-checks { list-style: none; display: grid; gap: 12px; }
@@ -144,7 +147,7 @@
 .gv-checks li::after { content: ""; position: absolute; left: 8px; top: 7px; width: 6px; height: 11px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
 .gv-dark .gv-checks li::before { background: var(--tan); }
 .gv-dark .gv-checks li::after { border-color: var(--ink); }
-.gv-card .gv-checks { margin-top: 0; gap: 14px; font-size: 15.5px; color: var(--ink); }
+.gv .gv-card .gv-checks { margin-top: 22px; gap: 14px; font-size: 15.5px; color: var(--ink); }
 
 /* Info panels (3 across) */
 .gv-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
