@@ -141,3 +141,15 @@ callouts, the privacy-policy line and the sitemap entry. Adding
 
 Note: this Cloudflare project currently deploys every pushed branch to
 production, so a pushed branch is a live change.
+
+## Redesigned giving pages (preview until approved)
+
+`scripts/build-giving-pages.py` builds `pages/redesign/ways-to-give.html`,
+`pages/redesign/scholarship-opportunities.html` and `pages/federal-tax-credit.html`
+(styles: `assets/giving.css`, motion: `assets/giving.js`). The worker serves the
+redesigns at their normal URLs only with `?preview=<PREVIEW_KEY>`; `/redesign/*`
+is otherwise 404. To publish, copy the redesign files over the files in `pages/`.
+
+Tax-credit blocks have `<!--eftc:soon-->` and `<!--eftc:live-->` versions; the
+worker shows "soon" before the launch time and "live" after (preview links show
+"live"; add `&soon=1` to see "soon").

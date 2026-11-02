@@ -22,3 +22,16 @@ export const hideEftcSitemap = xml =>
   xml.replace(/\s*<url><loc>https:\/\/covenantschool\.com\/federal-tax-credit<\/loc>[\s\S]*?<\/url>/g, "");
 
 export const NOT_FOUND_PAGE = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Page not found | Covenant Christian School</title></head><body><main><h1>Page not found</h1><a href="/">Return to the school website</a></main></body></html>';
+
+// Tax-credit blocks ship in two versions: <!--eftc:soon-->…<!--/eftc:soon--> and <!--eftc:live-->…<!--/eftc:live-->.
+// Before launch visitors see "soon"; after launch (or on a preview link) they see "live".
+// Add &soon=1 to a preview link to review the "coming soon" version.
+export const showLiveCredit = (url, now = Date.now()) =>
+  isLaunched(now) || (isPreview(url) && url.searchParams.get("soon") !== "1");
+export const pickCreditVersion = (html, live) =>
+  html.replace(live ? /<!--eftc:soon-->[\s\S]*?<!--\/eftc:soon-->\n?/g : /<!--eftc:live-->[\s\S]*?<!--\/eftc:live-->\n?/g, "");
+
+// Redesigned pages awaiting approval: served in place of the current page only on a preview link.
+export const REDESIGNS = { "/ways-to-give": "/redesign/ways-to-give", "/scholarship-opportunities": "/redesign/scholarship-opportunities" };
+export const redesignFor = path => REDESIGNS[path.replace(/\.html$|\/$/i, "").toLowerCase()];
+export const isRedesignPath = path => /^\/(?:pages\/)?redesign(?:\/|$)/i.test(path);
