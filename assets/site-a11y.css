@@ -48,3 +48,17 @@ main:focus { outline: none; }
 .ccs-policy ul { margin: 0 0 14px 1.25em !important; padding: 0 !important; list-style: disc !important; }
 .ccs-policy li { margin: 0 0 6px !important; }
 .ccs-policy a { text-decoration: underline !important; }
+
+/* Links on navy/dark backgrounds turn beige (not blue) on hover/focus. Buttons keep their own hover styles. */
+:is(.page-footer, .bg-color-primary, .bg-color-secondary1, .bg-color-secondary2,
+    #container-widget-1719555017494, #container-widget-1511379532336,
+    #container-widget-1719519117132 .has-bg-color, #container-widget-1509144589946,
+    #container-widget-1719540649051, #container-widget-1719587518726,
+    #container-widget-1734630662341, .eftc-help)
+  a:not(.theme-button):not(.eftc-btn):is(:hover, :focus-visible),
+:is(.page-footer, .bg-color-primary, .bg-color-secondary1, .bg-color-secondary2,
+    #container-widget-1719555017494, #container-widget-1511379532336,
+    #container-widget-1719519117132 .has-bg-color, #container-widget-1509144589946,
+    #container-widget-1719540649051, #container-widget-1719587518726,
+    #container-widget-1734630662341, .eftc-help)
+  a:not(.theme-button):not(.eftc-btn):is(:hover, :focus-visible) * { color: #daad86 !important; }

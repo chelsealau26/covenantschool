@@ -111,7 +111,7 @@
 .eftc-help { background: var(--eftc-navy); color: #fff; padding: 64px 24px; text-align: center; }
 .eftc-help h2 { color: #fff; margin-bottom: 10px; }
 .eftc-help p { color: rgba(255, 255, 255, .85); max-width: 640px; margin: 0 auto; }
-.eftc-help p a { color: var(--eftc-tan); }
+.eftc-help p a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .eftc-help-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
 
 /* Buttons (white text, per site preference) */
