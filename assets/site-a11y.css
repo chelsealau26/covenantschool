@@ -62,3 +62,18 @@ main:focus { outline: none; }
     #container-widget-1719540649051, #container-widget-1719587518726,
     #container-widget-1734630662341, .eftc-help, .gv-dark, .gv-hero, .gv-band, .gv-tc-hero, .gv-credit)
   a:not(.theme-button):not(.eftc-btn):not(.gv-btn):is(:hover, :focus-visible) * { color: #daad86 !important; }
+
+/* "Welcome New Students" hero (home + new student application): dark behind the text, lighter over the student's face */
+#container-widget-1509144589946 > .background-overlay {
+  background-color: transparent !important;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, .68) 0%, rgba(0, 0, 0, .6) 45%, rgba(0, 0, 0, .2) 68%, rgba(0, 0, 0, .06) 100%) !important;
+}
+@media (max-width: 767px) {
+  #container-widget-1509144589946 > .background-overlay { background-image: none !important; background-color: rgba(0, 0, 0, .58) !important; }
+}
+
+/* Rounded corners on the student portrait (Tuition) and its accent frame */
+#image-widget-1719588522832 .image-box,
+#image-widget-1719588522832 .image-box *,
+#image-widget-1719588522832 img { border-radius: 18px; }
+#image-widget-1719588522832 .widget-preserving-ratio-outer { border-radius: 18px; overflow: hidden; }
