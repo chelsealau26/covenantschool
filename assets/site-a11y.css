@@ -77,3 +77,4 @@ main:focus { outline: none; }
 #image-widget-1719588522832 .image-box *,
 #image-widget-1719588522832 img { border-radius: 18px; }
 #image-widget-1719588522832 .widget-preserving-ratio-outer { border-radius: 18px; overflow: hidden; }
+.grid-column:has(#image-widget-1719588522832) { border-radius: 18px; }
