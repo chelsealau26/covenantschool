@@ -15,7 +15,7 @@ import re
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "pages"
-OUT = PAGES / "redesign"
+OUT = PAGES  # redesigns approved and published 2026-11-02
 HEAD_EXTRA = '<link rel="stylesheet" href="/assets/giving.css"><script src="/assets/giving.js" defer></script>'
 IMG = "/assets/"
 
@@ -476,13 +476,12 @@ def with_main(html, content):
 
 
 def build():
-    OUT.mkdir(exist_ok=True)
     (OUT / "ways-to-give.html").write_text(with_main(shell("ways-to-give.html"), ways_to_give()))
     (OUT / "scholarship-opportunities.html").write_text(with_main(shell("scholarship-opportunities.html"), scholarships()))
     # Tax credit page: reuse its current head (title, meta), swap in the new body.
     tc = shell("federal-tax-credit.html")
     (PAGES / "federal-tax-credit.html").write_text(with_main(tc, tax_credit()))
-    print("Built redesign/ways-to-give.html, redesign/scholarship-opportunities.html, federal-tax-credit.html")
+    print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html")
 
 
 if __name__ == "__main__":

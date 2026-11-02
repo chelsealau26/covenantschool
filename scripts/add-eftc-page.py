@@ -168,6 +168,7 @@ ANCHORS = {"scholarship-opportunities.html": "container-widget-1734628741753",
            "ways-to-give.html": "container-widget-1719581456848"}
 
 def add_callouts():
+    return  # Ways to Give and Scholarships now have built-in tax credit blocks (scripts/build-giving-pages.py)
     targets = {
         "ways-to-give.html": callout(
             "Give With Your Federal Taxes",
