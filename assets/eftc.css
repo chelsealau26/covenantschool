@@ -126,3 +126,19 @@
   .eftc-callout-inner { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
   .eftc-btn { width: 100%; text-align: center; }
 }
+
+/* ---------- Motion (added by /assets/eftc.js; off for reduced motion / no JS) ---------- */
+.eftc-anim .eftc-reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+.eftc-anim .eftc-reveal.is-visible { opacity: 1; transform: none; }
+.eftc-amount, .eftc-callout-inner { transition: box-shadow .25s ease, translate .25s ease; }
+.eftc-amount:hover { translate: 0 -3px; box-shadow: 0 10px 24px rgba(19, 28, 36, .10); }
+.eftc-callout-inner:hover { translate: 0 -2px; box-shadow: 0 16px 34px rgba(19, 28, 36, .12); }
+.eftc-btn:hover { translate: 0 -1px; }
+.eftc-btn { transition: background .2s, translate .2s; }
+@media (prefers-reduced-motion: reduce) {
+  .eftc-amount, .eftc-callout-inner, .eftc-btn { transition: none; }
+  .eftc-amount:hover, .eftc-callout-inner:hover, .eftc-btn:hover { translate: none; }
+}

@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "pages"
 SLUG = "federal-tax-credit"
 URL = f"https://covenantschool.com/{SLUG}"
-CSS = '<link rel="stylesheet" href="/assets/eftc.css">'
+CSS = '<link rel="stylesheet" href="/assets/eftc.css"><script src="/assets/eftc.js" defer></script>'
 
 TITLE = "Education Freedom Tax Credit | Covenant Christian School"
 DESC = ("Redirect up to $1,700 of your federal taxes ($3,400 for couples filing jointly) "
@@ -87,7 +87,10 @@ def callout(heading, body, label):
   """
 
 def add_css(html):
-    return html if CSS in html else html.replace("</head>", CSS + "</head>", 1)
+    if CSS in html:
+        return html
+    html = html.replace('<link rel="stylesheet" href="/assets/eftc.css">', '')
+    return html.replace("</head>", CSS + "</head>", 1)
 
 def build_page():
     src = (PAGES / "scholarship-opportunities.html").read_text()
