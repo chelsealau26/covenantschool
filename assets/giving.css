@@ -336,6 +336,15 @@
 .gv-notice p { color: var(--muted); margin-top: 4px !important; }
 .gv .gv-timeline-label { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
 
+/* Expandable extra details */
+.gv-more { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 14px; }
+.gv-more summary { cursor: pointer; font-weight: 700; color: var(--navy); list-style: none; display: inline-flex; align-items: center; gap: 8px; }
+.gv-more summary::-webkit-details-marker { display: none; }
+.gv-more summary::before { content: "+"; width: 24px; height: 24px; border-radius: 50%; background: var(--tan-soft); text-align: center; font: 400 18px/24px Arial, sans-serif; transition: transform .2s; }
+.gv-more[open] summary::before { transform: rotate(45deg); }
+.gv-more .gv-checks { margin-top: 14px; }
+.gv .gv-card-stat { font-size: 19px; }
+
 /* Numbered program markers */
 .gv-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: #fff; font: 700 12px/1 "Open Sans", Arial, sans-serif; letter-spacing: 0; margin-right: 8px; flex: none; }
 .gv-card-kicker, .gv-eyebrow-num { display: inline-flex; align-items: center; }
