@@ -163,7 +163,9 @@ def link_everywhere():
         page.write_text(html)
 
 # Scholarship page: place the callout below the tan "invest in your child's future" band.
-ANCHORS = {"scholarship-opportunities.html": "container-widget-1734628741753"}
+ANCHORS = {"scholarship-opportunities.html": "container-widget-1734628741753",
+           # Ways to Give: after the Volunteer/Sponsor/Donate cards, which overlap the hero by design
+           "ways-to-give.html": "container-widget-1719581456848"}
 
 def add_callouts():
     targets = {
