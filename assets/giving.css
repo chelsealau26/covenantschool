@@ -365,7 +365,12 @@
 .gv-hero { text-align: center; }
 .gv-hero-copy { margin: 0 auto; max-width: 680px; }
 .gv-hero .gv-actions { justify-content: center; }
-.gv-hero::before { background: linear-gradient(90deg, rgba(19, 28, 36, .5) 0%, rgba(19, 28, 36, .84) 26%, rgba(19, 28, 36, .84) 74%, rgba(21, 53, 83, .22) 92%, rgba(21, 53, 83, .06) 100%); }
+.gv-hero::before {
+  /* Soft spotlight: deepest navy right behind the centered text, easing out so the photo reads at the edges */
+  background:
+    radial-gradient(ellipse 58% 78% at 50% 52%, rgba(13, 33, 54, .86) 0%, rgba(13, 33, 54, .78) 42%, rgba(21, 53, 83, .5) 75%, rgba(21, 53, 83, .3) 100%),
+    linear-gradient(180deg, rgba(19, 28, 36, .25) 0%, rgba(19, 28, 36, 0) 30%, rgba(19, 28, 36, 0) 75%, rgba(19, 28, 36, .35) 100%);
+}
 
 /* Tablets/phones: hero content centered (the photo is evenly shaded at these sizes) */
 @media (max-width: 960px) {
