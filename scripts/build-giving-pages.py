@@ -382,8 +382,8 @@ WIDGET = """<div id="theodore-giving-embed"></div>
 <script src="https://aosf.theolearning.com/embed.js"
         data-base-url="https://aosf.theolearning.com"
         data-public-key="JGBH9Zv13Fsr6hKWbMGDrydX"
-        data-primary-color="#f5c842"
-        data-secondary-color="#1a2744"></script>"""
+        data-primary-color="#daad86"
+        data-secondary-color="#153553"></script>"""
 
 
 def tax_credit():
