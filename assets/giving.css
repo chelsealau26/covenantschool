@@ -338,8 +338,6 @@
 .gv-anim [data-reveal="right"] { transform: translateX(30px); }
 .gv-anim [data-reveal="zoom"] { transform: scale(.96); }
 .gv-anim [data-reveal].is-visible { opacity: 1; transform: none; }
-.gv-hero-img-anim { animation: gv-kenburns 18s ease-out both; }
-@keyframes gv-kenburns { from { background-size: 112%; } to { background-size: 100%; } }
 @media (prefers-reduced-motion: reduce) {
   .gv *, .gv *::before, .gv *::after { animation: none !important; transition: none !important; }
   .gv-band { background-attachment: scroll; }
