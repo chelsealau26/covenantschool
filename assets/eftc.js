@@ -5,8 +5,9 @@
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   var groups = [
     ".eftc-intro > .eftc-badge, .eftc-intro > h2, .eftc-intro > p",
-    ".eftc-amount", ".eftc-intro > h3", ".eftc-steps li", ".eftc-facts",
-    ".eftc-card", ".eftc-help h2, .eftc-help p", ".eftc-callout-inner"
+    ".eftc-amount", ".eftc-checks li", ".eftc-pledge",
+    ".eftc-how h2", ".eftc-steps li", ".eftc-know h2", ".eftc-tile",
+    ".eftc-help h2, .eftc-help p, .eftc-help-actions", ".eftc-callout-inner"
   ];
   function start() {
     var targets = [];
