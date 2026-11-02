@@ -44,6 +44,18 @@
   }
   function close() { if (dialog && dialog.open) dialog.close(); }
 
+  // Donation links open a dialog on this page, so they no longer open a new tab.
+  function prepLinks() {
+    document.querySelectorAll('a[href^="https://checkout.square.site/"]').forEach(function (a) {
+      a.removeAttribute("target");
+      a.setAttribute("aria-haspopup", "dialog");
+      var label = a.getAttribute("aria-label");
+      if (label) a.setAttribute("aria-label", label.replace(/\s*\(opens in (a )?new tab\)/i, ""));
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", prepLinks); else prepLinks();
+  window.addEventListener("load", prepLinks);
+
   document.addEventListener("click", function (e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var a = e.target.closest && e.target.closest("a[href]");

@@ -242,6 +242,7 @@
     document.querySelectorAll('a[target="_blank"]').forEach(function (a) {
       if (a.getAttribute('aria-label')) return;          /* already labelled */
       var href  = a.href || '';
+      if (/^https:\/\/checkout\.square\.site\//i.test(href)) return; /* donations open in an on-page dialog */
       var label = '';
       Object.keys(socialNames).forEach(function (domain) {
         if (href.indexOf(domain) !== -1)

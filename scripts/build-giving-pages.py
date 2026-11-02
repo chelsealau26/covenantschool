@@ -125,7 +125,7 @@ def ways_to_give():
         <h1>Join Us in Making a Difference</h1>
         <p class="gv-lead">We can't do it without amazing supporters like you! Whether you volunteer your time, partner with us through your business, or donate financially, together we can create a brighter future for our school family.</p>
         <div class="gv-actions">
-          <a class="gv-btn gv-btn-gold" href="{SQUARE}"{NEW_TAB}>{ICON["heart"]}Make a Donation</a>
+          <a class="gv-btn gv-btn-gold" href="{SQUARE}">{ICON["heart"]}Make a Donation</a>
           <a class="gv-btn gv-btn-ghost" href="#ways">See All Ways to Give</a>
         </div>
       </div>
@@ -145,7 +145,7 @@ def ways_to_give():
           <div class="gv-card-body">
             <h3>Donate</h3>
             <p>Your donations provide essential resources and enriching educational experiences for our students. Give securely online.</p>
-            <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{SQUARE}"{NEW_TAB}>Make a Donation</a></div>
+            <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{SQUARE}">Make a Donation</a></div>
           </div>
         </article>
         <article class="gv-card" data-reveal>
@@ -193,7 +193,7 @@ def ways_to_give():
     <div class="gv-wrap" data-reveal>
       <h2>Your Contribution Makes a Difference!</h2>
       <p>Every donation helps provide resources and enriching experiences for Covenant students.</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{SQUARE}"{NEW_TAB}>{ICON["heart"]}Make a Donation</a></div>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{SQUARE}">{ICON["heart"]}Make a Donation</a></div>
       <p class="gv-note">{ICON["lock"]}Secure checkout through Square</p>
     </div>
   </section>
