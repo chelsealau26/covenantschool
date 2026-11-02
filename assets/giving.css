@@ -13,6 +13,8 @@
 .gv h1 { font-size: 56px; }
 .gv h2 { font-size: 40px; }
 .gv h3 { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-weight: 400; font-size: 26px; line-height: 1.3; color: var(--navy); margin: 0; }
+.gv-nowrap { white-space: nowrap; }
+.gv-abbr { font-size: .62em; color: var(--muted); letter-spacing: .04em; }
 .gv h4 { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.35; color: var(--navy); margin: 0; }
 .gv p { margin: 0; }
 .gv ul, .gv ol { margin: 0; padding: 0; }

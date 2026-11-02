@@ -226,7 +226,7 @@ def scholarships():
           <div class="gv-card-img"><img src="{IMG}covenant-114-9584701.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["school"]}</span></div>
           <div class="gv-card-body">
             <span class="gv-card-kicker">Scholarship</span>
-            <h3>Alabama Opportunity Scholarship Fund (AOSF)</h3>
+            <h3>Alabama Opportunity Scholarship <span class="gv-nowrap">Fund <small class="gv-abbr">(AOSF)</small></span></h3>
             <p class="gv-card-stat">Need-based scholarships</p>
             <ul class="gv-checks">
               <li>For K5–12 students</li>
