@@ -240,12 +240,14 @@ def scholarships():
 
   <nav class="gv gv-jump" aria-label="On this page">
     <div class="gv-wrap">
-      <span class="gv-jump-label">On this page</span>
-      <a href="#aosf"><span class="gv-num">1</span>AOSF Scholarship</a>
-      <a href="#choose"><span class="gv-num">2</span>CHOOSE Act ESA</a>
-      <a href="#compare">Compare</a>
-      <a href="#tax-credit">For friends &amp; family</a>
-      <a href="#notes">Things to note</a>
+      <span class="gv-jump-label">On this page <span class="gv-jump-hint" aria-hidden="true">Swipe for more &rarr;</span></span>
+      <div class="gv-jump-links">
+        <a href="#aosf"><span class="gv-num">1</span>AOSF Scholarship</a>
+        <a href="#choose"><span class="gv-num">2</span>CHOOSE Act ESA</a>
+        <a href="#compare">Compare</a>
+        <a href="#tax-credit">For friends &amp; family</a>
+        <a href="#notes">Things to note</a>
+      </div>
     </div>
   </nav>
 
@@ -294,11 +296,11 @@ def scholarships():
           <caption class="sr-only">Comparison of the AOSF scholarship and the CHOOSE Act Education Savings Account</caption>
           <thead><tr><th scope="col"><span class="sr-only">Detail</span></th><th scope="col"><span class="gv-num">1</span>AOSF Scholarship</th><th scope="col"><span class="gv-num">2</span>CHOOSE Act ESA</th></tr></thead>
           <tbody>
-            <tr><th scope="row">What it is</th><td>Need-based scholarship from a scholarship-granting organization</td><td>State Education Savings Account (ESA)</td></tr>
-            <tr><th scope="row">Amount</th><td>Some or all tuition costs</td><td>Up to $7,000 per student</td></tr>
-            <tr><th scope="row">Who qualifies</th><td>Income-based; priority for students zoned to a "priority school"</td><td>K5–12 Alabama residents; household income up to 300% of the Federal Poverty Level</td></tr>
-            <tr><th scope="row">When to apply</th><td>Applications typically open in March</td><td>2026–27: renewals opened Dec 15, 2025; new families Jan 2, 2026</td></tr>
-            <tr><th scope="row">Where to apply</th><td><a href="https://www.alabamascholarshipfund.org/" target="_blank" rel="noopener">AOSF website</a></td><td><a href="https://classwallet.com/alchoose/" target="_blank" rel="noopener">CHOOSE Act portal</a></td></tr>
+            <tr><th scope="row">What it is</th><td data-label="AOSF Scholarship">Need-based scholarship from a scholarship-granting organization</td><td data-label="CHOOSE Act ESA">State Education Savings Account (ESA)</td></tr>
+            <tr class="gv-compare-key"><th scope="row">Amount</th><td data-label="AOSF Scholarship">Some or all tuition costs</td><td data-label="CHOOSE Act ESA">Up to $7,000 per student</td></tr>
+            <tr><th scope="row">Who qualifies</th><td data-label="AOSF Scholarship">Income-based; priority for students zoned to a "priority school"</td><td data-label="CHOOSE Act ESA">K5–12 Alabama residents with household income up to 300% of the Federal Poverty Level</td></tr>
+            <tr><th scope="row">When to apply</th><td data-label="AOSF Scholarship">Applications typically open in March</td><td data-label="CHOOSE Act ESA">For 2026–27: renewals opened Dec 15, 2025; new families opened Jan 2, 2026</td></tr>
+            <tr><th scope="row">Where to apply</th><td data-label="AOSF Scholarship"><a class="gv-btn gv-btn-line gv-btn-sm" href="https://www.alabamascholarshipfund.org/" target="_blank" rel="noopener">AOSF Website</a></td><td data-label="CHOOSE Act ESA"><a class="gv-btn gv-btn-line gv-btn-sm" href="https://classwallet.com/alchoose/" target="_blank" rel="noopener">CHOOSE Act Portal</a></td></tr>
           </tbody>
         </table>
         </div>
