@@ -1,0 +1,128 @@
+/* Education Freedom Tax Credit page + callouts on Ways to Give / Scholarship pages.
+   Colors use the site's theme (navy #153553 / #224361, tan #daad86, dark #131c24). */
+.eftc {
+  --eftc-navy: #153553;
+  --eftc-navy-2: #224361;
+  --eftc-ink: #131c24;
+  --eftc-tan: #daad86;
+  --eftc-tan-soft: #f6efe7;
+  --eftc-paper: #faf8f4;
+  --eftc-muted: #4a5561;
+  --eftc-line: #e4ddd3;
+  font-family: "Open Sans", Arial, sans-serif;
+  color: var(--eftc-ink);
+}
+.eftc *, .eftc *::before, .eftc *::after { box-sizing: border-box; }
+/* The theme floats the hero row; clear it so these sections keep their own top spacing. */
+.eftc { clear: both; }
+/* Site heading rules: h2 = Anton 38px, h3 = Tahoma 26px navy, h4 = Tahoma 18px bold navy */
+.eftc h2 { font-family: Anton, "Open Sans", Arial, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.2; color: var(--eftc-ink); margin: 0; }
+.eftc h3 { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-weight: 400; font-size: 26px; line-height: 1.3; color: var(--eftc-navy); margin: 0; }
+.eftc h4 { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.35; color: var(--eftc-navy); margin: 0; }
+
+/* "New in 2027" badge */
+.eftc-badge {
+  display: inline-block; background: var(--eftc-navy); color: #fff; font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; line-height: 1; padding: 7px 12px; border-radius: 999px;
+}
+.eftc-intro > .eftc-badge { margin-bottom: 14px; }
+.eftc-eyebrow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 10px; }
+.eftc-eyebrow-row .eftc-eyebrow { margin: 0; }
+
+/* Hero button keeps white text (overrides the gold-button navy text rule), including hover */
+.theme #main-content a.eftc-hero-btn, .theme #main-content a.eftc-hero-btn * { color: #fff !important; }
+.eftc p { margin: 0; line-height: 1.65; }
+.eftc a { color: var(--eftc-navy-2); font-weight: 700; }
+
+/* ---------- Main pledge section ---------- */
+.eftc-main { background: var(--eftc-paper); padding: 72px 16px; }
+.eftc-grid {
+  width: 100%; max-width: 1180px; margin: 0 auto; /* width needed: theme CSS collapses auto-width blocks */
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px);
+  gap: 56px; align-items: start;
+}
+/* Eyebrow follows the site's h5 label style (Open Sans 18px, uppercase gold); deeper gold on light backgrounds */
+.eftc-eyebrow { display: inline-block; font-size: 18px; text-transform: uppercase; color: #946338; margin-bottom: 10px; }
+.eftc-intro h2 { margin-bottom: 16px; }
+.eftc-intro > h3 { margin-bottom: 18px; }
+.eftc-intro > p { font-size: 17px; color: var(--eftc-muted); }
+
+.eftc-amounts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0 36px; }
+.eftc-amount {
+  background: #fff; border: 1px solid var(--eftc-line); border-top: 4px solid var(--eftc-tan);
+  border-radius: 10px; padding: 18px 20px;
+}
+.eftc-amount strong { display: block; font-size: 32px; line-height: 1.1; color: var(--eftc-navy); font-family: Tahoma, Arial, sans-serif; }
+.eftc-amount span { font-size: 14px; color: var(--eftc-muted); }
+
+.eftc-steps { list-style: none; margin: 0 0 36px; padding: 0; counter-reset: eftc; }
+.eftc-steps li { counter-increment: eftc; position: relative; padding: 0 0 22px 58px; }
+.eftc-steps li::before {
+  content: counter(eftc); position: absolute; left: 0; top: 0;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--eftc-navy); color: #fff; font-weight: 700; font-size: 17px;
+  display: flex; align-items: center; justify-content: center;
+}
+.eftc-steps li:not(:last-child)::after {
+  content: ""; position: absolute; left: 19px; top: 44px; bottom: 4px; width: 2px; background: var(--eftc-line);
+}
+.eftc-steps h4 { margin: 8px 0 4px; }
+.eftc-steps p { color: var(--eftc-muted); font-size: 15.5px; }
+
+.eftc-facts { background: #fff; border: 1px solid var(--eftc-line); border-radius: 12px; padding: 24px 26px; }
+.eftc-facts h3 { margin-bottom: 12px; }
+.eftc-facts ul { margin: 0; padding-left: 20px; }
+.eftc-facts li { margin: 0 0 8px; line-height: 1.55; font-size: 15.5px; color: var(--eftc-muted); }
+.eftc-facts li strong { color: var(--eftc-ink); }
+.eftc-note { margin-top: 18px !important; font-size: 13px; color: var(--eftc-muted); font-style: italic; }
+
+/* Widget card */
+.eftc-pledge { position: sticky; top: 110px; scroll-margin-top: 110px; }
+.eftc-card {
+  background: #fff; border-radius: 16px; border-top: 6px solid var(--eftc-navy);
+  box-shadow: 0 18px 40px rgba(19, 28, 36, .12); padding: 26px 22px 18px;
+}
+.eftc-card h3 { text-align: center; }
+.eftc-card > p { text-align: center; font-size: 15px; color: var(--eftc-muted); margin: 6px 0 14px; }
+#theodore-giving-embed { min-height: 640px; }
+#theodore-giving-embed iframe { width: 100% !important; border: 0; display: block; }
+.eftc-card .eftc-fallback { font-size: 13px; text-align: center; color: var(--eftc-muted); margin-top: 10px; }
+
+/* Help band */
+.eftc-help { background: var(--eftc-navy); color: #fff; padding: 48px 16px; text-align: center; }
+.eftc-help h2 { color: #fff; margin-bottom: 10px; }
+.eftc-help p { color: rgba(255, 255, 255, .85); max-width: 680px; margin: 0 auto; }
+.eftc-help a { color: var(--eftc-tan); }
+
+/* ---------- Callout used on Ways to Give + Scholarship pages ---------- */
+.eftc-callout { background: var(--eftc-tan-soft); padding: 40px 16px; }
+.eftc-callout-inner {
+  width: 100%; max-width: 1100px; margin: 0 auto; display: flex; gap: 28px; align-items: center;
+  background: #fff; border-left: 6px solid var(--eftc-navy); border-radius: 12px;
+  padding: 28px 32px; box-shadow: 0 10px 28px rgba(19, 28, 36, .08);
+}
+.eftc-callout-copy { flex: 1; }
+.eftc-callout h2 { font-size: 32px; margin-bottom: 8px; }
+.eftc-callout p { color: var(--eftc-muted); font-size: 16px; }
+.eftc-btn {
+  display: inline-block; flex: none; background: var(--eftc-navy); color: #fff !important;
+  text-decoration: none; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  font-size: 15px; padding: 16px 28px; border-radius: 6px; transition: background .2s;
+}
+.eftc-btn:hover, .eftc-btn:focus-visible { background: var(--eftc-navy-2); }
+.eftc-btn:focus-visible { outline: 3px solid var(--eftc-tan); outline-offset: 3px; }
+
+@media (max-width: 960px) {
+  .eftc-grid { grid-template-columns: 1fr; gap: 40px; }
+  .eftc-pledge { position: static; }
+}
+@media (max-width: 640px) {
+  .eftc h2 { font-size: 30px; }
+  .eftc-callout h2 { font-size: 26px; }
+  .eftc-eyebrow { font-size: 15px; }
+  .eftc-main { padding: 48px 16px; }
+  .eftc-amounts { grid-template-columns: 1fr; }
+  .eftc-card { padding: 22px 12px 14px; }
+  .eftc-callout-inner { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+  .eftc-btn { width: 100%; text-align: center; }
+}

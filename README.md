@@ -128,3 +128,16 @@ SEO: each page has its own title (60 characters or fewer) and description
 WebPage + BreadcrumbList structured data. `pages/sitemap.xml` lists all public
 pages; the privacy policy stays `noindex`. After deploying, submit the sitemap
 in Google Search Console.
+
+## Federal Tax Credit page (scheduled launch)
+
+`/federal-tax-credit` (AOSF pledge widget) goes live automatically on
+December 1, 2026 at 12:00 a.m. Central (`LAUNCH_TIME` in
+`assets/eftc-launch.mjs`). Before then the Cloudflare Worker returns 404 for
+the page and strips its menu/footer links, the Ways to Give and Scholarship
+callouts, the privacy-policy line and the sitemap entry. Adding
+`?preview=<PREVIEW_KEY>` to any URL shows the launched version for review
+(marked `noindex`). To change the date, edit `LAUNCH_TIME` and redeploy.
+
+Note: this Cloudflare project currently deploys every pushed branch to
+production, so a pushed branch is a live change.
