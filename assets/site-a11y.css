@@ -123,3 +123,10 @@ html.ccs-donate-open { overflow: hidden; }
 @media (max-width: 640px) {
   .ccs-donate { width: 100vw; height: 100dvh; border-radius: 0; }
 }
+
+/* Homepage hero: keep it full screen, but sit the content higher so it's all above the fold */
+@media (min-width: 768px) {
+  #container-widget-1509144589946 { padding-top: 40px !important; }
+  #container-widget-1509144589946 > .grid-content { min-height: calc(100vh - 180px); display: flex; align-items: center; }
+  #container-widget-1509144589946 > .grid-content > .grid-column { align-self: center; }
+}
