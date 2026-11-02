@@ -138,7 +138,7 @@ def ways_to_give():
       </div>
       <div class="gv-cards gv-cards-4">
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["heart"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-104-9578593.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["heart"]}</span></div>
           <div class="gv-card-body">
             <h3>Donate</h3>
             <p>Your donations provide essential resources and enriching educational experiences for our students. Give securely online.</p>
@@ -146,7 +146,7 @@ def ways_to_give():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-142-9598319.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["receipt"]}</span>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-64-9598590.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["receipt"]}</span>
 <!--eftc:soon-->
             <span class="gv-badge gv-badge-tan gv-badge-soon gv-card-badge">Coming Dec 1</span>
 <!--/eftc:soon-->
@@ -166,7 +166,7 @@ def ways_to_give():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-10-9527833.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["handshake"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-10-9527833.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["handshake"]}</span></div>
           <div class="gv-card-body">
             <h3>Sponsor</h3>
             <p>Partner with us through your business and invest in the resources and opportunities that help our students thrive academically, socially, and personally.</p>
@@ -174,7 +174,7 @@ def ways_to_give():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-108-9584556.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["hand"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-108-9584556.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["hand"]}</span></div>
           <div class="gv-card-body">
             <h3>Volunteer</h3>
             <p>Become a substitute teacher, or join the FTP (Family Teacher Partnership) to help in meaningful ways across our campus.</p>
@@ -254,7 +254,7 @@ def scholarships():
       </div>
       <div class="gv-cards gv-cards-2">
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-121-9598740.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["school"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-121-9598740.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["school"]}</span></div>
           <div class="gv-card-body">
             <span class="gv-card-kicker"><span class="gv-num">1</span>Program 1 &middot; Scholarship</span>
             <h3>Alabama Opportunity Scholarship <span class="gv-nowrap">Fund <small class="gv-abbr">(AOSF)</small></span></h3>
@@ -268,7 +268,7 @@ def scholarships():
           </div>
         </article>
         <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><img src="{IMG}covenant-142-9598319.jpg" alt="" loading="lazy"><span class="gv-card-icon">{ICON["receipt"]}</span></div>
+          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-142-9598319.jpg" alt="" loading="lazy"></span><span class="gv-card-icon">{ICON["receipt"]}</span></div>
           <div class="gv-card-body">
             <span class="gv-card-kicker"><span class="gv-num">2</span>Program 2 &middot; Education Savings Account</span>
             <h3>CHOOSE Act Alabama Scholarship</h3>
