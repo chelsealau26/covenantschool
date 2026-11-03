@@ -33,119 +33,83 @@ FEES = [  # name, when, amounts
 CURRICULUM = [("K3/K4 3 day half day", "$250"), ("K3/K4 3 day full day", "$250"), ("K3-K5 5 day half day", "$300"), ("K3-K5 5 day full day", "$425"), ("1st-8th Grade", "$425")]
 
 def tuition(ICON, IMG, NEW_TAB):
-    enroll = "".join(f'''<li class="tu-step" data-reveal><span class="tu-dot" aria-hidden="true"></span><h4>{n}</h4><p class="tu-when">{d}</p><p class="tu-price">{p} <span>({m})</span></p><p class="tu-nr">(Non-refundable)</p></li>''' for n, d, p, m in ENROLL)
-    rows = "".join(f'''<tr><th scope="row"><strong>{g}</strong><span>{s}</span></th><td class="tu-annual">{a}</td><td class="tu-month">{mo}<span>(includes $5 service fee)</span></td></tr>''' for g, s, a, mo in TUITION)
-    plans = "".join(f'''<li data-reveal><h4>{n}</h4><p>{d}</p><span class="tu-tag">{f}</span></li>''' for n, d, f in PLANS)
-    fees = "".join(f'''<tr><th scope="row">{n}<span>{w}</span></th><td>{"<br>".join(a)}</td></tr>''' for n, w, a in FEES)
-    cur = "".join(f'<tr><th scope="row">{n}</th><td>{p}</td></tr>' for n, p in CURRICULUM)
+    import html as H
+    chips = "".join(
+        f'''<button type="button" class="tu-chip" role="radio" aria-checked="{"true" if k == 0 else "false"}" data-annual="{a}" data-month="{mo}" data-label="{g} · {sub}"><strong>{g}</strong><span>{sub}</span></button>'''
+        for k, (g, sub, a, mo) in enumerate(TUITION))
+    g0, s0, a0, m0 = TUITION[0]
+    rows = "".join(f'''<tr><th scope="row">{g} <span>{sub}</span></th><td>{a}</td><td>{mo}</td></tr>''' for g, sub, a, mo in TUITION)
+    enroll = "".join(f'''<li><strong>{n}</strong><span class="tu-when">{d}</span><span class="tu-amt">{p} <em>(Max {m.replace("Max ", "")})</em></span></li>''' for n, d, p, m in ENROLL)
+    plans = "".join(f'''<li><strong>{n}</strong><span>{d}</span><em>({f})</em></li>''' for n, d, f in PLANS)
+    fees = "".join(f'''<li><strong>{n}</strong><span>{w}</span><b>{" · ".join(a)}</b></li>''' for n, w, a in FEES)
+    cur = "".join(f'''<li><strong>{n}</strong><b>{p}</b></li>''' for n, p in CURRICULUM)
+    def item(icon, title, body, open_=False):
+        return f'''<details class="tu-acc"{" open" if open_ else ""}><summary><span class="hm-col-icon">{ICON[icon]}</span><span class="tu-acc-t">{title}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body">{body}</div></details>'''
     return f'''
   <section class="gv gv-hero gv-hero-split ep-hero st-hero tu-hero">
     <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-24-9584556.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
-        <span class="gv-eyebrow">New Families · Tuition &amp; Fees Schedule</span>
+        <span class="gv-eyebrow">New Families</span>
         <h1>Tuition and Fees</h1>
         <p class="gv-lead">Explore our approachable tuition and fees structure, offering key insights into payment schedules, grade-specific pricing, school fees, and beneficial multi-student savings.</p>
-        <ul class="tu-checks">
-          <li>Clear due dates for tuition and fees</li>
-          <li>Tailored rates for each grade level</li>
-          <li>Breakdown of additional fees</li>
-          <li>Save with our multi-student discounts</li>
-        </ul>
       </div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-white" id="tuition" aria-labelledby="tu-rate-title">
+  <section class="gv gv-section gv-white tu-calc-sec" aria-labelledby="tu-rate-title">
     <div class="gv-wrap">
-      <div class="tu-head" data-reveal>
+      <div class="tu-head tu-center" data-reveal>
         <span class="gv-eyebrow">Tuition</span>
         <h2 id="tu-rate-title">Investing in Your Child's Future<span class="mv-dot" aria-hidden="true">.</span></h2>
         <p>Discover our competitive tuition rates and flexible payment options, ensuring accessibility to quality education for every student.</p>
       </div>
-      <div class="tu-table-wrap" data-reveal>
-        <table class="tu-table">
-          <caption class="gv-sr">Tuition by grade level</caption>
-          <thead><tr><th scope="col">Grade level</th><th scope="col">Annual Tuition</th><th scope="col">11 Monthly Tuition Payments</th></tr></thead>
-          <tbody>{rows}</tbody>
-        </table>
-      </div>
-      <p class="tu-note" data-reveal><span class="hm-col-icon">{ICON["info"]}</span><span><strong>Note:</strong> Your tuition amount may be different based on your enrollment date. Call our office for your specific amount. Tuition rates for the 2026–2027 school year will be available in early January 2026.</span></p>
-    </div>
-  </section>
-
-  <section class="gv gv-section gv-paper" id="fees" aria-labelledby="tu-fees-title">
-    <div class="gv-wrap">
-      <div class="tu-head" data-reveal>
-        <h2 id="tu-fees-title">Additional Fees<span class="mv-dot" aria-hidden="true">.</span></h2>
-        <p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
-      </div>
-      <div class="tu-fees" data-reveal>
-        <table class="tu-table tu-fee-table"><caption class="gv-sr">Additional fees</caption><tbody>{fees}</tbody></table>
-        <div class="tu-cur">
-          <h3>Curriculum Fees</h3><p class="tu-cur-when">Non-refundable due June 1st</p>
-          <table class="tu-table tu-cur-table"><caption class="gv-sr">Curriculum fees</caption><tbody>{cur}</tbody></table>
+      <div class="tu-calc" data-reveal>
+        <div class="tu-chips" role="radiogroup" aria-label="Grade level">{chips}</div>
+        <div class="tu-result" aria-live="polite">
+          <span class="tu-result-label" data-out="label">{g0} · {s0}</span>
+          <div class="tu-result-row">
+            <div><span class="tu-k">Annual Tuition</span><span class="tu-big" data-out="annual">{a0}</span></div>
+            <div class="tu-or">or</div>
+            <div><span class="tu-k">11 Monthly Tuition Payments</span><span class="tu-big tu-big-sm" data-out="month">{m0}</span><span class="tu-fine">(includes $5 service fee)</span></div>
+          </div>
         </div>
+        <table class="tu-plain"><caption class="gv-sr">Tuition by grade level</caption><thead><tr><th scope="col">Grade level</th><th scope="col">Annual Tuition</th><th scope="col">11 Monthly Tuition Payments (includes $5 service fee)</th></tr></thead><tbody>{rows}</tbody></table>
+      </div>
+      <p class="tu-note2" data-reveal><strong>Note:</strong> Your tuition amount may be different based on your enrollment date. Call our office for your specific amount. Tuition rates for the 2026–2027 school year will be available in early January 2026.</p>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-paper" aria-labelledby="tu-sched-title">
+    <div class="gv-wrap tu-acc-wrap">
+      <div class="tu-head tu-center" data-reveal>
+        <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>
+      </div>
+      <div class="tu-accs" data-reveal>
+        {item("calendar", "Save Your Spot for Next Year!", f'''<p>Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
+          <h4>CCS Student Re-Enrollment</h4><ul class="tu-list">{enroll}</ul>
+          <h4>New Student Enrollment</h4><ul class="tu-list"><li><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span><span class="tu-amt">$200 / New Student <em>(Max $750/Family)</em></span></li></ul>
+          <p class="tu-fine">All enrollment fees are non-refundable.</p>''', True)}
+        {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-list">{plans}</ul>')}
+        {item("receipt", "Additional Fees", f'''<p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
+          <ul class="tu-list">{fees}</ul>
+          <h4>Curriculum Fees <span>Non-refundable due June 1st</span></h4><ul class="tu-list">{cur}</ul>''')}
+        {item("users", "The Bigger The Family, The More The Savings", '<p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p>')}
+        {item("school", "Choose Act Alabama Is Open", f'''<p>The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
+          <ul class="tu-list"><li><strong>Renewal Applications (Current Participants)</strong><span>Open December 15, 2025 – March 31, 2026</span></li><li><strong>New Family Applications ('26–'27 Academic Year)</strong><span>Open January 2, 2026 – March 31, 2026</span></li><li><strong>Funding Amount</strong><b>Up to $7,000 per participating student</b></li></ul>
+          <p>Applications are managed through ClassWallet, the official platform for the Choose Act Alabama program. Call ClassWallet support at <a class="ns-tel" href="tel:877-969-5536">877-969-5536</a> for assistance.</p>
+          <a class="gv-btn gv-btn-line" href="{CHOOSE}"{NEW_TAB}>Apply Today · Deadline March 31, 2026</a>''')}
       </div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-dark tu-plans" id="payments" aria-labelledby="tu-plans-title">
-    <img class="mv-faith-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-wrap">
-      <div class="tu-head" data-reveal><h2 id="tu-plans-title">Clear due dates for tuition and fees<span class="mv-dot" aria-hidden="true">.</span></h2></div>
-      <ul class="tu-plan-grid">{plans}</ul>
-    </div>
-  </section>
-
-  <section class="gv gv-band gv-band-left gv-band-parallax tu-discount" id="discount" data-focus=".05" aria-labelledby="tu-disc-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-94-9522791.jpg')" aria-hidden="true"></div>
+  <section class="gv gv-band gv-band-parallax" aria-labelledby="tu-cta-title">
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-151_1-9523341.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
-      <span class="gv-eyebrow">Multi Student Discount</span>
-      <h2 id="tu-disc-title">The Bigger The Family, The More The Savings</h2>
-      <p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p>
-    </div>
-  </section>
-
-  <section class="gv gv-section gv-white" id="choose" aria-labelledby="tu-choose-title">
-    <div class="gv-wrap tu-choose">
-      <div data-reveal>
-        <span class="gv-eyebrow">Apply Now</span>
-        <h2 id="tu-choose-title">Choose Act Alabama Is Open<span class="mv-dot" aria-hidden="true">.</span></h2>
-        <p class="mv-body">The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
-        <p class="tu-small">Applications are managed through ClassWallet, the official platform for the Choose Act Alabama program. Call ClassWallet support at <a class="ns-tel" href="tel:877-969-5536">877-969-5536</a> for assistance.</p>
-        <a class="gv-btn gv-btn-line" href="{CHOOSE}"{NEW_TAB}>Apply Today · Deadline March 31, 2026</a>
-      </div>
-      <div class="tu-choose-facts" data-reveal>
-        <h3>Key Dates &amp; Details</h3>
-        <dl>
-          <div><dt>Renewal Applications (Current Participants)</dt><dd>Open December 15, 2025 – March 31, 2026</dd></div>
-          <div><dt>New Family Applications ('26–'27 Academic Year)</dt><dd>Open January 2, 2026 – March 31, 2026</dd></div>
-          <div class="tu-big"><dt>Funding Amount</dt><dd>Up to $7,000 per participating student</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <section class="gv gv-section gv-white tu-enroll" id="enrollment" aria-labelledby="tu-enroll-title">
-    <div class="gv-wrap">
-      <div class="tu-head" data-reveal><h2 id="tu-enroll-title">Save Your Spot for Next Year!</h2><p>Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p></div>
-      <div class="tu-tracks">
-        <div class="tu-track">
-          <div class="tu-track-head"><h3>CCS Student Re-Enrollment</h3></div>
-          <ol class="tu-steps">{enroll}</ol>
-        </div>
-        <div class="tu-track tu-track-new">
-          <div class="tu-track-head"><h3>New Student Enrollment</h3></div>
-          <ol class="tu-steps"><li class="tu-step" data-reveal><span class="tu-dot" aria-hidden="true"></span><h4>Open Enrollment</h4><p class="tu-when">February 22nd</p><p class="tu-price">$200 / New Student <span>(Max $750/Family)</span></p><p class="tu-nr">(Non-refundable)</p></li></ol>
-        </div>
-      </div>
-      <div class="tu-final" data-reveal>
-        <a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment</a>
-        <a class="gv-btn gv-btn-line" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment</a>
-        <a class="ns-link" href="{INFO}"{NEW_TAB}>Request More Information <span aria-hidden="true">&rarr;</span></a>
-      </div>
+      <h2 id="tu-cta-title">SAVE YOUR SPOT FOR NEXT YEAR!</h2>
+      <p class="gv-band-sub">Limited spots—apply early!</p>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment</a><a class="gv-btn gv-btn-ghost" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment</a></div>
     </div>
   </section>
 '''

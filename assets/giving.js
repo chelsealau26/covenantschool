@@ -194,3 +194,27 @@
     });
   });
 })();
+
+// Tuition: choose a grade level to see its annual and monthly tuition.
+(function () {
+  var chips = document.querySelectorAll(".tu-chip");
+  if (!chips.length) return;
+  document.documentElement.classList.add("tu-js");
+  var out = {}; document.querySelectorAll("[data-out]").forEach(function (el) { out[el.getAttribute("data-out")] = el; });
+  function pick(c) {
+    chips.forEach(function (x) { x.setAttribute("aria-checked", x === c ? "true" : "false"); x.tabIndex = x === c ? 0 : -1; });
+    out.label.textContent = c.getAttribute("data-label");
+    out.annual.textContent = c.getAttribute("data-annual");
+    out.month.textContent = c.getAttribute("data-month");
+  }
+  chips.forEach(function (c, i) {
+    c.tabIndex = i === 0 ? 0 : -1;
+    c.addEventListener("click", function () { pick(c); });
+    c.addEventListener("keydown", function (e) {
+      var k = e.key, n = null;
+      if (k === "ArrowRight" || k === "ArrowDown") n = chips[(i + 1) % chips.length];
+      if (k === "ArrowLeft" || k === "ArrowUp") n = chips[(i - 1 + chips.length) % chips.length];
+      if (n) { e.preventDefault(); pick(n); n.focus(); }
+    });
+  });
+})();
