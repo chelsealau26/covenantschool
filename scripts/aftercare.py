@@ -61,13 +61,9 @@ def aftercare(ICON, IMG, NEW_TAB):
           <a class="ac-store" href="{AND}"{NEW_TAB}>{PLAY}<span><small>Get it on</small>Google Play</span></a>
         </div>
       </div>
-      <div class="ac-phone" data-reveal="left" aria-hidden="true">
-        <div class="ac-phone-screen">
-          <img src="{IMG}eagle-mark-white.png" alt="">
-          <strong>Covenant</strong>
-          <span>AfterCare Weekly Sign Up</span>
-          <i></i><i></i><i></i>
-        </div>
+      <div class="ac-phones" data-reveal="left">
+        <img class="ac-ph ac-ph-back" src="{IMG}app-splash.jpg" alt="" loading="lazy">
+        <img class="ac-ph ac-ph-front" src="{IMG}app-home.jpg" alt="The Covenant Christian School app home screen with Calendar, Financials, Gradebook and Resources" loading="lazy">
       </div>
     </div>
   </section>
