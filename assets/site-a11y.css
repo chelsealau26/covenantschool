@@ -130,3 +130,6 @@ html.ccs-donate-open { overflow: hidden; }
   #container-widget-1509144589946 > .grid-content { min-height: calc(100vh - 180px); display: flex; align-items: center; }
   #container-widget-1509144589946 > .grid-content > .grid-column { align-self: center; }
 }
+/* Document viewer (PDFs, presentation) uses the same lightbox, sized for reading */
+.ccs-donate.is-doc { width: min(1100px, calc(100vw - 48px)); height: calc(100vh - 48px); }
+.ccs-donate.is-doc .ccs-donate-bar h2 { font-size: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

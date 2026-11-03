@@ -409,8 +409,8 @@ def scholarships():
           <div class="gv-side-resources">
             <h4>Parent Resources</h4>
             <div class="gv-resources gv-resources-stack">
-          <a class="gv-resource" href="https://classwallet.com/alchoose/assets/CHOOSE_ACT_parent_guide_2026-2027.pdf"{NEW_TAB}><span class="gv-resource-icon">{ICON["file"]}</span><span><strong>Parent Guide (PDF)</strong><span>Program details, approved expenses and step-by-step instructions</span></span></a>
-          <a class="gv-resource" href="https://drive.google.com/file/d/1f1fXEO_dFj1NRuJusxzScO4yMQC-Nj_t/view?usp=sharing"{NEW_TAB}><span class="gv-resource-icon">{ICON["play"]}</span><span><strong>Watch the Presentation</strong><span>The CHOOSE Act explained</span></span></a>
+          <a class="gv-resource" href="https://classwallet.com/alchoose/assets/CHOOSE_ACT_parent_guide_2026-2027.pdf"{NEW_TAB} data-doc="CHOOSE Act Parent Guide 2026–2027"><span class="gv-resource-icon">{ICON["file"]}</span><span><strong>Parent Guide (PDF)</strong><span>Program details, approved expenses and step-by-step instructions</span></span></a>
+          <a class="gv-resource" href="https://drive.google.com/file/d/1f1fXEO_dFj1NRuJusxzScO4yMQC-Nj_t/view?usp=sharing"{NEW_TAB} data-doc="The CHOOSE Act Presentation"><span class="gv-resource-icon">{ICON["play"]}</span><span><strong>Watch the Presentation</strong><span>The CHOOSE Act explained</span></span></a>
           <a class="gv-resource" href="https://classwallet.com/alchoose/"{NEW_TAB}><span class="gv-resource-icon">{ICON["external"]}</span><span><strong>CHOOSE Act Portal</strong><span>Official program website</span></span></a>
         </div>
           </div>
@@ -455,7 +455,7 @@ def scholarships():
           <div class="gv-panel-icon">{ICON["info"]}</div>
           <h4>Scholarship &ne; Enrollment</h4>
           <p>Scholarships or ESAs do not guarantee enrollment.</p>
-          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="https://content.app-sources.com/s/641329925069930801/uploads/PDF_Files/External_Scholarships_Info_Dec2024-4631514.pdf"{NEW_TAB}>{ICON["file"]}Scholarships Info (PDF)</a></div>
+          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="https://content.app-sources.com/s/641329925069930801/uploads/PDF_Files/External_Scholarships_Info_Dec2024-4631514.pdf"{NEW_TAB} data-doc="External Scholarships Information">{ICON["file"]}Scholarships Info (PDF)</a></div>
         </div>
       </div>
     </div>
@@ -562,8 +562,9 @@ def home():
         return (f'<a class="hm-strip-item" href="{href}"{NEW_TAB if newtab else ""}>'
                 f'<span class="hm-strip-icon">{ICON[icon]}</span><strong>{title}</strong>'
                 f'<span class="hm-strip-text">{text}</span></a>')
-    def res(href, icon, title, newtab=False):
-        return f'<li><a href="{href}"{NEW_TAB if newtab else ""}>{title}<span aria-hidden="true">&rarr;</span></a></li>'
+    def res(href, icon, title, newtab=False, doc=None):
+        d = f' data-doc="{doc}"' if doc else ""
+        return f'<li><a href="{href}"{NEW_TAB if newtab else ""}{d}>{title}<span aria-hidden="true">&rarr;</span></a></li>'
     def quote(name, role, lines, cls=""):
         body = "".join(f"<p>{l}</p>" for l in lines)
         return (f'<figure class="hm-quote {cls}"><blockquote>{body}</blockquote>'
@@ -648,10 +649,10 @@ def home():
       <div class="hm-res">
       <div class="hm-res-head" data-reveal><h2 id="gv-res-title">CCS Resources</h2><img src="{IMG}eagle-mark-navy.png" alt="" width="900" height="321"></div>
       <ul class="hm-res-list">
-        {res(L['handbook'], "file", "Student/Parent Handbook", True)}
-        {res(L['uniform'], "file", "Uniform Policy &amp; Procedure", True)}
+        {res(L['handbook'], "file", "Student/Parent Handbook", True, doc="Student/Parent Handbook 2026–2027")}
+        {res(L['uniform'], "file", "Uniform Policy &amp; Procedure", True, doc="Uniform Policy &amp; Procedure")}
         {res("/school-supplies", "list", "School Supply Lists")}
-        {res(L['coppa'], "shield", "COPPA Policy", True)}
+        {res(L['coppa'], "shield", "COPPA Policy", True, doc="COPPA Policy")}
         {res(L['renweb'], "refresh", "Re-Enrollment", True)}
         {res("/new-student-application", "pen", "New Student Application")}
         {res("/tuition", "receipt", "Tuition &amp; Fees")}
