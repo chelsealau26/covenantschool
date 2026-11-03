@@ -794,3 +794,49 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 
 /* Homepage hero deepens toward navy as the visitor scrolls past it (only ever darker, so text stays readable) */
 .gv-hero-home::after { content: ""; position: absolute; inset: 0; z-index: -1; background: #0d2136; opacity: calc(var(--hero-dim, 0) * .88); pointer-events: none; }
+
+/* ---------------------------------------------------------------- Mission & Values (preview redesign) */
+.mv-hero { --hero-pos: center 30%; }
+.gv .mv-dot { color: var(--tan); }
+.mv-mission { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: center; }
+.gv .mv-big { margin-top: 18px !important; font-size: 21px; line-height: 1.65; color: var(--ink); }
+.mv-values { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.mv-values li { display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-radius: 4px; background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553; color: #fff; font: 400 24px/1.15 Anton, "Open Sans", Arial, sans-serif; letter-spacing: .01em; }
+.mv-values .hm-col-icon { background: transparent; color: var(--tan); border-color: var(--tan); }
+.mv-history { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+.mv-timeline { list-style: none; margin: 28px 0 0; padding: 0 0 0 26px; border-left: 2px solid #e1cdb8; }
+.mv-timeline li { position: relative; padding: 0 0 26px 24px; }
+.mv-timeline li::before { content: ""; position: absolute; left: -34px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--tan); }
+.mv-timeline li.mv-now::before { background: var(--tan); }
+.gv .mv-year { display: block; font: 400 30px/1 Anton, "Open Sans", Arial, sans-serif; color: var(--navy); letter-spacing: .01em; }
+.mv-timeline p { margin-top: 6px !important; font-size: 17px; line-height: 1.6; color: var(--ink); }
+.mv-now .mv-year { font-size: 44px; color: var(--tan-deep); }
+.mv-history-photo { position: sticky; top: 120px; }
+.mv-history-photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 40% 50%; border-radius: 4px; box-shadow: var(--shadow); }
+.mv-family { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center; }
+.gv .mv-body { margin-top: 18px !important; font-size: 18px; line-height: 1.75; color: var(--ink); }
+.gv.mv-faith { position: relative; overflow: hidden; text-align: center; padding-top: 110px; padding-bottom: 110px; }
+.mv-faith .gv-wrap { position: relative; max-width: 820px; }
+.mv-faith h2 { color: #fff; }
+.mv-faith-eagle { position: absolute; right: -140px; bottom: -60px; width: 820px; max-width: none; opacity: .07; pointer-events: none; }
+.gv .mv-creed { margin-top: 26px !important; font-size: 21px; line-height: 1.85; color: rgba(255, 255, 255, .92); }
+.mv-creed strong { color: var(--tan); font-weight: 700; }
+.mv-why { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.mv-why-item { display: flex; gap: 22px; align-items: flex-start; padding: 28px 0; border-top: 1px solid #ddcfbf; }
+.mv-why-item h3 { font-weight: 700 !important; font-size: 21px !important; margin-bottom: 8px !important; }
+.mv-why-item p { color: var(--muted); font-size: 16px; line-height: 1.65; }
+.mv-why-item:hover .hm-col-icon { background: var(--navy); color: var(--tan); border-color: var(--navy); }
+@media (max-width: 960px) {
+  .mv-mission, .mv-history, .mv-family { grid-template-columns: 1fr; gap: 36px; }
+  .mv-history-photo { position: static; max-width: 560px; }
+  .mv-history-photo img { aspect-ratio: 4 / 3; }
+  .mv-why { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .gv .mv-big { font-size: 18px; }
+  .mv-values li { font-size: 20px; padding: 14px 16px; }
+  .gv .mv-creed { font-size: 18px; text-align: left; }
+  .gv.mv-faith { text-align: left; padding-top: 80px; padding-bottom: 80px; }
+  .mv-faith-eagle { width: 520px; right: -200px; }
+  .mv-why-item { gap: 16px; }
+}

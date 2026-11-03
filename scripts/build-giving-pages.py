@@ -749,6 +749,8 @@ def build():
     # Homepage refresh: preview only until approved (served on ?preview=... by the worker)
     (PAGES / "redesign").mkdir(exist_ok=True)
     (PAGES / "redesign" / "home.html").write_text(with_main(shell("index.html", chrome="index.html"), home()))
+    from mission_values import mission_values
+    (PAGES / "redesign" / "mission-values.html").write_text(with_main(shell("mission-values.html"), mission_values(ICON, IMG)))
     from brand_guide import brand_guide
     bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
     bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)
