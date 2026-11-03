@@ -145,3 +145,7 @@ body:has(#heading-widget-1518129426779) #container-widget-1509144589946 > .backg
 #container-widget-1518962688375 > .background-overlay { background-color: rgba(0, 0, 0, .55) !important; }
 #text-widget-1518129426778 span { color: #f0d9c2 !important; }
 #text-widget-1518973632135 span, #heading-widget-1719549931653 span { color: #fff !important; }
+
+/* Back-to-top button: smaller (40px still meets the 24px minimum touch target) */
+a.scrollToTop { width: 40px !important; height: 40px !important; line-height: 38px !important; font-size: 20px !important; }
+a.scrollToTop::before { font-size: 20px !important; line-height: 38px !important; }
