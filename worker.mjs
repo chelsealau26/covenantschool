@@ -1,6 +1,6 @@
 import { EMPLOYMENT_FORM_PATH, handleEmploymentForm } from "./employment-form.mjs";
 import { hasEnded, isFundraiserPath, removeBanner, removeSitemapEntry, CLOSED_PAGE } from "./assets/fundraiser-lifecycle.mjs";
-import { PREVIEW_CSS_VERSION, PREVIEW_JS_VERSION } from "./assets/preview-version.mjs";
+import { PREVIEW_CSS_VERSION, PREVIEW_JS_VERSION, SILVER_CSS_VERSION } from "./assets/preview-version.mjs";
 import { PREVIEW_KEY, isLaunched, isPreview, isEftcPath, hideEftc, hideEftcSitemap, NOT_FOUND_PAGE, showLiveCredit, pickCreditVersion, redesignFor, isRedesignPath } from "./assets/eftc-launch.mjs";
 
 const SUPPLY_LISTS_URL = "https://sis.factsmgt.com/accounts/Account/Login?ReturnUrl=%2Faccounts%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DfamilyPortalCode%26redirect_uri%3Dhttps%253A%252F%252Fsis.factsmgt.com%252Ffamily-portal%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520familyPortalUserInfo%2520familyPortalUserConfig%2520offline_access%2520ftApi%26code_challenge%3DFiul3nN-aztKjGsczQavRZoVMLWZuxwkV5-Mm89Hp18%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639080670995718110.ZDQyODQ0NmUtYWEzMS00OGU5LWFjN2ItMjRiMjk4MTg5MGI1NmE5ZTA1YjMtYjE1NS00NzkwLWJmMWEtMzM3MGJiMmU0N2Vk%26state%3DCfDJ8Lq1N5Cgm6tFnilnlNGlkcEod0V-wCTGxmw71V0Ux6x0cT40BqsZUZKtA5B8_yAnDYQLGNuzKV1VrllGwfqni1QHIX5H9utq8LNhcc9Bd6PPmf33REHdGqkwHkGnIjPPtu8c-N5Aj204dBYeJ7722Rl8O02GXGlKnnvw22icE117EKUsj_phuldyGYYj_aF3InNQp3JeAe3AvqpJhxxoFZoAXeZhT2gpzxB7pWyj3fQRlzibUr1VuvW7sFAURLWIJObzjAMCRZu0N0XH3bLQDx_tr3JWVOIeTYvOGN6FrJjauybBdnZ95Oala1No5BUYaSk942NFX6-0fyHIYavB6DG-eloKjrip56N7qi1B64iUcxT2DZFwrhvEn6Asl3xolG413HM-KPT_lELYIfIhub17SsYmOFUP_DtfNqOxlxyDgyPttuqttx6Q4VMDwvpmDEY1O_PX7flIna8V7CYc_HnqGZgqOK8KteLJFpn2P426-c4tXI8gbN_STDeK8cx-yA%26x-client-SKU%3DID_NET9_0%26x-client-ver%3D8.15.0.0";
@@ -79,7 +79,7 @@ export default {
       if (redesign) headers.set("X-Robots-Tag", "noindex");
       // Refreshed design (not yet approved): its sitewide styles load only on preview links.
       if (isPreview(url) && path !== "/sitemap.xml") {
-        text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"></head>`);
+        text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"><link rel="stylesheet" href="/assets/silver.css?v=${SILVER_CSS_VERSION}"><script>try{var q=new URLSearchParams(location.search).get("look");if(q)sessionStorage.setItem("ccs_look",q);if((q||sessionStorage.getItem("ccs_look"))==="silver")document.documentElement.classList.add("ccs-silver")}catch(e){}</script></head>`);
         text = keepPreviewInLinks(text);
         text = text.replace("</body>", `<script src="/assets/preview.js?v=${PREVIEW_JS_VERSION}" defer></script><a class="ccs-preview-badge" href="?preview=off" aria-label="You are viewing the preview of the new design. Select to exit preview.">Preview<span aria-hidden="true"> · </span><span>Exit</span></a></body>`);
         headers.set("X-Robots-Tag", "noindex");

@@ -765,7 +765,10 @@ def build():
     bg = bg.replace("</head>", '<meta name="robots" content="noindex, nofollow"></head>', 1)
     (PAGES / "redesign" / "brand-guide.html").write_text(bg)
     PV = (ROOT / "assets" / "preview-version.mjs")
-    PV.write_text(f'export const PREVIEW_CSS_VERSION = "{_v("preview.css")}";\nexport const PREVIEW_JS_VERSION = "{_v("preview.js")}";\n')
+    import importlib.util as _u
+    _sp = _u.spec_from_file_location("build_silver", ROOT / "scripts" / "build-silver.py"); _sm = _u.module_from_spec(_sp); _sp.loader.exec_module(_sm)
+    _sm.build([PAGES / "redesign" / "home.html", PAGES / "athletics.html"])
+    PV.write_text(f'export const PREVIEW_CSS_VERSION = "{_v("preview.css")}";\nexport const PREVIEW_JS_VERSION = "{_v("preview.js")}";\nexport const SILVER_CSS_VERSION = "{_v("silver.css")}";\n')
     print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html, redesign/home.html")
 
 
