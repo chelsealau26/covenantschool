@@ -59,6 +59,7 @@ STYLE = """<style>
 .bgd-table th { font: 700 13px/1.2 "Open Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); }
 .bgd-note { margin-top: 18px !important; font-size: 15px; color: var(--muted); }
 .bgd-grad { height: 130px; align-items: flex-end; font: 400 22px/1 Anton, "Open Sans", Arial, sans-serif; letter-spacing: .02em; border: 0; }
+.gv .bgd-grad { color: #fff !important; } .gv .bgd-grad.is-light { color: #153553 !important; }
 .bgd-grads { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-bottom: 30px; }
 .bgd-sw code { font-size: 12px; color: var(--muted); word-break: break-word; }
 .bgd-toc { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; }
@@ -80,7 +81,7 @@ GRADS = [  # name, css, text color, use
 ]
 
 def grad(name, css, fg, use):
-    return (f'<li class="bgd-sw"><span class="bgd-chip bgd-grad" style="background:{css};color:{fg}">{name}</span>'
+    return (f'<li class="bgd-sw"><span class="bgd-chip bgd-grad{' is-light' if fg != '#fff' else ''}" style="background:{css}">{name}</span>'
             f'<strong>{name}</strong><span>{use}</span><code>{css.split(", url(")[0]}</code></li>')
 
 def brand_guide(ICON):
