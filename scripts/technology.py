@@ -13,10 +13,11 @@ def technology(ICON, IMG):
              "Personal devices often create unnecessary distractions in the classroom"]
     return f'''
   <section class="gv tu-hero2 te-hero" data-scroll-dim aria-labelledby="te-title">
-    <div class="tu-hero2-img" style="background-image: url('{IMG}covenant-51-9598440.jpg')" aria-hidden="true"></div>
+    <div class="tu-hero2-img" style="background-image: url('{IMG}covenant-10-9527833.jpg')" aria-hidden="true"></div>
+    <div class="te-hero-grid" aria-hidden="true"></div>
     <div class="gv-wrap tu-hero2-copy">
       <span class="gv-eyebrow">Technology</span>
-      <h1 id="te-title">Technology <span class="te-l2">With Purpose</span></h1>
+      <h1 id="te-title">Technology <span class="te-l2">With Purpose<span class="te-caret" aria-hidden="true"></span></span></h1>
       <p class="gv-lead">Using technology wisely to support learning, without losing focus on what matters most.</p>
       <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="#approach">Learn About Our Approach</a></div>
     </div>
@@ -32,9 +33,9 @@ def technology(ICON, IMG):
     </div>
   </section>
 
-  <section class="gv gv-section te-challenge" aria-labelledby="te-challenge-title">
+  <section class="gv gv-section te-challenge te-grid" aria-labelledby="te-challenge-title">
     <div class="gv-wrap te-challenge-grid">
-      <div class="hm-frame" data-reveal="right"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}fb/ccs-science-lab.jpg" alt="Smiling students working on a hands-on science lab at their desks" loading="lazy"></div>
+      <figure class="te-window" data-reveal="right"><div class="te-window-bar" aria-hidden="true"><i></i><i></i><i></i><span>covenantschool.com/learning</span></div><img src="{IMG}covenant-78-9798253.jpg" alt="A student taking handwritten notes with a school iPad beside her" loading="lazy"></figure>
       <div data-reveal>
         <h2 id="te-challenge-title">The Challenge We’ve Seen</h2>
         <p class="te-challenge-intro">Over time, teachers and administrators observed that too much screen use can interfere with learning. Research and classroom experience show that:</p>
@@ -64,6 +65,7 @@ def technology(ICON, IMG):
             <p class="te-plan-lead">Beginning August 2026, middle school students will use technology in a dedicated computer lab setting.</p>
             {checks(["Students will use school-owned Chromebooks", "Devices are used only during scheduled computer classes", "Instruction focuses on essential academic skills, including:"])}
             <ul class="te-skills">{"".join(f"<li>{s}</li>" for s in skills)}</ul>
+            <img class="te-plan-img te-plan-img-ms" src="{IMG}covenant-118-9528193.jpg" alt="Middle school students working together on school devices" loading="lazy">
             <p class="te-plan-note">This model better prepares students for high school expectations while keeping classroom learning focused and effective.</p>
           </div>
         </article>
@@ -74,14 +76,14 @@ def technology(ICON, IMG):
             <h3 id="te-el">Elementary Technology Use</h3>
             <p class="te-plan-lead">Younger students will continue to use school-owned iPads occasionally and intentionally.</p>
             {checks(["Technology is used in small, purposeful ways", "Screen time is balanced with hands-on learning, discussion, and written work", "iPads support instruction—not replace traditional learning tools"])}
-            <img class="te-plan-img" src="{IMG}fb/ccs-four-friends.jpg" alt="Four smiling elementary students sitting together" loading="lazy">
+            <img class="te-plan-img" src="{IMG}covenant-47-9584556.jpg" alt="A teacher working one-on-one with an elementary student on a school iPad" loading="lazy">
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="gv gv-section te-policy" aria-labelledby="te-policy-title">
+  <section class="gv gv-section te-policy te-grid" aria-labelledby="te-policy-title">
     <div class="gv-wrap">
       <div class="te-policy-head" data-reveal>
         <h2 id="te-policy-title">Personal Device Policy</h2>
@@ -95,8 +97,8 @@ def technology(ICON, IMG):
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-parallax te-why" data-focus=".3" aria-labelledby="te-why-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}fb/ccs-boys-praying.jpg')" aria-hidden="true"></div>
+  <section class="gv gv-band gv-band-parallax te-why" data-focus=".2" aria-labelledby="te-why-title">
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-121-9598740.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="te-why-title">Why This Matters</h2>
       <p class="gv-band-sub">At Covenant Christian School, we believe technology should support learning and honor the way God designed our children to grow and learn. By guiding how and when technology is used, we help students stay focused, build strong foundations, and develop wise, responsible habits that will serve them well in the future.</p>

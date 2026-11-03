@@ -1779,3 +1779,52 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
   .gv .te-num { width: 44px; font-size: 28px; }
   .gv.te-why .gv-band-sub { font-size: 18px; }
 }
+
+/* Technology: techy layer (blueprint grid, mono labels, device windows) */
+.te-hero, .te-grid, .te-plan:first-child .te-plan-in { --te-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; }
+.gv.te-hero .tu-hero2-img { background-position: 18% 30%; }
+.te-hero-grid, .te-grid::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: linear-gradient(rgba(240, 217, 194, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 217, 194, .07) 1px, transparent 1px);
+  background-size: 44px 44px; -webkit-mask-image: radial-gradient(ellipse 70% 80% at 20% 50%, #000 30%, transparent 75%); mask-image: radial-gradient(ellipse 70% 80% at 20% 50%, #000 30%, transparent 75%); }
+.te-grid { position: relative; isolation: isolate; overflow: hidden; }
+.te-grid > .gv-wrap { position: relative; z-index: 2; }
+.te-hero .tu-hero2-copy { position: relative; z-index: 2; }
+.gv.te-hero .gv-eyebrow, .gv.te-grid .gv-eyebrow, .gv .te-solution .gv-eyebrow { font-family: var(--te-mono, ui-monospace, Menlo, Consolas, monospace); letter-spacing: .18em; }
+.gv.te-hero .gv-eyebrow::before, .gv .te-solution .gv-eyebrow::before { content: "// "; color: var(--tan); }
+.te-caret { display: inline-block; width: .09em; height: .78em; margin-left: .08em; vertical-align: -.04em; background: var(--tan); animation: te-blink 1.1s steps(1) infinite; }
+@keyframes te-blink { 50% { opacity: 0; } }
+/* challenge: navy + grid, device window photo */
+.gv.te-challenge { background: radial-gradient(900px 500px at 90% 10%, rgba(91, 156, 214, .16), transparent 60%), radial-gradient(700px 500px at 0% 100%, rgba(218, 173, 134, .12), transparent 60%), linear-gradient(165deg, #1b3a58 0%, #122c47 45%, #0a1b2d 100%) #122c47; }
+.te-window { position: relative; margin: 0; border-radius: 10px; overflow: hidden; background: #0b1c2e; border: 1px solid rgba(240, 217, 194, .22); box-shadow: 0 30px 70px rgba(0, 0, 0, .45), 0 0 0 6px rgba(240, 217, 194, .04), 0 0 60px rgba(91, 156, 214, .18); }
+.te-window-bar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: linear-gradient(180deg, #1d3a57, #152f4a); border-bottom: 1px solid rgba(240, 217, 194, .14); }
+.te-window-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(240, 217, 194, .35); }
+.te-window-bar i:first-child { background: var(--tan); }
+.te-window-bar span { margin-left: 10px; padding: 4px 12px; flex: 1; border-radius: 999px; font: 12px/1.2 ui-monospace, Menlo, Consolas, monospace; color: rgba(240, 217, 194, .75); background: rgba(0, 0, 0, .22); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.te-window img { display: block; width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; object-position: 55% 40%; }
+.te-window::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 30%; pointer-events: none; background: linear-gradient(180deg, transparent, rgba(240, 217, 194, .10), transparent); animation: te-scan 6s ease-in-out infinite; }
+@keyframes te-scan { 0% { transform: translateY(-40%); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(380%); opacity: 0; } }
+.gv .te-num { font: 600 26px/1 ui-monospace, Menlo, Consolas, monospace; color: var(--tan); text-shadow: 0 0 18px rgba(218, 173, 134, .55); }
+.gv .te-finds li { transition: background .25s, padding-left .25s; }
+.gv .te-finds li:hover { background: linear-gradient(90deg, rgba(240, 217, 194, .07), transparent); }
+.gv .te-seen { background: rgba(255, 255, 255, .04); box-shadow: inset 3px 0 0 var(--tan); }
+/* plans */
+.te-plan:first-child .te-plan-in { background: radial-gradient(500px 300px at 100% 0%, rgba(91, 156, 214, .2), transparent 60%), linear-gradient(165deg, #1d3c5b 0%, #132e49 50%, #0a1b2d 100%) #132e49; }
+.te-plan:first-child .te-plan-in::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background-image: linear-gradient(rgba(240, 217, 194, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 217, 194, .06) 1px, transparent 1px); background-size: 32px 32px; -webkit-mask-image: linear-gradient(160deg, #000, transparent 60%); mask-image: linear-gradient(160deg, #000, transparent 60%); }
+.te-plan-in > * { position: relative; }
+.gv .te-grades { font-family: ui-monospace, Menlo, Consolas, monospace; letter-spacing: .1em; }
+.gv .te-skills li { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; background: rgba(0, 0, 0, .18); border-radius: 4px; }
+.gv .te-skills li::before { content: "> "; color: var(--tan); }
+.te-plan-img-ms { flex: none !important; height: 210px !important; min-height: 0 !important; }
+.te-plan-img { box-shadow: 0 0 0 1px rgba(19, 28, 36, .08); }
+/* policy: dark tech band */
+.gv.te-policy { color: #fff; background: radial-gradient(800px 400px at 50% 0%, rgba(91, 156, 214, .18), transparent 65%), linear-gradient(180deg, #0f2740, #0a1b2d) #0f2740; }
+.gv.te-policy::before { -webkit-mask-image: radial-gradient(ellipse 60% 90% at 50% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 90% at 50% 40%, #000 20%, transparent 75%); }
+.gv .te-policy-head h2 { color: #fff; }
+.gv .te-policy-head p { color: #f0d9c2; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 15px; letter-spacing: .04em; }
+.gv .te-policy-list li { color: #fff; }
+.gv .te-policy-list li + li { border-color: rgba(240, 217, 194, .16); }
+.te-policy-list .hm-col-icon { border-radius: 50%; color: var(--tan); background: rgba(255, 255, 255, .04); border: 1.5px solid rgba(218, 173, 134, .6); box-shadow: 0 0 0 8px rgba(218, 173, 134, .06), 0 0 34px rgba(218, 173, 134, .25); }
+.gv.te-why::after { background: linear-gradient(180deg, rgba(10, 27, 45, .42), rgba(10, 27, 45, .66)); }
+@media (prefers-reduced-motion: reduce) { .te-caret, .te-window::after { animation: none; } }
+@media (max-width: 960px) { .te-window { max-width: 600px; } .te-window img { aspect-ratio: 4 / 3; } }
+@media (max-width: 640px) { .te-hero-grid { background-size: 32px 32px; } .gv.te-hero .tu-hero2-img { background-position: 22% 30%; } }
