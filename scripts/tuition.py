@@ -87,7 +87,45 @@ def tuition(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper" id="schedules" aria-labelledby="tu-sched-title">
+
+  <section class="gv gv-section gv-paper tu-est-sec" id="estimate" aria-labelledby="tu-est-title">
+    <div class="gv-wrap">
+      <div class="tu-head tu-center" data-reveal>
+        <span class="gv-eyebrow">Estimate</span>
+        <h2 id="tu-est-title">Add up your family's tuition<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <p>Add each child, choose a payment plan, and include any scholarships to see an estimated yearly total.</p>
+      </div>
+      <div class="tu-est" data-reveal hidden>
+        <div class="tu-est-form">
+          <fieldset class="tu-est-block">
+            <legend>Your students</legend>
+            <ol class="tu-kids" id="tu-kids"></ol>
+            <button type="button" class="tu-add" id="tu-add"><span aria-hidden="true">+</span> Add another student</button>
+          </fieldset>
+          <fieldset class="tu-est-block tu-est-row">
+            <legend>Your family</legend>
+            <label class="tu-field"><span>Family</span>
+              <select id="tu-family"><option value="new">New to Covenant</option><option value="returning">Re-enrolling (Priority Re-Enrollment)</option></select></label>
+            <label class="tu-field"><span>Payment plan</span>
+              <select id="tu-plan"><option value="annual">Annually (2% discount)</option><option value="biannual">Bi-Annually</option><option value="quarterly">Quarterly</option><option value="monthly" selected>Monthly (11 payments)</option></select></label>
+            <label class="tu-field"><span>Other scholarships or aid (per year)</span>
+              <span class="tu-money"><span aria-hidden="true">$</span><input id="tu-aid" type="number" inputmode="numeric" min="0" step="50" placeholder="0" aria-describedby="tu-aid-hint"></span>
+              <small id="tu-aid-hint">For example, an AOSF scholarship award.</small></label>
+          </fieldset>
+        </div>
+        <aside class="tu-est-out" aria-live="polite">
+          <h3>Your estimate</h3>
+          <dl class="tu-lines" id="tu-lines"></dl>
+          <div class="tu-total"><span>Estimated tuition for the year</span><strong id="tu-total">$0</strong><em id="tu-per"></em></div>
+          <details class="tu-fees-est"><summary>Plus fees <strong id="tu-fees-total"></strong></summary><dl class="tu-lines" id="tu-fee-lines"></dl></details>
+          <p class="tu-disclaimer">This is an estimate only. Your tuition amount may be different based on your enrollment date and your scholarship awards. Call our office at <a href="tel:251-633-8055">251-633-8055</a> for your specific amount.</p>
+        </aside>
+      </div>
+      <noscript><p class="tu-note2">Call our office at 251-633-8055 for your family's specific amount.</p></noscript>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-white" id="schedules" aria-labelledby="tu-sched-title">
     <div class="gv-wrap tu-acc-wrap">
       <div class="tu-head tu-center" data-reveal>
         <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>

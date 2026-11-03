@@ -225,3 +225,90 @@
   window.addEventListener("hashchange", openHash);
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", openHash); else openHash();
 })();
+
+// Tuition estimator: tuition per student, 3% for the 2nd and 3rd child (not half-day programs),
+// payment-plan discount, CHOOSE Act and other scholarships, and the published fees.
+(function () {
+  var box = document.querySelector(".tu-est");
+  if (!box) return;
+  box.hidden = false;
+  var PROGRAMS = [
+    { id: "k3h", name: "K3/K4 · 3 Day Half Day", tuition: 2899, cur: 250, half: true, young: true },
+    { id: "k3f", name: "K3/K4 · 3 Day Full Day", tuition: 4062, cur: 250, half: false, young: true },
+    { id: "k5h", name: "K3/K4/K5 · 5 Day Half Day", tuition: 5130, cur: 300, half: true, young: true },
+    { id: "k5f", name: "K3/K4/K5 · 5 Day Full Day", tuition: 6831, cur: 425, half: false, young: true },
+    { id: "el", name: "Elementary · 1st-5th Grade", tuition: 7053, cur: 425, half: false, young: false },
+    { id: "jh", name: "Junior High · 6th-8th Grade", tuition: 7229, cur: 425, half: false, young: false }
+  ];
+  var FACTS = { annual: 25, biannual: 25, quarterly: 55, monthly: 55 };
+  var PAYMENTS = { annual: 1, biannual: 2, quarterly: 4, monthly: 11 };
+  var list = document.getElementById("tu-kids"), add = document.getElementById("tu-add");
+  var family = document.getElementById("tu-family"), plan = document.getElementById("tu-plan"), aid = document.getElementById("tu-aid");
+  var lines = document.getElementById("tu-lines"), feeLines = document.getElementById("tu-fee-lines");
+  var totalEl = document.getElementById("tu-total"), perEl = document.getElementById("tu-per"), feesTotal = document.getElementById("tu-fees-total");
+  var n = 0;
+  function $(v) { return "$" + Math.round(v).toLocaleString("en-US"); }
+  function row(dl, label, value, cls) { var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = label; dd.textContent = value; if (cls) { dt.className = dd.className = cls; } dl.appendChild(dt); dl.appendChild(dd); }
+  function addKid(pid) {
+    n++;
+    var li = document.createElement("li"); li.className = "tu-kid";
+    var opts = PROGRAMS.map(function (p) { return '<option value="' + p.id + '"' + (p.id === pid ? " selected" : "") + ">" + p.name + " — " + $(p.tuition) + "</option>"; }).join("");
+    li.innerHTML = '<span class="tu-kid-n" aria-hidden="true"></span>' +
+      '<label class="tu-field"><span>Grade level</span><select class="tu-kid-p">' + opts + "</select></label>" +
+      '<label class="tu-check"><input type="checkbox" class="tu-kid-choose"><span>CHOOSE Act ESA <small>(up to $7,000)</small></span></label>' +
+      '<button type="button" class="tu-remove" aria-label="Remove this student">&times;</button>';
+    list.appendChild(li);
+    li.querySelector(".tu-remove").addEventListener("click", function () { li.remove(); calc(); });
+    li.querySelectorAll("select,input").forEach(function (el) { el.addEventListener("change", calc); });
+    calc();
+  }
+  function calc() {
+    var kids = Array.prototype.map.call(list.children, function (li, i) {
+      li.querySelector(".tu-kid-n").textContent = String(i + 1).padStart(2, "0");
+      li.querySelector(".tu-remove").hidden = list.children.length === 1;
+      var p = PROGRAMS.filter(function (x) { return x.id === li.querySelector(".tu-kid-p").value; })[0];
+      return { p: p, choose: li.querySelector(".tu-kid-choose").checked };
+    });
+    lines.innerHTML = ""; feeLines.innerHTML = "";
+    var sum = 0, disc = 0, eligible = 0, staff = false;
+    kids.forEach(function (k, i) {
+      row(lines, "Student " + (i + 1) + " · " + k.p.name, $(k.p.tuition));
+      sum += k.p.tuition;
+      if (!k.p.half) { eligible++; if (eligible === 2 || eligible === 3) disc += k.p.tuition * 0.03; else if (eligible >= 4) staff = true; }
+    });
+    var net = sum - disc;
+    if (disc) row(lines, "Multi-student discount (3% for 2nd & 3rd child)", "−" + $(disc), "is-save");
+    var pl = plan.value;
+    if (pl === "annual") { var ad = net * 0.02; net -= ad; row(lines, "Paid annually by June 1st (2% discount)", "−" + $(ad), "is-save"); }
+    var choose = 0;
+    kids.forEach(function (k) { if (k.choose) choose += Math.min(7000, k.p.tuition); });
+    if (choose) row(lines, "CHOOSE Act ESA (estimated)", "−" + $(choose), "is-save");
+    var other = Math.max(0, parseFloat(aid.value) || 0);
+    if (other) row(lines, "Other scholarships or aid", "−" + $(other), "is-save");
+    var total = Math.max(0, net - choose - other);
+    if (staff) row(lines, "4th + additional students", "Ask our office", "is-note");
+    totalEl.textContent = $(total);
+    var pays = PAYMENTS[pl];
+    perEl.textContent = pays > 1 && total > 0 ? "about " + $(total / pays) + " × " + pays + " payments" : "";
+    // Fees
+    var fees = 0, kidsN = kids.length, isNew = family.value === "new";
+    function fee(label, v) { if (v) { row(feeLines, label, $(v)); fees += v; } }
+    if (isNew) {
+      var scr = kids.reduce(function (s, k) { return s + (k.p.young ? 20 : 30); }, 0);
+      fee("New Student Screening Fee", scr);
+      fee("Registration Fee ($200 per student, max $400 / family)", Math.min(400, 200 * kidsN));
+      fee("New Family Processing Fee", 150);
+      fee("FACTS Application Fee ($25 per student)", 25 * kidsN);
+    } else {
+      fee("Priority Re-Enrollment ($175 / student, max $350 / family)", Math.min(350, 175 * kidsN));
+    }
+    fee("Curriculum Fees", kids.reduce(function (s, k) { return s + k.p.cur; }, 0));
+    fee("Building / FTP Fees", 320);
+    fee("FACTS payment plan fee (per year)", FACTS[pl]);
+    feesTotal.textContent = $(fees);
+  }
+  add.addEventListener("click", function () { addKid("el"); var s = list.lastElementChild.querySelector("select"); s.focus(); });
+  [family, plan].forEach(function (el) { el.addEventListener("change", calc); });
+  aid.addEventListener("input", calc);
+  addKid("el");
+})();
