@@ -33,6 +33,6 @@ export const pickCreditVersion = (html, live) =>
 
 // Redesigned pages awaiting approval: served in place of the current page only on a preview link.
 // "/page": "/redesign/page" entries preview a redesign at its normal URL (homepage = "").
-export const REDESIGNS = { "": "/redesign/index", "/index": "/redesign/index" };
+export const REDESIGNS = { "": "/redesign/home", "/index": "/redesign/home" };
 export const redesignFor = path => REDESIGNS[path.replace(/\.html$|\/$/i, "").toLowerCase()];
 export const isRedesignPath = path => /^\/(?:pages\/)?redesign(?:\/|$)/i.test(path);

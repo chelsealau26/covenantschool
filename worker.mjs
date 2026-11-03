@@ -30,7 +30,11 @@ export default {
       });
     }
     const redesign = isPreview(url) ? redesignFor(decoded) : null;
-    const response = await env.ASSETS.fetch(redesign ? new Request(new URL(redesign, url), request) : request);
+    let response = await env.ASSETS.fetch(redesign ? new Request(new URL(redesign, url), request) : request);
+    // A preview must never redirect the visitor to the internal /redesign/ path (it would drop the preview key).
+    if (redesign && response.status >= 300 && response.status < 400 && response.headers.get("Location")) {
+      response = await env.ASSETS.fetch(new Request(new URL(response.headers.get("Location"), url), request));
+    }
     const contentType = response.headers.get("Content-Type") || "";
     if (contentType.includes("text/html") || path === "/sitemap.xml") {
       const headers = new Headers(response.headers);

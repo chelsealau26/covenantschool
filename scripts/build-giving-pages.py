@@ -746,8 +746,8 @@ def build():
     (PAGES / "federal-tax-credit.html").write_text(with_main(tc, tax_credit()))
     # Homepage refresh: preview only until approved (served on ?preview=... by the worker)
     (PAGES / "redesign").mkdir(exist_ok=True)
-    (PAGES / "redesign" / "index.html").write_text(with_main(shell("index.html", chrome="index.html"), home()))
-    print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html, redesign/index.html")
+    (PAGES / "redesign" / "home.html").write_text(with_main(shell("index.html", chrome="index.html"), home()))
+    print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html, redesign/home.html")
 
 
 if __name__ == "__main__":
