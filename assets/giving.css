@@ -686,9 +686,9 @@
 .hm-res-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; border-top: 2px solid var(--navy); }
 .hm-res-list li { border-bottom: 1px solid #ddcfbf; }
 .hm-res-list a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 2px; color: var(--navy) !important; font-weight: 700; text-decoration: none !important; transition: color .2s, padding .2s; }
-.hm-res-list a span { color: var(--tan-deep); transition: transform .2s; }
+.hm-res-list a::after { content: "\2192"; content: "\2192" / ""; display: inline-block; flex: none; color: var(--tan-deep); font-weight: 400; transition: transform .2s; } /* decorative arrow: drawn by CSS so it is not read aloud */
 .hm-res-list a:hover, .hm-res-list a:focus-visible { color: var(--tan-deep) !important; padding-left: 6px; }
-.hm-res-list a:hover span { transform: translateX(3px); }
+.hm-res-list a:hover::after { transform: translateX(3px); }
 
 /* Supply lists / FTP / Jobs: plain columns separated by rules */
 .hm-cols-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -789,3 +789,5 @@
 body:has(.gv-hero-home) #container-widget-1719555017494 { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553 !important; border-top: 3px solid var(--tan, #daad86); }
 body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !important; border-top: 1px solid rgba(218, 173, 134, .22); }
 .gv.gv-hero-home .gv-lead { color: #fff; }
+
+.gv-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
