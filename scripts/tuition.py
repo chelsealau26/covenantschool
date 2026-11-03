@@ -136,9 +136,9 @@ def tuition(ICON, IMG, NEW_TAB):
         <ul class="tu-checks tu-checks-dark"><li>Clear due dates for tuition and fees</li><li>Breakdown of additional fees</li><li>Save with our multi-student discounts</li></ul>
       </div>
       <div class="tu-accs" data-reveal>
-        {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede"><span class="tu-status tu-status-light">Coming soon</span> Re-enrollment dates for the 2027–2028 school year are coming soon. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
+        {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede"><span class="tu-status tu-status-light">Coming soon</span> Re-enrollment and open enrollment dates for the 2027–2028 school year are coming soon. Don’t miss early bird savings! Limited spots—apply early!</p>
           <h4>CCS Student Re-Enrollment</h4><ol class="tu-dates">{enroll}</ol>
-          <h4>New Student Enrollment</h4><ol class="tu-dates"><li>{badge("February 22nd")}<div><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
+          <h4>New Student Enrollment</h4><ol class="tu-dates"><li>{soon}<div><strong>Open Enrollment</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
           <p class="tu-fine">All enrollment fees are non-refundable.</p>''')}
         {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-plans2">{plans}</ul>')}
         {item("receipt", "Additional Fees", id_="additional-fees", body=f'''<ul class="tu-fees2">{fees}</ul>
