@@ -1706,3 +1706,73 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
   .gv .cu-subjects { grid-template-columns: 1fr; }
   .gv .cu-panel-title { font-size: 34px !important; }
 }
+
+/* ---------------------------------------------------------------- Technology (preview redesign) */
+.te-hero .tu-hero2-img { background-position: 55% 40%; }
+.gv.te-hero .te-l2 { display: block; }
+.te-commit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.gv.te-commit h2 { font-size: clamp(34px, 3.6vw, 48px); margin-bottom: 20px; }
+.gv .te-big { font-size: 20px; line-height: 1.65; color: var(--ink); }
+.gv.te-commit .ns-statement { margin: 0 !important; }
+.gv.te-challenge { color: #fff; background: radial-gradient(1200px 600px at 85% 0%, rgba(218, 173, 134, .14), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 45%, #0d2136 100%) #153553; }
+.te-challenge-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
+.te-challenge-grid .hm-frame img { aspect-ratio: 4 / 5; object-position: 50% 25%; }
+.gv.te-challenge h2 { color: #fff; font-size: clamp(34px, 3.6vw, 48px); margin-bottom: 16px; }
+.gv .te-challenge-intro { font-size: 18px; line-height: 1.65; color: rgba(255, 255, 255, .88); }
+.gv .te-finds { list-style: none !important; margin: 28px 0 0 !important; padding: 0 !important; }
+.gv .te-finds li { display: flex; gap: 22px; align-items: baseline; margin: 0 !important; padding: 18px 0 !important; border-top: 1px solid rgba(255, 255, 255, .14); }
+.gv .te-num { flex: none; width: 56px; font: 400 34px/1 Anton, "Open Sans", Arial, sans-serif; color: #f0d9c2; }
+.gv .te-finds h3 { margin: 0 !important; font: 600 20px/1.45 "Open Sans", Arial, sans-serif !important; color: #fff; letter-spacing: 0; text-transform: none; }
+.gv .te-seen { display: flex; gap: 16px; align-items: center; margin-top: 22px !important; padding: 20px 22px; border: 1.5px solid rgba(218, 173, 134, .55); border-radius: 4px; font-size: 17px; line-height: 1.6; color: #fff; }
+.te-seen .hm-col-icon { width: 44px; height: 44px; flex: none; background: transparent; color: var(--tan); }
+.te-solution { max-width: 860px; margin: 0 auto 88px; text-align: center; }
+.gv .te-solution h2 { font-size: clamp(40px, 4.6vw, 64px); margin: 6px 0 18px; }
+.gv .te-solution p { font-size: 21px; line-height: 1.7; color: var(--ink); }
+.te-use-head { text-align: left; }
+.gv .te-use-head p { margin-top: 10px; font-size: 18px; color: var(--muted); }
+.te-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 40px; align-items: stretch; }
+.te-plan { position: relative; margin: 0 22px 22px 0; }
+.te-plan .hm-frame-line { top: 18px; left: 18px; }
+.te-plan-in { position: relative; z-index: 1; height: 100%; padding: 38px 36px 36px; border-radius: 4px; background: #fff; box-shadow: var(--shadow); }
+.te-plan:first-child .te-plan-in { color: #fff; background: linear-gradient(165deg, #224361 0%, #153553 50%, #0d2136 100%) #153553; }
+.gv .te-grades { display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); background: var(--tan-soft); }
+.te-plan:first-child .te-grades { color: var(--navy); background: #f0d9c2; }
+.gv .te-plan h3 { margin: 16px 0 12px !important; font: 400 clamp(30px, 2.8vw, 40px)/1.05 Anton, "Open Sans", Arial, sans-serif !important; color: var(--navy); }
+.gv .te-plan:first-child h3 { color: #fff; }
+.gv .te-plan-lead { font-size: 18px; line-height: 1.6; color: var(--ink); }
+.gv .te-plan:first-child .te-plan-lead, .gv .te-plan:first-child .te-plan-note { color: rgba(255, 255, 255, .9); }
+.gv .te-checks { list-style: none !important; margin: 22px 0 0 !important; padding: 0 !important; }
+.gv .te-checks li { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 14px !important; padding: 0 !important; font-size: 17px; font-weight: 600; line-height: 1.5; color: var(--navy); }
+.gv .te-plan:first-child .te-checks li { color: #fff; }
+.te-tick { flex: none; width: 22px; height: 22px; margin-top: 1px; color: var(--tan-deep); }
+.te-plan:first-child .te-tick { color: var(--tan); }
+.te-tick svg { width: 22px; height: 22px; }
+.gv .te-skills { list-style: none !important; display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 0 34px !important; padding: 0 !important; }
+.gv .te-skills li { margin: 0 !important; padding: 8px 14px !important; border: 1.5px solid rgba(240, 217, 194, .55); border-radius: 999px; font-size: 14px; font-weight: 600; color: #f0d9c2; }
+.gv .te-plan-note { margin-top: 24px !important; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .16); font-size: 16px; line-height: 1.6; font-style: italic; }
+.gv.te-policy { background: #fff; }
+.te-policy-head { text-align: center; margin-bottom: 40px; }
+.gv .te-policy-head h2 { font-size: clamp(34px, 3.6vw, 48px); }
+.gv .te-policy-head p { margin-top: 10px; font-size: 18px; color: var(--muted); }
+.gv .te-policy-list { list-style: none !important; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 !important; padding: 0 !important; }
+.gv .te-policy-list li { display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 0 !important; padding: 8px 36px !important; text-align: center; font-size: 19px; font-weight: 600; line-height: 1.5; color: var(--navy); }
+.gv .te-policy-list li + li { border-left: 1px solid var(--line); }
+.te-policy-list .hm-col-icon { width: 64px; height: 64px; }
+.te-policy-list .hm-col-icon svg { width: 28px; height: 28px; }
+.gv.te-why .gv-band-sub { max-width: 820px; margin: 18px auto 0; font-size: 20px; line-height: 1.7; }
+@media (max-width: 960px) {
+  .te-commit-grid, .te-challenge-grid, .te-plans { grid-template-columns: 1fr; gap: 40px; }
+  .te-challenge-grid .hm-frame img { aspect-ratio: 4 / 3; }
+  .te-solution { margin-bottom: 56px; }
+  .gv .te-policy-list { grid-template-columns: 1fr; gap: 28px; }
+  .gv .te-policy-list li + li { border-left: 0; border-top: 1px solid var(--line); padding-top: 28px !important; }
+}
+@media (max-width: 640px) {
+  .te-plan { margin: 0 14px 14px 0; }
+  .te-plan .hm-frame-line { top: 14px; left: 14px; }
+  .te-plan-in { padding: 28px 22px; }
+  .gv .te-skills { margin-left: 0 !important; }
+  .gv .te-finds h3 { font-size: 18px !important; }
+  .gv .te-num { width: 44px; font-size: 28px; }
+  .gv.te-why .gv-band-sub { font-size: 18px; }
+}
