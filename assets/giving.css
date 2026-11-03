@@ -860,7 +860,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 }
 
 /* ---------------------------------------------------------------- Employment (preview redesign) */
-.gv.gv-hero.ep-hero { min-height: 56vh; }
+.gv.gv-hero.ep-hero { min-height: 56vh; --hero-pos: center 12%; }
 .ep-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
 .ep-side { position: sticky; top: 110px; }
 .gv .ep-intro { margin-top: 16px !important; font-size: 19px; line-height: 1.7; color: var(--ink); }
