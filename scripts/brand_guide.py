@@ -128,7 +128,7 @@ def brand_guide(ICON):
     <table class="bgd-table" style="margin-top:28px">
       <thead><tr><th scope="col">Style</th><th scope="col">Means</th><th scope="col">Used for</th></tr></thead>
       <tbody>
-        <tr><td>Tan, navy text</td><td>The one action we most want a new family to take</td><td>Schedule a Tour only (and Pledge Now / Donate on giving pages)</td></tr>
+        <tr><td>Tan, navy text</td><td>The one action we most want a new family to take on that page</td><td>Schedule a Tour; Apply Now on the New Student Application page; Pledge Now / Donate on giving pages</td></tr>
         <tr><td>Navy outline (light bg)</td><td>Go somewhere / learn more</td><td>Learn More, Apply Today, Directions, Download the App, Explore Scholarships</td></tr>
         <tr><td>White outline (dark bg)</td><td>Same as navy outline, on navy or photos</td><td>Visit the Family Portal, More Details</td></tr>
         <tr><td>Text link + arrow</td><td>List of destinations</td><td>CCS Resources; arrows are drawn by CSS so they are not read aloud</td></tr>
