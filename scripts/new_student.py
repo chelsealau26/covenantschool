@@ -28,7 +28,7 @@ def new_student(ICON, IMG, NEW_TAB):
         <p class="ns-statement" data-reveal>We look forward to welcoming you into our school family!</p>
         <p class="mv-body" data-reveal>Welcome to Covenant Christian School, and thank you for considering us for your student's education. Our goal is to provide exceptional educational services tailored to your child's needs. The application process is convenient and entirely online through our parent portal. Follow the simple steps below to complete your application today. For any questions about enrollment, please don't hesitate to reach out to our office at <a class="ns-tel" href="tel:251-633-8055">251-633-8055</a>.</p>
       </div>
-      <div class="ns-welcome-photo" data-reveal="left"><img src="{IMG}covenant-149_1-9584696.jpg" alt="A smiling young boy climbing on the playground" loading="lazy"></div>
+      <div class="hm-frame ns-welcome-photo" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-149_1-9584696.jpg" alt="A smiling young boy climbing on the playground" loading="lazy"></div>
     </div>
   </section>
 
@@ -65,30 +65,35 @@ def new_student(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-left gv-band-parallax ns-kinder" data-focus=".3" aria-labelledby="ns-kinder-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-104-9578593.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap" data-reveal>
-      <span class="gv-eyebrow">All you need to know</span>
-      <h2 id="ns-kinder-title">Kinder Requirements</h2>
-      <p>Explore a few things about our kindergarten requirements to ensure a smooth application process and a successful start for your child.</p>
-      <dl class="ns-ages">
-        <div><dt>K3</dt><dd>Students must be 3 years old before September 1 and must be fully toilet trained</dd></div>
-        <div><dt>K4</dt><dd>Students must be 4 years old before September 1</dd></div>
-        <div><dt>K5</dt><dd>Students must be 5 years old before September 1</dd></div>
-      </dl>
+  <section class="gv gv-section ns-kinder" aria-labelledby="ns-kinder-title">
+    <img class="mv-faith-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
+    <div class="gv-wrap ns-kinder-grid">
+      <div class="hm-frame ns-kinder-photo" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-151_1-9523341.jpg" alt="Three smiling preschool girls in Covenant uniforms on the playground" loading="lazy"></div>
+      <div data-reveal>
+        <span class="gv-eyebrow">All you need to know</span>
+        <h2 id="ns-kinder-title">Kinder Requirements<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <p class="ns-kinder-intro">Explore a few things about our kindergarten requirements to ensure a smooth application process and a successful start for your child.</p>
+        <dl class="ns-ages">
+          <div><dt>K3</dt><dd>Students must be 3 years old before September 1 and must be fully toilet trained</dd></div>
+          <div><dt>K4</dt><dd>Students must be 4 years old before September 1</dd></div>
+          <div><dt>K5</dt><dd>Students must be 5 years old before September 1</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
+
+
+  <section class="gv gv-section gv-white ns-legal" aria-label="Nondiscrimination policy">
+    <div class="gv-wrap"><p>Covenant Christian School does not discriminate on the basis of race, color, national and ethnic origin in administration of its educational policies, admissions policies, scholarship and loan programs, and athletic and other school-administered programs.</p></div>
+  </section>
+
   <section class="gv gv-band gv-band-parallax" aria-labelledby="ns-tour-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-151_1-9523341.jpg')" aria-hidden="true"></div>
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-95-9602737.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="ns-tour-title">TOUR OUR CAMPUS</h2>
       <p class="gv-band-sub">Your child's exceptional education experience awaits.</p>
       <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/schedule-tour">SCHEDULE A TOUR</a></div>
     </div>
-  </section>
-
-  <section class="gv gv-section gv-white ns-legal" aria-label="Nondiscrimination policy">
-    <div class="gv-wrap"><p>Covenant Christian School does not discriminate on the basis of race, color, national and ethnic origin in administration of its educational policies, admissions policies, scholarship and loan programs, and athletic and other school-administered programs.</p></div>
   </section>
 '''
