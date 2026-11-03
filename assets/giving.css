@@ -917,10 +917,14 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .ep-card #employment-form button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(19, 28, 36, .18); }
 @media (prefers-reduced-motion: reduce) { .ep-role, .ep-role::before { transition: none; } .ep-card.is-picked { animation: none; } }
 @media (max-width: 960px) {
-  .gv.gv-hero.ep-hero { text-align: center; padding-top: 0; min-height: 0; }
+  /* Phones/tablets: photo goes behind the text (navy overlay) so the heading and button stay above the fold */
+  .gv.gv-hero.ep-hero { text-align: center; padding: 96px 20px 100px; min-height: 0; flex-direction: row; align-items: center; }
   .ep-hero .gv-hero-copy { margin: 0 auto; }
   .ep-hero .gv-actions { justify-content: center; }
-  .ep-hero .gv-hero-photo { width: auto; background-position: 55% 30%; }
+  .ep-hero .gv-hero-photo { position: absolute; inset: 0; width: auto; height: auto; margin: 0; z-index: 0; background-position: 58% 25%; }
+  .ep-hero .gv-hero-photo::before { background: rgba(13, 33, 54, .76); }
+  .ep-hero > .gv-wrap { position: relative; z-index: 1; }
+  .ep-hero-eagle { display: none; }
   .ep-grid { grid-template-columns: 1fr; gap: 40px; }
   .ep-side { position: static; }
   .ep-frame { max-width: 520px; }
