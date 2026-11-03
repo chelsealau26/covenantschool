@@ -772,7 +772,7 @@ def build():
     bg = bg.replace("</head>", '<meta name="robots" content="noindex, nofollow"></head>', 1)
     (PAGES / "redesign" / "brand-guide.html").write_text(bg)
     PV = (ROOT / "assets" / "preview-version.mjs")
-    PV.write_text(f'export const PREVIEW_CSS_VERSION = "{_v("preview.css")}";\n')
+    PV.write_text(f'export const PREVIEW_CSS_VERSION = "{_v("preview.css")}";\nexport const PREVIEW_JS_VERSION = "{_v("preview.js")}";\n')
     print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html, redesign/home.html")
 
 

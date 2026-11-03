@@ -1824,7 +1824,7 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
 .gv .te-policy-list li { color: #fff; }
 .gv .te-policy-list li + li { border-color: rgba(240, 217, 194, .16); }
 .te-policy-list .hm-col-icon { border-radius: 50%; color: var(--tan); background: rgba(255, 255, 255, .04); border: 1.5px solid rgba(218, 173, 134, .6); box-shadow: 0 0 0 8px rgba(218, 173, 134, .06), 0 0 34px rgba(218, 173, 134, .25); }
-.gv.te-why::after { background: linear-gradient(180deg, rgba(10, 27, 45, .42), rgba(10, 27, 45, .66)); }
+.gv.te-why::after { background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(10, 27, 45, .78), rgba(10, 27, 45, .55)); }
 @media (prefers-reduced-motion: reduce) { .te-caret, .te-window::after { animation: none; } }
 @media (max-width: 960px) { .te-window { max-width: 600px; } .te-window img { aspect-ratio: 4 / 3; } }
 @media (max-width: 640px) { .te-hero-grid { background-size: 32px 32px; } .gv.te-hero .tu-hero2-img { background-position: 22% 30%; } }

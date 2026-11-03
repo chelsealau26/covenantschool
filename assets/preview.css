@@ -99,3 +99,25 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 .mv-hero-bg, .gv-hero-layer, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo { animation: ns-settle 2.6s cubic-bezier(.2, .8, .2, 1) both !important; transform-origin: 60% 40%; }
 .gv-tc-hero::after { animation: ns-settle 2.6s cubic-bezier(.2, .8, .2, 1) both; transform-origin: 60% 40%; }
 @media (prefers-reduced-motion: reduce) { .mv-hero-bg, .gv-hero-layer, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo, .gv-tc-hero::after { animation: none !important; } }
+
+/* Download the App lightbox (preview only) */
+html.ccs-app-open { overflow: hidden; }
+.ccs-app { width: min(420px, calc(100vw - 32px)); padding: 44px 32px 34px; border: 0; border-radius: 14px; text-align: center; color: #fff; font-family: "Open Sans", Arial, sans-serif;
+  background: radial-gradient(400px 260px at 100% 0%, rgba(218, 173, 134, .18), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 50%, #0d2136 100%) #153553; box-shadow: 0 40px 90px rgba(0, 0, 0, .45); }
+.ccs-app[open] { animation: ccs-app-in .32s cubic-bezier(.2, .8, .2, 1); }
+.ccs-app::backdrop { background: rgba(10, 22, 36, .72); backdrop-filter: blur(4px); }
+@keyframes ccs-app-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+.ccs-app-x { position: absolute; top: 10px; right: 12px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: transparent; color: #f0d9c2; font-size: 30px; line-height: 1; cursor: pointer; }
+.ccs-app-x:hover, .ccs-app-x:focus-visible { background: rgba(255, 255, 255, .1); outline: none; }
+.ccs-app-logo { display: block; width: 72px; height: auto; margin: 0 auto 14px; }
+.ccs-app h2 { margin: 0 0 8px; color: #fff; font: 400 34px/1.05 Anton, "Open Sans", Arial, sans-serif; letter-spacing: .01em; }
+.ccs-app p { margin: 0 0 26px; color: rgba(255, 255, 255, .86); font-size: 16px; line-height: 1.5; }
+.ccs-app-btns { display: grid; gap: 12px; }
+.ccs-app-btn { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 13px 18px; border: 1.5px solid rgba(240, 217, 194, .6); border-radius: 8px; color: #fff !important; text-decoration: none !important; font-size: 19px; font-weight: 700; line-height: 1.1; text-align: left; transition: background .2s, border-color .2s, transform .2s; }
+.ccs-app-btn small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #f0d9c2; }
+.ccs-app-btn svg { width: 26px; height: 26px; flex: none; }
+.ccs-app-btn.is-main { background: #daad86; border-color: #daad86; color: #153553 !important; }
+.ccs-app-btn.is-main small { color: #153553; }
+.ccs-app-btn:hover { transform: translateY(-1px); border-color: #f0d9c2; }
+.ccs-app-btn:focus-visible { outline: 3px solid #f0d9c2; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .ccs-app[open] { animation: none; } }

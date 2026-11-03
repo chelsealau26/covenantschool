@@ -97,8 +97,8 @@ def technology(ICON, IMG):
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-parallax te-why" data-focus=".2" aria-labelledby="te-why-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-121-9598740.jpg')" aria-hidden="true"></div>
+  <section class="gv gv-band gv-band-parallax te-why" data-focus=".5" aria-labelledby="te-why-title">
+    <div class="gv-band-bg" style="background-image: url('{IMG}pfrm_expl_unsplsh-2xU7rYxsTiM-9279531.webp')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="te-why-title">Why This Matters</h2>
       <p class="gv-band-sub">At Covenant Christian School, we believe technology should support learning and honor the way God designed our children to grow and learn. By guiding how and when technology is used, we help students stay focused, build strong foundations, and develop wise, responsible habits that will serve them well in the future.</p>
