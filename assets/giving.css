@@ -1238,3 +1238,10 @@ html:not(.tu-js) .tu-plain { display: table; width: 100%; border-collapse: colla
   .gv .tu-list li { grid-template-columns: 1fr; gap: 2px; }
   .gv .tu-list b, .gv .tu-list .tu-amt { text-align: left; }
 }
+
+.gv .tu-label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--tan-deep); }
+.gv .tu-cta-more { margin-top: 18px !important; }
+.gv .tu-cta-more a { color: #f0d9c2 !important; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; text-decoration: none !important; }
+.gv .tu-cta-more a:hover, .gv .tu-cta-more a:focus-visible { color: var(--tan) !important; }
+.gv.tu-hero .tu-checks { margin-top: 20px !important; }
+.gv.tu-hero .tu-checks li { font-size: 15px; font-weight: 600; }

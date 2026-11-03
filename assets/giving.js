@@ -218,3 +218,10 @@
     });
   });
 })();
+
+// Tuition: links to a section (e.g. /tuition#additional-fees) open that row.
+(function () {
+  function openHash() { var el = location.hash && document.getElementById(location.hash.slice(1)); if (el && el.tagName === "DETAILS") { el.open = true; el.scrollIntoView({ block: "start" }); } }
+  window.addEventListener("hashchange", openHash);
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", openHash); else openHash();
+})();

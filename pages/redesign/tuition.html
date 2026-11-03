@@ -887,7 +887,7 @@
     ]
   }
 }
-</script><link rel="stylesheet" href="/assets/site-a11y.css?v=5b3316b8"><script src="/assets/donate-lightbox.js?v=21b6d293" defer></script><link rel="stylesheet" href="/assets/giving.css?v=7969fb00"><script src="/assets/giving.js?v=70e2871d" defer></script></head>
+</script><link rel="stylesheet" href="/assets/site-a11y.css?v=5b3316b8"><script src="/assets/donate-lightbox.js?v=21b6d293" defer></script><link rel="stylesheet" href="/assets/giving.css?v=64b10d88"><script src="/assets/giving.js?v=be64d601" defer></script></head>
     <body class="theme live-theme " data-resources="https://static.web-repository.com" data-content="https://content.app-sources.com/" data-locale="en" data-ver="1195" data-minor="1195.8592.1234509.-1745094565"  data-ali="0">
       <aside class="fundraiser-announcement" aria-label="Fall fundraiser announcement"><div class="fundraiser-announcement-inner"><div class="fundraiser-announcement-copy"><strong>Recipe for Success</strong><span>Fall Fundraiser</span></div><span class="fundraiser-announcement-dates">October 7–November 9, 2026</span><a class="fundraiser-announcement-cta" href="/fall-fundraiser">Learn more</a></div></aside>
       <div 
@@ -2041,11 +2041,17 @@
         <span class="gv-eyebrow">New Families</span>
         <h1>Tuition and Fees</h1>
         <p class="gv-lead">Explore our approachable tuition and fees structure, offering key insights into payment schedules, grade-specific pricing, school fees, and beneficial multi-student savings.</p>
+        <ul class="tu-checks">
+          <li>Clear due dates for tuition and fees</li>
+          <li>Tailored rates for each grade level</li>
+          <li>Breakdown of additional fees</li>
+          <li>Save with our multi-student discounts</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-white tu-calc-sec" aria-labelledby="tu-rate-title">
+  <section class="gv gv-section gv-white tu-calc-sec" id="tuition" aria-labelledby="tu-rate-title">
     <div class="gv-wrap">
       <div class="tu-head tu-center" data-reveal>
         <span class="gv-eyebrow">Tuition</span>
@@ -2068,7 +2074,7 @@
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper" aria-labelledby="tu-sched-title">
+  <section class="gv gv-section gv-paper" id="schedules" aria-labelledby="tu-sched-title">
     <div class="gv-wrap tu-acc-wrap">
       <div class="tu-head tu-center" data-reveal>
         <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>
@@ -2079,12 +2085,12 @@
           <h4>New Student Enrollment</h4><ul class="tu-list"><li><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span><span class="tu-amt">$200 / New Student <em>(Max $750/Family)</em></span></li></ul>
           <p class="tu-fine">All enrollment fees are non-refundable.</p></div></details>
         <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="tu-acc-t">Clear due dates for tuition and fees</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><ul class="tu-list"><li><strong>Annually</strong><span>Paid by June 1st &amp; receive a 2% discount</span><em>($25/yr FACTS fee)</em></li><li><strong>Bi-Annually</strong><span>Equal payments due on June 1st &amp; December 1st</span><em>($25/yr FACTS fee)</em></li><li><strong>Quarterly</strong><span>Equal tuition payments paid on June 1st, September 1st, December 1st, March 1st</span><em>($55/yr FACTS fee)</em></li><li><strong>Monthly</strong><span>July-May 11 mo. Tuition payments</span><em>($55/yr FACTS fee)</em></li></ul></div></details>
-        <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></span><span class="tu-acc-t">Additional Fees</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
+        <details class="tu-acc" id="additional-fees"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></span><span class="tu-acc-t">Additional Fees</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
           <ul class="tu-list"><li><strong>New Student Screening Fee</strong><span>Non-refundable fee paid at the school</span><b>$20 (K3-K5) · $30 (1st-8th)</b></li><li><strong>Registration Fee</strong><span>Non-refundable fee due at enrollment</span><b>$200 per student · Max $400 / family</b></li><li><strong>New Family Processing Fee</strong><span>Non-refundable fee due at enrollment</span><b>$150 per family</b></li><li><strong>FACTS Application Fee</strong><span>Non-refundable fee due at enrollment</span><b>$25 per student</b></li><li><strong>Building / FTP Fees</strong><span>Due June 1st</span><b>$320 per family</b></li></ul>
           <h4>Curriculum Fees <span>Non-refundable due June 1st</span></h4><ul class="tu-list"><li><strong>K3/K4 3 day half day</strong><b>$250</b></li><li><strong>K3/K4 3 day full day</strong><b>$250</b></li><li><strong>K3-K5 5 day half day</strong><b>$300</b></li><li><strong>K3-K5 5 day full day</strong><b>$425</b></li><li><strong>1st-8th Grade</strong><b>$425</b></li></ul></div></details>
-        <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="tu-acc-t">The Bigger The Family, The More The Savings</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p></div></details>
-        <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="tu-acc-t">Choose Act Alabama Is Open</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><p>The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
-          <ul class="tu-list"><li><strong>Renewal Applications (Current Participants)</strong><span>Open December 15, 2025 – March 31, 2026</span></li><li><strong>New Family Applications ('26–'27 Academic Year)</strong><span>Open January 2, 2026 – March 31, 2026</span></li><li><strong>Funding Amount</strong><b>Up to $7,000 per participating student</b></li></ul>
+        <details class="tu-acc" id="discount"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="tu-acc-t">The Bigger The Family, The More The Savings</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><span class="tu-label">Multi Student Discount</span><p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p></div></details>
+        <details class="tu-acc" id="choose"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="tu-acc-t">Choose Act Alabama Is Open</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><span class="tu-label">Apply Now</span><p>The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
+          <h4>Key Dates &amp; Details</h4><ul class="tu-list"><li><strong>Renewal Applications (Current Participants)</strong><span>Open December 15, 2025 – March 31, 2026</span></li><li><strong>New Family Applications ('26–'27 Academic Year)</strong><span>Open January 2, 2026 – March 31, 2026</span></li><li><strong>Funding Amount</strong><b>Up to $7,000 per participating student</b></li></ul>
           <p>Applications are managed through ClassWallet, the official platform for the Choose Act Alabama program. Call ClassWallet support at <a class="ns-tel" href="tel:877-969-5536">877-969-5536</a> for assistance.</p>
           <a class="gv-btn gv-btn-line" href="http://www.classwallet.com/alchoose" target="_blank" rel="noopener">Apply Today · Deadline March 31, 2026</a></div></details>
       </div>
@@ -2096,7 +2102,8 @@
     <div class="gv-wrap" data-reveal>
       <h2 id="tu-cta-title">SAVE YOUR SPOT FOR NEXT YEAR!</h2>
       <p class="gv-band-sub">Limited spots—apply early!</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment</a><a class="gv-btn gv-btn-ghost" href="https://familyportal.renweb.com/" target="_blank" rel="noopener">CCS Student Re-Enrollment</a></div>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment · Start Here</a><a class="gv-btn gv-btn-ghost" href="https://familyportal.renweb.com/" target="_blank" rel="noopener">CCS Student Re-Enrollment · Start Here</a></div>
+      <p class="tu-cta-more"><a href="https://ccs-al.client.renweb.com/oa/inquiry.cfm?memberid=3143" target="_blank" rel="noopener">Request More Information <span aria-hidden="true">&rarr;</span></a></p>
     </div>
   </section>
 </div></div>

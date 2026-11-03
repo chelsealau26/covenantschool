@@ -43,8 +43,8 @@ def tuition(ICON, IMG, NEW_TAB):
     plans = "".join(f'''<li><strong>{n}</strong><span>{d}</span><em>({f})</em></li>''' for n, d, f in PLANS)
     fees = "".join(f'''<li><strong>{n}</strong><span>{w}</span><b>{" · ".join(a)}</b></li>''' for n, w, a in FEES)
     cur = "".join(f'''<li><strong>{n}</strong><b>{p}</b></li>''' for n, p in CURRICULUM)
-    def item(icon, title, body, open_=False):
-        return f'''<details class="tu-acc"{" open" if open_ else ""}><summary><span class="hm-col-icon">{ICON[icon]}</span><span class="tu-acc-t">{title}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body">{body}</div></details>'''
+    def item(icon, title, body, open_=False, id_=""):
+        return f'''<details class="tu-acc"{(' id='+chr(34)+id_+chr(34)) if id_ else ''}{" open" if open_ else ""}><summary><span class="hm-col-icon">{ICON[icon]}</span><span class="tu-acc-t">{title}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body">{body}</div></details>'''
     return f'''
   <section class="gv gv-hero gv-hero-split ep-hero st-hero tu-hero">
     <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
@@ -54,11 +54,17 @@ def tuition(ICON, IMG, NEW_TAB):
         <span class="gv-eyebrow">New Families</span>
         <h1>Tuition and Fees</h1>
         <p class="gv-lead">Explore our approachable tuition and fees structure, offering key insights into payment schedules, grade-specific pricing, school fees, and beneficial multi-student savings.</p>
+        <ul class="tu-checks">
+          <li>Clear due dates for tuition and fees</li>
+          <li>Tailored rates for each grade level</li>
+          <li>Breakdown of additional fees</li>
+          <li>Save with our multi-student discounts</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-white tu-calc-sec" aria-labelledby="tu-rate-title">
+  <section class="gv gv-section gv-white tu-calc-sec" id="tuition" aria-labelledby="tu-rate-title">
     <div class="gv-wrap">
       <div class="tu-head tu-center" data-reveal>
         <span class="gv-eyebrow">Tuition</span>
@@ -81,7 +87,7 @@ def tuition(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper" aria-labelledby="tu-sched-title">
+  <section class="gv gv-section gv-paper" id="schedules" aria-labelledby="tu-sched-title">
     <div class="gv-wrap tu-acc-wrap">
       <div class="tu-head tu-center" data-reveal>
         <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>
@@ -92,12 +98,12 @@ def tuition(ICON, IMG, NEW_TAB):
           <h4>New Student Enrollment</h4><ul class="tu-list"><li><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span><span class="tu-amt">$200 / New Student <em>(Max $750/Family)</em></span></li></ul>
           <p class="tu-fine">All enrollment fees are non-refundable.</p>''')}
         {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-list">{plans}</ul>')}
-        {item("receipt", "Additional Fees", f'''<p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
+        {item("receipt", "Additional Fees", id_="additional-fees", body=f'''<p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
           <ul class="tu-list">{fees}</ul>
           <h4>Curriculum Fees <span>Non-refundable due June 1st</span></h4><ul class="tu-list">{cur}</ul>''')}
-        {item("users", "The Bigger The Family, The More The Savings", '<p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p>')}
-        {item("school", "Choose Act Alabama Is Open", f'''<p>The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
-          <ul class="tu-list"><li><strong>Renewal Applications (Current Participants)</strong><span>Open December 15, 2025 – March 31, 2026</span></li><li><strong>New Family Applications ('26–'27 Academic Year)</strong><span>Open January 2, 2026 – March 31, 2026</span></li><li><strong>Funding Amount</strong><b>Up to $7,000 per participating student</b></li></ul>
+        {item("users", "The Bigger The Family, The More The Savings", id_="discount", body='<span class="tu-label">Multi Student Discount</span><p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p>')}
+        {item("school", "Choose Act Alabama Is Open", id_="choose", body=f'''<span class="tu-label">Apply Now</span><p>The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
+          <h4>Key Dates &amp; Details</h4><ul class="tu-list"><li><strong>Renewal Applications (Current Participants)</strong><span>Open December 15, 2025 – March 31, 2026</span></li><li><strong>New Family Applications ('26–'27 Academic Year)</strong><span>Open January 2, 2026 – March 31, 2026</span></li><li><strong>Funding Amount</strong><b>Up to $7,000 per participating student</b></li></ul>
           <p>Applications are managed through ClassWallet, the official platform for the Choose Act Alabama program. Call ClassWallet support at <a class="ns-tel" href="tel:877-969-5536">877-969-5536</a> for assistance.</p>
           <a class="gv-btn gv-btn-line" href="{CHOOSE}"{NEW_TAB}>Apply Today · Deadline March 31, 2026</a>''')}
       </div>
@@ -109,7 +115,8 @@ def tuition(ICON, IMG, NEW_TAB):
     <div class="gv-wrap" data-reveal>
       <h2 id="tu-cta-title">SAVE YOUR SPOT FOR NEXT YEAR!</h2>
       <p class="gv-band-sub">Limited spots—apply early!</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment</a><a class="gv-btn gv-btn-ghost" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment</a></div>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment · Start Here</a><a class="gv-btn gv-btn-ghost" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment · Start Here</a></div>
+      <p class="tu-cta-more"><a href="{INFO}"{NEW_TAB}>Request More Information <span aria-hidden="true">&rarr;</span></a></p>
     </div>
   </section>
 '''
