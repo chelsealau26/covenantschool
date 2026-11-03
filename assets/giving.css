@@ -646,7 +646,7 @@
 .gv .hm-portal-title { display: flex; align-items: center; gap: 18px; font-size: clamp(46px, 5.2vw, 72px); line-height: 1; color: #fff; text-transform: uppercase; letter-spacing: .01em; }
 .hm-portal-icon { flex: none; width: 66px; height: 66px; border-radius: 4px; background: var(--tan); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; }
 .hm-portal-icon svg { width: 34px; height: 34px; }
-.gv .hm-portal-sub { margin: 14px 0 0 !important; font: 700 21px/1.35 Tahoma, "Open Sans", Arial, sans-serif; color: #f0d9c2; max-width: 640px; }
+.gv .hm-portal-sub { margin: 14px 0 0 !important; font: 400 19px/1.4 Tahoma, "Open Sans", Arial, sans-serif; color: #f0d9c2; max-width: 640px; }
 .gv-band-left .hm-portal-sub + p { margin-top: 14px !important; }
 @media (max-width: 640px) {
   .gv .hm-portal-title { justify-content: center; gap: 12px; font-size: 40px; }

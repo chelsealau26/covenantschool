@@ -568,7 +568,7 @@ def home():
         d = f' data-doc="{doc}"' if doc else ""
         return f'<li><a href="{href}"{NEW_TAB if newtab else ""}{d}>{title}</a></li>'
     def quote(name, role, lines, cls=""):
-        body = "".join(f"<p>{l}</p>" for l in lines)
+        body = f"<p>{'<br>'.join(lines)}</p>"
         return (f'<figure class="hm-quote {cls}"><blockquote>{body}</blockquote>'
                 f'<figcaption>&mdash; {name}, <span>{role}</span></figcaption></figure>')
     return f"""
@@ -630,7 +630,7 @@ def home():
   <section class="gv gv-section gv-white hm-pair">
     <div class="gv-wrap hm-pair-grid">
       <article class="hm-lunch" data-reveal>
-        <img src="{IMG}covenant-94-9522791.jpg" alt="Two smiling young boys in Covenant uniforms with their arms around each other outdoors, one holding a small basketball" loading="lazy">
+        <img src="{IMG}covenant-94-9522791.jpg" alt="Two smiling boys in Covenant uniforms with their arms around each other" loading="lazy">
         <div class="hm-lunch-text">
           <h3>Order Lunch</h3>
           <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>

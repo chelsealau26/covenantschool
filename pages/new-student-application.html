@@ -3896,7 +3896,7 @@
   border-radius: 10px !important;
   padding: 10px 12px !important;
 }
-#a11y-textsize-row > label {
+#a11y-textsize-row > label, #a11y-textsize-row > .a11y-size-label {
   font-size: .78rem !important;
   color: #555 !important;
   font-weight: 600 !important;
@@ -4163,8 +4163,8 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
       '<span>Accessibility Options</span>' +
       '<button id="a11y-panel-reset" aria-label="Reset all accessibility settings">Reset</button>' +
     '</div>' +
-    '<div id="a11y-textsize-row">' +
-      '<label>Text size</label>' +
+    '<div id="a11y-textsize-row" role="group" aria-labelledby="a11y-size-label">' +
+      '<span id="a11y-size-label" class="a11y-size-label">Text size</span>' +
       '<button class="a11y-size-btn" id="a11y-dec" aria-label="Decrease text size">A−</button>' +
       '<span id="a11y-size-val" aria-live="polite">100%</span>' +
       '<button class="a11y-size-btn" id="a11y-inc" aria-label="Increase text size">A+</button>' +

@@ -970,7 +970,7 @@
     "@id": "https://covenantschool.com/#school"
   }
 }
-</script><link rel="stylesheet" href="/assets/site-a11y.css?v=ea776a00"><script src="/assets/donate-lightbox.js?v=21b6d293" defer></script><link rel="stylesheet" href="/assets/giving.css?v=37383ad0"><script src="/assets/giving.js?v=593daf00" defer></script></head>
+</script><link rel="stylesheet" href="/assets/site-a11y.css?v=ea776a00"><script src="/assets/donate-lightbox.js?v=21b6d293" defer></script><link rel="stylesheet" href="/assets/giving.css?v=4e881ad4"><script src="/assets/giving.js?v=593daf00" defer></script></head>
     <body class="theme live-theme " data-resources="https://static.web-repository.com" data-content="https://content.app-sources.com/" data-locale="en" data-ver="1195" data-minor="1195.8592.1234509.-1745094565"  data-ali="0">
       <aside class="fundraiser-announcement" aria-label="Fall fundraiser announcement"><div class="fundraiser-announcement-inner"><div class="fundraiser-announcement-copy"><strong>Recipe for Success</strong><span>Fall Fundraiser</span></div><span class="fundraiser-announcement-dates">October 7–November 9, 2026</span><a class="fundraiser-announcement-cta" href="/fall-fundraiser">Learn more</a></div></aside>
       <div 
@@ -2174,7 +2174,7 @@
   <section class="gv gv-section gv-white hm-pair">
     <div class="gv-wrap hm-pair-grid">
       <article class="hm-lunch" data-reveal>
-        <img src="/assets/covenant-94-9522791.jpg" alt="Two smiling young boys in Covenant uniforms with their arms around each other outdoors, one holding a small basketball" loading="lazy">
+        <img src="/assets/covenant-94-9522791.jpg" alt="Two smiling boys in Covenant uniforms with their arms around each other" loading="lazy">
         <div class="hm-lunch-text">
           <h3>Order Lunch</h3>
           <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
@@ -2240,7 +2240,7 @@
       <div class="hm-voices-grid">
         <div class="hm-voices-lead" data-reveal>
           <span class="hm-stars"><span class="gv-sr">5 out of 5 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span>
-          <figure class="hm-quote hm-quote-lead"><blockquote><p>We love CCS!</p><p>My 3 kids have been loved well and held to a high academic standard!</p></blockquote><figcaption>&mdash; Lanie, <span>Former Teacher &amp; Parent</span></figcaption></figure>
+          <figure class="hm-quote hm-quote-lead"><blockquote><p>We love CCS!<br>My 3 kids have been loved well and held to a high academic standard!</p></blockquote><figcaption>&mdash; Lanie, <span>Former Teacher &amp; Parent</span></figcaption></figure>
         </div>
         <div class="hm-voices-rest">
           <figure class="hm-quote "><blockquote><p>Awesome staff and teachers! Kids learn in a loving Christian environment!</p></blockquote><figcaption>&mdash; Marylin, <span>Current Parent</span></figcaption></figure>
@@ -3243,7 +3243,7 @@
   border-radius: 10px !important;
   padding: 10px 12px !important;
 }
-#a11y-textsize-row > label {
+#a11y-textsize-row > label, #a11y-textsize-row > .a11y-size-label {
   font-size: .78rem !important;
   color: #555 !important;
   font-weight: 600 !important;
@@ -3510,8 +3510,8 @@ body.a11y-no-anim *:not(#a11y-btn):not(#a11y-btn *):not(#a11y-panel):not(#a11y-p
       '<span>Accessibility Options</span>' +
       '<button id="a11y-panel-reset" aria-label="Reset all accessibility settings">Reset</button>' +
     '</div>' +
-    '<div id="a11y-textsize-row">' +
-      '<label>Text size</label>' +
+    '<div id="a11y-textsize-row" role="group" aria-labelledby="a11y-size-label">' +
+      '<span id="a11y-size-label" class="a11y-size-label">Text size</span>' +
       '<button class="a11y-size-btn" id="a11y-dec" aria-label="Decrease text size">A−</button>' +
       '<span id="a11y-size-val" aria-live="polite">100%</span>' +
       '<button class="a11y-size-btn" id="a11y-inc" aria-label="Increase text size">A+</button>' +
