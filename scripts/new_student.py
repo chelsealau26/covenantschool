@@ -10,9 +10,9 @@ def new_student(ICON, IMG, NEW_TAB):
     <div class="ns-hero-img" style="background-image: url('{IMG}covenant-114-9584701.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap ns-hero-copy">
       <span class="gv-eyebrow">Admissions</span>
-      <h1 id="ns-title">Welcome New Students!</h1>
+      <h1 id="ns-title">Welcome <br class="ns-br">New <br class="ns-br">Students!</h1>
+      <p class="gv-lead">Explore how easy it is to become a part of Covenant Christian School and start your journey toward academic success and personal growth.</p>
       <div class="ns-hero-bottom">
-        <p class="gv-lead">Explore how easy it is to become a part of Covenant Christian School and start your journey toward academic success and personal growth.</p>
         <div class="gv-actions">
           <a class="gv-btn gv-btn-gold" href="{APPLY}"{NEW_TAB}>Apply Now</a>
           <a class="gv-btn gv-btn-ghost" href="{INFO}"{NEW_TAB}>Request More Information</a>

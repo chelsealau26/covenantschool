@@ -979,6 +979,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .ns-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(13, 33, 54, .93) 0%, rgba(13, 33, 54, .8) 36%, rgba(13, 33, 54, .1) 62%, rgba(13, 33, 54, 0) 100%), linear-gradient(0deg, rgba(13, 33, 54, .55) 0%, rgba(13, 33, 54, 0) 30%); }
 .ns-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: #0d2136; opacity: calc(var(--hero-dim, 0) * .85); pointer-events: none; }
 .ns-hero-copy { position: relative; }
+.ns-br { display: none; }
 .ns-hero-copy > * { max-width: 640px; }
 .gv.ns-hero h1 { color: #fff; font-size: clamp(52px, 7.4vw, 112px); line-height: .96; letter-spacing: .005em; max-width: 760px; text-shadow: 0 2px 24px rgba(13, 33, 54, .35); }
 .gv.ns-hero .gv-eyebrow { color: #f0d9c2; }
@@ -1041,18 +1042,19 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .ns-kinder-photo { max-width: 440px; }
 }
 @media (max-width: 640px) {
-  /* Phones: heading at the top left, her face clear in the middle, intro + buttons at the bottom.
-     Each text group carries its own navy fade, so text passes contrast on any phone height. */
+  /* Phones: "Welcome / New / Students!" stacked on the left with the intro right under it (one narrow column),
+     her face clear on the right, buttons at the bottom. The shade sits only behind the text column. */
   .gv.ns-hero { align-items: stretch; min-height: calc(100svh - 110px); padding: 0 18px; }
-  .ns-hero-img { background-size: cover; background-position: 64% 30%; animation: none; }
-  .ns-hero::before { background: linear-gradient(180deg, rgba(13, 33, 54, .92) 0%, rgba(13, 33, 54, .82) 120px, rgba(13, 33, 54, 0) 215px); }
-  .gv.ns-hero h1 { text-shadow: 0 2px 16px rgba(13, 33, 54, .6); }
-  .ns-hero-copy { display: flex; flex-direction: column; padding-top: 26px; }
-  .ns-hero-bottom { position: relative; isolation: isolate; margin-top: auto; padding-bottom: 36px; }
-  .ns-hero-bottom::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -110px; bottom: 0; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .6) 60px, rgba(13, 33, 54, .93) 110px, #0d2136 100%); pointer-events: none; }
+  .ns-hero-img { background-size: cover; background-position: 52% 30%; animation: none; }
+  .ns-hero::before { background: linear-gradient(90deg, rgba(13, 33, 54, .94) 0%, rgba(13, 33, 54, .86) 46%, rgba(13, 33, 54, .35) 60%, rgba(13, 33, 54, 0) 72%); }
+  .ns-hero-copy { display: flex; flex-direction: column; padding-top: 28px; }
+  .ns-br { display: inline; }
+  .gv.ns-hero .gv-lead { max-width: 56%; }
+  .ns-hero-bottom { position: relative; isolation: isolate; margin-top: auto; padding: 28px 0 32px; }
+  .ns-hero-bottom::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -30px; bottom: 0; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .85) 40px, #0d2136 100%); pointer-events: none; }
   .gv.ns-hero .gv-eyebrow { margin-bottom: 6px; font-size: 12px; }
-  .gv.ns-hero h1 { font-size: 36px; line-height: 1.02; }
-  .gv.ns-hero .gv-lead { font-size: 15px; line-height: 1.55; margin-top: 10px !important; }
+  .gv.ns-hero h1 { font-size: 50px; line-height: .98; }
+  .gv.ns-hero .gv-lead { font-size: 15px; line-height: 1.5; margin-top: 14px !important; }
   .ns-hero .gv-actions { margin-top: 18px; gap: 10px; }
   .ns-hero .gv-actions .gv-btn { width: 100%; min-height: 46px; padding: 11px 16px; }
   .ns-scroll { display: none; }
