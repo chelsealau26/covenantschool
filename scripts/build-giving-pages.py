@@ -619,8 +619,8 @@ def home():
 
   <section class="gv gv-band gv-band-left" style="--band-img: url('{IMG}covenant-92-9517625.jpg'); --band-pos: center 8%" aria-labelledby="gv-portal-title">
     <div class="gv-wrap" data-reveal>
-      <span class="gv-eyebrow">FAMILY PORTAL</span>
-      <h2 id="gv-portal-title">Your Hub for Student Success and Family Engagement</h2>
+      <h2 id="gv-portal-title" class="hm-portal-title"><span class="hm-portal-icon">{ICON["portal"]}</span>Family Portal</h2>
+      <p class="hm-portal-sub">Your Hub for Student Success and Family Engagement</p>
       <p>Welcome to the Covenant Family Portal, your go-to for viewing grades, managing re-enrollment, making payments, and staying connected with school updates—all in one place. Streamline your child's education journey with ease and efficiency.</p>
       <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{L['facts']}"{NEW_TAB}>{ICON["portal"]}VISIT THE FAMILY PORTAL</a></div>
     </div>
