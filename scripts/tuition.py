@@ -50,30 +50,21 @@ def tuition(ICON, IMG, NEW_TAB):
     def item(icon, title, body, open_=False, id_=""):
         return f'''<details class="tu-acc"{(' id='+chr(34)+id_+chr(34)) if id_ else ''}{" open" if open_ else ""}><summary><span class="hm-col-icon">{ICON[icon]}</span><span class="tu-acc-t">{title}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body">{body}</div></details>'''
     return f'''
-  <section class="gv gv-hero gv-hero-split ep-hero st-hero tu-hero">
-    <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-24-9584556.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap">
-      <div class="gv-hero-copy">
-        <span class="gv-eyebrow">New Families</span>
-        <h1>Tuition and Fees</h1>
-        <p class="gv-lead">Explore our approachable tuition and fees structure, offering key insights into payment schedules, grade-specific pricing, school fees, and beneficial multi-student savings.</p>
-        <ul class="tu-checks">
-          <li>Clear due dates for tuition and fees</li>
-          <li>Tailored rates for each grade level</li>
-          <li>Breakdown of additional fees</li>
-          <li>Save with our multi-student discounts</li>
-        </ul>
-      </div>
+  <section class="gv tu-hero2" data-scroll-dim aria-labelledby="tu-title">
+    <div class="tu-hero2-img" style="background-image: url('{IMG}covenant-24-9584556.jpg')" aria-hidden="true"></div>
+    <div class="gv-wrap tu-hero2-copy">
+      <span class="gv-eyebrow">Tuition and Fees</span>
+      <h1 id="tu-title">Investing in Your Child's Future</h1>
+      <p class="gv-lead">Discover our competitive tuition rates and flexible payment options, ensuring accessibility to quality education for every student.</p>
     </div>
   </section>
 
   <section class="gv gv-section gv-white tu-calc-sec" id="tuition" aria-labelledby="tu-rate-title">
     <div class="gv-wrap">
       <div class="tu-head tu-center" data-reveal>
-        <span class="gv-eyebrow">Tuition</span>
-        <h2 id="tu-rate-title">Investing in Your Child's Future<span class="mv-dot" aria-hidden="true">.</span></h2>
-        <p>Discover our competitive tuition rates and flexible payment options, ensuring accessibility to quality education for every student.</p>
+        <span class="gv-eyebrow">New Families</span>
+        <h2 id="tu-rate-title">Tailored rates for each grade level<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <p>Explore our approachable tuition and fees structure, offering key insights into payment schedules, grade-specific pricing, school fees, and beneficial multi-student savings.</p>
       </div>
       <div class="tu-calc" data-reveal>
         <div class="tu-chips" role="radiogroup" aria-label="Grade level">{chips}</div>
@@ -87,7 +78,7 @@ def tuition(ICON, IMG, NEW_TAB):
         </div>
         <table class="tu-plain"><caption class="gv-sr">Tuition by grade level</caption><thead><tr><th scope="col">Grade level</th><th scope="col">Annual Tuition</th><th scope="col">11 Monthly Tuition Payments (includes $5 service fee)</th></tr></thead><tbody>{rows}</tbody></table>
       </div>
-      <p class="tu-note2" data-reveal><strong>Note:</strong> Your tuition amount may be different based on your enrollment date. Call our office for your specific amount. Tuition rates for the 2026–2027 school year will be available in early January 2026.</p>
+      <p class="tu-note2" data-reveal><strong>Note:</strong> Your tuition amount may be different based on your enrollment date. Call our office for your specific amount. Tuition rates for the 2027–2028 school year will be available in early January 2027.</p>
     </div>
   </section>
 
@@ -133,6 +124,7 @@ def tuition(ICON, IMG, NEW_TAB):
     <div class="gv-wrap tu-acc-wrap">
       <div class="tu-head tu-center" data-reveal>
         <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <ul class="tu-checks tu-checks-dark"><li>Clear due dates for tuition and fees</li><li>Breakdown of additional fees</li><li>Save with our multi-student discounts</li></ul>
       </div>
       <div class="tu-accs" data-reveal>
         {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede">Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
