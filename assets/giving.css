@@ -170,7 +170,7 @@
 .gv-split-img { isolation: isolate; }
 
 /* Photo band CTA */
-.gv-band { position: relative; isolation: isolate; padding: 110px 24px; text-align: center; color: #fff; background: var(--ink) var(--band-img) center / cover no-repeat; background-attachment: fixed; }
+.gv-band { position: relative; isolation: isolate; padding: 110px 24px; text-align: center; color: #fff; background: var(--ink) var(--band-img) var(--band-pos, center) / cover no-repeat; background-attachment: fixed; }
 .gv-band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(19, 28, 36, .78); }
 .gv-band h2 { color: #fff; font-size: 46px; }
 .gv-band p { color: rgba(255, 255, 255, .85); max-width: 620px; margin: 14px auto 0; font-size: 18px; }
@@ -314,6 +314,8 @@
   /* Page heroes scroll normally so the photo is shown at its natural framing (faces stay in view, no extra enlargement) */
   .gv-tc-hero::before, .gv-band { background-attachment: fixed; }
   .gv-band { background-position: center center; }
+  /* Bands that set --band-pos frame the photo themselves (no fixed parallax), so faces stay in view */
+  .gv-band[style*="--band-pos"] { background-attachment: scroll; background-position: var(--band-pos); }
   .gv-tc-hero::before { background-position: center, center 8%; } /* keep faces in frame */
 }
 @media (min-width: 961px) and (max-height: 760px) {
