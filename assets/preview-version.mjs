@@ -1,1 +1,1 @@
-export const PREVIEW_CSS_VERSION = "cff25967";
+export const PREVIEW_CSS_VERSION = "c846e96d";

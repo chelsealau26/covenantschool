@@ -59,7 +59,7 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 .ccs-preview-badge:hover, .ccs-preview-badge:focus-visible { background: #224361; }
 
 /* Tax credit hero: gentle moving photo instead of fixed */
-@media (min-width: 961px) { .gv-tc-hero::before { background-attachment: scroll !important; background-position: center, center calc(30% + var(--tcp, 0px)) !important; } }
+@media (min-width: 961px) { .gv-tc-hero::before { background-attachment: scroll !important; background-position: center, center calc(22% + var(--tcp, 0px)) !important; } }
 
 /* Consistent, emotional hero headings on every secondary page */
 .gv.gv-hero h1, .gv.tu-hero2 h1, .gv.ns-hero h1, .gv.gv-hero.mv-hero h1 { font-size: clamp(48px, 6.4vw, 96px) !important; line-height: .98 !important; }
