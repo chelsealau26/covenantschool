@@ -860,7 +860,12 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 }
 
 /* ---------------------------------------------------------------- Employment (preview redesign) */
-.gv.gv-hero.ep-hero { min-height: 56vh; --hero-pos: center 12%; }
+.gv.gv-hero.ep-hero { min-height: 60vh; text-align: left; background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553; }
+.ep-hero .gv-hero-copy { margin: 0; max-width: 520px; }
+.ep-hero .gv-actions { justify-content: flex-start; }
+.ep-hero .gv-hero-photo { width: 54%; background-position: 60% 25%; }
+.ep-hero .gv-hero-photo::before { background: linear-gradient(90deg, #163755 0%, rgba(21, 53, 83, 0) 26%); }
+@media (max-width: 960px) { .gv.gv-hero.ep-hero { text-align: center; } .ep-hero .gv-hero-copy { margin: 0 auto; } .ep-hero .gv-actions { justify-content: center; } .ep-hero .gv-hero-photo { width: auto; background-position: 55% 30%; } }
 .ep-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
 .ep-side { position: sticky; top: 110px; }
 .gv .ep-intro { margin-top: 16px !important; font-size: 19px; line-height: 1.7; color: var(--ink); }

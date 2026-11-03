@@ -10,7 +10,8 @@ def form_block(pages):
 
 def employment(ICON, IMG, pages):
     return f'''
-  <section class="gv gv-hero ep-hero" style="--hero-img: url('{IMG}covenant-123-9584556.jpg')">
+  <section class="gv gv-hero gv-hero-split ep-hero">
+    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-2-9598822.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Join our team</span>
