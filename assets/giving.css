@@ -1503,3 +1503,18 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo { top: -70px; }
 .mv-hero-bg, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo { translate: 0 var(--hp, 0px); will-change: translate; }
 @media (max-width: 640px) { .ns-hero-img, .tu-hero2-img { top: -70px; } }
+
+/* Employment hero: same immersive family as New Student, its own photo and crop */
+.ep-hero3 .ns-hero-img { background-position: 75% 30%; }
+.ep-hero3::before { background: linear-gradient(90deg, rgba(13, 33, 54, .94) 0%, rgba(13, 33, 54, .84) 34%, rgba(13, 33, 54, .25) 58%, rgba(13, 33, 54, .05) 100%) !important; }
+.ep-hero3 .ns-hero-bottom { margin-top: 0; padding: 0; }
+.ep-hero3 .ns-hero-bottom::before { display: none; }
+.ep-frame img { object-position: 50% 30%; }
+@media (max-width: 640px) {
+  .gv.ns-hero.ep-hero3 { align-items: flex-end; }
+  .ep-hero3 .ns-hero-img { background-position: 100% 25%; }
+  .ep-hero3::before { background: linear-gradient(180deg, rgba(13, 33, 54, .05) 0%, rgba(13, 33, 54, .15) 30%, rgba(13, 33, 54, .88) 55%, rgba(13, 33, 54, .96) 100%) !important; }
+  .ep-hero3 .ns-hero-copy { justify-content: flex-end; padding-bottom: 40px; }
+  .gv.ns-hero.ep-hero3 .gv-lead { max-width: none; }
+  .gv.ns-hero.ep-hero3 h1 { font-size: 42px; }
+}

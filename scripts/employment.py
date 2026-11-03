@@ -21,13 +21,13 @@ def employment(ICON, IMG, pages):
         f'<span class="ep-role-go" aria-hidden="true"></span></button></li>'
         for i, p in enumerate(positions(block), 1))
     return f'''
-  <section class="gv tu-hero2 ep-hero2" data-scroll-dim aria-labelledby="ep-title">
-    <div class="tu-hero2-img" style="background-image: url('{IMG}fb/ccs-teachers.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap tu-hero2-copy">
+  <section class="gv ns-hero ep-hero3" data-scroll-dim aria-labelledby="ep-title">
+    <div class="ns-hero-img" style="background-image: url('{IMG}covenant-47-9584556.jpg')" aria-hidden="true"></div>
+    <div class="gv-wrap ns-hero-copy">
       <span class="gv-eyebrow">Join our team</span>
       <h1 id="ep-title">Employment Opportunities</h1>
       <p class="gv-lead">Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="#apply">Apply Below</a></div>
+      <div class="ns-hero-bottom"><div class="gv-actions"><a class="gv-btn gv-btn-gold" href="#apply">Apply Below</a></div></div>
     </div>
   </section>
 
@@ -47,7 +47,7 @@ def employment(ICON, IMG, pages):
       <div class="ep-side" data-reveal>
         <h2 id="ep-apply-title">Apply<span class="mv-dot" aria-hidden="true">.</span></h2>
         <p class="ep-intro">Interested in joining the Covenant faculty or staff? We’d love to hear from you! Please fill out the form below and we will be in touch with you shortly.</p>
-        <div class="hm-frame ep-frame"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-47-9584556.jpg" alt="A Covenant teacher helping a student with her tablet assignment" loading="lazy"></div>
+        <div class="hm-frame ep-frame"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}fb/ccs-teachers.jpg" alt="Three smiling Covenant teachers" loading="lazy"></div>
         <ul class="ep-contact" aria-label="Questions about working at Covenant">
           <li><span class="hm-col-icon">{ICON["phone"]}</span><a href="tel:251-633-8055">251-633-8055</a></li>
           <li><span class="hm-col-icon">{ICON["mail"]}</span><a href="mailto:info@covenantschool.com">info@covenantschool.com</a></li>
