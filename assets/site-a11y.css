@@ -149,3 +149,9 @@ body:has(#heading-widget-1518129426779) #container-widget-1509144589946 > .backg
 /* Back-to-top button: smaller (40px still meets the 24px minimum touch target) */
 a.scrollToTop { width: 40px !important; height: 40px !important; line-height: 38px !important; font-size: 20px !important; }
 a.scrollToTop::before { font-size: 20px !important; line-height: 38px !important; }
+
+/* Footer social icons: round outlines, matching the homepage hero */
+footer a.social-media-button { display: inline-flex !important; align-items: center; justify-content: center; width: 46px !important; height: 46px !important; border-radius: 50% !important; border: 1.5px solid rgba(255, 255, 255, .55) !important; background: transparent !important; transition: background .2s, border-color .2s, transform .2s; }
+footer a.social-media-button i { background: transparent !important; color: #fff !important; width: auto !important; height: auto !important; padding: 0 !important; font-size: 19px !important; line-height: 1 !important; border-radius: 0 !important; }
+footer a.social-media-button:is(:hover, :focus-visible) { background: #daad86 !important; border-color: #daad86 !important; transform: translateY(-2px); }
+footer a.social-media-button:is(:hover, :focus-visible) i { color: #131c24 !important; }
