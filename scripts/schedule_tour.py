@@ -15,24 +15,22 @@ GALLERY = [  # file, alt, layout class
     ("fb/ccs-letter-jackets", "Middle school girls in Covenant letter jackets", "is-wide"),
     ("fb/ccs-science-lab", "Students smiling during a science lab", ""),
     ("fb/ccs-worship-band", "Students leading worship in chapel", "is-wide"),
+    ("fb/ccs-boys-praying", "Young boys bowing their heads in prayer", "is-wide"),
 ]
 
 def schedule_tour(ICON, IMG, maps_url, new_tab):
     tiles = "".join(f'<figure class="st-g {c}"><img src="{IMG}{f}.jpg" alt="{a}" loading="lazy"></figure>' for f, a, c in GALLERY)
     return f'''
-  <section class="gv gv-hero gv-hero-split ep-hero st-hero">
-    <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-95-9602737.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap">
-      <div class="gv-hero-copy">
-        <span class="gv-eyebrow">Admissions</span>
-        <h1>Schedule Your School Tour Today!</h1>
-        <p class="gv-lead">Take the next step in your child’s future! Fill out the scheduling form below or give us a call at <a class="st-tel" href="tel:251-633-8055">251-633-8055</a> to book your personal tour. Come see firsthand how Covenant Christian School can inspire and shape your child’s growth and success.</p>
-        <div class="gv-actions">
+  <section class="gv tu-hero2 st-hero2" data-scroll-dim aria-labelledby="st-title">
+    <div class="tu-hero2-img" style="background-image: url('{IMG}covenant-95-9602737.jpg')" aria-hidden="true"></div>
+    <div class="gv-wrap tu-hero2-copy">
+      <span class="gv-eyebrow">Admissions</span>
+      <h1 id="st-title">Schedule Your School Tour Today!</h1>
+      <p class="gv-lead">Take the next step in your child’s future! Fill out the scheduling form below or give us a call at <a class="st-tel" href="tel:251-633-8055">251-633-8055</a> to book your personal tour. Come see firsthand how Covenant Christian School can inspire and shape your child’s growth and success.</p>
+      <div class="ns-hero-bottom"><div class="gv-actions">
           <a class="gv-btn gv-btn-gold" href="#book">{ICON["calendar"]}Pick a Tour Time</a>
           <a class="gv-btn gv-btn-ghost" href="tel:251-633-8055">{ICON["phone"]}Call 251-633-8055</a>
-        </div>
-      </div>
+        </div></div>
     </div>
   </section>
 

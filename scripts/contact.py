@@ -76,38 +76,40 @@ def contact(ICON, IMG, NEW_TAB, MAPS, pages):
         (f'<span class="ct-go">{go} <span aria-hidden="true">&rarr;</span></span></a>' if h else '</div>')
         for ic, k, v, h, go in tiles)
     return f'''
-  <section class="gv gv-hero gv-hero-split ep-hero st-hero ct-hero">
-    <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-86-9595976.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap">
-      <div class="gv-hero-copy">
-        <span class="gv-eyebrow">7150 Hitt Rd. Mobile, AL 36695</span>
-        <h1>Get in Touch</h1>
-        <p class="gv-lead"><strong>Have a question? We have the answers.</strong> Give us a call – we're here to help you discover why Covenant Christian School is the perfect choice for your educational journey!</p>
-        <div class="gv-actions">
-          <a class="gv-btn gv-btn-gold" href="tel:251-633-8055">{ICON["phone"]}Call 251-633-8055</a>
-          <a class="gv-btn gv-btn-ghost" href="/schedule-tour">Schedule a Tour</a>
-        </div>
-      </div>
+  <section class="gv ns-hero ep-hero3 ct-hero2" data-scroll-dim aria-labelledby="ct-title">
+    <div class="ns-hero-img" style="background-image: url('{IMG}covenant-86-9595976.jpg')" aria-hidden="true"></div>
+    <div class="gv-wrap ns-hero-copy">
+      <span class="gv-eyebrow">7150 Hitt Rd. Mobile, AL 36695</span>
+      <h1 id="ct-title">Get in Touch</h1>
+      <p class="gv-lead"><strong>Have a question? We have the answers.</strong> Give us a call – we're here to help you discover why Covenant Christian School is the perfect choice for your educational journey!</p>
+      <div class="ns-hero-bottom"><div class="gv-actions">
+        <a class="gv-btn gv-btn-gold" href="tel:251-633-8055">{ICON["phone"]}Call 251-633-8055</a>
+        <a class="gv-btn gv-btn-ghost" href="/schedule-tour">Schedule a Tour</a>
+      </div></div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-white ct-info" aria-label="Contact information">
-    <div class="gv-wrap">
-      <div class="ct-tiles" data-reveal>{tile_html}</div>
-      <div class="ct-map" data-reveal>
-        <iframe src="{map_src(pages)}" title="Map: Covenant Christian School, 7150 Hitt Rd, Mobile, AL" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div class="ct-map-card">
-          <h2>Visit us<span class="mv-dot" aria-hidden="true">.</span></h2>
-          <p>7150 Hitt Rd.<br>Mobile, AL 36695</p>
-          <div class="ct-map-actions">
-            <a class="gv-btn gv-btn-line" href="{MAPS}"{NEW_TAB}>{ICON["pin"]}Directions</a>
-          </div>
-          <div class="gv-social ct-social">
+  <section class="gv gv-section gv-white ct-info2" aria-labelledby="ct-info-title">
+    <div class="gv-wrap ct-info-grid">
+      <div class="ct-details" data-reveal>
+        <h2 id="ct-info-title">Visit us<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <dl class="ct-list">
+          <div><dt><span class="hm-col-icon">{ICON["phone"]}</span>Phone</dt><dd><a href="tel:251-633-8055">251-633-8055</a></dd></div>
+          <div><dt><span class="hm-col-icon">{ICON["clock"]}</span>Hours</dt><dd>Mon - Fri | 7:30am - 3:30pm</dd></div>
+          <div><dt><span class="hm-col-icon">{ICON["pin"]}</span>Address</dt><dd><a href="{MAPS}"{NEW_TAB}>7150 Hitt Rd. Mobile, AL 36695</a></dd></div>
+          <div><dt><span class="hm-col-icon">{ICON["mail"]}</span>Front Office</dt><dd><a href="mailto:info@covenantschool.com">info@covenantschool.com</a></dd></div>
+          <div><dt><span class="hm-col-icon">{ICON["users"]}</span>Principal, Felicia Boren</dt><dd><a href="mailto:fboren@covenantschool.com">fboren@covenantschool.com</a></dd></div>
+        </dl>
+        <div class="ct-foot">
+          <a class="gv-btn gv-btn-line" href="{MAPS}"{NEW_TAB}>{ICON["pin"]}Directions</a>
+          <div class="gv-social ct-social2">
             <a href="https://www.facebook.com/covenantchristianschoolmobile"{NEW_TAB} aria-label="Covenant Christian School on Facebook">{ICON["facebook"]}</a>
             <a href="https://www.instagram.com/ccs_eagles_of_al/"{NEW_TAB} aria-label="Covenant Christian School on Instagram">{ICON["instagram"]}</a>
           </div>
         </div>
+      </div>
+      <div class="hm-frame ct-map2" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg>
+        <iframe src="{map_src(pages)}" title="Map: Covenant Christian School, 7150 Hitt Rd, Mobile, AL" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>

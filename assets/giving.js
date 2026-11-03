@@ -188,7 +188,14 @@
       select.value = b.getAttribute("data-pick-position");
       select.dispatchEvent(new Event("change", { bubbles: true }));
       var card = select.closest(".ep-card") || select;
-      card.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+      // Land on the top of the form, just below any fixed header
+      var head = 0;
+      document.querySelectorAll("header *, .fixed-header-wrapper, .main-header-wrapper").forEach(function (h) {
+        var cs = getComputedStyle(h), r = h.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 2 && r.height > 20 && r.height < 200 && cs.visibility !== "hidden" && cs.display !== "none") head = Math.max(head, r.bottom);
+      });
+      if (!head) head = window.innerWidth > 960 ? 110 : 90;
+      window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - head - 20, behavior: still ? "auto" : "smooth" });
       card.classList.remove("is-picked"); void card.offsetWidth; card.classList.add("is-picked");
       setTimeout(function () { var n = document.getElementById("ef-name"); (n || select).focus({ preventScroll: true }); }, still ? 0 : 600);
     });
@@ -322,25 +329,37 @@
   addKid("el");
 })();
 
-// Secondary-page heroes: photo layer moves at ~70% of scroll speed while the hero is on screen.
+// Secondary-page heroes: the photo layer drifts with scroll (gentle parallax). At rest it sits exactly
+// where it was framed, so faces are never cropped; it extends below the hero and eases upward.
 // Mid-page photo sections (Statement of Faith) drift gently around their resting spot.
 (function () {
-  var layers = document.querySelectorAll(".mv-hero-bg, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo");
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Preview only: give the classic photo heroes (Ways to Give, Scholarships) a moving photo layer too.
+  if (document.querySelector('link[href*="/assets/preview.css"]')) {
+    document.querySelectorAll(".gv.gv-hero:not(.gv-hero-split):not(.gv-hero-home):not(.mv-hero)").forEach(function (h) {
+      var img = getComputedStyle(h).getPropertyValue("--hero-img"); if (!img) return;
+      var l = document.createElement("div"); l.className = "gv-hero-layer"; l.setAttribute("aria-hidden", "true");
+      l.style.backgroundImage = img.trim(); h.insertBefore(l, h.firstChild); h.classList.add("has-layer");
+    });
+  }
+  var layers = document.querySelectorAll(".mv-hero-bg, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo, .gv-hero-layer");
+  var tc = document.querySelector(".gv-tc-hero");
   var drift = document.querySelectorAll(".mv-faith-bg");
-  if (!layers.length && !drift.length) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (still || (!layers.length && !drift.length && !tc)) return;
   var ticking = false;
   function update() {
     ticking = false;
-    var vh = window.innerHeight, y = window.scrollY;
+    var vh = window.innerHeight;
     layers.forEach(function (el) {
       var r = el.parentElement.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
-      var base = Math.max(0, r.top + y - vh);          // scroll position where the hero first comes into view
-      var shift = Math.max(0, (y - base) * 0.3);
-      shift = Math.min(shift, 70 + Math.max(0, -r.top)); // never open a gap above a visible hero
-      el.style.setProperty("--hp", shift.toFixed(1) + "px");
+      var past = Math.max(0, 160 - r.top);              // how far the hero has scrolled up
+      el.style.setProperty("--hp", (-Math.min(past * 0.25, 80)).toFixed(1) + "px");
     });
+    if (tc && document.querySelector('link[href*="/assets/preview.css"]')) {
+      var r = tc.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh) tc.style.setProperty("--tcp", (Math.min(Math.max(0, 160 - r.top) * 0.3, 140)).toFixed(1) + "px");
+    }
     drift.forEach(function (el) {
       var r = el.parentElement.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
@@ -351,4 +370,10 @@
   window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   window.addEventListener("resize", update);
   update();
+})();
+
+// Employment: only one position open at a time.
+(function () {
+  var roles = document.querySelectorAll("details.ep-role");
+  roles.forEach(function (d) { d.addEventListener("toggle", function () { if (d.open) roles.forEach(function (o) { if (o !== d) o.open = false; }); }); });
 })();
