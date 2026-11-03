@@ -2064,7 +2064,9 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
 .gv .hm-app-store:focus-visible { outline: 3px solid var(--tan); outline-offset: 3px; }
 .hm-app-stage { position: relative; display: flex; justify-content: center; }
 .hm-app-stage::before { content: ""; position: absolute; left: 50%; top: 50%; width: 380px; height: 380px; margin: -190px 0 0 -190px; border-radius: 50%; background: var(--tan-soft); }
-.hm-app-phone { position: relative; width: 260px; padding: 9px; border-radius: 42px; background: #0d2136; box-shadow: 0 40px 80px rgba(13, 33, 54, .25); transform: rotate(3deg); }
+.hm-app-phone { position: relative; width: 260px; padding: 9px; border-radius: 42px; background: #0d2136; box-shadow: 0 40px 80px rgba(13, 33, 54, .25); transition: transform .5s cubic-bezier(.2, .8, .2, 1), box-shadow .5s; }
+.hm-app-stage:hover .hm-app-phone { transform: translateY(-8px) rotate(3deg); box-shadow: 0 50px 90px rgba(13, 33, 54, .3); }
+@media (prefers-reduced-motion: reduce) { .hm-app-phone { transition: none; } }
 .hm-app-phone img { display: block; width: 100%; height: auto; border-radius: 33px; }
 @media (max-width: 960px) { .hm-app-grid { grid-template-columns: 1fr; gap: 48px; } .hm-app-stage::before { width: 300px; height: 300px; margin: -150px 0 0 -150px; } .hm-app-phone { width: 220px; } }
 @media (max-width: 640px) { .gv .hm-app-list { grid-template-columns: 1fr; } .gv .hm-app-store { flex: 1 1 200px; justify-content: center; } }
