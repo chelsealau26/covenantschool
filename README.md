@@ -157,5 +157,6 @@ worker shows "soon" before the launch time and "live" after (preview links show
 ## Refreshed design (preview only, awaiting client approval)
 - Preview links: `https://covenantschool.com/?preview=JBYlnxBB-i0b` (homepage) and `/brand-guide?preview=JBYlnxBB-i0b` (brand guide).
 - Sitewide styles for the refresh live in `assets/preview.css`; `worker.mjs` adds it only on preview links. Preview-only pages live in `pages/redesign/` and are mapped in `REDESIGNS` (`assets/eftc-launch.mjs`).
+- Opening any preview link sets a `ccs_preview` cookie (14 days), so every page clicked afterward stays on the preview; a "Preview · Exit" badge links to `?preview=off`, which clears it.
 - Preview links also retire `/school-supplies` (redirects to the Family Portal); the live page stays until approval.
 - To publish: move `preview.css` rules into `site-a11y.css`/`giving.css`, swap `pages/redesign/home.html` into `pages/index.html`, drop the school-supplies page, and remove the preview injection.
