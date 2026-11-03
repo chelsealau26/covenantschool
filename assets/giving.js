@@ -133,3 +133,18 @@
     io.observe(svg.parentNode);
   });
 })();
+
+// Homepage hero: the photo deepens toward navy as you scroll down past it.
+(function () {
+  var hero = document.querySelector(".gv-hero-home");
+  if (!hero) return;
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var h = hero.offsetHeight || 1;
+    var dim = Math.min(Math.max(window.scrollY / (h * 0.7), 0), 1);
+    hero.style.setProperty("--hero-dim", dim.toFixed(3));
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
