@@ -175,6 +175,11 @@
 .gv-band h2 { color: #fff; font-size: 46px; }
 .gv-band p { color: rgba(255, 255, 255, .85); max-width: 620px; margin: 14px auto 0; font-size: 18px; }
 .gv-band .gv-actions { justify-content: center; }
+/* Tour band: photo layer drifts slower than the page, like the current site's parallax */
+.gv.gv-band-parallax { background: var(--ink); overflow: hidden; padding: 150px 24px; }
+.gv-band-parallax::before { z-index: 0; background: rgba(21, 53, 83, .66); }
+.gv-band-parallax .gv-wrap { position: relative; z-index: 1; }
+.gv-band-bg { position: absolute; left: 0; right: 0; top: -25%; height: 150%; z-index: -1; background: center 30% / cover no-repeat; transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
 .gv-note { font-size: 14px; color: rgba(255, 255, 255, .7) !important; margin-top: 14px !important; display: inline-flex; gap: 8px; align-items: center; }
 .gv-note svg { width: 16px; height: 16px; }
 
@@ -710,7 +715,8 @@
 .hm-quote figcaption span { font-weight: 400; color: var(--muted); }
 .hm-quote-lead blockquote { font-family: Anton, "Open Sans", Arial, sans-serif; font-size: 40px; line-height: 1.15; color: var(--navy); }
 .hm-quote-lead blockquote p + p { margin-top: 10px !important; }
-.hm-quote-lead blockquote::before { content: "\201C"; display: block; font-family: Georgia, serif; font-size: 110px; line-height: .6; color: var(--tan); margin-bottom: 6px; }
+.gv .hm-quote-lead blockquote { border-left: 0; padding-left: 0; }
+.hm-quote-lead blockquote::before { content: "\201C"; display: block; height: 44px; overflow: hidden; font-family: Georgia, serif; font-size: 96px; line-height: 1; color: var(--tan); margin: 0 0 10px -4px; }
 .hm-quote-lead figcaption { margin-top: 18px; font-size: 16px; }
 .hm-voices-rest { display: grid; gap: 26px; }
 .hm-voices-rest .hm-quote { border-left: 3px solid var(--tan); padding-left: 22px; }
@@ -768,7 +774,8 @@
 @media (max-width: 960px) { .hm-frame { max-width: 600px; } }
 @media (max-width: 640px) { .hm-frame { margin: 0 14px 14px 0; } .hm-frame::before { inset: 14px -14px -14px 14px; } }
 
-.hm-stars { display: inline-flex; gap: 3px; margin-bottom: 14px; }
+.hm-stars { display: flex; gap: 3px; margin-bottom: 18px; }
 .hm-stars svg { width: 22px; height: 22px; fill: var(--tan); }
 
 
+@media (max-width: 640px) { .gv.gv-band-parallax { padding: 96px 20px; } .gv-band-bg { background-position: center 25%; } }

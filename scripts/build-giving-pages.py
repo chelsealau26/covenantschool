@@ -690,14 +690,6 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-band" style="--band-img: url('{IMG}covenant-118-9528193.jpg')" aria-labelledby="gv-events-title">
-    <div class="gv-wrap" data-reveal>
-      <h2 id="gv-events-title">UPCOMING EVENTS</h2>
-      <p>Explore our calendar of events to stay informed about upcoming activities, important dates, and exciting happenings at Covenant Christian School. Don't miss out on opportunities to support your child's journey and be a part of our thriving community.</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/calendar">{ICON["calendar"]}SEE FULL CALENDAR</a></div>
-    </div>
-  </section>
-
   <section class="gv gv-section gv-white hm-voices" aria-label="What families say">
     <div class="gv-wrap">
       <div class="hm-voices-grid">
@@ -714,7 +706,8 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-band" style="--band-img: url('{IMG}covenant-151_1-9523341.jpg')" aria-labelledby="gv-tour-title">
+  <section class="gv gv-band gv-band-parallax" aria-labelledby="gv-tour-title">
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-151_1-9523341.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="gv-tour-title">TOUR OUR CAMPUS</h2>
       <p class="gv-band-sub">Your child's exceptional education experience awaits.</p>

@@ -70,3 +70,26 @@
     }, 6000);
   });
 })();
+
+// Photo bands marked .gv-band-parallax: the photo moves at a slower pace than the page.
+(function () {
+  var bands = document.querySelectorAll(".gv-band-parallax");
+  if (!bands.length) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    bands.forEach(function (band) {
+      var r = band.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var progress = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1..1
+      var bg = band.querySelector(".gv-band-bg");
+      if (bg) bg.style.setProperty("--py", (progress * r.height * 0.2).toFixed(1) + "px");
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();
