@@ -58,10 +58,30 @@ STYLE = """<style>
 .bgd-table th, .bgd-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e6dacb; vertical-align: top; }
 .bgd-table th { font: 700 13px/1.2 "Open Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); }
 .bgd-note { margin-top: 18px !important; font-size: 15px; color: var(--muted); }
+.bgd-grad { height: 130px; align-items: flex-end; font: 400 22px/1 Anton, "Open Sans", Arial, sans-serif; letter-spacing: .02em; border: 0; }
+.bgd-grads { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-bottom: 30px; }
+.bgd-sw code { font-size: 12px; color: var(--muted); word-break: break-word; }
 .bgd-toc { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; }
 .bgd-toc a { color: #fff !important; text-decoration: underline !important; text-underline-offset: 4px; font-weight: 600; }
 @media (max-width: 860px) { .bgd-grid { grid-template-columns: 1fr; } .bgd-demo-anton { font-size: 40px; } }
 </style>"""
+
+GRADS = [  # name, css, text color, use
+    ("Navy depth", "linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%)", "#fff",
+     "The main dark gradient: footer, dark sections, the Mission panel, this guide's header. Light from the top left, deepening to the bottom right."),
+    ("Navy tile", "linear-gradient(180deg, #1a4168 0%, #153553 55%, #102b45 100%)", "#fff",
+     "Vertical version for tiles and cards that sit on top of photos or white (the quick links under the hero)."),
+    ("Photo shade", "linear-gradient(90deg, rgba(13,33,54,.9) 0%, rgba(13,33,54,.78) 55%, rgba(13,33,54,.45) 100%), url(/assets/covenant-92-9517625.jpg) center 8% / cover", "#fff",
+     "Over photos when the text sits on the left: dark behind the words, letting faces show on the right."),
+    ("Tan wash", "linear-gradient(0deg, #daad86 0%, #e4bf9c 100%)", "#153553",
+     "Hover fill that rises from the bottom of navy tiles. Text on it turns navy."),
+    ("Cream fade", "linear-gradient(180deg, #faf8f4 0%, #f6efe7 100%)", "#153553",
+     "Soft light sections (CCS Resources). Paper fade (white → paper) is the lighter alternative."),
+]
+
+def grad(name, css, fg, use):
+    return (f'<li class="bgd-sw"><span class="bgd-chip bgd-grad" style="background:{css};color:{fg}">{name}</span>'
+            f'<strong>{name}</strong><span>{use}</span><code>{css.split(", url(")[0]}</code></li>')
 
 def brand_guide(ICON):
     sws = '<ul class="bgd-sws">' + "".join(swatch(*s) for s in SW) + "</ul>"
@@ -70,6 +90,13 @@ def brand_guide(ICON):
         "Text must be at least 4.5:1 against its background (3:1 for text 24px+ or 19px+ bold). Navy on tan passes (6.3:1); white on tan does not (2:1), so tan buttons always use navy text.",
         "On navy backgrounds, link hover is tan (#daad86), never blue.",
         "Small tan text on light backgrounds uses Deep tan (#946338). Regular Tan is for lines, outlines, icons and large shapes.",
+    ])
+    grads = '<ul class="bgd-sws bgd-grads">' + "".join(grad(*g) for g in GRADS) + "</ul>" + rule_list([
+        "Lean on gradients for every dark or tinted surface; flat navy should be the exception. They give depth and keep the site feeling current.",
+        "Gradients stay within one family: navy to deeper navy, white to cream, tan to lighter tan. Never mix navy and tan in one gradient, and never use rainbow or neon blends.",
+        "Dark gradients run at 165° (light top-left to dark bottom-right); light and tile gradients run straight down (180°).",
+        "Every gradient also sets a solid fallback color (e.g. Navy) so text stays readable while it paints and accessibility checkers read the right background.",
+        "Text on a gradient must pass contrast against its lightest point.",
     ])
     type_ = f'''<div class="bgd-grid">
       <div class="bgd-card bgd-type">
@@ -144,18 +171,19 @@ def brand_guide(ICON):
         "Check every page with WAVE and fix all errors and contrast errors before publishing.",
     ])
     hero = f'''
-  <section class="gv gv-section gv-dark" aria-labelledby="bgd-title">
+  <section class="gv gv-section gv-dark" aria-labelledby="bgd-title" style="background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553">
     <div class="gv-wrap">
       <p class="gv-eyebrow" style="color:#f0d9c2">Internal · preview only</p>
       <h1 id="bgd-title" style="color:#fff">Covenant Brand Guide</h1>
       <p class="gv-lead" style="color:#fff;max-width:720px;margin-top:14px">The rules behind the refreshed homepage, so every page of the website can follow the same design.</p>
-      <nav class="bgd-toc" aria-label="Brand guide sections"><a href="#colors">Color</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#shape">Corners &amp; icons</a><a href="#brand">Eagle, photos &amp; layout</a><a href="#motion">Motion</a><a href="#a11y">Accessibility</a></nav>
+      <nav class="bgd-toc" aria-label="Brand guide sections"><a href="#colors">Color</a><a href="#gradients">Gradients</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#shape">Corners &amp; icons</a><a href="#brand">Eagle, photos &amp; layout</a><a href="#motion">Motion</a><a href="#a11y">Accessibility</a></nav>
     </div>
   </section>'''
     return STYLE + hero + "".join([
         section("colors", "Color", "Navy and tan from the logo, on warm neutrals.", colors),
-        section("type", "Type", "Three typefaces, each with one job.", type_, "gv-paper"),
-        section("buttons", "Buttons", "A button's style tells visitors what it does. Tan always means the same thing.", buttons),
+        section("gradients", "Gradients", "Depth instead of flat color: the modern finish across the site.", grads, "gv-paper"),
+        section("type", "Type", "Three typefaces, each with one job.", type_),
+        section("buttons", "Buttons", "A button's style tells visitors what it does. Tan always means the same thing.", buttons, "gv-paper"),
         section("shape", "Corners &amp; icons", "Mostly straight, like the logo, with just enough softness.", shape, "gv-soft"),
         section("brand", "Eagle, photos &amp; layout", "What makes a page feel like Covenant.", brand),
         section("motion", "Motion", "Small, deliberate movement that helps people notice what matters.", motion, "gv-paper"),

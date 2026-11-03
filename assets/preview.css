@@ -44,3 +44,11 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 /* Homepage tagline: regular weight at body size so it reads (and is announced) as a tagline, not a heading */
 #text-widget-1518129426778 span { font-size: 18px !important; font-weight: 400 !important; letter-spacing: .12em; }
 
+
+/* Gradients (see Brand Guide → Gradients). Each one keeps a solid fallback color so text is
+   readable before paint and contrast checkers see the right background. */
+.gv-dark, .gv .hm-mission, .gv-credit { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553 !important; }
+#container-widget-1719555017494 { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553 !important; border-top: 3px solid #daad86; }
+#container-widget-1511379532336 { background: #0a1a2b !important; border-top: 1px solid rgba(218, 173, 134, .22); }
+.gv-soft { background: linear-gradient(180deg, #faf8f4 0%, #f6efe7 100%) #f6efe7; }
+.gv-paper { background: linear-gradient(180deg, #ffffff 0%, #faf8f4 100%) #faf8f4; }
