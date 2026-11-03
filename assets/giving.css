@@ -958,5 +958,14 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .st-g:hover img { transform: scale(1.06); }
 .st-g:hover::after { box-shadow: inset 0 0 0 3px var(--tan); }
 @media (prefers-reduced-motion: reduce) { .st-g img { transition: none; } .st-g:hover img { transform: none; } }
-@media (max-width: 960px) { .st-grid { grid-template-columns: 1fr; } .st-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 170px; } .st-card iframe { height: 1080px; } }
-@media (max-width: 640px) { .st-gallery { grid-auto-rows: 140px; gap: 8px; } .st-g.is-tall { grid-row: span 1; } .st-hero .gv-actions .gv-btn { width: 100%; } }
+@media (max-width: 960px) { .st-grid { grid-template-columns: 1fr; } .st-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 170px; } .st-g.is-tall, .st-g:last-child { grid-row: auto; grid-column: auto; } .st-card iframe { height: 1080px; } }
+@media (max-width: 640px) {
+  .st-gallery { grid-auto-rows: 140px; gap: 8px; }
+  /* Phones: tighter hero so both buttons show without scrolling */
+  .gv.gv-hero.st-hero { padding: 40px 18px 48px; }
+  .st-hero .gv-eyebrow { margin-bottom: 8px; font-size: 13px; }
+  .gv.st-hero h1 { font-size: 36px; line-height: 1.05; }
+  .gv.st-hero .gv-lead { margin-top: 14px !important; font-size: 16px; line-height: 1.55; }
+  .st-hero .gv-actions { margin-top: 20px; gap: 10px; }
+  .st-hero .gv-actions .gv-btn { width: 100%; min-height: 48px; padding: 12px 18px; }
+}
