@@ -399,3 +399,10 @@ window.addEventListener("message", function (e) {
     none.hidden = shown !== 0;
   });
 })();
+
+// Tax credit hero: tell the photo layer how far the hero sits from the left edge of the screen.
+(function () {
+  var h = document.querySelector(".gv-tc-hero"); if (!h) return;
+  function set() { h.style.setProperty("--tcx", h.getBoundingClientRect().left + "px"); }
+  set(); window.addEventListener("resize", set);
+})();

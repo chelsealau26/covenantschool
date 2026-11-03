@@ -1628,3 +1628,5 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 .gv .st-grid2 .st-steps li { gap: 16px; }
 .gv .st-grid2 .st-n { width: auto; line-height: .9; }
 @media (max-width: 960px) { .gv .st-grid2 .st-steps { grid-column: 1; grid-row: auto; } .gv .st-grid2 .st-call { grid-row: auto; } }
+/* Tax credit hero photo: exactly the width of the screen, starting at its left edge */
+.gv-tc-hero::before { left: calc(-1 * var(--tcx, 0px)); right: auto; width: 100vw; background-size: auto, cover !important; }
