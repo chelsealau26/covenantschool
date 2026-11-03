@@ -604,10 +604,15 @@ def home():
 
   <section class="gv gv-section gv-paper" id="open-house" aria-labelledby="gv-diff-title">
     <div class="gv-wrap gv-split">
-      <div class="gv-split-img" data-reveal="left"><img src="{IMG}covenant-78-9798253.jpg" alt="Middle school student in a Covenant sweatshirt taking notes next to her tablet during class" loading="lazy"></div>
+      <div class="hm-collage" data-reveal="left">
+        <div class="hm-collage-dots" aria-hidden="true"></div>
+        <div class="hm-collage-main"><img src="{IMG}covenant-78-9798253.jpg" alt="Middle school student in a Covenant sweatshirt taking notes next to her tablet during class" loading="lazy"></div>
+        <div class="hm-collage-inset" data-drift><img src="{IMG}covenant-47-9584556.jpg" alt="Teacher in an orange sweater pointing to a tablet with a student at her desk" loading="lazy"></div>
+        <div class="hm-collage-seal" aria-hidden="true"><img src="{IMG}eagle-mark-white.png" alt="" width="900" height="321"></div>
+      </div>
       <div data-reveal="right">
-        <img class="gv-stars" src="{IMG}stars-7250417.png" alt="5 out of 5 stars" width="120" height="24">
-        <h2 id="gv-diff-title">Experience the Covenant Difference</h2>
+        <span class="hm-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span>
+        <h2 id="gv-diff-title">Experience the <span class="hm-swash">Covenant<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 140 4, 210 9 S 280 18, 296 8"/></svg></span> Difference</h2>
         <p class="gv-lead" style="color:var(--muted);margin-top:16px">Experience why Covenant Christian School is the perfect place for your child! Schedule a tour to see firsthand the supportive community, quality education, and vibrant school spirit that make Covenant so special. We look forward to welcoming you and your family!</p>
         <dl class="hm-facts">
           <div><dt>Where?</dt><dd>7150 Hitt Rd.<br>Mobile, AL 36695<br><a class="gv-link" href="{L['maps']}"{NEW_TAB}>DIRECTIONS</a></dd></div>
@@ -699,7 +704,7 @@ def home():
     <div class="gv-wrap">
       <div class="hm-voices-grid">
         <div class="hm-voices-lead" data-reveal>
-          <img class="gv-stars" src="{IMG}stars-7250417.png" alt="5 out of 5 stars" width="120" height="24">
+          <span class="hm-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span>
           {quote("Lanie", "Former Teacher &amp; Parent", ["We love CCS!", "My 3 kids have been loved well and held to a high academic standard!"], "hm-quote-lead")}
         </div>
         <div class="hm-voices-rest">
