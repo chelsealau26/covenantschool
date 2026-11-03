@@ -672,14 +672,16 @@
 .hm-mission-eagle { position: absolute; right: -60px; bottom: -18px; width: 360px; height: auto; opacity: .08; pointer-events: none; }
 
 /* CCS Resources as a directory */
+.gv.hm-res-sec { position: relative; overflow: hidden; background: linear-gradient(115deg, #0d2136 0%, var(--navy) 100%); color: #fff; }
+.hm-res-eagle { position: absolute; left: -90px; bottom: -70px; width: 860px; max-width: none; height: auto; opacity: .09; pointer-events: none; }
+.hm-res-sec .gv-wrap { position: relative; }
 .hm-res { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
-.hm-res-head h2 { font-size: 46px; }
-.hm-res-head img { display: block; width: 190px; height: auto; margin-top: 22px; opacity: .14; }
-.hm-res-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; border-top: 2px solid var(--navy); }
-.hm-res-list li { border-bottom: 1px solid #ddcfbf; }
-.hm-res-list a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 2px; color: var(--navy) !important; font-weight: 700; text-decoration: none !important; transition: color .2s, padding .2s; }
-.hm-res-list a span { color: var(--tan-deep); transition: transform .2s; }
-.hm-res-list a:hover, .hm-res-list a:focus-visible { color: var(--tan-deep) !important; padding-left: 6px; }
+.gv .hm-res-head h2 { font-size: 46px; color: #fff; }
+.hm-res-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; border-top: 2px solid var(--tan); }
+.hm-res-list li { border-bottom: 1px solid rgba(255, 255, 255, .16); }
+.gv .hm-res-list a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 2px; color: #fff !important; font-weight: 700; text-decoration: none !important; transition: color .2s, padding .2s; }
+.hm-res-list a span { color: var(--tan); transition: transform .2s; }
+.gv .hm-res-list a:hover, .gv .hm-res-list a:focus-visible { color: var(--tan) !important; padding-left: 6px; }
 .hm-res-list a:hover span { transform: translateX(3px); }
 
 /* Supply lists / FTP / Jobs: plain columns separated by rules */
@@ -712,7 +714,7 @@
   .hm-strip-item:nth-child(n+3) { border-top: 1px solid rgba(218, 173, 134, .35); }
   .hm-pair-grid { grid-template-columns: 1fr; }
   .hm-res { grid-template-columns: 1fr; gap: 20px; }
-  .hm-res-head img { display: none; }
+  .hm-res-eagle { left: auto; right: -160px; bottom: auto; top: -30px; width: 620px; }
 }
 @media (max-width: 960px) {
   .hm-res-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -736,6 +738,7 @@
   .hm-lunch-text, .hm-mission { padding: 28px 22px; }
   .hm-res-list { grid-template-columns: 1fr; }
   .hm-res-head h2 { font-size: 36px; }
+  .hm-res-eagle { right: -200px; top: -10px; width: 460px; }
   .hm-quote-lead blockquote { font-size: 32px; }
 }
 

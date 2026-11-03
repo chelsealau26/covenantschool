@@ -645,10 +645,11 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-section gv-soft" id="resources" aria-labelledby="gv-res-title">
+  <section class="gv gv-section hm-res-sec" id="resources" aria-labelledby="gv-res-title">
+    <img class="hm-res-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-wrap">
       <div class="hm-res">
-      <div class="hm-res-head" data-reveal><h2 id="gv-res-title">CCS Resources</h2><img src="{IMG}eagle-mark-navy.png" alt="" width="900" height="321"></div>
+      <div class="hm-res-head" data-reveal><h2 id="gv-res-title">CCS Resources</h2></div>
       <ul class="hm-res-list">
         {res(L['handbook'], "file", "Student/Parent Handbook", True, doc="Student/Parent Handbook 2026–2027")}
         {res(L['uniform'], "file", "Uniform Policy &amp; Procedure", True, doc="Uniform Policy &amp; Procedure")}
