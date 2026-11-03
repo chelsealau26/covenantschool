@@ -602,7 +602,7 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper" id="open-house" aria-labelledby="gv-diff-title">
+  <section class="gv gv-section gv-white" id="open-house" aria-labelledby="gv-diff-title">
     <div class="gv-wrap gv-split">
       <div class="hm-frame" data-reveal="left"><img src="{IMG}covenant-78-9798253.jpg" alt="Middle school student in a Covenant sweatshirt taking notes next to her tablet during class" loading="lazy"></div>
       <div data-reveal="right">

@@ -614,7 +614,7 @@
 
 /* Quick links: one solid navy strip with tan dividers, overlapping the hero.
    Hover: tan rises from the bottom, the eagle from the logo glides in, the arrow slides over. */
-.hm-strip { position: relative; z-index: 2; margin-top: -64px; padding: 0 24px; }
+.hm-strip { position: relative; z-index: 2; margin-top: -64px; padding: 0 24px; background: linear-gradient(transparent 64px, #fff 64px); }
 .hm-strip-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: linear-gradient(180deg, #1a4168 0%, var(--navy) 55%, #102b45 100%); border-bottom: 4px solid var(--tan); box-shadow: 0 24px 50px rgba(13, 33, 54, .35); border-radius: 4px 4px 0 0; overflow: hidden; }
 .hm-strip-item { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; padding: 30px 28px 26px; color: #fff !important; text-decoration: none !important; }
 .hm-strip-item + .hm-strip-item { border-left: 1px solid rgba(218, 173, 134, .3); }
