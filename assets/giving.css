@@ -814,7 +814,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .mv-timeline p { margin-top: 6px !important; font-size: 17px; line-height: 1.6; color: var(--ink); }
 .mv-now .mv-year { font-size: 44px; color: var(--tan-deep); }
 .mv-history-photo { position: sticky; top: 120px; }
-.mv-history-photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 40% 50%; border-radius: 4px; box-shadow: var(--shadow); }
+.mv-history-photo img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 20%; border-radius: 4px; box-shadow: var(--shadow); }
 .mv-family { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center; }
 .gv .mv-body { margin-top: 18px !important; font-size: 18px; line-height: 1.75; color: var(--ink); }
 .gv.mv-faith { position: relative; overflow: hidden; text-align: center; padding-top: 110px; padding-bottom: 110px; }
