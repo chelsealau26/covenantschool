@@ -136,7 +136,7 @@ html.ccs-donate-open { overflow: hidden; }
 
 /* Homepage: text over photos. Dark fallback colors sit behind every photo (so checkers and slow
    connections see a dark background), the hero uses an even overlay since its text is centered,
-   and the header gets a translucent navy bar so the menu stays readable over bright photos. */
+   so the header menu sits on the hero's navy overlay (white text stays at least 7.9:1 over any photo). */
 body:has(#heading-widget-1518129426779) #container-widget-1509144589946,
 #container-widget-1518962688375 { background-color: #0d2136 !important; }
 body:has(#heading-widget-1518129426779) #container-widget-1509144589946 > .background-overlay {
@@ -145,5 +145,3 @@ body:has(#heading-widget-1518129426779) #container-widget-1509144589946 > .backg
 #container-widget-1518962688375 > .background-overlay { background-color: rgba(0, 0, 0, .55) !important; }
 #text-widget-1518129426778 span { color: #f0d9c2 !important; }
 #text-widget-1518973632135 span, #heading-widget-1719549931653 span { color: #fff !important; }
-body:has(#heading-widget-1518129426779) .main-header-wrapper,
-body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54, .72); box-shadow: 0 1px 0 rgba(218, 173, 134, .25); }
