@@ -1,3 +1,12 @@
+// Preview: split-section photos get the drawn tan outline instead of the solid tan block.
+(function () {
+  if (!document.querySelector('link[href*="/assets/preview.css"]')) return;
+  document.querySelectorAll(".gv-split-img").forEach(function (f) {
+    if (f.querySelector(".hm-frame-line")) return;
+    f.insertAdjacentHTML("afterbegin", '<svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg>');
+  });
+})();
+
 // Scroll-in reveals and number count-ups for the giving / scholarship / tax credit pages.
 // Everything stays visible without JavaScript or with "reduce motion" turned on.
 (function () {

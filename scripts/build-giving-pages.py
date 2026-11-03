@@ -243,7 +243,7 @@ def scholarships():
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Scholarship Opportunities</span>
         <h1>Every Child Deserves Access to a Quality Education</h1>
-        <p class="gv-lead">We're here to help make quality education accessible through exceptional scholarship opportunities. Explore two external programs designed to support and enrich your child's educational journey.</p>
+        <p class="gv-lead">We're here to help make quality education accessible through exceptional scholarship opportunities. <span class="gv-pv-hide">Explore two external programs designed to support and enrich your child's educational journey.</span></p>
         <div class="gv-actions">
           <a class="gv-btn gv-btn-gold" href="#options">Explore Your Options</a>
           <a class="gv-btn gv-btn-ghost" href="/new-student-application">Apply to Covenant</a>

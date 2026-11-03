@@ -83,3 +83,19 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
   .gv-hero-layer { left: 0 !important; width: auto; -webkit-mask-image: none; mask-image: none; }
   .gv.gv-hero:not(.gv-hero-home):not(.gv-hero-split):not(.mv-hero)::before { display: block; z-index: -1; background: rgba(13, 33, 54, .8) !important; }
 }
+
+/* Shorter Scholarship hero intro on the preview (keeps the buttons above the fold) */
+.gv-pv-hide { display: none; }
+/* Split photos: drawn tan outline (from giving.js) instead of the solid tan block */
+.gv-split-img::before { display: none !important; }
+.gv-split-img { isolation: isolate; }
+.gv-split-img .hm-frame-line { z-index: -1; }
+/* Scholarships: longest headline, so it gets a little more room to stay at three lines */
+.gv.gv-hero.gv-hero-img-anim .gv-hero-copy { max-width: 820px; }
+.gv.gv-hero.gv-hero-img-anim h1 { font-size: clamp(44px, 5.4vw, 80px) !important; }
+.gv.gv-hero.gv-hero-img-anim { padding-top: 56px; }
+
+/* Every secondary-page hero photo eases in from a gentle zoom when the page opens (like Employment) */
+.mv-hero-bg, .gv-hero-layer, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo { animation: ns-settle 2.6s cubic-bezier(.2, .8, .2, 1) both !important; transform-origin: 60% 40%; }
+.gv-tc-hero::after { animation: ns-settle 2.6s cubic-bezier(.2, .8, .2, 1) both; transform-origin: 60% 40%; }
+@media (prefers-reduced-motion: reduce) { .mv-hero-bg, .gv-hero-layer, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo, .gv-tc-hero::after { animation: none !important; } }
