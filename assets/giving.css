@@ -1944,3 +1944,4 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
   .gv .at-form-body h3 { font-size: 26px !important; }
   .at-ticker span { font-size: 20px; }
 }
+@media (max-width: 640px) { .gv.at-hero .tu-hero2-img { background-position: 66% 45%; background-size: auto 125%; } }
