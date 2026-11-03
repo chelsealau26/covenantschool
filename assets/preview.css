@@ -102,7 +102,7 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 
 /* Download the App lightbox (preview only) */
 html.ccs-app-open { overflow: hidden; }
-.ccs-app { width: min(420px, calc(100vw - 32px)); padding: 44px 32px 34px; border: 0; border-radius: 14px; text-align: center; color: #fff; font-family: "Open Sans", Arial, sans-serif;
+.ccs-app { box-sizing: border-box; width: min(440px, calc(100vw - 32px)); max-width: none; margin: auto; padding: 44px clamp(20px, 6vw, 32px) 34px; border: 0; border-radius: 14px; text-align: center; color: #fff; font-family: "Open Sans", Arial, sans-serif;
   background: radial-gradient(400px 260px at 100% 0%, rgba(218, 173, 134, .18), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 50%, #0d2136 100%) #153553; box-shadow: 0 40px 90px rgba(0, 0, 0, .45); }
 .ccs-app[open] { animation: ccs-app-in .32s cubic-bezier(.2, .8, .2, 1); }
 .ccs-app::backdrop { background: rgba(10, 22, 36, .72); backdrop-filter: blur(4px); }
