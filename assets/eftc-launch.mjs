@@ -16,7 +16,13 @@ export const hideEftc = html =>
   html.replace(/<section class="eftc eftc-callout"[\s\S]*?<\/section>\s*/g, "")
     .replace(/\s*<li>\s*<a class="website-nav-link" rel="tab" href="\/federal-tax-credit" >Federal Tax Credit<\/a>\s*<\/li>/g, "")
     .replace(/<p style="line-height: 2;"><span style="color: rgba\(255, 255, 255, 0\.7\); font-size: 15px;"><a href="\/federal-tax-credit">Federal Tax Credit<\/a><\/span><\/p>/g, "")
-    .replace(/\n?<li class="eftc-privacy">[\s\S]*?<\/li>/g, "");
+    .replace(/\n?<li class="eftc-privacy">[\s\S]*?<\/li>/g, "")
+    // Before launch the public sees no tax-credit mentions at all (no "coming soon" teasers either).
+    .replace(/<section class="gv gv-section gv-white" id="tax-credit"[\s\S]*?<\/section>\s*/g, "")
+    .replace(/<article class="gv-card"(?:(?!<\/article>)[\s\S])*?Give With Your Taxes[\s\S]*?<\/article>\s*/g, "")
+    .replace(/class="gv-cards gv-cards-4"/g, 'class="gv-cards"')
+    .replace(/Four Ways to Give/g, "Three Ways to Give")
+    .replace(/\s*<a href="#tax-credit">[^<]*<\/a>/g, "");
 
 export const hideEftcSitemap = xml =>
   xml.replace(/\s*<url><loc>https:\/\/covenantschool\.com\/federal-tax-credit<\/loc>[\s\S]*?<\/url>/g, "");
