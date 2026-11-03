@@ -23,7 +23,7 @@ def app_section(ICON, IMG, NEW_TAB):
              ("dollar", "Tuition &amp; payments", "View your account and handle tuition payments in the Financials section."),
              ("users", "Staff directory", "Find contact information for teachers and school staff.")]
     chev = '<svg class="hm-app-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
-    items = "".join(f'<details class="hm-app-item" name="hm-app"{" open" if n == 0 else ""}><summary><span class="hm-app-ic">{I[ic]}</span><span class="hm-app-t">{t}</span>{chev}</summary><p>{d}</p></details>' for n, (ic, t, d) in enumerate(feats))
+    items = "".join(f'<details class="hm-app-item" name="hm-app"><summary><span class="hm-app-ic">{I[ic]}</span><span class="hm-app-t">{t}</span>{chev}</summary><p>{d}</p></details>' for n, (ic, t, d) in enumerate(feats))
     return f'''<section class="gv gv-section gv-paper hm-app" aria-labelledby="hm-app-title">
     <div class="gv-wrap hm-app-grid">
       <div class="hm-app-copy" data-reveal>
