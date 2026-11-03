@@ -16,29 +16,24 @@ EXTRA = {
 
 def app_section(ICON, IMG, NEW_TAB):
     I = dict(ICON); I.update(EXTRA)
-    feats = [("apple", "Lunch", "Order by 5pm Sunday"), ("megaphone", "Announcements", "News as it happens"),
-             ("calendar", "Calendar", "Every school day & event"), ("grade", "Gradebook", "Grades at a glance"),
-             ("pen", "Homework", "Assignments in one place"), ("file", "Lesson Plans", "See what's being taught"),
-             ("dollar", "Financials", "Tuition & payments"), ("users", "Directory", "Reach teachers & staff"),
-             ("clock", "Schedule", "Your student's day"), ("mail", "Inbox", "Messages from school")]
-    chips = "".join(f'<li class="hm-app-chip c{n}" style="--d:{n * .35:.2f}s"><span class="hm-app-ic">{I[ic]}</span><span><strong>{t}</strong><small>{d}</small></span></li>' for n, (ic, t, d) in enumerate(feats))
-    return f'''<section class="gv gv-section hm-app" aria-labelledby="hm-app-title">
-    <div class="hm-app-glow" aria-hidden="true"></div>
+    feats = [("apple", "Lunch orders"), ("megaphone", "Announcements"), ("calendar", "School calendar"),
+             ("grade", "Grades &amp; homework"), ("dollar", "Tuition &amp; payments"), ("users", "Staff directory")]
+    items = "".join(f'<li><span class="hm-app-ic">{I[ic]}</span>{t}</li>' for ic, t in feats)
+    return f'''<section class="gv gv-section gv-paper hm-app" aria-labelledby="hm-app-title">
     <div class="gv-wrap hm-app-grid">
       <div class="hm-app-copy" data-reveal>
         <span class="gv-eyebrow">The CCS App</span>
-        <h2 id="hm-app-title">School Life, <span>Right in Your Pocket.</span></h2>
-        <p class="hm-app-lead">Lunch orders, grades, homework, announcements and the school calendar, all in one free app for Covenant families.</p>
-        <div class="hm-app-lunch"><span class="hm-app-ic">{I["apple"]}</span><p><strong>Order Lunch</strong> Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p></div>
+        <h2 id="hm-app-title">School Life, Right in Your Pocket<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <p class="hm-app-lead">Everything Covenant families need, in one free app.</p>
+        <ul class="hm-app-list">{items}</ul>
+        <p class="hm-app-lunch"><strong>Order Lunch:</strong> Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
         <div class="hm-app-stores">
           <a class="hm-app-store" href="{IOS}"{NEW_TAB}>{APPLE}<span><small>Download on the</small>App Store</span></a>
           <a class="hm-app-store" href="{AND}"{NEW_TAB}>{PLAY}<span><small>Get it on</small>Google Play</span></a>
         </div>
       </div>
       <div class="hm-app-stage" data-reveal="left">
-        <div class="hm-app-ring" aria-hidden="true"></div>
         <div class="hm-app-phone"><img src="{IMG}app-home.jpg" alt="The Covenant Christian School app home screen" loading="lazy"></div>
-        <ul class="hm-app-chips" aria-label="What you can do in the app">{chips}</ul>
       </div>
     </div>
   </section>'''
