@@ -36,7 +36,7 @@ def mission_values(ICON, IMG):
     timeline = "".join(f'<li data-reveal><span class="mv-year">{y}</span><p>{t}</p></li>' for y, t in HISTORY)
     why = "".join(f'''<li class="mv-why-item" data-reveal><span class="hm-col-icon">{I[i]}</span><div><h3>{t}</h3><p>{d}</p></div></li>''' for i, t, d in WHY)
     return f'''
-  <section class="gv gv-hero mv-hero" style="--hero-img: url('{IMG}covenant-121-9598740.jpg')">
+  <section class="gv gv-hero mv-hero" style="--hero-img: url('{IMG}fb/ccs-school-gathering.jpg')">
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Mission &amp; Values</span>
@@ -92,7 +92,7 @@ def mission_values(ICON, IMG):
 
   <section class="gv gv-section gv-soft" id="family" aria-labelledby="mv-family-title">
     <div class="gv-wrap mv-family">
-      <div class="hm-frame" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-95-9602737.jpg" alt="Three smiling girls in Covenant uniforms hugging outdoors" loading="lazy"></div>
+      <div class="hm-frame" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}fb/ccs-four-friends.jpg" alt="Four smiling young students hugging each other in chapel" loading="lazy"></div>
       <div data-reveal>
         <h2 id="mv-family-title">Family{dot}</h2>
         <p class="mv-body">Covenant Christian School’s statement of mission and values are an important part of communicating “who” we are; however, the essence of our school is best displayed in the life-long relationships, the kindness, and the loyalties of our employees, parents, and students, and the support and love demonstrated to our extended families. Through the years of educating and living life together, most CCS families find that they have truly become part of the bigger picture… part of something larger than themselves. We find ourselves caught up in the realization of belonging, which is at the core of who God made us to be.</p>
@@ -101,6 +101,7 @@ def mission_values(ICON, IMG):
   </section>
 
   <section class="gv gv-section gv-dark mv-faith" id="faith" aria-labelledby="mv-faith-title">
+    <div class="mv-faith-bg" style="background-image: url('{IMG}fb/ccs-girl-praying.jpg')" aria-hidden="true"></div>
     <img class="mv-faith-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-wrap" data-reveal>
       <h2 id="mv-faith-title">Statement of Faith{dot}</h2>
@@ -113,6 +114,12 @@ def mission_values(ICON, IMG):
       <div class="gv-head" data-reveal>
         <h2 id="mv-why-title">WHY CCS?</h2>
         <p>At Covenant Christian School, we excel in academics, character development, and spiritual growth, fostering a supportive community where every student thrives.</p>
+      </div>
+      <div class="mv-strip" data-reveal>
+        <figure><img src="{IMG}fb/ccs-science-lab.jpg" alt="Students smiling during a science lab dissection" loading="lazy"><figcaption>Science Labs</figcaption></figure>
+        <figure><img src="{IMG}fb/ccs-volleyball-team.jpg" alt="The Covenant volleyball team holding flowers on the court" loading="lazy"><figcaption>Sports &amp; Activities</figcaption></figure>
+        <figure><img src="{IMG}fb/ccs-green-screen.jpg" alt="Three students smiling in front of a green screen" loading="lazy"><figcaption>Technology</figcaption></figure>
+        <figure><img src="{IMG}fb/ccs-library-kids.jpg" alt="Students showing their prizes in the school library" loading="lazy"><figcaption>Strong Foundations</figcaption></figure>
       </div>
       <ul class="mv-why">{why}</ul>
     </div>

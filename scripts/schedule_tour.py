@@ -11,6 +11,10 @@ GALLERY = [  # file, alt, layout class
     ("covenant-89-9603932", "Two boys playing basketball outside", "is-wide"),
     ("covenant-78-9798253", "A student taking notes next to her tablet", ""),
     ("covenant-66-9527920", "Students reading and writing at their desks", "is-wide"),
+    ("fb/ccs-chapel-friends", "Three smiling little girls hugging in chapel", ""),
+    ("fb/ccs-letter-jackets", "Middle school girls in Covenant letter jackets", "is-wide"),
+    ("fb/ccs-science-lab", "Students smiling during a science lab", ""),
+    ("fb/ccs-worship-band", "Students leading worship in chapel", "is-wide"),
 ]
 
 def schedule_tour(ICON, IMG, maps_url, new_tab):

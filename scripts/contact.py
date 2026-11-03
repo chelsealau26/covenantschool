@@ -78,7 +78,7 @@ def contact(ICON, IMG, NEW_TAB, MAPS, pages):
     return f'''
   <section class="gv gv-hero gv-hero-split ep-hero st-hero ct-hero">
     <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-121-9598740.jpg')" aria-hidden="true"></div>
+    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-86-9595976.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">7150 Hitt Rd. Mobile, AL 36695</span>

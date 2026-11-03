@@ -21,16 +21,13 @@ def employment(ICON, IMG, pages):
         f'<span class="ep-role-go" aria-hidden="true"></span></button></li>'
         for i, p in enumerate(positions(block), 1))
     return f'''
-  <section class="gv gv-hero gv-hero-split ep-hero">
-    <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-2-9598822.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap">
-      <div class="gv-hero-copy">
-        <span class="gv-eyebrow">Join our team</span>
-        <h1>Employment Opportunities</h1>
-        <p class="gv-lead">Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
-        <div class="gv-actions"><a class="gv-btn gv-btn-ghost" href="#apply">Apply below</a></div>
-      </div>
+  <section class="gv tu-hero2 ep-hero2" data-scroll-dim aria-labelledby="ep-title">
+    <div class="tu-hero2-img" style="background-image: url('{IMG}fb/ccs-teachers.jpg')" aria-hidden="true"></div>
+    <div class="gv-wrap tu-hero2-copy">
+      <span class="gv-eyebrow">Join our team</span>
+      <h1 id="ep-title">Employment Opportunities</h1>
+      <p class="gv-lead">Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
+      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="#apply">Apply Below</a></div>
     </div>
   </section>
 

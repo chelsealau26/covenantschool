@@ -579,6 +579,7 @@ def home():
       <div class="hm-slide" style="--pos: 50% 30%" data-src="{IMG}covenant-33-9598535.jpg"><img alt=""></div>
       <div class="hm-slide" style="--pos: 50% 30%" data-src="{IMG}covenant-10-9527833.jpg"><img alt=""></div>
       <div class="hm-slide" style="--pos: 50% 30%" data-src="{IMG}covenant-164-9598717.jpg"><img alt=""></div>
+      <div class="hm-slide" style="--pos: 50% 40%" data-src="{IMG}fb/ccs-four-friends.jpg"><img alt=""></div>
     </div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
