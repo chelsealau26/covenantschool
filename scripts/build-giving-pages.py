@@ -645,7 +645,7 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-section hm-res-sec" id="resources" aria-labelledby="gv-res-title">
+  <section class="gv gv-section gv-soft hm-res-sec" id="resources" aria-labelledby="gv-res-title">
     <img class="hm-res-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-wrap">
       <div class="hm-res">
