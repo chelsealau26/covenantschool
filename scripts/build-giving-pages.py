@@ -604,7 +604,7 @@ def home():
 
   <section class="gv gv-section gv-white" id="open-house" aria-labelledby="gv-diff-title">
     <div class="gv-wrap gv-split">
-      <div class="hm-frame" data-reveal="left"><img src="{IMG}covenant-78-9798253.jpg" alt="Middle school student in a Covenant sweatshirt taking notes next to her tablet during class" loading="lazy"></div>
+      <div class="hm-frame" data-reveal="left"><img src="{IMG}covenant-114-9584701.jpg" alt="Smiling student in a Covenant jacket writing in her workbook during class" loading="lazy"></div>
       <div data-reveal="right">
         <span class="hm-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span>
         <h2 id="gv-diff-title">Experience the Covenant Difference</h2>

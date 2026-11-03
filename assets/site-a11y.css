@@ -55,13 +55,13 @@ main:focus { outline: none; }
     #container-widget-1719519117132 .has-bg-color, #container-widget-1509144589946,
     #container-widget-1719540649051, #container-widget-1719587518726,
     #container-widget-1734630662341, .eftc-help, .gv-dark, .gv-hero, .gv-band, .gv-tc-hero, .gv-credit)
-  a:not(.theme-button):not(.eftc-btn):not(.gv-btn):is(:hover, :focus-visible),
+  a:not(.theme-button):not(.eftc-btn):not(.gv-btn):not(.social-media-button):is(:hover, :focus-visible),
 :is(.page-footer, .bg-color-primary, .bg-color-secondary1, .bg-color-secondary2,
     #container-widget-1719555017494, #container-widget-1511379532336,
     #container-widget-1719519117132 .has-bg-color, #container-widget-1509144589946,
     #container-widget-1719540649051, #container-widget-1719587518726,
     #container-widget-1734630662341, .eftc-help, .gv-dark, .gv-hero, .gv-band, .gv-tc-hero, .gv-credit)
-  a:not(.theme-button):not(.eftc-btn):not(.gv-btn):is(:hover, :focus-visible) * { color: #daad86 !important; }
+  a:not(.theme-button):not(.eftc-btn):not(.gv-btn):not(.social-media-button):is(:hover, :focus-visible) * { color: #daad86 !important; }
 
 /* "Welcome New Students" hero (home + new student application): dark behind the text, lighter over the student's face */
 #container-widget-1509144589946 > .background-overlay {
