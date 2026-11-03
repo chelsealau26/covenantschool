@@ -86,7 +86,7 @@ def mission_values(ICON, IMG):
           <li class="mv-now" data-reveal><span class="mv-year"><span data-count="500" data-suffix="+">500+</span></span><p>So far, Covenant Christian School has educated and influenced over 500 graduating alumni. And our story continues!</p></li>
         </ol></div>
       </div>
-      <div class="mv-history-photo" data-reveal><img src="{IMG}covenant-86-9595976.jpg" alt="The front entrance of Covenant Christian School" loading="lazy"></div>
+      <figure class="mv-history-photo" data-reveal><div class="mv-hp-img"><img src="{IMG}covenant-86-9595976.jpg" alt="The front entrance of Covenant Christian School" loading="lazy"></div><figcaption><span>Est.</span> 1983</figcaption></figure>
     </div>
   </section>
 
