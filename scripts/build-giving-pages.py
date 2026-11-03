@@ -670,10 +670,10 @@ def home():
     <div class="gv-wrap">
       <div class="hm-cols-grid">
         <div class="hm-col" data-reveal>
-          <div class="hm-col-top"><span class="hm-col-icon">{ICON["clock"]}</span></div>
-          <h4>AfterCare Program</h4>
-          <p>Explore our aftercare program designed to provide a safe and engaging environment for students after school hours.</p>
-          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/aftercare">LEARN MORE</a></div>
+          <div class="hm-col-top"><span class="hm-col-icon">{ICON["school"]}</span></div>
+          <h4>Scholarship Opportunities</h4>
+          <p>Every child deserves access to a quality education. Explore scholarship programs that can help make a Covenant education possible for your family.</p>
+          <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/scholarship-opportunities">EXPLORE SCHOLARSHIPS</a></div>
         </div>
         <div class="hm-col" data-reveal>
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["handshake"]}</span></div>
