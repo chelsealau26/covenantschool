@@ -610,10 +610,9 @@ def home():
         <h2 id="gv-diff-title">Experience the Covenant Difference</h2>
         <p class="gv-lead" style="color:var(--muted);margin-top:16px">Experience why Covenant Christian School is the perfect place for your child! Schedule a tour to see firsthand the supportive community, quality education, and vibrant school spirit that make Covenant so special. We look forward to welcoming you and your family!</p>
         <dl class="hm-facts">
-          <div><dt>{ICON["pin"]}Where?</dt><dd>7150 Hitt Rd.<br>Mobile, AL 36695</dd><dd class="hm-facts-act"><a class="hm-dir" href="{L['maps']}"{NEW_TAB}>DIRECTIONS<span aria-hidden="true">&rarr;</span></a></dd></div>
-          <div><dt>{ICON["compass"]}Explore!</dt><dd>Tour the campus, visit classrooms, and meet prospective teachers.</dd></div>
+          <div><dt>{ICON["pin"]}Where?</dt><dd>7150 Hitt Rd.<br>Mobile, AL 36695</dd><dd class="hm-facts-act"><a class="gv-btn gv-btn-line" href="{L['maps']}"{NEW_TAB}>DIRECTIONS</a></dd></div>
+          <div><dt>{ICON["compass"]}Explore!</dt><dd>Tour the campus, visit classrooms, and meet prospective teachers.</dd><dd class="hm-facts-act"><a class="gv-btn gv-btn-gold" href="/schedule-tour">SCHEDULE A TOUR</a></dd></div>
         </dl>
-        <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/schedule-tour">SCHEDULE A TOUR</a></div>
       </div>
     </div>
   </section>
