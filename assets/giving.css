@@ -1580,3 +1580,9 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 .gv .ep-role[open] .ep-role-body ul { margin: 0 !important; }
 .gv .ep-role[open] .ep-role-apply { width: auto; padding: 12px 28px; }
 @media (max-width: 760px) { .ep-role[open] .ep-role-body { display: block; } .gv .ep-role[open] .ep-role-apply { width: 100%; margin-top: 4px; } }
+
+/* Tax credit hero: show the photo at viewport width (the layer is 3x wide, so "cover" over-zoomed it) */
+.gv-tc-hero::before { background-size: auto, 100vw auto; background-position: center, center 30%; }
+@media (min-width: 961px) { .gv-tc-hero::before { background-position: center, center 30%; } }
+@media (max-width: 960px) { .gv-tc-hero::before { background-size: auto, cover; } }
+.gv.tu-hero2.st-hero2 h1 { font-size: clamp(46px, 5.6vw, 84px); max-width: 760px; }

@@ -26,7 +26,7 @@ def schedule_tour(ICON, IMG, maps_url, new_tab):
     <div class="gv-wrap tu-hero2-copy">
       <span class="gv-eyebrow">Admissions</span>
       <h1 id="st-title">Schedule Your School Tour Today!</h1>
-      <p class="gv-lead">Take the next step in your child’s future! Fill out the scheduling form below or give us a call at <a class="st-tel" href="tel:251-633-8055">251-633-8055</a> to book your personal tour. Come see firsthand how Covenant Christian School can inspire and shape your child’s growth and success.</p>
+      <p class="gv-lead">Take the next step in your child’s future! Book your personal tour below or call <a class="st-tel" href="tel:251-633-8055">251-633-8055</a>.</p>
       <div class="ns-hero-bottom"><div class="gv-actions">
           <a class="gv-btn gv-btn-gold" href="#book">{ICON["calendar"]}Pick a Tour Time</a>
           <a class="gv-btn gv-btn-ghost" href="tel:251-633-8055">{ICON["phone"]}Call 251-633-8055</a>
