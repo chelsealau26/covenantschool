@@ -243,7 +243,8 @@
   var FACTS = { annual: 25, biannual: 25, quarterly: 55, monthly: 55 };
   var PAYMENTS = { annual: 1, biannual: 2, quarterly: 4, monthly: 11 };
   var list = document.getElementById("tu-kids"), add = document.getElementById("tu-add");
-  var family = document.getElementById("tu-family"), plan = document.getElementById("tu-plan"), aid = document.getElementById("tu-aid");
+  var family = document.getElementById("tu-family"), aid = document.getElementById("tu-aid");
+  var plan = { get value() { var c = box.querySelector('input[name="tu-plan"]:checked'); return c ? c.value : "monthly"; } };
   var lines = document.getElementById("tu-lines"), feeLines = document.getElementById("tu-fee-lines");
   var totalEl = document.getElementById("tu-total"), perEl = document.getElementById("tu-per"), feesTotal = document.getElementById("tu-fees-total");
   var n = 0;
@@ -289,6 +290,7 @@
     if (choose) row(lines, "CHOOSE Act ESA (estimated)", "−" + $(choose), "is-save");
     var other = Math.max(0, parseFloat(aid.value) || 0);
     if (other) row(lines, "Other scholarships or aid", "−" + $(other), "is-save");
+    if (pl === "quarterly" || pl === "monthly") row(lines, "Payment plan", (pl === "monthly" ? "11 monthly" : "4 quarterly") + " payments", "is-note");
     var total = Math.max(0, net - choose - other);
     if (staff) row(lines, "4th + additional students", "Ask our office", "is-note");
     totalEl.textContent = $(total);
@@ -310,9 +312,12 @@
     fee("Building / FTP Fees", 320);
     fee("FACTS payment plan fee (per year)", FACTS[pl]);
     feesTotal.textContent = $(fees);
+    var tip = document.getElementById("tu-tip");
+    if (tip) { var saveAnnual = (sum - disc) * 0.02 + (FACTS[pl] - 25); tip.textContent = pl === "annual" ? "You’re saving with the annual 2% discount." : "Paying annually by June 1st would save about " + $(saveAnnual) + " a year."; }
   }
   add.addEventListener("click", function () { addKid("el"); var s = list.lastElementChild.querySelector("select"); s.focus(); });
-  [family, plan].forEach(function (el) { el.addEventListener("change", calc); });
+  family.addEventListener("change", calc);
+  box.querySelectorAll('input[name="tu-plan"]').forEach(function (r) { r.addEventListener("change", calc); });
   aid.addEventListener("input", calc);
   addKid("el");
 })();

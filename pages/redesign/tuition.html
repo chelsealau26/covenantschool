@@ -887,7 +887,7 @@
     ]
   }
 }
-</script><link rel="stylesheet" href="/assets/site-a11y.css?v=5b3316b8"><script src="/assets/donate-lightbox.js?v=21b6d293" defer></script><link rel="stylesheet" href="/assets/giving.css?v=c126e609"><script src="/assets/giving.js?v=e2e246f6" defer></script></head>
+</script><link rel="stylesheet" href="/assets/site-a11y.css?v=5b3316b8"><script src="/assets/donate-lightbox.js?v=21b6d293" defer></script><link rel="stylesheet" href="/assets/giving.css?v=718f5a2e"><script src="/assets/giving.js?v=017dfc04" defer></script></head>
     <body class="theme live-theme " data-resources="https://static.web-repository.com" data-content="https://content.app-sources.com/" data-locale="en" data-ver="1195" data-minor="1195.8592.1234509.-1745094565"  data-ali="0">
       <aside class="fundraiser-announcement" aria-label="Fall fundraiser announcement"><div class="fundraiser-announcement-inner"><div class="fundraiser-announcement-copy"><strong>Recipe for Success</strong><span>Fall Fundraiser</span></div><span class="fundraiser-announcement-dates">October 7–November 9, 2026</span><a class="fundraiser-announcement-cta" href="/fall-fundraiser">Learn more</a></div></aside>
       <div 
@@ -2080,12 +2080,20 @@
             <ol class="tu-kids" id="tu-kids"></ol>
             <button type="button" class="tu-add" id="tu-add"><span aria-hidden="true">+</span> Add another student</button>
           </fieldset>
+          <fieldset class="tu-est-block">
+            <legend>How do you want to pay tuition?</legend>
+            <div class="tu-pay" role="radiogroup">
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="annual"><span class="tu-pay-n">1</span><strong>Annually</strong><em>2% discount · $25 FACTS fee</em></label>
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="biannual"><span class="tu-pay-n">2</span><strong>Bi-Annually</strong><em>$25 FACTS fee</em></label>
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="quarterly"><span class="tu-pay-n">4</span><strong>Quarterly</strong><em>$55 FACTS fee</em></label>
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="monthly" checked><span class="tu-pay-n">11</span><strong>Monthly</strong><em>$55 FACTS fee</em></label>
+            </div>
+          </fieldset>
           <fieldset class="tu-est-block tu-est-row">
             <legend>Your family</legend>
             <label class="tu-field"><span>Family</span>
               <select id="tu-family"><option value="new">New to Covenant</option><option value="returning">Re-enrolling (Priority Re-Enrollment)</option></select></label>
-            <label class="tu-field"><span>Payment plan</span>
-              <select id="tu-plan"><option value="annual">Annually (2% discount)</option><option value="biannual">Bi-Annually</option><option value="quarterly">Quarterly</option><option value="monthly" selected>Monthly (11 payments)</option></select></label>
+
             <label class="tu-field"><span>Other scholarships or aid (per year)</span>
               <span class="tu-money"><span aria-hidden="true">$</span><input id="tu-aid" type="number" inputmode="numeric" min="0" step="50" placeholder="0" aria-describedby="tu-aid-hint"></span>
               <small id="tu-aid-hint">For example, an AOSF scholarship award.</small></label>
@@ -2094,7 +2102,7 @@
         <aside class="tu-est-out" aria-live="polite">
           <h3>Your estimate</h3>
           <dl class="tu-lines" id="tu-lines"></dl>
-          <div class="tu-total"><span>Estimated tuition for the year</span><strong id="tu-total">$0</strong><em id="tu-per"></em></div>
+          <div class="tu-total"><span>Estimated tuition for the year</span><strong id="tu-total">$0</strong><em id="tu-per"></em><p class="tu-tip" id="tu-tip"></p></div>
           <details class="tu-fees-est"><summary>Plus fees <strong id="tu-fees-total"></strong></summary><dl class="tu-lines" id="tu-fee-lines"></dl></details>
           <p class="tu-disclaimer">This is an estimate only. Your tuition amount may be different based on your enrollment date and your scholarship awards. Call our office at <a href="tel:251-633-8055">251-633-8055</a> for your specific amount.</p>
         </aside>
@@ -2110,8 +2118,8 @@
         <ul class="tu-checks tu-checks-dark"><li>Clear due dates for tuition and fees</li><li>Breakdown of additional fees</li><li>Save with our multi-student discounts</li></ul>
       </div>
       <div class="tu-accs" data-reveal>
-        <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span class="tu-acc-t">Save Your Spot for Next Year!</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><p class="tu-lede">Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
-          <h4>CCS Student Re-Enrollment</h4><ol class="tu-dates"><li><span class="tu-cal" aria-hidden="true"><b>Jan</b><i>16</i></span><div><strong>Priority Re-Enrollment</strong><span class="tu-when">January 16th - February 21st</span></div><span class="tu-amt"><b>$175</b><em>/ Student · Max $350/Family</em></span></li><li><span class="tu-cal" aria-hidden="true"><b>Feb</b><i>22</i></span><div><strong>Re-Enrollment</strong><span class="tu-when">February 22nd - April 1st</span></div><span class="tu-amt"><b>$225</b><em>/ Student · Max $450/Family</em></span></li><li><span class="tu-cal" aria-hidden="true"><b>Apr</b><i>2</i></span><div><strong>Late Re-Enrollment</strong><span class="tu-when">April 2nd</span></div><span class="tu-amt"><b>$375</b><em>/ Student · Max $750/Family</em></span></li></ol>
+        <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span class="tu-acc-t">Save Your Spot for Next Year!</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><p class="tu-lede"><span class="tu-status tu-status-light">Coming soon</span> Re-enrollment dates for the 2027–2028 school year are coming soon. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
+          <h4>CCS Student Re-Enrollment</h4><ol class="tu-dates"><li><span class="tu-cal tu-cal-soon" aria-hidden="true"><b>2027</b><i>Soon</i></span><div><strong>Priority Re-Enrollment</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>$175</b><em>/ Student · Max $350/Family</em></span></li><li><span class="tu-cal tu-cal-soon" aria-hidden="true"><b>2027</b><i>Soon</i></span><div><strong>Re-Enrollment</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>$225</b><em>/ Student · Max $450/Family</em></span></li><li><span class="tu-cal tu-cal-soon" aria-hidden="true"><b>2027</b><i>Soon</i></span><div><strong>Late Re-Enrollment</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>$375</b><em>/ Student · Max $750/Family</em></span></li></ol>
           <h4>New Student Enrollment</h4><ol class="tu-dates"><li><span class="tu-cal" aria-hidden="true"><b>Feb</b><i>22</i></span><div><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
           <p class="tu-fine">All enrollment fees are non-refundable.</p></div></details>
         <details class="tu-acc"><summary><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="tu-acc-t">Clear due dates for tuition and fees</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body"><ul class="tu-plans2"><li class="tu-plan"><span class="tu-plan-n">1</span><span class="tu-plan-k">payment</span><strong>Annually</strong><p>Paid by June 1st &amp; receive a 2% discount</p><span class="tu-tag2">$25/yr FACTS fee</span><span class="tu-save">2% discount</span></li><li class="tu-plan"><span class="tu-plan-n">2</span><span class="tu-plan-k">payments</span><strong>Bi-Annually</strong><p>Equal payments due on June 1st &amp; December 1st</p><span class="tu-tag2">$25/yr FACTS fee</span></li><li class="tu-plan"><span class="tu-plan-n">4</span><span class="tu-plan-k">payments</span><strong>Quarterly</strong><p>Equal tuition payments paid on June 1st, September 1st, December 1st, March 1st</p><span class="tu-tag2">$55/yr FACTS fee</span></li><li class="tu-plan"><span class="tu-plan-n">11</span><span class="tu-plan-k">payments</span><strong>Monthly</strong><p>July-May 11 mo. Tuition payments</p><span class="tu-tag2">$55/yr FACTS fee</span></li></ul></div></details>
@@ -2135,12 +2143,15 @@
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-parallax" aria-labelledby="tu-cta-title">
-    <div class="gv-band-bg" style="background-image: url('/assets/covenant-151_1-9523341.jpg')" aria-hidden="true"></div>
+  <section class="gv gv-band gv-band-parallax tu-cta" data-focus=".4" aria-labelledby="tu-cta-title">
+    <div class="gv-band-bg" style="background-image: url('/assets/covenant-92-9517625.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="tu-cta-title">SAVE YOUR SPOT FOR NEXT YEAR!</h2>
       <p class="gv-band-sub">Limited spots—apply early!</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment · Start Here</a><a class="gv-btn gv-btn-ghost" href="https://familyportal.renweb.com/" target="_blank" rel="noopener">CCS Student Re-Enrollment · Start Here</a></div>
+      <div class="tu-paths">
+        <a class="tu-path is-gold" href="/new-student-application"><span class="tu-path-k">New to Covenant?</span><strong>New Student Enrollment</strong><span class="tu-path-go">Start Here <span aria-hidden="true">&rarr;</span></span></a>
+        <a class="tu-path" href="https://familyportal.renweb.com/" target="_blank" rel="noopener"><span class="tu-path-k">Current CCS family?</span><strong>CCS Student Re-Enrollment</strong><span class="tu-path-go">Start Here <span aria-hidden="true">&rarr;</span></span></a>
+      </div>
       <p class="tu-cta-more"><a href="https://ccs-al.client.renweb.com/oa/inquiry.cfm?memberid=3143" target="_blank" rel="noopener">Request More Information <span aria-hidden="true">&rarr;</span></a></p>
     </div>
   </section>

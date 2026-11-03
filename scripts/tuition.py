@@ -42,7 +42,8 @@ def tuition(ICON, IMG, NEW_TAB):
     def badge(d):
         mo, day = d.split()[0][:3], "".join(ch for ch in d.split()[1] if ch.isdigit())
         return f'<span class="tu-cal" aria-hidden="true"><b>{mo}</b><i>{day}</i></span>'
-    enroll = "".join(f'''<li>{badge(d)}<div><strong>{n}</strong><span class="tu-when">{d}</span></div><span class="tu-amt"><b>{p.split(" /")[0]}</b><em>/ Student · {m}</em></span></li>''' for n, d, p, m in ENROLL)
+    soon = '<span class="tu-cal tu-cal-soon" aria-hidden="true"><b>2027</b><i>Soon</i></span>'
+    enroll = "".join(f'''<li>{soon}<div><strong>{n}</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>{p.split(" /")[0]}</b><em>/ Student · {m}</em></span></li>''' for n, d, p, m in ENROLL)
     COUNT = {"Annually": "1", "Bi-Annually": "2", "Quarterly": "4", "Monthly": "11"}
     plans = "".join(f'''<li class="tu-plan"><span class="tu-plan-n">{COUNT[n]}</span><span class="tu-plan-k">{"payment" if COUNT[n] == "1" else "payments"}</span><strong>{n}</strong><p>{d}</p><span class="tu-tag2">{f}</span>{'<span class="tu-save">2% discount</span>' if n == "Annually" else ""}</li>''' for n, d, f in PLANS)
     fees = "".join(f'''<li class="tu-fee"><span class="tu-fee-amt">{a[0].split(" (")[0].split(" per")[0]}</span><strong>{n}</strong><span class="tu-fee-det">{" · ".join(a)}</span><small>{w}</small></li>''' for n, w, a in FEES)
@@ -97,12 +98,20 @@ def tuition(ICON, IMG, NEW_TAB):
             <ol class="tu-kids" id="tu-kids"></ol>
             <button type="button" class="tu-add" id="tu-add"><span aria-hidden="true">+</span> Add another student</button>
           </fieldset>
+          <fieldset class="tu-est-block">
+            <legend>How do you want to pay tuition?</legend>
+            <div class="tu-pay" role="radiogroup">
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="annual"><span class="tu-pay-n">1</span><strong>Annually</strong><em>2% discount · $25 FACTS fee</em></label>
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="biannual"><span class="tu-pay-n">2</span><strong>Bi-Annually</strong><em>$25 FACTS fee</em></label>
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="quarterly"><span class="tu-pay-n">4</span><strong>Quarterly</strong><em>$55 FACTS fee</em></label>
+              <label class="tu-pay-opt"><input type="radio" name="tu-plan" value="monthly" checked><span class="tu-pay-n">11</span><strong>Monthly</strong><em>$55 FACTS fee</em></label>
+            </div>
+          </fieldset>
           <fieldset class="tu-est-block tu-est-row">
             <legend>Your family</legend>
             <label class="tu-field"><span>Family</span>
               <select id="tu-family"><option value="new">New to Covenant</option><option value="returning">Re-enrolling (Priority Re-Enrollment)</option></select></label>
-            <label class="tu-field"><span>Payment plan</span>
-              <select id="tu-plan"><option value="annual">Annually (2% discount)</option><option value="biannual">Bi-Annually</option><option value="quarterly">Quarterly</option><option value="monthly" selected>Monthly (11 payments)</option></select></label>
+
             <label class="tu-field"><span>Other scholarships or aid (per year)</span>
               <span class="tu-money"><span aria-hidden="true">$</span><input id="tu-aid" type="number" inputmode="numeric" min="0" step="50" placeholder="0" aria-describedby="tu-aid-hint"></span>
               <small id="tu-aid-hint">For example, an AOSF scholarship award.</small></label>
@@ -111,7 +120,7 @@ def tuition(ICON, IMG, NEW_TAB):
         <aside class="tu-est-out" aria-live="polite">
           <h3>Your estimate</h3>
           <dl class="tu-lines" id="tu-lines"></dl>
-          <div class="tu-total"><span>Estimated tuition for the year</span><strong id="tu-total">$0</strong><em id="tu-per"></em></div>
+          <div class="tu-total"><span>Estimated tuition for the year</span><strong id="tu-total">$0</strong><em id="tu-per"></em><p class="tu-tip" id="tu-tip"></p></div>
           <details class="tu-fees-est"><summary>Plus fees <strong id="tu-fees-total"></strong></summary><dl class="tu-lines" id="tu-fee-lines"></dl></details>
           <p class="tu-disclaimer">This is an estimate only. Your tuition amount may be different based on your enrollment date and your scholarship awards. Call our office at <a href="tel:251-633-8055">251-633-8055</a> for your specific amount.</p>
         </aside>
@@ -127,7 +136,7 @@ def tuition(ICON, IMG, NEW_TAB):
         <ul class="tu-checks tu-checks-dark"><li>Clear due dates for tuition and fees</li><li>Breakdown of additional fees</li><li>Save with our multi-student discounts</li></ul>
       </div>
       <div class="tu-accs" data-reveal>
-        {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede">Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
+        {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede"><span class="tu-status tu-status-light">Coming soon</span> Re-enrollment dates for the 2027–2028 school year are coming soon. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
           <h4>CCS Student Re-Enrollment</h4><ol class="tu-dates">{enroll}</ol>
           <h4>New Student Enrollment</h4><ol class="tu-dates"><li>{badge("February 22nd")}<div><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
           <p class="tu-fine">All enrollment fees are non-refundable.</p>''')}
@@ -152,12 +161,15 @@ def tuition(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-parallax" aria-labelledby="tu-cta-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-151_1-9523341.jpg')" aria-hidden="true"></div>
+  <section class="gv gv-band gv-band-parallax tu-cta" data-focus=".4" aria-labelledby="tu-cta-title">
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-92-9517625.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="tu-cta-title">SAVE YOUR SPOT FOR NEXT YEAR!</h2>
       <p class="gv-band-sub">Limited spots—apply early!</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment · Start Here</a><a class="gv-btn gv-btn-ghost" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment · Start Here</a></div>
+      <div class="tu-paths">
+        <a class="tu-path is-gold" href="/new-student-application"><span class="tu-path-k">New to Covenant?</span><strong>New Student Enrollment</strong><span class="tu-path-go">Start Here <span aria-hidden="true">&rarr;</span></span></a>
+        <a class="tu-path" href="{PORTAL}"{NEW_TAB}><span class="tu-path-k">Current CCS family?</span><strong>CCS Student Re-Enrollment</strong><span class="tu-path-go">Start Here <span aria-hidden="true">&rarr;</span></span></a>
+      </div>
       <p class="tu-cta-more"><a href="{INFO}"{NEW_TAB}>Request More Information <span aria-hidden="true">&rarr;</span></a></p>
     </div>
   </section>
