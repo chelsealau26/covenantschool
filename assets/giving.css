@@ -797,6 +797,11 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 
 /* ---------------------------------------------------------------- Mission & Values (preview redesign) */
 .mv-hero { --hero-pos: center 30%; }
+.gv.gv-hero.mv-hero { min-height: 62vh; }
+.gv.mv-intro { padding-top: 80px; padding-bottom: 40px; }
+.mv-intro .gv-wrap { max-width: 900px; border-left: 3px solid var(--tan); padding-left: 32px; }
+.gv .mv-intro p { font-size: 21px; line-height: 1.75; color: var(--ink); }
+@media (max-width: 640px) { .gv .mv-intro p { font-size: 18px; } .mv-intro .gv-wrap { padding-left: 20px; } }
 .gv .mv-dot { color: var(--tan); }
 .mv-mission { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: center; }
 .gv .mv-big { margin-top: 18px !important; font-size: 21px; line-height: 1.65; color: var(--ink); }

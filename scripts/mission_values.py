@@ -41,7 +41,6 @@ def mission_values(ICON, IMG):
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Mission &amp; Values</span>
         <h1>About Us</h1>
-        <p class="gv-lead">Covenant Christian School operates as a vibrant ministry under Covenant Church of Mobile. With a shared commitment to faith-based education, Covenant Church provides essential support and spiritual guidance that enriches the educational experience at our school. Together, we cultivate an environment where academic excellence, personal growth, and spiritual development are paramount. This partnership fosters a community of learning and faith, empowering students to excel academically while nurturing their spiritual journey in a supportive and inclusive environment.</p>
         <div class="gv-actions">
           <a class="gv-btn gv-btn-gold" href="/schedule-tour">Schedule a Tour</a>
           <a class="gv-btn gv-btn-ghost" href="#why">Why CCS?</a>
@@ -59,7 +58,13 @@ def mission_values(ICON, IMG):
     </div>
   </nav>
 
-  <section class="gv gv-section gv-white" id="mission" aria-labelledby="mv-mission-title">
+  <section class="gv gv-section gv-white mv-intro" aria-label="About Covenant Christian School">
+    <div class="gv-wrap" data-reveal>
+      <p>Covenant Christian School operates as a vibrant ministry under Covenant Church of Mobile. With a shared commitment to faith-based education, Covenant Church provides essential support and spiritual guidance that enriches the educational experience at our school. Together, we cultivate an environment where academic excellence, personal growth, and spiritual development are paramount. This partnership fosters a community of learning and faith, empowering students to excel academically while nurturing their spiritual journey in a supportive and inclusive environment.</p>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-paper" id="mission" aria-labelledby="mv-mission-title">
     <div class="gv-wrap mv-mission">
       <div data-reveal>
         <h2 id="mv-mission-title">Mission{dot}</h2>
@@ -73,7 +78,7 @@ def mission_values(ICON, IMG):
     </div>
   </section>
 
-  <section class="gv gv-section gv-soft" id="history" aria-labelledby="mv-history-title">
+  <section class="gv gv-section gv-white" id="history" aria-labelledby="mv-history-title">
     <div class="gv-wrap mv-history">
       <div class="mv-history-text">
         <h2 id="mv-history-title" data-reveal>History{dot}</h2>
@@ -85,7 +90,7 @@ def mission_values(ICON, IMG):
     </div>
   </section>
 
-  <section class="gv gv-section gv-white" id="family" aria-labelledby="mv-family-title">
+  <section class="gv gv-section gv-soft" id="family" aria-labelledby="mv-family-title">
     <div class="gv-wrap mv-family">
       <div class="hm-frame" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-95-9602737.jpg" alt="Three smiling girls in Covenant uniforms hugging outdoors" loading="lazy"></div>
       <div data-reveal>
