@@ -31,7 +31,7 @@ def calendar_page(ICON, IMG, NEW_TAB, pages):
         <h2 id="cal-next-title">Coming Up</h2>
         <ol class="cal-next" id="cal-next"></ol>
         <a class="gv-btn gv-btn-gold cal-side-btn" href="{PDF}"{NEW_TAB}>Download the 2026-2027 Calendar</a>
-        <a class="cal-side-app" href="{APP}"{NEW_TAB}><span class="hm-col-icon">{I["phone"]}</span><span>Download the App</span></a>
+        <a class="cal-side-app" href="{APP}"{NEW_TAB}><span class="hm-col-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><span>Download the App</span></a>
       </aside>
     </div>
     <script type="application/json" id="cal-events-data">{events}</script>
