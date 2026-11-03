@@ -71,21 +71,25 @@
   });
 })();
 
-// Photo bands marked .gv-band-parallax: the photo moves at a slower pace than the page.
+// Photo bands marked .gv-band-parallax: like the current site, the photo is shown full width at
+// its natural shape and drifts at about a quarter of the scroll speed behind the band.
 (function () {
-  var bands = document.querySelectorAll(".gv-band-parallax");
+  var bands = Array.prototype.slice.call(document.querySelectorAll(".gv-band-parallax"));
   if (!bands.length) return;
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var ticking = false;
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var RATIO = 1440 / 958, SPEED = 0.28, ticking = false;
   function update() {
     ticking = false;
     var vh = window.innerHeight;
     bands.forEach(function (band) {
-      var r = band.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > vh) return;
-      var progress = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1..1
       var bg = band.querySelector(".gv-band-bg");
-      if (bg) bg.style.setProperty("--py", (progress * r.height * 0.2).toFixed(1) + "px");
+      if (!bg) return;
+      var r = band.getBoundingClientRect();
+      var h = Math.max(r.width / RATIO, r.height);
+      bg.style.height = h + "px";
+      var room = h - r.height;
+      var y = -room / 2 - (still ? 0 : SPEED * (r.top + r.height / 2 - vh / 2));
+      bg.style.setProperty("--py", Math.max(-room, Math.min(0, y)).toFixed(1) + "px");
     });
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }

@@ -176,10 +176,11 @@
 .gv-band p { color: rgba(255, 255, 255, .85); max-width: 620px; margin: 14px auto 0; font-size: 18px; }
 .gv-band .gv-actions { justify-content: center; }
 /* Tour band: photo layer drifts slower than the page, like the current site's parallax */
-.gv.gv-band-parallax { background: var(--ink); overflow: hidden; padding: 150px 24px; }
-.gv-band-parallax::before { z-index: 0; background: rgba(21, 53, 83, .66); }
-.gv-band-parallax .gv-wrap { position: relative; z-index: 1; }
-.gv-band-bg { position: absolute; left: 0; right: 0; top: -25%; height: 150%; z-index: -1; background: center 30% / cover no-repeat; transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
+.gv.gv-band-parallax { background: var(--ink); overflow: hidden; padding: 60px 24px; min-height: 560px; display: flex; flex-direction: column; justify-content: center; }
+.gv-band-parallax::before { z-index: 0; background: rgba(0, 0, 0, .55); }
+.gv-band-parallax .gv-wrap { position: relative; z-index: 1; width: 100%; }
+.gv-band-parallax h2 { font-size: 48px; }
+.gv-band-bg { position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: -1; background: center top / cover no-repeat; transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
 .gv-note { font-size: 14px; color: rgba(255, 255, 255, .7) !important; margin-top: 14px !important; display: inline-flex; gap: 8px; align-items: center; }
 .gv-note svg { width: 16px; height: 16px; }
 
@@ -678,7 +679,7 @@
 
 /* CCS Resources as a directory */
 .gv.hm-res-sec { position: relative; overflow: hidden; }
-.hm-res-eagle { position: absolute; left: -90px; bottom: -70px; width: 860px; max-width: none; height: auto; opacity: .45; pointer-events: none; }
+.hm-res-eagle { position: absolute; left: -90px; bottom: -70px; width: 860px; max-width: none; height: auto; opacity: .22; pointer-events: none; }
 .hm-res-sec .gv-wrap { position: relative; }
 .hm-res { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
 .hm-res-head h2 { font-size: 46px; }
@@ -778,4 +779,8 @@
 .hm-stars svg { width: 22px; height: 22px; fill: var(--tan); }
 
 
-@media (max-width: 640px) { .gv.gv-band-parallax { padding: 96px 20px; } .gv-band-bg { background-position: center 25%; } }
+@media (max-width: 640px) { .gv.gv-band-parallax { padding: 60px 20px; min-height: 0; } }
+
+/* Homepage preview: elevated footer (dark navy gradient from the site palette, thin tan rule on top) */
+body:has(.gv-hero-home) #container-widget-1719555017494 { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) !important; border-top: 3px solid var(--tan, #daad86); }
+body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !important; border-top: 1px solid rgba(218, 173, 134, .22); }
