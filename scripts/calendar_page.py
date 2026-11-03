@@ -12,6 +12,8 @@ def calendar_page(ICON, IMG, NEW_TAB, pages):
     a = m.index("<!-- FullCalendar -->")
     b = m.rindex("</script>") + len("</script>")
     widget = m[a:b]
+    # The day pop-up's weekday label is not a section heading (keeps the heading outline clean).
+    widget = re.sub(r'<h3 id="cal-popup-weekday"[^>]*></h3>', '<p id="cal-popup-weekday" class="cal-pop-wd" aria-hidden="true"></p>', widget)
     js = re.findall(r"var SCHOOL_EVENTS = (\[[\s\S]*?\]);", widget)[0]
     events = json.dumps(json.loads(js), separators=(",", ":"))
     return f'''

@@ -501,9 +501,9 @@ def tax_credit():
       <div class="gv-tc-below" id="how">
         <h2 data-reveal>How It Works</h2>
         <ol class="gv-steps">
-          <li data-reveal><span class="gv-step-icon">{ICON["pen"]}</span><h4>Pledge today</h4><p>Use the form to let us know you plan to give. Pledging now helps us plan scholarships for next year.</p></li>
-          <li data-reveal><span class="gv-step-icon">{ICON["gift"]}</span><h4>Give through AOSF in 2027</h4><p>When the program opens in January 2027, your gift goes to the Alabama Opportunity Scholarship Fund, a scholarship-granting organization, with Covenant Christian School selected as your school.</p></li>
-          <li data-reveal><span class="gv-step-icon">{ICON["receipt"]}</span><h4>Claim your credit</h4><p>Claim the dollar-for-dollar credit on your 2027 federal tax return. Your tax professional can confirm how it applies to you.</p></li>
+          <li data-reveal><span class="gv-step-icon">{ICON["pen"]}</span><h3 class="gv-h4">Pledge today</h3><p>Use the form to let us know you plan to give. Pledging now helps us plan scholarships for next year.</p></li>
+          <li data-reveal><span class="gv-step-icon">{ICON["gift"]}</span><h3 class="gv-h4">Give through AOSF in 2027</h3><p>When the program opens in January 2027, your gift goes to the Alabama Opportunity Scholarship Fund, a scholarship-granting organization, with Covenant Christian School selected as your school.</p></li>
+          <li data-reveal><span class="gv-step-icon">{ICON["receipt"]}</span><h3 class="gv-h4">Claim your credit</h3><p>Claim the dollar-for-dollar credit on your 2027 federal tax return. Your tax professional can confirm how it applies to you.</p></li>
         </ol>
       </div>
     </div>
@@ -513,9 +513,9 @@ def tax_credit():
     <div class="gv-wrap">
       <div class="gv-head" data-reveal><span class="gv-eyebrow">Good to know</span><h2 id="gv-know-title">Why Pledge Now?</h2></div>
       <div class="gv-panels">
-        <div class="gv-panel" data-reveal><div class="gv-panel-icon">{ICON["map"]}</div><h4>Any state can give</h4><p>Grandparents, alumni and friends anywhere in the country can take part, not just Alabama residents.</p></div>
-        <div class="gv-panel" data-reveal><div class="gv-panel-icon">{ICON["clock"]}</div><h4>First come, first served</h4><p>Credits are limited by a national cap, so pledging early helps make sure your gift counts.</p></div>
-        <div class="gv-panel" data-reveal><div class="gv-panel-icon">{ICON["users"]}</div><h4>Helps Covenant families</h4><p>Scholarships support K–12 students in households earning up to 300% of their area's median income.</p></div>
+        <div class="gv-panel" data-reveal><div class="gv-panel-icon">{ICON["map"]}</div><h3 class="gv-h4">Any state can give</h3><p>Grandparents, alumni and friends anywhere in the country can take part, not just Alabama residents.</p></div>
+        <div class="gv-panel" data-reveal><div class="gv-panel-icon">{ICON["clock"]}</div><h3 class="gv-h4">First come, first served</h3><p>Credits are limited by a national cap, so pledging early helps make sure your gift counts.</p></div>
+        <div class="gv-panel" data-reveal><div class="gv-panel-icon">{ICON["users"]}</div><h3 class="gv-h4">Helps Covenant families</h3><p>Scholarships support K–12 students in households earning up to 300% of their area's median income.</p></div>
       </div>
     </div>
   </section>
@@ -763,7 +763,16 @@ def build():
     bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
     bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)
     bg = bg.replace("</head>", '<meta name="robots" content="noindex, nofollow"></head>', 1)
+    bg = re.sub(r'<link rel="canonical"[^>]*>\s*', "", bg)
+    bg = bg.replace("https://covenantschool.com/ways-to-give", "https://covenantschool.com/brand-guide")
+    bg = re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*(")', r"\g<1>Internal design rules for the Covenant Christian School website.\g<2>", bg)
     (PAGES / "redesign" / "brand-guide.html").write_text(bg)
+    # Final SEO pass on every redesigned page and the scheduled tax credit page.
+    import importlib.util as _u2
+    _sp2 = _u2.spec_from_file_location("seo", ROOT / "scripts" / "seo.py"); _seo = _u2.module_from_spec(_sp2); _sp2.loader.exec_module(_seo)
+    for _f in list((PAGES / "redesign").glob("*.html")) + [PAGES / "federal-tax-credit.html"]:
+        _name = "" if _f.stem == "home" else _f.stem
+        _f.write_text(_seo.finalize(_f.read_text(), _name))
     PV = (ROOT / "assets" / "preview-version.mjs")
     import importlib.util as _u
     _sp = _u.spec_from_file_location("build_silver", ROOT / "scripts" / "build-silver.py"); _sm = _u.module_from_spec(_sp); _sp.loader.exec_module(_sm)

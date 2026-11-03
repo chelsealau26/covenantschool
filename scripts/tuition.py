@@ -137,12 +137,12 @@ def tuition(ICON, IMG, NEW_TAB):
       </div>
       <div class="tu-accs" data-reveal>
         {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede"><span class="tu-status tu-status-light">Coming soon</span> Re-enrollment and open enrollment dates for the 2027–2028 school year are coming soon. Don’t miss early bird savings! Limited spots—apply early!</p>
-          <h4>CCS Student Re-Enrollment</h4><ol class="tu-dates">{enroll}</ol>
-          <h4>New Student Enrollment</h4><ol class="tu-dates"><li>{soon}<div><strong>Open Enrollment</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
+          <h3 class="tu-h4">CCS Student Re-Enrollment</h3><ol class="tu-dates">{enroll}</ol>
+          <h3 class="tu-h4">New Student Enrollment</h3><ol class="tu-dates"><li>{soon}<div><strong>Open Enrollment</strong><span class="tu-when">Dates coming soon</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
           <p class="tu-fine">All enrollment fees are non-refundable.</p>''')}
         {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-plans2">{plans}</ul>')}
         {item("receipt", "Additional Fees", id_="additional-fees", body=f'''<ul class="tu-fees2">{fees}</ul>
-          <div class="tu-cur2"><h4>Curriculum Fees <span>Non-refundable due June 1st</span></h4><ul>{cur}</ul>
+          <div class="tu-cur2"><h3 class="tu-h4">Curriculum Fees <span>Non-refundable due June 1st</span></h3><ul>{cur}</ul>
           <p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p></div>''')}
         {item("users", "The Bigger The Family, The More The Savings", id_="discount", body='<div class="tu-disc2"><div class="tu-disc-big"><b>3%</b><span>off for the 2nd &amp; 3rd child</span></div><div><span class="tu-label">Multi Student Discount</span><p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p></div></div>')}
         {item("school", "Choose Act Alabama", id_="choose", body=f'''<div class="tu-choose2">
