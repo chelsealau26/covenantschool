@@ -74,6 +74,7 @@ def technology(ICON, IMG):
             <h3 id="te-el">Elementary Technology Use</h3>
             <p class="te-plan-lead">Younger students will continue to use school-owned iPads occasionally and intentionally.</p>
             {checks(["Technology is used in small, purposeful ways", "Screen time is balanced with hands-on learning, discussion, and written work", "iPads support instruction—not replace traditional learning tools"])}
+            <img class="te-plan-img" src="{IMG}fb/ccs-four-friends.jpg" alt="Four smiling elementary students sitting together" loading="lazy">
           </div>
         </article>
       </div>
