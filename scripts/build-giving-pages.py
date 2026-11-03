@@ -668,17 +668,20 @@ def home():
   <section class="gv gv-section gv-paper hm-cols">
     <div class="gv-wrap">
       <div class="hm-cols-grid">
-        <div class="hm-col">
+        <div class="hm-col" data-reveal>
+          <div class="hm-col-top"><span class="hm-col-icon">{ICON["list"]}</span></div>
           <h4>School Supply Lists</h4>
           <p>Need to gear up for the start of school—or restock supplies? Our school supply lists are always available in the Parent Portal whenever you need a refresher.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="{L['renweb']}"{NEW_TAB}>VIEW ON PARENT PORTAL</a></div>
         </div>
-        <div class="hm-col">
+        <div class="hm-col" data-reveal>
+          <div class="hm-col-top"><span class="hm-col-icon">{ICON["handshake"]}</span></div>
           <h4>Join the Family Teacher Partnership</h4>
           <p>Get involved and make a difference in our school community. Together, we can support our students and enrich their educational experience.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/ftp">LEARN MORE</a></div>
         </div>
-        <div class="hm-col">
+        <div class="hm-col" data-reveal>
+          <div class="hm-col-top"><span class="hm-col-icon">{ICON["briefcase"]}</span></div>
           <h4>Exciting Job Opportunities</h4>
           <p>Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/employment-openings">APPLY TODAY</a></div>
