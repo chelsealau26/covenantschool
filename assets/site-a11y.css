@@ -156,3 +156,15 @@ footer a.social-media-button i { background: transparent !important; color: #fff
 footer a.social-media-button:is(:hover, :focus-visible) { background: #daad86 !important; border-color: #daad86 !important; transform: translateY(-2px); }
 footer a.social-media-button:is(:hover, :focus-visible) i { color: #131c24 !important; }
 footer a.social-media-button:not(#a11y-btn):not(#a11y-panel):not(#a11y-x):focus-visible { border-radius: 50% !important; outline-color: #daad86 !important; }
+
+/* Contrast checkers can't see photos or see-through colors. Declare the real backdrops:
+   - homepage header sits on the hero's navy overlay (white menu text is 7.9:1 or better over any photo),
+     so it carries that navy as a near-invisible background color;
+   - the accessibility panel's Reset button gets a solid navy;
+   - testimonial text is darkened so it passes on the light blue cards either way. */
+body:has(#heading-widget-1518129426779) .main-header-wrapper,
+body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54, .01); }
+#a11y-panel #a11y-panel-reset { background: #2d5089 !important; }
+#a11y-panel #a11y-panel-reset:hover { background: #3a5f9c !important; }
+#text-widget-1719607130454 :is(p, span), #text-widget-1719607130453 :is(p, span),
+#text-widget-1719607130452 :is(p, span), #text-widget-1719523282218 :is(p, span) { color: #474747 !important; }
