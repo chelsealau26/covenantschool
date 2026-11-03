@@ -79,6 +79,14 @@ def metal(decl):
     imp = " !important" if "!important" in val else ""
     return f"background: {METAL}{imp}"
 
+TOUCHED = {}   # selector -> property families the silver layer has set
+
+def fam(prop):
+    prop = prop.strip().lower()
+    for f in ("border", "background", "outline", "box-shadow"):
+        if prop.startswith(f): return f
+    return prop
+
 def rules(css):
     css = re.sub(r"/\*[\s\S]*?\*/", "", css)
     i, n, out = 0, len(css), []
@@ -101,11 +109,16 @@ def rules(css):
         k = css.find("}", j)
         body = css[j + 1:k]
         decls = []
+        keys = [re.sub(r"\s+", " ", x.strip()) for x in re.split(r",(?![^(]*\))", head) if x.strip()]
         for d in (x.strip() for x in body.split(";")):
-            if not d: continue
+            if not d or ":" not in d: continue
+            f = fam(d.split(":", 1)[0])
             m = metal(d)
-            if m: decls.append(m)
-            elif has_warm(d): decls.append(swap(d))
+            if m or has_warm(d):
+                decls.append(m or swap(d))
+                for kk in keys: TOUCHED.setdefault(kk, set()).add(f)
+            elif any(f in TOUCHED.get(kk, ()) for kk in keys):
+                decls.append(d)   # keep later overrides (e.g. a mobile reset) winning over the silver layer
         if decls and head:
             out.append(f"{prefix(head)} {{ " + "; ".join(decls) + "; }")
         i = k + 1
