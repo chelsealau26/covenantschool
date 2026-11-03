@@ -1657,6 +1657,9 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 
 /* ---------------------------------------------------------------- Curriculum (preview redesign) */
 .cu-hero .tu-hero2-img { background-position: 40% 30%; }
+.gv.cu-hero h1 { max-width: none !important; }
+.gv.cu-hero .cu-l2 { display: block; }
+@media (min-width: 641px) { .gv.cu-hero .cu-l2 { white-space: nowrap; } }
 .cu-intro-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
 .cu-intro-grid .hm-frame img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
 .cu-browser { display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: start; }

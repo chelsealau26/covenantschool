@@ -37,7 +37,7 @@ def curriculum(ICON, IMG, pages):
     <div class="tu-hero2-img" style="background-image: url('{IMG}covenant-21-9528197.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap tu-hero2-copy">
       <span class="gv-eyebrow">Curriculum</span>
-      <h1 id="cu-title">Solid Foundation in All Core Subjects</h1>
+      <h1 id="cu-title">Solid Foundation <span class="cu-l2">in All Core Subjects</span></h1>
       <p class="gv-lead">CCS curriculum objectives are based on Alabama Course of Study Standards, Iowa test standards, and our own philosophy of Christian education.</p>
       <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="#by-grade">Discover Curriculum By Grade</a></div>
     </div>
