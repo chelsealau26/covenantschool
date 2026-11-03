@@ -1646,3 +1646,11 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 @media (max-width: 960px) {
   .gv-tc-hero::after { left: calc(-1 * var(--tcx, 0px)); width: 100vw; -webkit-mask-image: none; mask-image: none; opacity: .28; background-position: 50% 20%; }
 }
+
+/* Hero photos carry a soft navy wash so the gradient flows from the text into the photo */
+.tu-hero2-img::after, .ns-hero-img::after, .gv-hero-layer::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(21, 53, 83, .5) 0%, rgba(21, 53, 83, .24) 40%, rgba(13, 33, 54, .14) 100%);
+}
+.gv-tc-hero::after { background: linear-gradient(90deg, rgba(21, 53, 83, .5) 0%, rgba(21, 53, 83, .24) 40%, rgba(13, 33, 54, .14) 100%), var(--hero-img) 50% var(--tcy, 22%) / cover no-repeat !important; }
+@media (max-width: 960px) { .gv-tc-hero::after { background: var(--hero-img) 50% 20% / cover no-repeat !important; } }
