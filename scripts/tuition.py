@@ -52,7 +52,7 @@ def tuition(ICON, IMG, NEW_TAB):
         return f'''<details class="tu-acc"{(' id='+chr(34)+id_+chr(34)) if id_ else ''}{" open" if open_ else ""}><summary><span class="hm-col-icon">{ICON[icon]}</span><span class="tu-acc-t">{title}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body">{body}</div></details>'''
     return f'''
   <section class="gv tu-hero2" data-scroll-dim aria-labelledby="tu-title">
-    <div class="tu-hero2-img" style="background-image: url('{IMG}covenant-24-9584556.jpg')" aria-hidden="true"></div>
+    <div class="tu-hero2-img" style="background-image: url('{IMG}ccs-teachers-students.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap tu-hero2-copy">
       <span class="gv-eyebrow">Tuition and Fees</span>
       <h1 id="tu-title">Investing in Your Child's Future</h1>
@@ -161,7 +161,7 @@ def tuition(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-parallax tu-cta" data-focus=".4" aria-labelledby="tu-cta-title">
+  <section class="gv gv-band gv-band-parallax tu-cta" data-focus="0" aria-labelledby="tu-cta-title">
     <div class="gv-band-bg" style="background-image: url('{IMG}covenant-92-9517625.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="tu-cta-title">SAVE YOUR SPOT FOR NEXT YEAR!</h2>

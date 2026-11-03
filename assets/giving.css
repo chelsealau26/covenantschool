@@ -1630,3 +1630,6 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 @media (max-width: 960px) { .gv .st-grid2 .st-steps { grid-column: 1; grid-row: auto; } .gv .st-grid2 .st-call { grid-row: auto; } }
 /* Tax credit hero photo: exactly the width of the screen, starting at its left edge */
 .gv-tc-hero::before { left: calc(-1 * var(--tcx, 0px)); right: auto; width: 100vw; background-size: auto, cover !important; }
+/* Tuition hero: wide group photo; Tax Credit hero: portrait photo framed on the faces */
+.tu-hero2:not(.st-hero2):not(.ep-hero2) .tu-hero2-img { background-position: 50% 30%; }
+.gv-tc-hero::before { background-position: center, center 8% !important; }

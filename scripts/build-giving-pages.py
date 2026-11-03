@@ -475,7 +475,7 @@ WIDGET = """<div id="theodore-giving-embed"></div>
 
 def tax_credit():
     return f'''
-  <section class="gv gv-tc-top" aria-labelledby="gv-tc-title" style="--hero-img: url('{IMG}ccs-teachers-students.jpg')">
+  <section class="gv gv-tc-top" aria-labelledby="gv-tc-title" style="--hero-img: url('{IMG}covenant-24-9584556.jpg')">
     <div class="gv-wrap gv-tc-grid">
       <div class="gv-tc-hero">
         <span class="gv-badge gv-badge-tan">New in 2027</span>
