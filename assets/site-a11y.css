@@ -75,9 +75,9 @@ main:focus { outline: none; }
 /* Rounded corners on the student portrait (Tuition) and its accent frame */
 #image-widget-1719588522832 .image-box,
 #image-widget-1719588522832 .image-box *,
-#image-widget-1719588522832 img { border-radius: 18px; }
-#image-widget-1719588522832 .widget-preserving-ratio-outer { border-radius: 18px; overflow: hidden; }
-.grid-column:has(#image-widget-1719588522832) { border-radius: 18px; }
+#image-widget-1719588522832 img { border-radius: 4px; }
+#image-widget-1719588522832 .widget-preserving-ratio-outer { border-radius: 4px; overflow: hidden; }
+.grid-column:has(#image-widget-1719588522832) { border-radius: 4px; }
 
 /* Slightly smaller header logo (was up to 90px tall). The fundraiser page keeps its own approved header logo. */
 body:not(.fundraiser-route) .main-header-wrapper .theme-logo img { max-height: 70px !important; width: auto; }
@@ -105,7 +105,7 @@ body:not(.fundraiser-route) .mobile-menu .theme-logo img { max-height: 54px !imp
 #header-widget-1719811451032 .border-at-left nav > ul > li:hover { border-color: #daad86 !important; }
 
 /* Donation lightbox (assets/donate-lightbox.js): Square checkout on top of the page */
-.ccs-donate { width: min(560px, calc(100vw - 32px)); height: min(860px, calc(100vh - 48px)); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 30px 80px rgba(19, 28, 36, .45); font-family: "Open Sans", Arial, sans-serif; }
+.ccs-donate { width: min(560px, calc(100vw - 32px)); height: min(860px, calc(100vh - 48px)); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 4px; overflow: hidden; background: #fff; box-shadow: 0 30px 80px rgba(19, 28, 36, .45); font-family: "Open Sans", Arial, sans-serif; }
 .ccs-donate[open] { display: flex; flex-direction: column; }
 .ccs-donate::backdrop { background: rgba(19, 28, 36, .72); }
 .ccs-donate-bar { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 20px; background: #153553; color: #fff; }
