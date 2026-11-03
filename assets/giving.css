@@ -1485,12 +1485,21 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 .ep-card { margin-top: 0; }
 .ep-apply-eagle { top: auto; right: auto; left: -140px; bottom: -40px; width: 820px; }
 /* Mission: faith band over a prayer photo, Why CCS photo strip */
-.mv-faith-bg { position: absolute; inset: 0; z-index: 0; background: center 30% / cover no-repeat; opacity: .22; }
-.gv.mv-faith::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(165deg, rgba(34, 67, 97, .82) 0%, rgba(21, 53, 83, .88) 42%, rgba(13, 33, 54, .95) 100%); }
-.mv-faith .gv-wrap, .mv-faith-eagle { z-index: 1; }
+/* Faith band: prayer photo under a deep navy overlay (text 12:1+), photo drifts on scroll */
+.mv-faith-bg { position: absolute; left: 0; right: 0; top: -90px; bottom: -90px; z-index: 0; background: center 30% / cover no-repeat; translate: 0 var(--hp, 0px); will-change: translate; }
+.gv.mv-faith::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(165deg, rgba(25, 52, 79, .86) 0%, rgba(17, 43, 68, .9) 42%, rgba(10, 26, 43, .95) 100%); }
+.mv-faith .gv-wrap { z-index: 3; }
+.mv-faith-eagle { z-index: 2; }
 .mv-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 40px; }
 .mv-strip figure { position: relative; margin: 0; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 3; background: #0d2136; }
 .mv-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
 .mv-strip figure:hover img { transform: scale(1.05); }
 .gv .mv-strip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 12px; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0%, rgba(13, 33, 54, .9) 100%); color: #fff; font-size: 14px; font-weight: 700; }
 @media (max-width: 760px) { .mv-strip { grid-template-columns: 1fr 1fr; } }
+
+/* Secondary-page heroes: the photo drifts a little slower than the page (gentle parallax, not fixed) */
+.gv.mv-hero { background-image: none; }
+.mv-hero-bg { position: absolute; left: 0; right: 0; bottom: 0; top: -70px; z-index: -2; background: var(--hero-pos, center 30%) / cover no-repeat; }
+.tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo { top: -70px; }
+.mv-hero-bg, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo { translate: 0 var(--hp, 0px); will-change: translate; }
+@media (max-width: 640px) { .ns-hero-img, .tu-hero2-img { top: -70px; } }

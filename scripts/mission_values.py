@@ -37,6 +37,7 @@ def mission_values(ICON, IMG):
     why = "".join(f'''<li class="mv-why-item" data-reveal><span class="hm-col-icon">{I[i]}</span><div><h3>{t}</h3><p>{d}</p></div></li>''' for i, t, d in WHY)
     return f'''
   <section class="gv gv-hero mv-hero" style="--hero-img: url('{IMG}fb/ccs-school-gathering.jpg')">
+    <div class="mv-hero-bg" style="background-image: url('{IMG}fb/ccs-school-gathering.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <span class="gv-eyebrow">Mission &amp; Values</span>

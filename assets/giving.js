@@ -321,3 +321,34 @@
   aid.addEventListener("input", calc);
   addKid("el");
 })();
+
+// Secondary-page heroes: photo layer moves at ~70% of scroll speed while the hero is on screen.
+// Mid-page photo sections (Statement of Faith) drift gently around their resting spot.
+(function () {
+  var layers = document.querySelectorAll(".mv-hero-bg, .tu-hero2-img, .ns-hero-img, .st-hero .gv-hero-photo");
+  var drift = document.querySelectorAll(".mv-faith-bg");
+  if (!layers.length && !drift.length) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight, y = window.scrollY;
+    layers.forEach(function (el) {
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var base = Math.max(0, r.top + y - vh);          // scroll position where the hero first comes into view
+      var shift = Math.max(0, (y - base) * 0.3);
+      shift = Math.min(shift, 70 + Math.max(0, -r.top)); // never open a gap above a visible hero
+      el.style.setProperty("--hp", shift.toFixed(1) + "px");
+    });
+    drift.forEach(function (el) {
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var shift = -(r.top + r.height / 2 - vh / 2) * 0.18;
+      el.style.setProperty("--hp", Math.max(-90, Math.min(90, shift)).toFixed(1) + "px");
+    });
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
