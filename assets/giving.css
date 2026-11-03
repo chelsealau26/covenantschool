@@ -1047,10 +1047,10 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .gv.ns-hero { align-items: stretch; min-height: calc(100svh - 110px); padding: 0 18px; }
   .ns-hero-img { background-size: cover; background-position: 52% 30%; animation: none; }
   .ns-hero::before { background: linear-gradient(90deg, rgba(13, 33, 54, .94) 0%, rgba(13, 33, 54, .86) 46%, rgba(13, 33, 54, .35) 60%, rgba(13, 33, 54, 0) 72%); }
-  .ns-hero-copy { display: flex; flex-direction: column; padding-top: 28px; }
+  .ns-hero-copy { display: flex; flex-direction: column; justify-content: flex-end; padding-top: 28px; }
   .ns-br { display: inline; }
   .gv.ns-hero .gv-lead { max-width: 56%; }
-  .ns-hero-bottom { position: relative; isolation: isolate; margin-top: auto; padding: 28px 0 32px; }
+  .ns-hero-bottom { position: relative; isolation: isolate; margin-top: 0; padding: 26px 0 32px; }
   .ns-hero-bottom::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -30px; bottom: 0; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .85) 40px, #0d2136 100%); pointer-events: none; }
   .gv.ns-hero .gv-eyebrow { margin-bottom: 6px; font-size: 12px; }
   .gv.ns-hero h1 { font-size: 50px; line-height: .98; }
