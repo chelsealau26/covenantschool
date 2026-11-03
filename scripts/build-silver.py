@@ -87,7 +87,7 @@ def fam(prop):
         if prop.startswith(f): return f
     return prop
 
-def rules(css):
+def rules(css, full=False):
     css = re.sub(r"/\*[\s\S]*?\*/", "", css)
     i, n, out = 0, len(css), []
     while i < n:
@@ -98,7 +98,7 @@ def rules(css):
             depth, k = 1, j + 1
             while k < n and depth:
                 depth += {"{": 1, "}": -1}.get(css[k], 0); k += 1
-            inner = rules(css[j + 1:k - 1])
+            inner = rules(css[j + 1:k - 1], full)
             if inner: out.append(f"{head} {{\n{inner}\n}}")
             i = k; continue
         if head.startswith("@"):
@@ -117,7 +117,7 @@ def rules(css):
             if m or has_warm(d):
                 decls.append(m or swap(d))
                 for kk in keys: TOUCHED.setdefault(kk, set()).add(f)
-            elif any(f in TOUCHED.get(kk, ()) for kk in keys):
+            elif full or any(f in TOUCHED.get(kk, ()) for kk in keys):
                 decls.append(d)   # keep later overrides (e.g. a mobile reset) winning over the silver layer
         if decls and head:
             out.append(f"{prefix(head)} {{ " + "; ".join(decls) + "; }")
@@ -126,7 +126,8 @@ def rules(css):
 
 def build(page_html_paths):
     parts = []
-    for src in SOURCES: parts.append(rules(src.read_text()))
+    # Full copy (every rule, original order) so layout resets keep working exactly as in the tan look.
+    for src in SOURCES: parts.append(rules(src.read_text(), full=True))
     seen = set()
     for p in page_html_paths:
         for block in re.findall(r"<style[^>]*>([\s\S]*?)</style>", p.read_text()):
