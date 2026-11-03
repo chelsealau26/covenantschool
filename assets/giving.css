@@ -716,7 +716,7 @@
 .hm-quote figcaption span { font-weight: 400; color: var(--muted); }
 .hm-quote-lead blockquote { font-family: Anton, "Open Sans", Arial, sans-serif; font-size: 40px; line-height: 1.15; color: var(--navy); }
 .hm-quote-lead blockquote p + p { margin-top: 10px !important; }
-.gv .hm-quote-lead blockquote { border-left: 0; padding-left: 0; }
+.gv .hm-quote blockquote { border-left: 0; padding-left: 0; }
 .hm-quote-lead blockquote::before { content: "\201C"; display: block; height: 44px; overflow: hidden; font-family: Georgia, serif; font-size: 96px; line-height: 1; color: var(--tan); margin: 0 0 10px -4px; }
 .hm-quote-lead figcaption { margin-top: 18px; font-size: 16px; }
 .hm-voices-rest { display: grid; gap: 26px; }
