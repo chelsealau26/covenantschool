@@ -654,7 +654,7 @@ def home():
       <ul class="hm-res-list">
         {res(L['handbook'], "file", "Student/Parent Handbook", True, doc="Student/Parent Handbook 2026–2027")}
         {res(L['uniform'], "file", "Uniform Policy &amp; Procedure", True, doc="Uniform Policy &amp; Procedure")}
-        {res("/school-supplies", "list", "School Supply Lists")}
+        {res(L['facts'], "list", "School Supply Lists", True)}
         {res(L['coppa'], "shield", "COPPA Policy", True, doc="COPPA Policy")}
         {res(L['renweb'], "refresh", "Re-Enrollment", True)}
         {res("/new-student-application", "pen", "New Student Application")}
@@ -670,10 +670,10 @@ def home():
     <div class="gv-wrap">
       <div class="hm-cols-grid">
         <div class="hm-col" data-reveal>
-          <div class="hm-col-top"><span class="hm-col-icon">{ICON["list"]}</span></div>
-          <h4>School Supply Lists</h4>
-          <p>Need to gear up for the start of school—or restock supplies? Our school supply lists are always available in the Parent Portal whenever you need a refresher.</p>
-          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="{L['renweb']}"{NEW_TAB}>VIEW ON PARENT PORTAL</a></div>
+          <div class="hm-col-top"><span class="hm-col-icon">{ICON["clock"]}</span></div>
+          <h4>AfterCare Program</h4>
+          <p>Explore our aftercare program designed to provide a safe and engaging environment for students after school hours.</p>
+          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/aftercare">LEARN MORE</a></div>
         </div>
         <div class="hm-col" data-reveal>
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["handshake"]}</span></div>
