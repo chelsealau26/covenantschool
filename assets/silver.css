@@ -201,6 +201,8 @@ html.ccs-silver .theme .fill-color-secondary4, html.ccs-silver .fill-color-secon
 html.ccs-silver .a11y-skip-nav:focus { outline: 3px solid #b0b2b4 !important; }
 html.ccs-silver #a11y-btn:hover, html.ccs-silver #a11y-btn:focus { outline: 3px solid #b0b2b4 !important; }
 html.ccs-silver body.a11y-links a:not(#a11y-panel a) { outline: 2px solid #676a6e !important; }
+/* review stars stay gold */
+html.ccs-silver .hm-stars svg { fill: #e8b33a !important; }
 /* metallic sheen on the primary buttons */
 html.ccs-silver .gv-btn-gold, html.ccs-silver .gv .gv-btn-gold, html.ccs-silver .ccs-app-btn.is-main {
   background: linear-gradient(135deg, #f7f7f7 0%, #d4d5d6 42%, #f0f0f0 55%, #bdbfc1 100%) !important; border-color: #c8c9cb !important; color: #153553 !important;

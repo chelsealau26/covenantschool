@@ -86,6 +86,8 @@ def build(page_html_paths):
             r = rules(block)
             if r and r not in seen: seen.add(r); parts.append(r)
     extra = """
+/* review stars stay gold */
+html.ccs-silver .hm-stars svg { fill: #e8b33a !important; }
 /* metallic sheen on the primary buttons */
 html.ccs-silver .gv-btn-gold, html.ccs-silver .gv .gv-btn-gold, html.ccs-silver .ccs-app-btn.is-main {
   background: linear-gradient(135deg, #f7f7f7 0%, #d4d5d6 42%, #f0f0f0 55%, #bdbfc1 100%) !important; border-color: #c8c9cb !important; color: #153553 !important;
