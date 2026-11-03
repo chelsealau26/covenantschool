@@ -1617,3 +1617,14 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 .gv .ct-accs .ct-a { padding: 20px 20px 24px 70px !important; }
 .ct-accs .ct-faq[hidden] { display: none; }
 @media (max-width: 760px) { .gv .ct-accs .ct-a { padding: 18px 18px 22px !important; } .ct-qmark { font-size: 180px; top: -40px; } }
+
+/* Small labels on navy sections use the light tan (deep tan is too dark there) */
+.gv-dark .gv-eyebrow, .gv.ns-kinder .gv-eyebrow, .gv.ep-apply .gv-eyebrow, .gv.tu-plans .gv-eyebrow, .gv-band .gv-eyebrow, .gv.mv-faith .gv-eyebrow, .tu-cta .gv-eyebrow { color: #f0d9c2 !important; }
+/* Book your tour: phone line sits right under the heading; steps line up beside them */
+.st-grid2 .ep-side { grid-template-rows: auto 1fr; align-items: start; }
+.gv .st-grid2 .ep-side h2 { grid-column: 1; grid-row: 1; }
+.gv .st-grid2 .st-steps { grid-column: 2; grid-row: 1 / span 2; }
+.gv .st-grid2 .st-call { grid-column: 1; grid-row: 2; margin-top: 14px !important; }
+.gv .st-grid2 .st-steps li { gap: 16px; }
+.gv .st-grid2 .st-n { width: auto; line-height: .9; }
+@media (max-width: 960px) { .gv .st-grid2 .st-steps { grid-column: 1; grid-row: auto; } .gv .st-grid2 .st-call { grid-row: auto; } }
