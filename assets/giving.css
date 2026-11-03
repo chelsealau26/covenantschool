@@ -808,7 +808,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .mv-values { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .mv-values li { display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-radius: 4px; background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553; color: #fff; font: 400 24px/1.15 Anton, "Open Sans", Arial, sans-serif; letter-spacing: .01em; }
 .mv-values .hm-col-icon { background: transparent; color: var(--tan); border-color: var(--tan); }
-.mv-history { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: stretch; }
+.mv-history { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; }
 .gv .mv-timeline { position: relative; margin-top: 30px; }
 .gv .mv-timeline ol { list-style: none !important; margin: 0 !important; padding: 0 !important; }
 .gv .mv-timeline li { position: relative; margin: 0 !important; padding: 0 0 30px 52px !important; list-style: none !important; }
@@ -824,8 +824,8 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .gv .mv-year { display: block; font: 400 30px/1 Anton, "Open Sans", Arial, sans-serif; color: var(--navy); letter-spacing: .01em; }
 .mv-timeline p { margin-top: 6px !important; font-size: 17px; line-height: 1.6; color: var(--ink); }
 .mv-now .mv-year { font-size: 44px; color: var(--tan-deep); }
-.mv-history-photo { position: relative; margin: 0 22px 22px 0; height: calc(100% - 22px); }
-.mv-hp-img { position: relative; z-index: 1; overflow: hidden; border-radius: 4px; box-shadow: var(--shadow); height: 100%; min-height: 420px; background: #0d2136; }
+.mv-history-photo { position: relative; margin: 0 22px 22px 0; }
+.mv-hp-img { position: relative; z-index: 1; overflow: hidden; border-radius: 4px; box-shadow: var(--shadow); aspect-ratio: 5 / 6; background: #0d2136; }
 .mv-hp-img img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .mv-hp-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 45%, rgba(13, 33, 54, .55) 75%, rgba(13, 33, 54, .92) 100%); }
 .mv-history-photo figcaption { position: absolute; left: 26px; bottom: 20px; z-index: 2; font: 400 46px/1 Anton, "Open Sans", Arial, sans-serif; color: #fff; letter-spacing: .02em; }
@@ -847,7 +847,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .mv-mission, .mv-history, .mv-family { grid-template-columns: 1fr; gap: 36px; }
   .mv-history-photo { max-width: 620px; height: auto; }
   .mv-history-photo .hm-frame-line { top: 14px; left: 14px; }
-  .mv-hp-img { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .mv-hp-img { aspect-ratio: 4 / 3; }
   .mv-why { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
