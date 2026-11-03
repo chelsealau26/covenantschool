@@ -471,7 +471,7 @@
 .gv-hero-home::before { background: rgba(13, 33, 54, .72) !important; } /* worst case (pure white photo pixel): white text 7.9:1, tan tagline 5.6:1 */
 .gv-hero-home h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1.02; letter-spacing: .01em; }
 .gv-hero-home .gv-hero-copy { max-width: 920px; }
-.gv .gv-home-tagline { margin: 22px 0 0; font-size: 19px; font-weight: 700; letter-spacing: .14em; color: #f0d9c2; } /* light tan + bold: stays above 3:1 large-text contrast on every hero photo */
+.gv .gv-home-tagline { margin: 22px 0 0; font-size: 18px; font-weight: 400; letter-spacing: .14em; color: #f0d9c2; } /* light tan: 5.6:1 or better on every hero photo; regular weight so it reads as a tagline, not a heading */
 .gv-hero-home .gv-lead { max-width: 720px; margin: 16px auto 0; }
 .gv-social { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
 .gv-social a { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .55); color: #fff !important; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s, transform .2s; }
@@ -774,7 +774,7 @@
 .hm-frame-line rect { width: calc(100% - 2px); height: calc(100% - 2px); fill: none; stroke: var(--tan); stroke-width: 2; }
 /* Outline draws itself in once the photo is half in view (lengths are set in pixels by giving.js) */
 .hm-frame-line.is-ready rect { stroke-dasharray: var(--len) var(--len); stroke-dashoffset: var(--len); }
-.hm-frame-line.is-drawn rect { stroke-dashoffset: 0; transition: stroke-dashoffset 2.2s cubic-bezier(.65, 0, .35, 1); }
+.hm-frame-line.is-drawn rect { stroke-dashoffset: 0; transition: stroke-dashoffset 3.4s cubic-bezier(.45, 0, .3, 1); }
 .hm-frame img { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow); }
 @media (max-width: 960px) { .hm-frame { max-width: 600px; } }
 @media (max-width: 640px) { .hm-frame { margin: 0 14px 14px 0; } .hm-frame-line { top: 14px; left: 14px; } }

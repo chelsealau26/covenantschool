@@ -168,3 +168,6 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 #a11y-panel #a11y-panel-reset:hover { background: #3a5f9c !important; }
 #text-widget-1719607130454 :is(p, span), #text-widget-1719607130453 :is(p, span),
 #text-widget-1719607130452 :is(p, span), #text-widget-1719523282218 :is(p, span) { color: #474747 !important; }
+
+/* Homepage tagline: regular weight at body size so it reads (and is announced) as a tagline, not a heading */
+#text-widget-1518129426778 span { font-size: 18px !important; font-weight: 400 !important; letter-spacing: .12em; }
