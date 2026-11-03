@@ -561,7 +561,9 @@ def home():
     def tile(href, icon, title, text, newtab=False):
         return (f'<a class="hm-strip-item" href="{href}"{NEW_TAB if newtab else ""}>'
                 f'<span class="hm-strip-icon">{ICON[icon]}</span><strong>{title}</strong>'
-                f'<span class="hm-strip-text">{text}</span></a>')
+                f'<span class="hm-strip-text">{text}</span>'
+                f'<span class="hm-strip-go" aria-hidden="true">&rarr;</span>'
+                f'<img class="hm-strip-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321"></a>')
     def res(href, icon, title, newtab=False, doc=None):
         d = f' data-doc="{doc}"' if doc else ""
         return f'<li><a href="{href}"{NEW_TAB if newtab else ""}{d}>{title}<span aria-hidden="true">&rarr;</span></a></li>'
