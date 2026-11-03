@@ -171,3 +171,6 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 
 /* Homepage tagline: regular weight at body size so it reads (and is announced) as a tagline, not a heading */
 #text-widget-1518129426778 span { font-size: 18px !important; font-weight: 400 !important; letter-spacing: .12em; }
+
+/* Accessibility panel: "Text size" is a group label (span), styled like the old label */
+#a11y-textsize-row > .a11y-size-label { font-size: .78rem !important; color: #555 !important; font-weight: 600 !important; flex: 1 !important; letter-spacing: .01em !important; }
