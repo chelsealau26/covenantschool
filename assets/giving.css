@@ -894,7 +894,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .ep-apply h2 { color: #fff; }
 .gv .ep-intro { margin-top: 16px !important; font-size: 19px; line-height: 1.7; color: rgba(255, 255, 255, .9); }
 .ep-frame { margin-top: 32px; }
-.ep-frame img { aspect-ratio: 4 / 3; }
+.ep-frame img { aspect-ratio: 4 / 3; object-position: 60% 40%; }
 .gv .ep-contact { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 14px; } /* clears the tan outline that sits 22px below the photo */
 .ep-contact li { display: flex; align-items: center; gap: 16px; }
 .ep-contact .hm-col-icon { width: 44px; height: 44px; background: transparent; color: var(--tan); }
