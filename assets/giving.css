@@ -468,7 +468,7 @@
 /* ===================== Homepage ===================== */
 /* Full-screen hero under the transparent site header; content sits a bit high so it's all above the fold */
 .gv-hero-home { min-height: 100vh; min-height: 100svh; padding: 150px 24px 120px; align-items: center; }
-.gv-hero-home::before { background: rgba(13, 33, 54, .66) !important; }
+.gv-hero-home::before { background: rgba(13, 33, 54, .72) !important; } /* worst case (pure white photo pixel): white text 7.9:1, tan tagline 5.6:1 */
 .gv-hero-home h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1.02; letter-spacing: .01em; }
 .gv-hero-home .gv-hero-copy { max-width: 920px; }
 .gv .gv-home-tagline { margin: 22px 0 0; font-size: 19px; font-weight: 700; letter-spacing: .14em; color: #f0d9c2; } /* light tan + bold: stays above 3:1 large-text contrast on every hero photo */
@@ -763,7 +763,7 @@
 .hm-slide.on { opacity: 1; }
 .hm-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 35%); transform: scale(1.02); transition: transform 8s ease-out; }
 .hm-slide.on img { transform: scale(1.07); } /* very gentle drift while a photo is showing */
-.gv-hero-home h1, .gv-hero-home .gv-lead, .gv-hero-home .gv-home-tagline { text-shadow: 0 2px 16px rgba(13, 33, 54, .55); }
+.gv-hero-home h1, .gv-hero-home .gv-lead, .gv-hero-home .gv-home-tagline { text-shadow: 0 1px 3px rgba(13, 33, 54, .5), 0 2px 18px rgba(13, 33, 54, .6); }
 @media (prefers-reduced-motion: reduce) {
   .hm-slide img, .hm-slide.on img { transform: none; transition: none; }
 }
@@ -784,3 +784,4 @@
 /* Homepage preview: elevated footer (dark navy gradient from the site palette, thin tan rule on top) */
 body:has(.gv-hero-home) #container-widget-1719555017494 { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) !important; border-top: 3px solid var(--tan, #daad86); }
 body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !important; border-top: 1px solid rgba(218, 173, 134, .22); }
+.gv.gv-hero-home .gv-lead { color: #fff; }
