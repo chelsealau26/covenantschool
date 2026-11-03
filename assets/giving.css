@@ -1633,3 +1633,5 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 /* Tuition hero: wide group photo; Tax Credit hero: portrait photo framed on the faces */
 .tu-hero2:not(.st-hero2):not(.ep-hero2) .tu-hero2-img { background-position: 50% 30%; }
 .gv-tc-hero::before { background-position: center, center 8% !important; }
+/* Tax credit: on desktop the pledge form starts about halfway down the hero */
+@media (min-width: 961px) { .gv-tc-form { padding-top: calc((100vh - 100px) * .42); padding-top: calc((100svh - 100px) * .42); } }
