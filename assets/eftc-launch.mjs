@@ -33,6 +33,6 @@ export const pickCreditVersion = (html, live) =>
 
 // Redesigned pages awaiting approval: served in place of the current page only on a preview link.
 // "/page": "/redesign/page" entries preview a redesign at its normal URL (homepage = "").
-export const REDESIGNS = { "": "/redesign/home", "/index": "/redesign/home", "/brand-guide": "/redesign/brand-guide", "/mission-values": "/redesign/mission-values", "/employment-openings": "/redesign/employment-openings", "/schedule-tour": "/redesign/schedule-tour", "/new-student-application": "/redesign/new-student-application", "/tuition": "/redesign/tuition", "/contact": "/redesign/contact", "/curriculum": "/redesign/curriculum", "/technology": "/redesign/technology", "/ftp": "/redesign/ftp" };
+export const REDESIGNS = { "": "/redesign/home", "/index": "/redesign/home", "/brand-guide": "/redesign/brand-guide", "/mission-values": "/redesign/mission-values", "/employment-openings": "/redesign/employment-openings", "/schedule-tour": "/redesign/schedule-tour", "/new-student-application": "/redesign/new-student-application", "/tuition": "/redesign/tuition", "/contact": "/redesign/contact", "/curriculum": "/redesign/curriculum", "/technology": "/redesign/technology", "/ftp": "/redesign/ftp", "/athletics": "/redesign/athletics" };
 export const redesignFor = path => REDESIGNS[path.replace(/\.html$|\/$/i, "").toLowerCase()];
 export const isRedesignPath = path => /^\/(?:pages\/)?redesign(?:\/|$)/i.test(path);
