@@ -623,7 +623,7 @@ def home():
       <h2 id="gv-portal-title" class="hm-portal-title"><span class="hm-portal-icon">{ICON["portal"]}</span>Family Portal</h2>
       <p class="hm-portal-sub">Your Hub for Student Success and Family Engagement</p>
       <p>Welcome to the Covenant Family Portal, your go-to for viewing grades, managing re-enrollment, making payments, and staying connected with school updates—all in one place. Streamline your child's education journey with ease and efficiency.</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="{L['facts']}"{NEW_TAB}>{ICON["portal"]}VISIT THE FAMILY PORTAL</a></div>
+      <div class="gv-actions"><a class="gv-btn gv-btn-ghost" href="{L['facts']}"{NEW_TAB}>{ICON["portal"]}VISIT THE FAMILY PORTAL</a></div>
     </div>
   </section>
 
@@ -634,14 +634,14 @@ def home():
         <div class="hm-lunch-text">
           <h3>Order Lunch</h3>
           <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
-          <a class="gv-btn" href="https://aware3.net/shortcode?code=covenantchristianschool-f"{NEW_TAB}>DOWNLOAD THE APP</a>
+          <a class="gv-btn gv-btn-line" href="https://aware3.net/shortcode?code=covenantchristianschool-f"{NEW_TAB}>DOWNLOAD THE APP</a>
         </div>
       </article>
       <article class="hm-mission" data-reveal>
         <img class="hm-mission-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
         <h3>Our Mission &amp; Values</h3>
         <p>Covenant Christian School partners with families to provide a Christ-centered education that cultivates academic excellence, spiritual growth, and godly character, equipping students to live for God's purpose.</p>
-        <a class="gv-btn gv-btn-gold" href="/mission-values">MORE DETAILS</a>
+        <a class="gv-btn gv-btn-ghost" href="/mission-values">MORE DETAILS</a>
       </article>
     </div>
   </section>
@@ -673,7 +673,7 @@ def home():
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["school"]}</span></div>
           <h4>Scholarship Opportunities</h4>
           <p>Every child deserves access to a quality education. Explore scholarship programs that can help make a Covenant education possible for your family.</p>
-          <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/scholarship-opportunities">EXPLORE SCHOLARSHIPS</a></div>
+          <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/scholarship-opportunities">EXPLORE SCHOLARSHIPS</a></div>
         </div>
         <div class="hm-col" data-reveal>
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["handshake"]}</span></div>
