@@ -678,7 +678,7 @@
 
 /* CCS Resources as a directory */
 .gv.hm-res-sec { position: relative; overflow: hidden; }
-.hm-res-eagle { position: absolute; left: -90px; bottom: -70px; width: 860px; max-width: none; height: auto; opacity: .85; pointer-events: none; }
+.hm-res-eagle { position: absolute; left: -90px; bottom: -70px; width: 860px; max-width: none; height: auto; opacity: .45; pointer-events: none; }
 .hm-res-sec .gv-wrap { position: relative; }
 .hm-res { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
 .hm-res-head h2 { font-size: 46px; }
