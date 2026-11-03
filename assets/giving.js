@@ -281,6 +281,7 @@
     });
     var net = sum - disc;
     if (disc) row(lines, "Multi-student discount (3% for 2nd & 3rd child)", "−" + $(disc), "is-save");
+    else if (kids.length > 1) row(lines, "Multi-student discount — no multiple student discounts apply for half-day programs", "$0", "is-note");
     var pl = plan.value;
     if (pl === "annual") { var ad = net * 0.02; net -= ad; row(lines, "Paid annually by June 1st (2% discount)", "−" + $(ad), "is-save"); }
     var choose = 0;
