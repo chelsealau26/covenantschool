@@ -1041,13 +1041,15 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .ns-kinder-photo { max-width: 440px; }
 }
 @media (max-width: 640px) {
-  /* Phones: the photo fills the whole hero, zoomed so her face sits clearly in the top part (light 10% shade);
-     the words sit on a navy fade that travels with them, so they pass contrast on any phone height */
-  .gv.ns-hero { align-items: flex-end; min-height: calc(100svh - 110px); padding: 0 18px 40px; }
-  .ns-hero-img { background-size: cover; background-position: 64% 18%; animation: none; }
-  .ns-hero::before { background: rgba(13, 33, 54, .1); }
-  .ns-hero-copy { isolation: isolate; }
-  .ns-hero-copy::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -150px; bottom: -40px; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .55) 80px, rgba(13, 33, 54, .9) 150px, rgba(13, 33, 54, .96) 100%); pointer-events: none; }
+  /* Phones: heading at the top left, her face clear in the middle, intro + buttons at the bottom.
+     Each text group carries its own navy fade, so text passes contrast on any phone height. */
+  .gv.ns-hero { align-items: stretch; min-height: calc(100svh - 110px); padding: 0 18px; }
+  .ns-hero-img { background-size: cover; background-position: 64% 30%; animation: none; }
+  .ns-hero::before { background: linear-gradient(180deg, rgba(13, 33, 54, .92) 0%, rgba(13, 33, 54, .82) 120px, rgba(13, 33, 54, 0) 215px); }
+  .gv.ns-hero h1 { text-shadow: 0 2px 16px rgba(13, 33, 54, .6); }
+  .ns-hero-copy { display: flex; flex-direction: column; padding-top: 26px; }
+  .ns-hero-bottom { position: relative; isolation: isolate; margin-top: auto; padding-bottom: 36px; }
+  .ns-hero-bottom::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -110px; bottom: 0; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .6) 60px, rgba(13, 33, 54, .93) 110px, #0d2136 100%); pointer-events: none; }
   .gv.ns-hero .gv-eyebrow { margin-bottom: 6px; font-size: 12px; }
   .gv.ns-hero h1 { font-size: 36px; line-height: 1.02; }
   .gv.ns-hero .gv-lead { font-size: 15px; line-height: 1.55; margin-top: 10px !important; }
