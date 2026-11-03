@@ -85,7 +85,7 @@ export default {
       if (redesign) headers.set("X-Robots-Tag", "noindex");
       // Refreshed design (not yet approved): its sitewide styles load only on preview links.
       if (isPreview(url) && path !== "/sitemap.xml") {
-        text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"><link rel="stylesheet" href="/assets/silver.css?v=${SILVER_CSS_VERSION}"><script>try{var q=new URLSearchParams(location.search).get("look");if(q)sessionStorage.setItem("ccs_look",q);if((q||sessionStorage.getItem("ccs_look"))==="silver")document.documentElement.classList.add("ccs-silver")}catch(e){}</script></head>`);
+        text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"><link rel="stylesheet" href="/assets/silver.css?v=${SILVER_CSS_VERSION}"><script>document.documentElement.classList.add("ccs-silver");try{var q=new URLSearchParams(location.search).get("look");if(q)sessionStorage.setItem("ccs_look",q);if((q||sessionStorage.getItem("ccs_look"))==="tan")document.documentElement.classList.remove("ccs-silver")}catch(e){}</script></head>`);
         text = keepPreviewInLinks(text);
         text = text.replace("</body>", `<script src="/assets/preview.js?v=${PREVIEW_JS_VERSION}" defer></script><a class="ccs-preview-badge" href="?preview=off" aria-label="You are viewing the preview of the new design. Select to exit preview.">Preview<span aria-hidden="true"> · </span><span>Exit</span></a></body>`);
         headers.set("X-Robots-Tag", "noindex");
