@@ -858,3 +858,29 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .mv-faith-eagle { width: 520px; right: -200px; }
   .mv-why-item { gap: 16px; }
 }
+
+/* ---------------------------------------------------------------- Employment (preview redesign) */
+.gv.gv-hero.ep-hero { min-height: 56vh; }
+.ep-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+.ep-side { position: sticky; top: 110px; }
+.gv .ep-intro { margin-top: 16px !important; font-size: 19px; line-height: 1.7; color: var(--ink); }
+.ep-frame { margin-top: 32px; }
+.ep-frame img { aspect-ratio: 4 / 3; }
+.ep-contact { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 14px; }
+.ep-contact li { display: flex; align-items: center; gap: 16px; }
+.ep-contact .hm-col-icon { width: 44px; height: 44px; }
+.ep-contact .hm-col-icon svg { width: 20px; height: 20px; }
+.gv .ep-contact a { color: var(--navy) !important; font-weight: 700; font-size: 17px; text-decoration: none !important; border-bottom: 1px solid #ddcfbf; }
+.gv .ep-contact a:hover, .gv .ep-contact a:focus-visible { color: var(--tan-deep) !important; border-color: var(--tan-deep); }
+.ep-card { background: #fff; border: 1px solid #e6dacb; border-top: 4px solid var(--tan); border-radius: 4px; padding: 40px 40px 34px; box-shadow: 0 24px 50px rgba(13, 33, 54, .08); }
+/* The form keeps its own markup and script; these rules only restyle it in the brand */
+.ep-card #employment-form { max-width: none; font-family: "Open Sans", Arial, sans-serif; }
+.ep-card #employment-form .ef-field { margin-bottom: 20px; }
+.ep-card #employment-form label { font: 700 15px/1.3 "Open Sans", Arial, sans-serif; color: var(--navy); letter-spacing: .01em; }
+.ep-card #employment-form :is(input[type=text], input[type=email], input[type=tel], select, textarea) { border-radius: 4px; border-color: #b9ab9b; padding: 13px 14px; transition: border-color .2s, box-shadow .2s; }
+.ep-card #employment-form :is(input, select, textarea):focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(218, 173, 134, .55); }
+.ep-card #employment-form input[type=file] { width: 100%; padding: 14px; border: 1.5px dashed #b9ab9b; border-radius: 4px; background: var(--paper); font-size: 15px; }
+.ep-card #employment-form button { width: 100%; min-height: 54px; border-radius: 6px; background: linear-gradient(165deg, #224361 0%, #153553 60%, #0d2136 100%) #153553; font: 700 15px/1.2 "Open Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; transition: transform .2s, box-shadow .2s; }
+.ep-card #employment-form button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(19, 28, 36, .18); }
+@media (max-width: 960px) { .ep-grid { grid-template-columns: 1fr; gap: 40px; } .ep-side { position: static; } .ep-frame { max-width: 520px; } }
+@media (max-width: 640px) { .ep-card { padding: 28px 20px 24px; } }

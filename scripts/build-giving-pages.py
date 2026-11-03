@@ -751,6 +751,8 @@ def build():
     (PAGES / "redesign" / "home.html").write_text(with_main(shell("index.html", chrome="index.html"), home()))
     from mission_values import mission_values
     (PAGES / "redesign" / "mission-values.html").write_text(with_main(shell("mission-values.html"), mission_values(ICON, IMG)))
+    from employment import employment
+    (PAGES / "redesign" / "employment-openings.html").write_text(with_main(shell("employment-openings.html"), employment(ICON, IMG, PAGES)))
     from brand_guide import brand_guide
     bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
     bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)
