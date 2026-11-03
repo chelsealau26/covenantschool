@@ -54,7 +54,7 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 .gv-paper { background: linear-gradient(180deg, #ffffff 0%, #faf8f4 100%) #faf8f4; }
 
 /* Preview badge: shows reviewers they are on the new design, with a way out */
-.ccs-preview-badge { position: fixed; left: 50%; bottom: 16px; z-index: 99990; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 2px; padding: 8px 16px; border-radius: 999px; background: #153553; color: #fff !important; font: 700 12px/1.2 "Open Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; text-decoration: none !important; box-shadow: 0 8px 24px rgba(13, 33, 54, .3); border: 1px solid rgba(218, 173, 134, .6); }
+.ccs-preview-badge { position: fixed; left: 50%; bottom: 16px; z-index: 2147483000; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 2px; padding: 8px 16px; border-radius: 999px; background: #153553; color: #fff !important; font: 700 12px/1.2 "Open Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; text-decoration: none !important; box-shadow: 0 8px 24px rgba(13, 33, 54, .3); border: 1px solid rgba(218, 173, 134, .6); }
 .ccs-preview-badge span:last-child { color: #daad86; }
 .ccs-preview-badge:hover, .ccs-preview-badge:focus-visible { background: #224361; }
 

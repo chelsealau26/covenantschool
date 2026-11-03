@@ -30,7 +30,13 @@ export default {
     const enteringPreview = isPreview(url);
     if (leavingPreview) {
       url.searchParams.delete("preview");
-      return new Response(null, { status: 302, headers: { "Location": url.pathname + url.search + url.hash, "Set-Cookie": "ccs_preview=; Domain=covenantschool.com; Path=/; Max-Age=0; Secure; SameSite=Lax", "Cache-Control": "no-store" } });
+      url.searchParams.delete("look");
+      // Clear every copy of the preview cookie (domain-wide and host-only, from older versions too).
+      const h = new Headers({ "Location": url.pathname + url.search + url.hash, "Cache-Control": "no-store" });
+      for (const c of ["Domain=covenantschool.com; ", "Domain=.covenantschool.com; ", "Domain=www.covenantschool.com; ", ""])
+        for (const p of ["/", url.pathname])
+          h.append("Set-Cookie", `ccs_preview=; ${c}Path=${p}; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax`);
+      return new Response(null, { status: 302, headers: h });
     }
     if (!enteringPreview && cookies.split(/;\s*/).includes(`ccs_preview=${PREVIEW_KEY}`)) url.searchParams.set("preview", PREVIEW_KEY);
     if (path === EMPLOYMENT_FORM_PATH) return handleEmploymentForm(request, env);
