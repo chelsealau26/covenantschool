@@ -70,21 +70,3 @@
     }, 6000);
   });
 })();
-
-// Gentle scroll drift for elements marked data-drift (the small inset photo in the homepage collage).
-(function () {
-  var els = document.querySelectorAll("[data-drift]");
-  if (!els.length || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
-  var ticking = false;
-  function update() {
-    ticking = false;
-    var vh = window.innerHeight;
-    els.forEach(function (el) {
-      var r = el.parentNode.getBoundingClientRect();
-      var p = (r.top + r.height / 2 - vh / 2) / vh; // -1..1 around the screen middle
-      el.style.setProperty("--drift", Math.max(-30, Math.min(30, p * -40)).toFixed(1) + "px");
-    });
-  }
-  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  update();
-})();
