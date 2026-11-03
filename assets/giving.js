@@ -436,3 +436,24 @@ window.addEventListener("message", function (e) {
   });
   show(tabs[0], false);
 })();
+
+// Calendar: "Coming Up" list built from the same events the calendar shows.
+(function () {
+  var list = document.getElementById("cal-next"), data = document.getElementById("cal-events-data");
+  if (!list || !data) return;
+  var ev; try { ev = JSON.parse(data.textContent); } catch (e) { return; }
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var kind = function (e) { return e.color === "#c0392b" ? "No School" : /early dismissal/i.test(e.title) ? "Early Dismissal" : e.color === "#2e7d32" ? "Special Event" : "School Event"; };
+  var up = ev.filter(function (e) { var end = new Date((e.end || e.start) + "T00:00:00"); if (e.end) end.setDate(end.getDate() - 1); return end >= today; })
+    .sort(function (a, b) { return a.start < b.start ? -1 : 1; }).slice(0, 6);
+  if (!up.length) { list.insertAdjacentHTML("beforeend", "<li class=\"cal-next-empty\">No upcoming events.</li>"); return; }
+  up.forEach(function (e) {
+    var d = new Date(e.start + "T00:00:00"), k = kind(e);
+    var li = document.createElement("li");
+    li.className = "cal-k-" + k.toLowerCase().replace(/\s+/g, "-");
+    li.innerHTML = '<span class="cal-d"><b>' + d.toLocaleDateString("en-US", { month: "short" }) + "</b><strong>" + d.getDate() + '</strong></span><span class="cal-t"><em></em><span></span></span>';
+    li.querySelector("em").textContent = k;
+    li.querySelector(".cal-t > span").textContent = e.title;
+    list.appendChild(li);
+  });
+})();

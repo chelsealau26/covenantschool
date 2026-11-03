@@ -770,6 +770,10 @@ def build():
     (PAGES / "redesign" / "ftp.html").write_text(with_main(shell("ftp.html"), ftp(ICON, IMG, NEW_TAB)))
     from athletics import athletics
     (PAGES / "redesign" / "athletics.html").write_text(with_main(shell("athletics.html"), athletics(ICON, IMG, NEW_TAB, PAGES)))
+    from aftercare import aftercare
+    (PAGES / "redesign" / "aftercare.html").write_text(with_main(shell("aftercare.html"), aftercare(ICON, IMG, NEW_TAB)))
+    from calendar_page import calendar_page
+    (PAGES / "redesign" / "calendar.html").write_text(with_main(shell("calendar.html"), calendar_page(ICON, IMG, NEW_TAB, PAGES)))
     from brand_guide import brand_guide
     bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
     bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)

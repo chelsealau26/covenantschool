@@ -1945,3 +1945,84 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
   .at-ticker span { font-size: 20px; }
 }
 @media (max-width: 640px) { .gv.at-hero .tu-hero2-img { background-position: 66% 45%; background-size: auto 125%; } }
+
+/* ---------------------------------------------------------------- AfterCare (preview redesign) */
+.gv.ac-hero .tu-hero2-img { background-position: 60% 40%; }
+.ac-head { margin-bottom: 44px; }
+.gv .ac-steps { list-style: none !important; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 !important; padding: 0 !important; }
+.gv .ac-steps li { position: relative; display: flex; flex-direction: column; margin: 0 !important; padding: 34px 32px 8px !important; border-top: 2px solid var(--line); }
+.gv .ac-steps li::before { content: ""; position: absolute; left: 32px; top: -6px; width: 10px; height: 10px; border-radius: 50%; background: var(--tan); box-shadow: 0 0 0 6px rgba(218, 173, 134, .2); }
+.gv .ac-steps li + li { border-left: 1px solid var(--line); }
+.gv .ac-step-n { position: absolute; right: 28px; top: 26px; font: 400 52px/1 Anton, "Open Sans", Arial, sans-serif; color: rgba(218, 173, 134, .35); }
+.ac-steps .hm-col-icon { width: 54px; height: 54px; margin-bottom: 18px; }
+.gv .ac-steps h3 { margin: 0 0 8px !important; font: 400 28px/1.1 Anton, "Open Sans", Arial, sans-serif !important; color: var(--navy); letter-spacing: .01em; }
+.gv .ac-steps p { flex: 1; font-size: 17px; line-height: 1.65; color: var(--muted); }
+.gv .ac-steps p a { color: var(--navy); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.gv .ac-step-link { align-self: flex-start; margin-top: 20px; padding: 13px 22px; border: 2px solid var(--navy); border-radius: 5px; color: var(--navy); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transition: background .2s, color .2s; }
+.gv .ac-step-link:hover, .gv .ac-step-link:focus-visible { background: var(--navy); color: #fff; }
+.gv.ac-rates { color: #fff; background: radial-gradient(900px 500px at 100% 0%, rgba(218, 173, 134, .14), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 45%, #0d2136 100%) #153553; }
+.ac-rates-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 88px; align-items: center; }
+.ac-rates-photo img { aspect-ratio: 4 / 5; object-position: 40% 50%; }
+.gv .ac-rate-list { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+.gv .ac-rate-list li { display: grid; grid-template-columns: 170px 1fr; gap: 28px; align-items: center; margin: 0 !important; padding: 24px 0 !important; border-bottom: 1px solid rgba(240, 217, 194, .16); }
+.gv .ac-rate-list li:first-child { padding-top: 0 !important; }
+.ac-price { display: flex; align-items: baseline; gap: 4px; }
+.gv .ac-price strong { font: 400 64px/1 Anton, "Open Sans", Arial, sans-serif; color: var(--tan); }
+.gv .ac-price span { font-size: 16px; font-weight: 700; color: #f0d9c2; }
+.gv .ac-rate-list h3, .gv .ac-pay h3 { margin: 0 0 4px !important; font: 700 19px/1.3 "Open Sans", Arial, sans-serif !important; color: #fff; letter-spacing: 0; text-transform: none; }
+.gv .ac-rate-list p, .gv .ac-pay p { font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, .82); }
+.ac-pay { display: flex; gap: 16px; align-items: center; margin-top: 28px; padding: 20px 22px; border: 1.5px solid rgba(218, 173, 134, .5); border-radius: 4px; }
+.ac-pay .hm-col-icon { width: 48px; height: 48px; flex: none; color: var(--tan); background: transparent; }
+@media (max-width: 960px) {
+  .gv .ac-steps { grid-template-columns: 1fr; }
+  .gv .ac-steps li + li { border-left: 0; }
+  .gv .ac-steps li { padding: 30px 0 28px !important; }
+  .gv .ac-steps li::before { left: 0; }
+  .gv .ac-step-n { right: 0; }
+  .ac-rates-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ac-rates-photo { max-width: 420px; }
+}
+@media (max-width: 640px) { .gv .ac-rate-list li { grid-template-columns: 1fr; gap: 8px; } .gv .ac-price strong { font-size: 52px; } }
+
+/* ---------------------------------------------------------------- Calendar (preview redesign) */
+.gv.cal-hero .tu-hero2-img { background-position: 50% 55%; }
+.gv.cal-hero { min-height: 0; }
+.cal-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 40px; align-items: start; }
+.cal-main { padding: 28px 28px 8px; border-radius: 8px; background: #fff; box-shadow: var(--shadow); }
+.cal-main #school-calendar { max-width: none; padding: 0 0 20px; }
+.cal-main #cal-legend { max-width: none; margin: 0 0 18px; padding: 0; gap: 10px 22px; font-size: 13px; font-weight: 600; color: var(--navy); }
+.cal-main #school-calendar .fc-toolbar-title { font: 400 34px/1 Anton, "Open Sans", Arial, sans-serif !important; color: var(--navy); letter-spacing: .01em; }
+.cal-main #school-calendar .fc-button-primary { background: transparent; border: 1.5px solid #d9c9b6; color: var(--navy); text-transform: capitalize; font-weight: 700; box-shadow: none !important; }
+.cal-main #school-calendar .fc-button-primary:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
+.cal-main #school-calendar .fc-button-primary:disabled { opacity: .45; }
+.cal-main #school-calendar .fc-col-header-cell-cushion { padding: 10px 4px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--tan-deep); text-decoration: none; }
+.cal-main #school-calendar .fc-theme-standard td, .cal-main #school-calendar .fc-theme-standard th, .cal-main #school-calendar .fc-theme-standard .fc-scrollgrid { border-color: #ece3d8; }
+.cal-main #school-calendar .fc-daygrid-day-number { font-weight: 700; color: var(--navy); text-decoration: none; }
+.cal-main #school-calendar .fc-daygrid-day { cursor: pointer; transition: background .2s; }
+.cal-main #school-calendar .fc-daygrid-day:hover { background: #faf6f0; }
+.cal-main #school-calendar .fc-day-today { background: #f6efe7 !important; }
+.cal-main #school-calendar .fc-day-today .fc-daygrid-day-number { display: inline-grid; place-items: center; min-width: 28px; height: 28px; margin: 4px; border-radius: 50%; background: var(--navy); color: #fff; }
+.cal-main #school-calendar .fc-event { border-radius: 4px; padding: 1px 4px; }
+#cal-popup-header { background: linear-gradient(165deg, #224361, #153553 60%, #0d2136) #153553 !important; }
+#cal-popup-header p { font-family: Anton, "Open Sans", Arial, sans-serif; font-weight: 400 !important; font-size: 28px !important; letter-spacing: .01em; }
+#cal-popup-header h3 { color: #f0d9c2; }
+.cal-side { position: sticky; top: 110px; padding: 30px 26px; border-radius: 8px; color: #fff; background: radial-gradient(400px 260px at 100% 0%, rgba(218, 173, 134, .18), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 50%, #0d2136 100%) #153553; }
+.gv .cal-side h2 { margin: 0 0 12px; color: #fff; font-size: 34px; }
+.gv .cal-next { list-style: none !important; margin: 0 0 24px !important; padding: 0 !important; }
+.gv .cal-next li { display: flex; gap: 14px; align-items: center; margin: 0 !important; padding: 12px 0 !important; border-bottom: 1px solid rgba(240, 217, 194, .14); }
+.cal-d { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: none; width: 52px; height: 56px; border-radius: 6px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(240, 217, 194, .25); }
+.gv .cal-d b { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #f0d9c2; }
+.gv .cal-d strong { font: 400 24px/1 Anton, "Open Sans", Arial, sans-serif; color: #fff; }
+.cal-t { display: flex; flex-direction: column; gap: 2px; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.gv .cal-t em { font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #f0d9c2; }
+.cal-k-no-school .cal-d { border-color: #fde047; } .cal-k-early-dismissal .cal-d { border-color: #7dd3fc; }
+.gv .cal-side-btn { display: block; width: 100%; text-align: center; }
+.gv .cal-side-app { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; color: #f0d9c2; font-weight: 700; text-decoration: none; }
+.gv .cal-side-app:hover { color: #fff; }
+.cal-side-app .hm-col-icon { width: 36px; height: 36px; color: var(--tan); background: transparent; }
+@media (max-width: 1080px) { .cal-grid { grid-template-columns: 1fr; } .cal-side { position: static; } }
+@media (max-width: 640px) {
+  .cal-main { padding: 18px 10px 4px; margin: 0 -8px; }
+  .cal-main #school-calendar .fc-toolbar-title { font-size: 26px !important; }
+  .cal-main #school-calendar .fc-event { font-size: 10px; }
+}
