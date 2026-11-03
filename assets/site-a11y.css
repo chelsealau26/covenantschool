@@ -155,3 +155,4 @@ footer a.social-media-button { display: inline-flex !important; align-items: cen
 footer a.social-media-button i { background: transparent !important; color: #fff !important; width: auto !important; height: auto !important; padding: 0 !important; font-size: 19px !important; line-height: 1 !important; border-radius: 0 !important; }
 footer a.social-media-button:is(:hover, :focus-visible) { background: #daad86 !important; border-color: #daad86 !important; transform: translateY(-2px); }
 footer a.social-media-button:is(:hover, :focus-visible) i { color: #131c24 !important; }
+footer a.social-media-button:not(#a11y-btn):not(#a11y-panel):not(#a11y-x):focus-visible { border-radius: 50% !important; outline-color: #daad86 !important; }
