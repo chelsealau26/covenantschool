@@ -377,3 +377,25 @@
   var roles = document.querySelectorAll("details.ep-role");
   roles.forEach(function (d) { d.addEventListener("toggle", function () { if (d.open) roles.forEach(function (o) { if (o !== d) o.open = false; }); }); });
 })();
+
+// Calendly: size the booking calendar to its content so it never scrolls inside.
+window.addEventListener("message", function (e) {
+  if (!/calendly\.com$/.test((e.origin || "").replace(/^https?:\/\//, "").split("/")[0])) return;
+  var d = e.data; if (!d || d.event !== "calendly.page_height" || !d.payload) return;
+  var h = parseInt(d.payload.height, 10); if (!h) return;
+  document.querySelectorAll('.st-card iframe[src*="calendly.com"]').forEach(function (f) { f.style.height = (h + 10) + "px"; });
+});
+// FAQ search: filters the questions as you type.
+(function () {
+  var input = document.getElementById("ct-search"); if (!input) return;
+  var items = document.querySelectorAll(".ct-faq"), none = document.getElementById("ct-none");
+  input.addEventListener("input", function () {
+    var q = input.value.trim().toLowerCase(), shown = 0;
+    items.forEach(function (d) {
+      var hit = !q || d.textContent.toLowerCase().indexOf(q) !== -1;
+      d.hidden = !hit; if (hit) shown++;
+      if (q && hit && d.querySelector(".ct-q").textContent.toLowerCase().indexOf(q) === -1) d.open = true;
+    });
+    none.hidden = shown !== 0;
+  });
+})();

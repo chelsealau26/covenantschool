@@ -60,3 +60,11 @@ body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54
 
 /* Tax credit hero: gentle moving photo instead of fixed */
 @media (min-width: 961px) { .gv-tc-hero::before { background-attachment: scroll !important; background-position: center, center calc(30% + var(--tcp, 0px)) !important; } }
+
+/* Consistent, emotional hero headings on every secondary page */
+.gv.gv-hero h1, .gv.tu-hero2 h1, .gv.ns-hero h1, .gv.gv-hero.mv-hero h1 { font-size: clamp(48px, 6.4vw, 96px) !important; line-height: .98 !important; }
+.gv.tu-hero2.st-hero2 h1 { font-size: clamp(48px, 6.4vw, 96px) !important; }
+.gv-tc-hero h1 { font-size: clamp(40px, 4.6vw, 68px) !important; line-height: 1 !important; }
+@media (max-width: 640px) { .gv.gv-hero h1, .gv.tu-hero2 h1, .gv.ns-hero h1, .gv.tu-hero2.st-hero2 h1 { font-size: 44px !important; } .gv-tc-hero h1 { font-size: 38px !important; } }
+.gv-hero:not(.gv-hero-home) .gv-hero-copy { max-width: 1000px; }
+@media (max-width: 640px) { .gv.gv-hero.mv-hero h1 { font-size: 44px !important; } .gv.ns-hero.ep-hero3 .gv-lead { font-size: 16px; } }

@@ -62,7 +62,7 @@ def contact(ICON, IMG, NEW_TAB, MAPS, pages):
          f'<p>We have a cafeteria that is open daily for students in K5-8th grades to purchase snacks and lunches. Parents order through the lunch module on the school’s <a href="{APP}"{NEW_TAB}>custom app</a>.</p>',
          [btn(APP, "Download the App", True)]),
     ]
-    faqs = "".join(f'''<details class="tu-acc ct-faq" id="faq-{i}"><summary><span class="ct-q">{q}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body ct-a">{a}{('<div class="ct-cta">' + "".join(c) + '</div>') if c else ""}</div></details>''' for i, q, a, c in FAQ)
+    faqs = "".join(f'''<details class="tu-acc ct-faq" id="faq-{i}"><summary><span class="ct-n" aria-hidden="true">{n:02d}</span><span class="ct-q">{q}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body ct-a">{a}{('<div class="ct-cta">' + "".join(c) + '</div>') if c else ""}</div></details>''' for n, (i, q, a, c) in enumerate(FAQ, 1))
     tiles = [
         ("phone", "Phone", "251-633-8055", "tel:251-633-8055", "Call us"),
         ("clock", "Hours", "Mon - Fri | 7:30am - 3:30pm", None, None),
@@ -116,13 +116,17 @@ def contact(ICON, IMG, NEW_TAB, MAPS, pages):
 
   <section class="gv gv-section gv-paper" id="faq" aria-labelledby="ct-faq-title">
     <div class="gv-wrap ct-faq-grid">
-      <div class="ct-faq-head" data-reveal>
+      <div class="ct-faq-head" data-reveal><span class="ct-qmark" aria-hidden="true">?</span>
         <span class="gv-eyebrow">Problems Solved</span>
         <h2 id="ct-faq-title">Your Frequently Asked Questions Answered<span class="mv-dot" aria-hidden="true">.</span></h2>
         <p>Can't find the answer you're looking for here? Call us at {TEL} or email {MAIL} and we'll be in touch with you shortly.</p>
         <a class="gv-btn gv-btn-line" href="{INFO}"{NEW_TAB}>Request More Information</a>
       </div>
-      <div class="tu-accs ct-accs" data-reveal>{faqs}</div>
+      <div class="ct-faq-list" data-reveal>
+        <label class="ct-search"><span class="gv-sr">Search the questions</span>{ICON["help"]}<input type="search" id="ct-search" placeholder="Search questions — try “lunch” or “hours”" autocomplete="off"></label>
+        <p class="ct-none" id="ct-none" hidden>No matching questions. Call us at {TEL} and we'll help.</p>
+        <div class="tu-accs ct-accs">{faqs}</div>
+      </div>
     </div>
   </section>
 

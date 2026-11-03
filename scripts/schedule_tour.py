@@ -1,6 +1,6 @@
 """Preview-only redesign of /schedule-tour. Wording kept from the live page and homepage."""
 
-CALENDLY = "https://calendly.com/kdees-covenantschool/30min?hide_gdpr_banner=1&primary_color=153553"
+CALENDLY = "https://calendly.com/kdees-covenantschool/30min?hide_gdpr_banner=1&primary_color=153553&embed_domain=covenantschool.com&embed_type=Inline"
 
 GALLERY = [  # file, alt, layout class
     ("covenant-21-9528197", "Middle school students working at their desks", "is-wide"),
@@ -36,7 +36,7 @@ def schedule_tour(ICON, IMG, maps_url, new_tab):
 
   <section class="gv gv-section ep-apply st-book" id="book" aria-labelledby="st-book-title">
     <img class="ep-apply-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-wrap ep-grid st-grid">
+    <div class="gv-wrap st-grid2">
       <div class="ep-side" data-reveal>
         <h2 id="st-book-title">Book your tour<span class="mv-dot" aria-hidden="true">.</span></h2>
         <ol class="st-steps">
