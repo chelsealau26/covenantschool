@@ -528,7 +528,8 @@
   .gv-quotes { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .gv-hero-home { padding: 130px 16px 110px; min-height: 0; }
+  /* the phone header (logo + menu) overlays the top ~90px of the homepage hero */
+  .gv.gv-hero.gv-hero-home { padding: 120px 16px 104px; min-height: 0; }
   .gv .gv-home-tagline { font-size: 15px; }
   .gv-quicklinks { padding: 0 16px; margin-top: -56px; }
   .gv-quick-grid { grid-template-columns: 1fr; gap: 12px; }
