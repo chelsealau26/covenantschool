@@ -56,8 +56,8 @@
 }
 .gv-btn:hover, .gv-btn:focus-visible { background: var(--navy-2); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(19, 28, 36, .18); }
 .gv-btn:focus-visible { outline: 3px solid var(--tan); outline-offset: 3px; }
-.gv-btn-gold { background: var(--tan); }
-.gv-btn-gold:hover, .gv-btn-gold:focus-visible { background: #c99a70; }
+.gv-btn-gold { background: var(--tan); color: var(--navy) !important; } /* navy on tan: 6.3:1 (white on tan is only 2:1) */
+.gv-btn-gold:hover, .gv-btn-gold:focus-visible { background: #e6c3a3; }
 .gv-btn-ghost { background: transparent; border-color: rgba(255, 255, 255, .75); }
 .gv-btn-ghost:hover, .gv-btn-ghost:focus-visible { background: rgba(255, 255, 255, .12); border-color: #fff; }
 .gv-btn-line { background: transparent; border-color: var(--navy); color: var(--navy) !important; }
@@ -785,7 +785,3 @@
 body:has(.gv-hero-home) #container-widget-1719555017494 { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553 !important; border-top: 3px solid var(--tan, #daad86); }
 body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !important; border-top: 1px solid rgba(218, 173, 134, .22); }
 .gv.gv-hero-home .gv-lead { color: #fff; }
-
-/* Homepage: white button text needs a deeper tan to pass contrast (white on #daad86 is only 2:1; on #946338 it is 5.1:1) */
-body:has(.gv-hero-home) .gv-btn-gold { background: var(--tan-deep); }
-body:has(.gv-hero-home) .gv-btn-gold:hover, body:has(.gv-hero-home) .gv-btn-gold:focus-visible { background: #7a5030; }
