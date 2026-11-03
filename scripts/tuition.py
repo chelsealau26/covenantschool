@@ -39,10 +39,14 @@ def tuition(ICON, IMG, NEW_TAB):
         for k, (g, sub, a, mo) in enumerate(TUITION))
     g0, s0, a0, m0 = TUITION[0]
     rows = "".join(f'''<tr><th scope="row">{g} <span>{sub}</span></th><td>{a}</td><td>{mo}</td></tr>''' for g, sub, a, mo in TUITION)
-    enroll = "".join(f'''<li><strong>{n}</strong><span class="tu-when">{d}</span><span class="tu-amt">{p} <em>(Max {m.replace("Max ", "")})</em></span></li>''' for n, d, p, m in ENROLL)
-    plans = "".join(f'''<li><strong>{n}</strong><span>{d}</span><em>({f})</em></li>''' for n, d, f in PLANS)
-    fees = "".join(f'''<li><strong>{n}</strong><span>{w}</span><b>{" · ".join(a)}</b></li>''' for n, w, a in FEES)
-    cur = "".join(f'''<li><strong>{n}</strong><b>{p}</b></li>''' for n, p in CURRICULUM)
+    def badge(d):
+        mo, day = d.split()[0][:3], "".join(ch for ch in d.split()[1] if ch.isdigit())
+        return f'<span class="tu-cal" aria-hidden="true"><b>{mo}</b><i>{day}</i></span>'
+    enroll = "".join(f'''<li>{badge(d)}<div><strong>{n}</strong><span class="tu-when">{d}</span></div><span class="tu-amt"><b>{p.split(" /")[0]}</b><em>/ Student · {m}</em></span></li>''' for n, d, p, m in ENROLL)
+    COUNT = {"Annually": "1", "Bi-Annually": "2", "Quarterly": "4", "Monthly": "11"}
+    plans = "".join(f'''<li class="tu-plan"><span class="tu-plan-n">{COUNT[n]}</span><span class="tu-plan-k">{"payment" if COUNT[n] == "1" else "payments"}</span><strong>{n}</strong><p>{d}</p><span class="tu-tag2">{f}</span>{'<span class="tu-save">2% discount</span>' if n == "Annually" else ""}</li>''' for n, d, f in PLANS)
+    fees = "".join(f'''<li class="tu-fee"><span class="tu-fee-amt">{a[0].split(" (")[0].split(" per")[0]}</span><strong>{n}</strong><span class="tu-fee-det">{" · ".join(a)}</span><small>{w}</small></li>''' for n, w, a in FEES)
+    cur = "".join(f'''<li><span>{n}</span><b>{p}</b></li>''' for n, p in CURRICULUM)
     def item(icon, title, body, open_=False, id_=""):
         return f'''<details class="tu-acc"{(' id='+chr(34)+id_+chr(34)) if id_ else ''}{" open" if open_ else ""}><summary><span class="hm-col-icon">{ICON[icon]}</span><span class="tu-acc-t">{title}</span><span class="tu-acc-x" aria-hidden="true"></span></summary><div class="tu-acc-body">{body}</div></details>'''
     return f'''
@@ -131,19 +135,27 @@ def tuition(ICON, IMG, NEW_TAB):
         <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>
       </div>
       <div class="tu-accs" data-reveal>
-        {item("calendar", "Save Your Spot for Next Year!", f'''<p>Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
-          <h4>CCS Student Re-Enrollment</h4><ul class="tu-list">{enroll}</ul>
-          <h4>New Student Enrollment</h4><ul class="tu-list"><li><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span><span class="tu-amt">$200 / New Student <em>(Max $750/Family)</em></span></li></ul>
+        {item("calendar", "Save Your Spot for Next Year!", f'''<p class="tu-lede">Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
+          <h4>CCS Student Re-Enrollment</h4><ol class="tu-dates">{enroll}</ol>
+          <h4>New Student Enrollment</h4><ol class="tu-dates"><li>{badge("February 22nd")}<div><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span></div><span class="tu-amt"><b>$200</b><em>/ New Student · Max $750/Family</em></span></li></ol>
           <p class="tu-fine">All enrollment fees are non-refundable.</p>''')}
-        {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-list">{plans}</ul>')}
-        {item("receipt", "Additional Fees", id_="additional-fees", body=f'''<p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
-          <ul class="tu-list">{fees}</ul>
-          <h4>Curriculum Fees <span>Non-refundable due June 1st</span></h4><ul class="tu-list">{cur}</ul>''')}
-        {item("users", "The Bigger The Family, The More The Savings", id_="discount", body='<span class="tu-label">Multi Student Discount</span><p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p>')}
-        {item("school", "Choose Act Alabama Is Open", id_="choose", body=f'''<span class="tu-label">Apply Now</span><p>The Choose Act Alabama application portals are now open for both current participants and new families. Don’t miss your opportunity to secure funding for the upcoming school year.</p>
-          <h4>Key Dates &amp; Details</h4><ul class="tu-list"><li><strong>Renewal Applications (Current Participants)</strong><span>Open December 15, 2025 – March 31, 2026</span></li><li><strong>New Family Applications ('26–'27 Academic Year)</strong><span>Open January 2, 2026 – March 31, 2026</span></li><li><strong>Funding Amount</strong><b>Up to $7,000 per participating student</b></li></ul>
-          <p>Applications are managed through ClassWallet, the official platform for the Choose Act Alabama program. Call ClassWallet support at <a class="ns-tel" href="tel:877-969-5536">877-969-5536</a> for assistance.</p>
-          <a class="gv-btn gv-btn-line" href="{CHOOSE}"{NEW_TAB}>Apply Today · Deadline March 31, 2026</a>''')}
+        {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-plans2">{plans}</ul>')}
+        {item("receipt", "Additional Fees", id_="additional-fees", body=f'''<ul class="tu-fees2">{fees}</ul>
+          <div class="tu-cur2"><h4>Curriculum Fees <span>Non-refundable due June 1st</span></h4><ul>{cur}</ul>
+          <p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p></div>''')}
+        {item("users", "The Bigger The Family, The More The Savings", id_="discount", body='<div class="tu-disc2"><div class="tu-disc-big"><b>3%</b><span>off for the 2nd &amp; 3rd child</span></div><div><span class="tu-label">Multi Student Discount</span><p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p></div></div>')}
+        {item("school", "Choose Act Alabama", id_="choose", body=f'''<div class="tu-choose2">
+            <div class="tu-choose-big"><span class="tu-status">Opens January 2027</span><b>$7,000</b><span>per student at a participating school</span></div>
+            <div>
+              <p>Applications for the 2027–2028 school year open in January 2027 for all Alabama families, regardless of household income. Current participants and new families both apply through ClassWallet, the official platform for the CHOOSE Act Alabama program.</p>
+              <ul class="tu-facts">
+                <li><strong>Who qualifies</strong><span>Alabama residents in grades K5–12</span></li>
+                <li><strong>Funding</strong><span>Up to $7,000 per participating student</span></li>
+                <li><strong>Questions?</strong><span>ClassWallet support: <a class="ns-tel" href="tel:877-313-2125">877-313-2125</a></span></li>
+              </ul>
+              <a class="gv-btn gv-btn-line" href="{CHOOSE}"{NEW_TAB}>Visit CHOOSE Act Alabama</a>
+            </div>
+          </div>''')}
       </div>
     </div>
   </section>

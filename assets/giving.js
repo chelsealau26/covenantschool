@@ -255,7 +255,7 @@
     var opts = PROGRAMS.map(function (p) { return '<option value="' + p.id + '"' + (p.id === pid ? " selected" : "") + ">" + p.name + " — " + $(p.tuition) + "</option>"; }).join("");
     li.innerHTML = '<span class="tu-kid-n" aria-hidden="true"></span>' +
       '<label class="tu-field"><span>Grade level</span><select class="tu-kid-p">' + opts + "</select></label>" +
-      '<label class="tu-check"><input type="checkbox" class="tu-kid-choose"><span>CHOOSE Act ESA <small>(up to $7,000)</small></span></label>' +
+      '<label class="tu-check"><input type="checkbox" class="tu-kid-choose"><span>CHOOSE Act ESA <small>(up to $7,000, grades K5–12)</small></span></label>' +
       '<button type="button" class="tu-remove" aria-label="Remove this student">&times;</button>';
     list.appendChild(li);
     li.querySelector(".tu-remove").addEventListener("click", function () { li.remove(); calc(); });
@@ -267,7 +267,10 @@
       li.querySelector(".tu-kid-n").textContent = String(i + 1).padStart(2, "0");
       li.querySelector(".tu-remove").hidden = list.children.length === 1;
       var p = PROGRAMS.filter(function (x) { return x.id === li.querySelector(".tu-kid-p").value; })[0];
-      return { p: p, choose: li.querySelector(".tu-kid-choose").checked };
+      var cb = li.querySelector(".tu-kid-choose"), k3 = p.id === "k3h" || p.id === "k3f";
+      cb.disabled = k3; if (k3) cb.checked = false;   // CHOOSE Act covers grades K5-12
+      cb.closest("label").classList.toggle("is-off", k3);
+      return { p: p, choose: cb.checked };
     });
     lines.innerHTML = ""; feeLines.innerHTML = "";
     var sum = 0, disc = 0, eligible = 0, staff = false;
