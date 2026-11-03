@@ -176,3 +176,21 @@
   window.addEventListener("resize", onScroll);
   update();
 })();
+
+// Employment: tapping a position tile chooses it in the application form and brings the form into view.
+(function () {
+  var tiles = document.querySelectorAll("[data-pick-position]");
+  var select = document.getElementById("ef-position");
+  if (!tiles.length || !select) return;
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  tiles.forEach(function (b) {
+    b.addEventListener("click", function () {
+      select.value = b.getAttribute("data-pick-position");
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      var card = select.closest(".ep-card") || select;
+      card.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+      card.classList.remove("is-picked"); void card.offsetWidth; card.classList.add("is-picked");
+      setTimeout(function () { var n = document.getElementById("ef-name"); (n || select).focus({ preventScroll: true }); }, still ? 0 : 600);
+    });
+  });
+})();

@@ -1,16 +1,28 @@
 """Preview-only redesign of /employment-openings.
 The application form (fields, spam protection, submit script) is copied at build time from the
-live page, so it always matches what /api/employment-application expects."""
-import re
+live page, so it always matches what /api/employment-application expects. The position chips are
+read from the form's own <select>, so they can never list a role the form doesn't offer."""
+import re, html as H
 
 def form_block(pages):
     t = (pages / "employment-openings.html").read_text()
     m = t[t.index("<main"):t.index("</main>")]
     return m[m.index("<style"):m.rindex("</script>") + len("</script>")]
 
+def positions(block):
+    sel = re.search(r'<select id="ef-position"[\s\S]*?</select>', block).group(0)
+    return [H.unescape(o).strip() for o in re.findall(r"<option>([^<]+)</option>", sel)]
+
 def employment(ICON, IMG, pages):
+    block = form_block(pages)
+    chips = "".join(
+        f'<li><button type="button" class="ep-role" data-pick-position="{H.escape(p, quote=True)}">'
+        f'<span class="ep-role-n" aria-hidden="true">{i:02d}</span><span class="ep-role-t">{H.escape(p)}</span>'
+        f'<span class="ep-role-go" aria-hidden="true"></span></button></li>'
+        for i, p in enumerate(positions(block), 1))
     return f'''
   <section class="gv gv-hero gv-hero-split ep-hero">
+    <img class="ep-hero-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-2-9598822.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
@@ -22,7 +34,18 @@ def employment(ICON, IMG, pages):
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper" id="apply" aria-labelledby="ep-apply-title">
+  <section class="gv gv-section gv-white ep-roles" aria-labelledby="ep-roles-title">
+    <div class="gv-wrap">
+      <div class="ep-roles-head" data-reveal>
+        <h2 id="ep-roles-title">Positions you can apply for<span class="mv-dot" aria-hidden="true">.</span></h2>
+        <p>Choose one to start your application.</p>
+      </div>
+      <ul class="ep-role-grid" data-reveal>{chips}</ul>
+    </div>
+  </section>
+
+  <section class="gv gv-section ep-apply" id="apply" aria-labelledby="ep-apply-title">
+    <img class="ep-apply-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-wrap ep-grid">
       <div class="ep-side" data-reveal>
         <h2 id="ep-apply-title">Apply<span class="mv-dot" aria-hidden="true">.</span></h2>
@@ -34,7 +57,7 @@ def employment(ICON, IMG, pages):
         </ul>
       </div>
       <div class="ep-card" data-reveal>
-        {form_block(pages)}
+        {block}
       </div>
     </div>
   </section>

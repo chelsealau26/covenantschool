@@ -63,7 +63,8 @@ STYLE = """<style>
 .bgd-grads { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-bottom: 30px; }
 .bgd-sw code { font-size: 12px; color: var(--muted); word-break: break-word; }
 .bgd-toc { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; }
-.bgd-toc a { color: #fff !important; text-decoration: underline !important; text-underline-offset: 4px; font-weight: 600; }
+.bgd-toc a { color: #fff !important; text-decoration: none !important; font-weight: 600; transition: color .2s; }
+.bgd-toc a:hover, .bgd-toc a:focus-visible { color: #daad86 !important; }
 @media (max-width: 860px) { .bgd-grid { grid-template-columns: 1fr; } .bgd-demo-anton { font-size: 40px; } }
 </style>"""
 
@@ -135,6 +136,7 @@ def brand_guide(ICON):
     </table>''' + rule_list([
         "At most one tan button per section. If two actions compete, the tour wins the tan.",
         "Labels are short, uppercase verbs: SCHEDULE A TOUR, LEARN MORE, APPLY TODAY.",
+        "No underlines, on headings or on links. Links show they are links with color, an arrow, or a hover change (tan on navy, deep tan on light).",
         "Buttons are at least 52px tall; side-by-side buttons in a row share the same width and line up at the bottom.",
         "Links that leave the site open in a new tab and say so to screen readers. Square donations open in an on-page window; PDFs open in an on-page window on computers only.",
     ])
