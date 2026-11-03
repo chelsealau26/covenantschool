@@ -101,3 +101,23 @@
     }
   });
 })();
+
+// Accessibility: photos the theme adds after load (parallax backgrounds) are decorative.
+// Make sure every image has an alt attribute so screen readers skip them.
+(function () {
+  function mark(root) {
+    if (!root || root.nodeType !== 1) return;
+    var imgs = root.tagName === "IMG" ? [root] : root.querySelectorAll("img:not([alt])");
+    Array.prototype.forEach.call(imgs, function (img) {
+      if (!img.hasAttribute("alt")) img.setAttribute("alt", "");
+      if (img.closest && img.closest(".parallax-bg")) img.setAttribute("aria-hidden", "true");
+    });
+  }
+  function start() {
+    mark(document.body);
+    if (window.MutationObserver) new MutationObserver(function (list) {
+      list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, mark); });
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+})();
