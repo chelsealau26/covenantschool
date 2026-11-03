@@ -1985,8 +1985,12 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
 @media (max-width: 640px) { .gv .ac-rate-list li { grid-template-columns: 1fr; gap: 8px; } .gv .ac-price strong { font-size: 52px; } }
 
 /* ---------------------------------------------------------------- Calendar (preview redesign) */
-.gv.cal-hero .tu-hero2-img { background-position: 50% 55%; }
-.gv.cal-hero { min-height: 0; }
+.gv.cal-hero { padding: 64px 24px 56px; color: #fff; background: radial-gradient(700px 300px at 100% 0%, rgba(218, 173, 134, .14), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 50%, #0d2136 100%) #153553; }
+.cal-hero-in { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
+.gv.cal-hero .gv-eyebrow { color: #f0d9c2; }
+.gv.cal-hero h1 { margin: 6px 0 0; color: #fff; font-size: clamp(48px, 6.4vw, 96px) !important; line-height: .95 !important; }
+.gv.cal-hero + .cal-sec { padding-top: 48px; }
+@media (max-width: 640px) { .gv.cal-hero { padding: 44px 20px 40px; } .gv.cal-hero h1 { font-size: 48px !important; } }
 .cal-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 40px; align-items: start; }
 .cal-main { padding: 28px 28px 8px; border-radius: 8px; background: #fff; box-shadow: var(--shadow); }
 .cal-main #school-calendar { max-width: none; padding: 0 0 20px; }

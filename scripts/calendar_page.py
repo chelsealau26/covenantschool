@@ -15,15 +15,13 @@ def calendar_page(ICON, IMG, NEW_TAB, pages):
     js = re.findall(r"var SCHOOL_EVENTS = (\[[\s\S]*?\]);", widget)[0]
     events = json.dumps(json.loads(js), separators=(",", ":"))
     return f'''
-  <section class="gv tu-hero2 cal-hero" data-scroll-dim aria-labelledby="cal-title">
-    <div class="tu-hero2-img" style="background-image: url('{IMG}fb/ccs-school-gathering.jpg')" aria-hidden="true"></div>
-    <div class="gv-wrap tu-hero2-copy">
-      <span class="gv-eyebrow">Parent Central</span>
-      <h1 id="cal-title">School Calendar</h1>
-      <div class="gv-actions">
-        <a class="gv-btn gv-btn-gold" href="{PDF}"{NEW_TAB}>Download the 2026-2027 Calendar</a>
-        <a class="gv-btn gv-btn-ghost" href="#cal-month">View Calendar</a>
+  <section class="gv cal-hero" aria-labelledby="cal-title">
+    <div class="gv-wrap cal-hero-in">
+      <div>
+        <span class="gv-eyebrow">Parent Central</span>
+        <h1 id="cal-title">School Calendar</h1>
       </div>
+      <a class="gv-btn gv-btn-gold" href="{PDF}"{NEW_TAB}>Download the 2026-2027 Calendar</a>
     </div>
   </section>
 
