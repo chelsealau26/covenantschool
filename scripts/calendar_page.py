@@ -21,7 +21,6 @@ def calendar_page(ICON, IMG, NEW_TAB, pages):
         <span class="gv-eyebrow">Parent Central</span>
         <h1 id="cal-title">School Calendar</h1>
       </div>
-      <a class="gv-btn gv-btn-gold" href="{PDF}"{NEW_TAB}>Download the 2026-2027 Calendar</a>
     </div>
   </section>
 
