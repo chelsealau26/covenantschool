@@ -50,6 +50,35 @@ def prefix(sel):
         out.append(s)
     return ", ".join(out)
 
+METAL = "linear-gradient(135deg, #f6f6f7 0%, #cfd0d2 30%, #f2f2f3 48%, #b9bbbe 72%, #e3e4e5 100%)"
+COLOR = re.compile(r"#[0-9a-fA-F]{6}\b|rgba?\([^)]*\)|var\(--tan\)|var\(--tan-soft\)|var\(--tan-deep\)")
+
+def _light(tok):
+    if tok == "var(--tan)": return 0.77
+    if tok == "var(--tan-soft)": return 0.95
+    if tok == "var(--tan-deep)": return 0.4
+    if tok.startswith("#"):
+        r, g, b = int(tok[1:3], 16), int(tok[3:5], 16), int(tok[5:7], 16)
+    else:
+        n = re.findall(r"[\d.]+", tok); r, g, b = map(float, n[:3])
+        if len(n) > 3 and float(n[3]) < .6: return None
+    return colorsys.rgb_to_hls(r / 255, g / 255, b / 255)[1]
+
+def metal(decl):
+    """A tan fill becomes brushed metal instead of flat grey."""
+    if ":" not in decl: return None
+    prop, val = decl.split(":", 1)
+    if prop.strip() not in ("background", "background-color", "background-image"): return None
+    if "url(" in val: return None
+    raw = val.replace("!important", "")
+    if not (has_warm(raw) or "var(--tan)" in raw): return None
+    toks = COLOR.findall(raw)
+    if not toks: return None
+    ls = [_light(t) for t in toks]
+    if any(l is None or l < 0.6 for l in ls) or min(ls) > 0.9: return None
+    imp = " !important" if "!important" in val else ""
+    return f"background: {METAL}{imp}"
+
 def rules(css):
     css = re.sub(r"/\*[\s\S]*?\*/", "", css)
     i, n, out = 0, len(css), []
@@ -71,9 +100,14 @@ def rules(css):
             i = k; continue
         k = css.find("}", j)
         body = css[j + 1:k]
-        decls = [d.strip() for d in body.split(";") if d.strip() and has_warm(d)]
+        decls = []
+        for d in (x.strip() for x in body.split(";")):
+            if not d: continue
+            m = metal(d)
+            if m: decls.append(m)
+            elif has_warm(d): decls.append(swap(d))
         if decls and head:
-            out.append(f"{prefix(head)} {{ " + "; ".join(swap(d) for d in decls) + "; }")
+            out.append(f"{prefix(head)} {{ " + "; ".join(decls) + "; }")
         i = k + 1
     return "\n".join(out)
 
