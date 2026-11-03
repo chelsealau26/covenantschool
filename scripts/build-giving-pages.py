@@ -766,6 +766,8 @@ def build():
     (PAGES / "redesign" / "curriculum.html").write_text(with_main(shell("curriculum.html"), curriculum(ICON, IMG, PAGES)))
     from technology import technology
     (PAGES / "redesign" / "technology.html").write_text(with_main(shell("technology.html"), technology(ICON, IMG)))
+    from ftp import ftp
+    (PAGES / "redesign" / "ftp.html").write_text(with_main(shell("ftp.html"), ftp(ICON, IMG, NEW_TAB)))
     from brand_guide import brand_guide
     bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
     bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)

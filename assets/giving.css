@@ -1828,3 +1828,54 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) { .te-caret, .te-window::after { animation: none; } }
 @media (max-width: 960px) { .te-window { max-width: 600px; } .te-window img { aspect-ratio: 4 / 3; } }
 @media (max-width: 640px) { .te-hero-grid { background-size: 32px 32px; } .gv.te-hero .tu-hero2-img { background-position: 22% 30%; } }
+
+/* ---------------------------------------------------------------- FTP (preview redesign) */
+.ftp-sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gv.ftp-hero .tu-hero2-img { background-position: 55% 35%; }
+.gv.ftp-hero .ftp-l2 { display: block; }
+.ftp-intro-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 80px; align-items: center; }
+.gv.ftp-intro .ns-statement { margin: 0 0 36px !important; }
+.gv .ftp-pillars { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+.gv .ftp-pillars li { display: flex; gap: 20px; align-items: flex-start; margin: 0 !important; padding: 22px 0 !important; border-top: 1px solid var(--line); }
+.ftp-pillars .hm-col-icon { width: 54px; height: 54px; flex: none; }
+.gv .ftp-pillars h3 { margin: 2px 0 4px !important; font: 400 26px/1.1 Anton, "Open Sans", Arial, sans-serif !important; color: var(--navy); letter-spacing: .01em; }
+.gv .ftp-pillars p { font-size: 17px; line-height: 1.6; color: var(--muted); }
+.ftp-collage { position: relative; padding-bottom: 90px; }
+.ftp-collage .ftp-c1 { width: 72%; }
+.ftp-collage .ftp-c1 img { aspect-ratio: 3 / 4; object-position: 50% 30%; }
+.ftp-collage .ftp-c2 { position: absolute; right: 0; bottom: 0; z-index: 2; width: 52%; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 30%; border: 8px solid #fff; border-radius: 6px; box-shadow: 0 24px 50px rgba(13, 33, 54, .22); }
+.gv.ftp-involved { color: #fff; background: radial-gradient(900px 500px at 100% 0%, rgba(218, 173, 134, .14), transparent 60%), linear-gradient(165deg, #224361 0%, #153553 45%, #0d2136 100%) #153553; }
+.ftp-inv-top { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin-bottom: 64px; }
+.gv .ftp-inv-head .gv-eyebrow { color: #f0d9c2; }
+.gv .ftp-inv-head h2 { color: #fff; font-size: clamp(38px, 4.2vw, 58px); line-height: 1.02; margin: 6px 0 18px; }
+.gv .ftp-inv-head p { font-size: 18px; line-height: 1.7; color: rgba(255, 255, 255, .88); }
+.ftp-inv-photo { position: relative; margin: 0; }
+.ftp-inv-photo::before { content: ""; position: absolute; inset: -16px 16px 16px -16px; border: 2px solid var(--tan); border-radius: 6px; }
+.ftp-inv-photo img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 45%; border-radius: 4px; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); }
+.gv .ftp-steps { list-style: none !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0 !important; padding: 0 !important; counter-reset: none; }
+.gv .ftp-steps li { position: relative; margin: 0 !important; padding: 34px 28px 8px !important; border-top: 2px solid rgba(240, 217, 194, .25); }
+.gv .ftp-steps li::before { content: ""; position: absolute; left: 28px; top: -6px; width: 10px; height: 10px; border-radius: 50%; background: var(--tan); box-shadow: 0 0 0 6px rgba(218, 173, 134, .18); }
+.gv .ftp-steps li + li { border-left: 1px solid rgba(255, 255, 255, .1); }
+.gv .ftp-step-n { position: absolute; right: 24px; top: 26px; font: 400 44px/1 Anton, "Open Sans", Arial, sans-serif; color: rgba(240, 217, 194, .16); }
+.ftp-steps .hm-col-icon { width: 52px; height: 52px; margin-bottom: 18px; color: var(--tan); background: transparent; border-color: rgba(218, 173, 134, .65); }
+.gv .ftp-steps h3 { margin: 0 0 8px !important; font: 400 26px/1.1 Anton, "Open Sans", Arial, sans-serif !important; color: #fff; letter-spacing: .01em; }
+.gv .ftp-steps p { font-size: 16px; line-height: 1.65; color: rgba(255, 255, 255, .84); }
+.gv .ftp-steps a { color: #f0d9c2; font-weight: 700; text-decoration: none; border-bottom: 0; }
+.gv .ftp-steps a:hover, .gv .ftp-steps a:focus-visible { color: #fff; }
+.ftp-cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 88px; align-items: center; }
+.ftp-cta-photo { max-width: 440px; }
+.ftp-cta-photo img { aspect-ratio: 4 / 5; object-position: 50% 30%; }
+.gv .ftp-cta-text h2 { margin: 8px 0 30px; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.04; color: var(--navy); }
+@media (max-width: 960px) { .ftp-cta-grid { grid-template-columns: 1fr; gap: 48px; } .ftp-cta-photo { max-width: 420px; } }
+@media (max-width: 1080px) { .gv .ftp-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; } .gv .ftp-steps li:nth-child(3) { border-left: 0; } }
+@media (max-width: 960px) {
+  .ftp-intro-grid, .ftp-inv-top { grid-template-columns: 1fr; gap: 48px; }
+  .ftp-collage { max-width: 560px; }
+  .ftp-inv-photo { max-width: 600px; margin-left: 16px; }
+}
+@media (max-width: 640px) {
+  .gv .ftp-steps { grid-template-columns: 1fr; }
+  .gv .ftp-steps li + li { border-left: 0; }
+  .ftp-collage { padding-bottom: 60px; }
+  .ftp-collage .ftp-c2 { border-width: 5px; }
+}
