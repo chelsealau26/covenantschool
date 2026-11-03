@@ -570,6 +570,13 @@ def home():
                 f'<figcaption>&mdash; {name}, <span>{role}</span></figcaption></figure>')
     return f"""
   <section class="gv gv-hero gv-hero-home" style="--hero-img: url('{IMG}covenant-115-9517621.jpg')">
+    <div class="hm-slides" aria-hidden="true">
+      <div class="hm-slide on" style="--pos: 50% 35%"><img src="{IMG}covenant-115-9517621.jpg" alt="" fetchpriority="high"></div>
+      <div class="hm-slide" style="--pos: 50% 25%" data-src="{IMG}covenant-104-9578593.jpg"><img alt=""></div>
+      <div class="hm-slide" style="--pos: 50% 30%" data-src="{IMG}covenant-33-9598535.jpg"><img alt=""></div>
+      <div class="hm-slide" style="--pos: 50% 30%" data-src="{IMG}covenant-10-9527833.jpg"><img alt=""></div>
+      <div class="hm-slide" style="--pos: 50% 30%" data-src="{IMG}covenant-164-9598717.jpg"><img alt=""></div>
+    </div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
         <h1>EMPOWERING MINDS,<br>INSPIRING HEARTS</h1>

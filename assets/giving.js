@@ -45,3 +45,28 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
 })();
+
+// Homepage hero photos: first shows immediately; the rest load after the page, then each
+// fades into the next every 6 seconds. Off for "reduce motion"; pauses when the tab is hidden.
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".hm-slide"));
+  if (slides.length < 2) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function load(el) {
+    var src = el.getAttribute("data-src"), img = el.querySelector("img");
+    if (src && !img.getAttribute("src")) img.src = src;
+  }
+  function ready(el) { var img = el.querySelector("img"); return img.getAttribute("src") && img.complete && img.naturalWidth > 0; }
+  window.addEventListener("load", function () {
+    slides.forEach(load);
+    var i = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      var next = slides[(i + 1) % slides.length];
+      if (!ready(next)) return;
+      slides[i].classList.remove("on");
+      i = (i + 1) % slides.length;
+      next.classList.add("on");
+    }, 6000);
+  });
+})();

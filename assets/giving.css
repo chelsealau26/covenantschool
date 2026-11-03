@@ -703,3 +703,14 @@
   .hm-res-head h2 { font-size: 36px; }
   .hm-quote-lead blockquote { font-size: 32px; }
 }
+
+/* Homepage hero: slow crossfade between school photos, always under the same dark overlay */
+.hm-slides { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: var(--ink); }
+.hm-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s ease; }
+.hm-slide.on { opacity: 1; }
+.hm-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 35%); transform: scale(1.02); transition: transform 8s ease-out; }
+.hm-slide.on img { transform: scale(1.07); } /* very gentle drift while a photo is showing */
+.gv-hero-home h1, .gv-hero-home .gv-lead, .gv-hero-home .gv-home-tagline { text-shadow: 0 2px 16px rgba(13, 33, 54, .55); }
+@media (prefers-reduced-motion: reduce) {
+  .hm-slide img, .hm-slide.on img { transform: none; transition: none; }
+}
