@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "pages"
 OUT = PAGES  # redesigns approved and published 2026-11-02
 import hashlib
+from home_app import app_section
+
 def _v(name):
     return hashlib.sha1((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
 HEAD_EXTRA = f'<link rel="stylesheet" href="/assets/giving.css?v={_v("giving.css")}"><script src="/assets/giving.js?v={_v("giving.js")}" defer></script>'
@@ -628,24 +630,7 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-section gv-white hm-pair">
-    <div class="gv-wrap hm-pair-grid">
-      <article class="hm-lunch" data-reveal>
-        <img src="{IMG}covenant-94-9522791.jpg" alt="Two smiling boys in Covenant uniforms with their arms around each other" loading="lazy">
-        <div class="hm-lunch-text">
-          <h3>Order Lunch</h3>
-          <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
-          <a class="gv-btn gv-btn-line" href="https://aware3.net/shortcode?code=covenantchristianschool-f"{NEW_TAB}>DOWNLOAD THE APP</a>
-        </div>
-      </article>
-      <article class="hm-mission" data-reveal>
-        <img class="hm-mission-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-        <h3>Our Mission &amp; Values</h3>
-        <p>Covenant Christian School partners with families to provide a Christ-centered education that cultivates academic excellence, spiritual growth, and godly character, equipping students to live for God's purpose.</p>
-        <a class="gv-btn gv-btn-ghost" href="/mission-values">MORE DETAILS</a>
-      </article>
-    </div>
-  </section>
+{app_section(ICON, IMG, NEW_TAB)}
 
   <section class="gv gv-section gv-soft hm-res-sec" id="resources" aria-labelledby="gv-res-title">
     <img class="hm-res-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
