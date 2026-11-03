@@ -671,19 +671,19 @@ def home():
       <div class="hm-cols-grid">
         <div class="hm-col" data-reveal>
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["school"]}</span></div>
-          <h4>Scholarship Opportunities</h4>
+          <h2 class="hm-col-title">Scholarship Opportunities</h2>
           <p>Every child deserves access to a quality education. Explore scholarship programs that can help make a Covenant education possible for your family.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/scholarship-opportunities">EXPLORE SCHOLARSHIPS</a></div>
         </div>
         <div class="hm-col" data-reveal>
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["handshake"]}</span></div>
-          <h4>Join the Family Teacher Partnership</h4>
+          <h2 class="hm-col-title">Join the Family Teacher Partnership</h2>
           <p>Get involved and make a difference in our school community. Together, we can support our students and enrich their educational experience.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/ftp">LEARN MORE</a></div>
         </div>
         <div class="hm-col" data-reveal>
           <div class="hm-col-top"><span class="hm-col-icon">{ICON["briefcase"]}</span></div>
-          <h4>Exciting Job Opportunities</h4>
+          <h2 class="hm-col-title">Exciting Job Opportunities</h2>
           <p>Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/employment-openings">APPLY TODAY</a></div>
         </div>

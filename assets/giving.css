@@ -696,7 +696,7 @@
 .hm-col + .hm-col { border-left: 1px solid #ddcfbf; }
 .hm-col:first-child { padding-left: 0; }
 .hm-col:last-child { padding-right: 0; }
-.hm-col h4 { font-size: 21px; margin-bottom: 10px; }
+.gv .hm-col-title { font-family: Tahoma, "Open Sans", Arial, sans-serif; font-weight: 700; font-size: 21px; line-height: 1.35; color: var(--navy); text-transform: none; letter-spacing: 0; margin: 0 0 10px; }
 .hm-col-top { position: relative; display: flex; align-items: center; gap: 16px; width: 100%; margin-bottom: 20px; }
 .hm-col-top::before, .hm-col-top::after { content: ""; position: absolute; left: 68px; right: 0; top: 50%; height: 2px; margin-top: -1px; background: #e6d8c8; }
 .hm-col-top::after { background: var(--tan); transform: scaleX(.25); transform-origin: left; transition: transform .45s ease; }
