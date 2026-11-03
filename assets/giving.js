@@ -148,3 +148,31 @@
   window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   update();
 })();
+
+// Mission & Values timeline: a tan line fills as you scroll; each year lights up when the line reaches it.
+(function () {
+  var tl = document.querySelector(".mv-timeline");
+  if (!tl) return;
+  var bar = tl.querySelector(".mv-progress"), track = tl.querySelector(".mv-track");
+  var items = Array.prototype.slice.call(tl.querySelectorAll("li"));
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    items.forEach(function (li) { li.classList.add("is-reached"); });
+    return;
+  }
+  tl.classList.add("is-live");
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var r = track.getBoundingClientRect();
+    var mark = window.innerHeight * 0.62;              // where the "reading line" sits on screen
+    var p = Math.min(Math.max((mark - r.top) / (r.height || 1), 0), 1);
+    tl.style.setProperty("--mv-p", p.toFixed(3));
+    items.forEach(function (li) {
+      li.classList.toggle("is-reached", li.getBoundingClientRect().top + 16 <= mark);
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();

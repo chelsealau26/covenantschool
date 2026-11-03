@@ -82,9 +82,9 @@ def mission_values(ICON, IMG):
     <div class="gv-wrap mv-history">
       <div class="mv-history-text">
         <h2 id="mv-history-title" data-reveal>History{dot}</h2>
-        <ol class="mv-timeline">{timeline}
+        <div class="mv-timeline"><div class="mv-track" aria-hidden="true"><span class="mv-progress"></span></div><ol>{timeline}
           <li class="mv-now" data-reveal><span class="mv-year"><span data-count="500" data-suffix="+">500+</span></span><p>So far, Covenant Christian School has educated and influenced over 500 graduating alumni. And our story continues!</p></li>
-        </ol>
+        </ol></div>
       </div>
       <div class="mv-history-photo" data-reveal><img src="{IMG}covenant-86-9595976.jpg" alt="The front entrance of Covenant Christian School" loading="lazy"></div>
     </div>
