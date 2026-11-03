@@ -895,7 +895,7 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
 .gv .ep-intro { margin-top: 16px !important; font-size: 19px; line-height: 1.7; color: rgba(255, 255, 255, .9); }
 .ep-frame { margin-top: 32px; }
 .ep-frame img { aspect-ratio: 4 / 3; }
-.ep-contact { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 14px; }
+.gv .ep-contact { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 14px; } /* clears the tan outline that sits 22px below the photo */
 .ep-contact li { display: flex; align-items: center; gap: 16px; }
 .ep-contact .hm-col-icon { width: 44px; height: 44px; background: transparent; color: var(--tan); }
 .ep-contact .hm-col-icon svg { width: 20px; height: 20px; }
@@ -925,4 +925,4 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .ep-side { position: static; }
   .ep-frame { max-width: 520px; }
 }
-@media (max-width: 640px) { .ep-card { padding: 28px 20px 24px; } .ep-role-grid { grid-template-columns: 1fr; } .ep-hero h1 { font-size: 42px; } }
+@media (max-width: 640px) { .gv .ep-contact { margin-top: 44px; } .ep-card { padding: 28px 20px 24px; } .ep-role-grid { grid-template-columns: 1fr; } .ep-hero h1 { font-size: 42px; } }
