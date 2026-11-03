@@ -142,7 +142,7 @@
   function update() {
     ticking = false;
     var h = hero.offsetHeight || 1;
-    var dim = Math.min(Math.max(window.scrollY / (h * 0.7), 0), 1);
+    var dim = Math.min(Math.max(window.scrollY / (h * 0.55), 0), 1);
     hero.style.setProperty("--hero-dim", dim.toFixed(3));
   }
   window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
