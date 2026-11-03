@@ -617,7 +617,8 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-left" style="--band-img: url('{IMG}covenant-92-9517625.jpg'); --band-pos: center 8%" aria-labelledby="gv-portal-title">
+  <section class="gv gv-band gv-band-left gv-band-parallax" data-focus=".2" aria-labelledby="gv-portal-title">
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-92-9517625.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="gv-portal-title" class="hm-portal-title"><span class="hm-portal-icon">{ICON["portal"]}</span>Family Portal</h2>
       <p class="hm-portal-sub">Your Hub for Student Success and Family Engagement</p>

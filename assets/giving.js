@@ -77,7 +77,17 @@
   var bands = Array.prototype.slice.call(document.querySelectorAll(".gv-band-parallax"));
   if (!bands.length) return;
   var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var RATIO = 1440 / 958, SPEED = 0.28, ticking = false;
+  var SPEED = 0.28, ticking = false;
+  // Read each photo's real shape so it can be shown full width without cropping its height.
+  bands.forEach(function (band) {
+    var bg = band.querySelector(".gv-band-bg");
+    band._ratio = 1.5;
+    var m = bg && /url\(["']?([^"')]+)/.exec(bg.style.backgroundImage);
+    if (!m) return;
+    var img = new Image();
+    img.onload = function () { band._ratio = img.naturalWidth / img.naturalHeight; onScroll(); };
+    img.src = m[1];
+  });
   function update() {
     ticking = false;
     var vh = window.innerHeight;
@@ -85,10 +95,11 @@
       var bg = band.querySelector(".gv-band-bg");
       if (!bg) return;
       var r = band.getBoundingClientRect();
-      var h = Math.max(r.width / RATIO, r.height);
+      var h = Math.max(r.width / band._ratio, r.height);
       bg.style.height = h + "px";
       var room = h - r.height;
-      var y = -room / 2 - (still ? 0 : SPEED * (r.top + r.height / 2 - vh / 2));
+      var focus = parseFloat(band.getAttribute("data-focus") || ".5");
+      var y = -room * focus - (still ? 0 : SPEED * (r.top + r.height / 2 - vh / 2));
       bg.style.setProperty("--py", Math.max(-room, Math.min(0, y)).toFixed(1) + "px");
     });
   }
