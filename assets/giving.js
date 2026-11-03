@@ -415,3 +415,24 @@ window.addEventListener("message", function (e) {
   function set() { h.style.setProperty("--tcx", h.getBoundingClientRect().left + "px"); }
   set(); window.addEventListener("resize", set);
 })();
+
+// Curriculum: pick a grade to see its subjects (every grade stays in the page for search and no-JS).
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".cu-tab"));
+  if (!tabs.length) return;
+  document.documentElement.classList.add("cu-js");
+  function show(t, focus) {
+    tabs.forEach(function (x) { var on = x === t; x.setAttribute("aria-selected", on ? "true" : "false"); x.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(x.getAttribute("aria-controls")); p.hidden = !on; p.classList.toggle("is-in", on); });
+    if (focus) t.focus();
+    if (window.innerWidth <= 960 && focus !== false) { var p = document.getElementById(t.getAttribute("aria-controls")); var r = p.getBoundingClientRect(); if (r.top > window.innerHeight * .7) p.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { show(t); });
+    t.addEventListener("keydown", function (e) {
+      var n = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (n) { e.preventDefault(); show(tabs[(i + n + tabs.length) % tabs.length], true); }
+    });
+  });
+  show(tabs[0], false);
+})();
