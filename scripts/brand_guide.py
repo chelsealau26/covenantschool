@@ -155,6 +155,7 @@ def brand_guide(ICON):
     brand = rule_list([
         "The eagle from the logo is the signature detail. Use it large and quiet: white at about 22% on cream, or 7–8% on navy, bleeding off the edge of the section. Never small, never as clip art.",
         "Photos must show faces. Position crops so faces are fully visible on desktop and phones.",
+        "Heroes: the homepage is centered (brand statement over full-width rotating photos). Every other page is left-aligned: big Anton headline on navy at the left, the photo shown clearly on the right and fading into the navy, with a gentle parallax. On phones the photo sits behind the text under a navy overlay.",
         "Photos with text on them get an even navy overlay (rgba(13,33,54,.72)) when the text is centered, or a left-to-right navy gradient when the text sits on the left. The section also gets a solid dark background color so text stays readable while the photo loads.",
         "The tan frame: a featured photo can carry a 2px tan outline offset 22px down and right, drawn in as it scrolls into view.",
         "Sections alternate White, Paper and Cream, broken up by full-width navy photo bands. Two adjacent sections never share the same background unless they are one group.",
