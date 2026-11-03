@@ -108,3 +108,28 @@
   window.addEventListener("resize", onScroll);
   update();
 })();
+
+// Homepage photo outline: draws itself in when the photo is about half on screen.
+(function () {
+  var lines = document.querySelectorAll(".hm-frame-line");
+  if (!lines.length || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  lines.forEach(function (svg) {
+    var rect = svg.querySelector("rect");
+    var w = svg.clientWidth - 2, h = svg.clientHeight - 2;
+    if (!w || !h) return;
+    rect.setAttribute("width", w); rect.setAttribute("height", h);
+    var len = Math.ceil(2 * (w + h)) + 4;
+    svg.style.setProperty("--len", len + "px");
+    svg.classList.add("is-ready");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        svg.getBoundingClientRect(); // lock in the hidden state before animating
+        requestAnimationFrame(function () { svg.classList.add("is-drawn"); });
+        io.disconnect();
+      });
+    }, { threshold: 0.5 });
+    io.observe(svg.parentNode);
+  });
+})();
