@@ -136,7 +136,7 @@
 
 // Homepage hero: the photo deepens toward navy as you scroll down past it.
 (function () {
-  var hero = document.querySelector(".gv-hero-home");
+  var hero = document.querySelector(".gv-hero-home, [data-scroll-dim]");
   if (!hero) return;
   var ticking = false;
   function update() {
@@ -151,13 +151,12 @@
 
 // Mission & Values timeline: a tan line fills as you scroll; each year lights up when the line reaches it.
 (function () {
-  var tl = document.querySelector(".mv-timeline");
-  if (!tl) return;
+  document.querySelectorAll(".mv-timeline").forEach(function (tl) {
   var bar = tl.querySelector(".mv-progress"), track = tl.querySelector(".mv-track");
   var items = Array.prototype.slice.call(tl.querySelectorAll("li"));
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
     items.forEach(function (li) { li.classList.add("is-reached"); });
-    return;
+    return; // (inside forEach: skips just this timeline)
   }
   tl.classList.add("is-live");
   var ticking = false;
@@ -175,6 +174,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   update();
+  });
 })();
 
 // Employment: tapping a position tile chooses it in the application form and brings the form into view.
