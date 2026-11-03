@@ -559,16 +559,15 @@ HOME_LINKS = {
 def home():
     L = HOME_LINKS
     def tile(href, icon, title, text, newtab=False):
-        return (f'<a class="gv-quick" data-reveal href="{href}"{NEW_TAB if newtab else ""}>'
-                f'<span class="gv-quick-icon">{ICON[icon]}</span><span class="gv-quick-text"><strong>{title}</strong>'
-                f'<span>{text}</span></span><span class="gv-quick-arrow" aria-hidden="true">&rarr;</span></a>')
+        return (f'<a class="hm-strip-item" href="{href}"{NEW_TAB if newtab else ""}>'
+                f'<span class="hm-strip-icon">{ICON[icon]}</span><strong>{title}</strong>'
+                f'<span class="hm-strip-text">{text}</span></a>')
     def res(href, icon, title, newtab=False):
-        return (f'<a class="gv-resource" data-reveal href="{href}"{NEW_TAB if newtab else ""}>'
-                f'<span class="gv-resource-icon">{ICON[icon]}</span><span><strong>{title}</strong></span></a>')
-    def quote(name, role, lines):
+        return f'<li><a href="{href}"{NEW_TAB if newtab else ""}>{title}<span aria-hidden="true">&rarr;</span></a></li>'
+    def quote(name, role, lines, cls=""):
         body = "".join(f"<p>{l}</p>" for l in lines)
-        return (f'<figure class="gv-quote" data-reveal><span class="gv-quote-mark">{ICON["quote"]}</span>'
-                f'<blockquote>{body}</blockquote><figcaption><strong>{name}</strong><span>{role}</span></figcaption></figure>')
+        return (f'<figure class="hm-quote {cls}"><blockquote>{body}</blockquote>'
+                f'<figcaption>&mdash; {name}, <span>{role}</span></figcaption></figure>')
     return f"""
   <section class="gv gv-hero gv-hero-home" style="--hero-img: url('{IMG}covenant-115-9517621.jpg')">
     <div class="gv-wrap">
@@ -584,8 +583,8 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-quicklinks" aria-label="Quick links">
-    <div class="gv-wrap gv-quick-grid">
+  <section class="gv hm-strip" aria-label="Quick links">
+    <div class="gv-wrap hm-strip-grid">
       {tile("/calendar", "calendar", "2026-2027 Calendar", "Check out school events, holidays and reminders.")}
       {tile("/aftercare", "clock", "AfterCare Sign Up", "Sign up by 2:30pm the Friday before week of service.")}
       {tile("/ways-to-give", "heart", "Ways to Give", "Check out the different ways you can give to enhance our students' education.")}
@@ -600,16 +599,10 @@ def home():
         <img class="gv-stars" src="{IMG}stars-7250417.png" alt="5 out of 5 stars" width="120" height="24">
         <h2 id="gv-diff-title">Experience the Covenant Difference</h2>
         <p class="gv-lead" style="color:var(--muted);margin-top:16px">Experience why Covenant Christian School is the perfect place for your child! Schedule a tour to see firsthand the supportive community, quality education, and vibrant school spirit that make Covenant so special. We look forward to welcoming you and your family!</p>
-        <div class="gv-info-pair">
-          <div class="gv-info">
-            <span class="gv-panel-icon">{ICON["pin"]}</span>
-            <div><h3>Where?</h3><p>7150 Hitt Rd.<br>Mobile, AL 36695</p><a class="gv-link" href="{L['maps']}"{NEW_TAB}>DIRECTIONS</a></div>
-          </div>
-          <div class="gv-info">
-            <span class="gv-panel-icon">{ICON["compass"]}</span>
-            <div><h3>Explore!</h3><p>Tour the campus, visit classrooms, and meet prospective teachers.</p></div>
-          </div>
-        </div>
+        <dl class="hm-facts">
+          <div><dt>Where?</dt><dd>7150 Hitt Rd.<br>Mobile, AL 36695<br><a class="gv-link" href="{L['maps']}"{NEW_TAB}>DIRECTIONS</a></dd></div>
+          <div><dt>Explore!</dt><dd>Tour the campus, visit classrooms, and meet prospective teachers.</dd></div>
+        </dl>
         <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/schedule-tour">SCHEDULE A TOUR</a></div>
       </div>
     </div>
@@ -624,33 +617,30 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-section gv-white">
-    <div class="gv-wrap">
-      <div class="gv-cards gv-cards-2">
-        <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-94-9522791.jpg" alt="Two smiling young boys in Covenant uniforms with their arms around each other outdoors, one holding a small basketball" loading="lazy"></span><span class="gv-card-icon">{ICON["utensils"]}</span></div>
-          <div class="gv-card-body">
-            <h3>Order Lunch</h3>
-            <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
-            <div class="gv-actions"><a class="gv-btn" href="https://aware3.net/shortcode?code=covenantchristianschool-f"{NEW_TAB}>DOWNLOAD THE APP</a></div>
-          </div>
-        </article>
-        <article class="gv-card" data-reveal>
-          <div class="gv-card-img"><span class="gv-card-clip"><img src="{IMG}covenant-43-8567112.jpg" alt="Elementary students raising their hands to answer a question in class" loading="lazy"></span><span class="gv-card-icon">{ICON["cross"]}</span></div>
-          <div class="gv-card-body">
-            <h3>Our Mission &amp; Values</h3>
-            <p>Covenant Christian School partners with families to provide a Christ-centered education that cultivates academic excellence, spiritual growth, and godly character, equipping students to live for God's purpose.</p>
-            <div class="gv-actions"><a class="gv-btn" href="/mission-values">MORE DETAILS</a></div>
-          </div>
-        </article>
-      </div>
+  <section class="gv gv-section gv-white hm-pair">
+    <div class="gv-wrap hm-pair-grid">
+      <article class="hm-lunch" data-reveal>
+        <img src="{IMG}covenant-94-9522791.jpg" alt="Two smiling young boys in Covenant uniforms with their arms around each other outdoors, one holding a small basketball" loading="lazy">
+        <div class="hm-lunch-text">
+          <h3>Order Lunch</h3>
+          <p>Conveniently order lunch on our app! Simplify your busy schedule by placing your lunch orders by 5pm on the Sunday before each week of service.</p>
+          <a class="gv-btn" href="https://aware3.net/shortcode?code=covenantchristianschool-f"{NEW_TAB}>DOWNLOAD THE APP</a>
+        </div>
+      </article>
+      <article class="hm-mission" data-reveal>
+        <img class="hm-mission-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
+        <h3>Our Mission &amp; Values</h3>
+        <p>Covenant Christian School partners with families to provide a Christ-centered education that cultivates academic excellence, spiritual growth, and godly character, equipping students to live for God's purpose.</p>
+        <a class="gv-btn gv-btn-gold" href="/mission-values">MORE DETAILS</a>
+      </article>
     </div>
   </section>
 
   <section class="gv gv-section gv-soft" id="resources" aria-labelledby="gv-res-title">
     <div class="gv-wrap">
-      <div class="gv-head" data-reveal><h2 id="gv-res-title">CCS Resources</h2></div>
-      <div class="gv-resources gv-resources-home">
+      <div class="hm-res">
+      <div class="hm-res-head" data-reveal><h2 id="gv-res-title">CCS Resources</h2><img src="{IMG}eagle-mark-navy.png" alt="" width="900" height="321"></div>
+      <ul class="hm-res-list">
         {res(L['handbook'], "file", "Student/Parent Handbook", True)}
         {res(L['uniform'], "file", "Uniform Policy &amp; Procedure", True)}
         {res("/school-supplies", "list", "School Supply Lists")}
@@ -660,27 +650,25 @@ def home():
         {res("/tuition", "receipt", "Tuition &amp; Fees")}
         {res("/athletics", "trophy", "Athletics")}
         {res("/contact#faq", "help", "FAQs")}
+      </ul>
       </div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper">
+  <section class="gv gv-section gv-paper hm-cols">
     <div class="gv-wrap">
-      <div class="gv-panels">
-        <div class="gv-panel" data-reveal>
-          <div class="gv-panel-icon">{ICON["list"]}</div>
+      <div class="hm-cols-grid">
+        <div class="hm-col">
           <h4>School Supply Lists</h4>
           <p>Need to gear up for the start of school—or restock supplies? Our school supply lists are always available in the Parent Portal whenever you need a refresher.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="{L['renweb']}"{NEW_TAB}>VIEW ON PARENT PORTAL</a></div>
         </div>
-        <div class="gv-panel" data-reveal>
-          <div class="gv-panel-icon">{ICON["users"]}</div>
+        <div class="hm-col">
           <h4>Join the Family Teacher Partnership</h4>
           <p>Get involved and make a difference in our school community. Together, we can support our students and enrich their educational experience.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/ftp">LEARN MORE</a></div>
         </div>
-        <div class="gv-panel" data-reveal>
-          <div class="gv-panel-icon">{ICON["briefcase"]}</div>
+        <div class="hm-col">
           <h4>Exciting Job Opportunities</h4>
           <p>Discover the career opportunities and joy-filled days awaiting you at Covenant Christian School.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="/employment-openings">APPLY TODAY</a></div>
@@ -697,12 +685,19 @@ def home():
     </div>
   </section>
 
-  <section class="gv gv-section gv-white" aria-label="What families say">
-    <div class="gv-wrap gv-quotes">
-      {quote("Lanie", "Former Teacher &amp; Parent", ["We love CCS!", "My 3 kids have been loved well and held to a high academic standard!"])}
-      {quote("Marylin", "Current Parent", ["Awesome staff and teachers! Kids learn in a loving Christian environment!"])}
-      {quote("Michael", "Former Parent", ["My kids are receiving a rigorous education based upon Truth. I am very pleased with the academics, staff and students."])}
-      {quote("Elsie", "Grandmother of Former Students", ["5 of our grandchildren attended Covenant. Couldn't have made a better choice. 1 now has his Masters degree, from UAB, triplets are attending UAH, AUBURN! SOUTH ALABAMA, one is in Cottage Hill Christian Academy. They were prepared and are doing great in all areas. God has blessed them."])}
+  <section class="gv gv-section gv-white hm-voices" aria-label="What families say">
+    <div class="gv-wrap">
+      <div class="hm-voices-grid">
+        <div class="hm-voices-lead" data-reveal>
+          <img class="gv-stars" src="{IMG}stars-7250417.png" alt="5 out of 5 stars" width="120" height="24">
+          {quote("Lanie", "Former Teacher &amp; Parent", ["We love CCS!", "My 3 kids have been loved well and held to a high academic standard!"], "hm-quote-lead")}
+        </div>
+        <div class="hm-voices-rest">
+          {quote("Marylin", "Current Parent", ["Awesome staff and teachers! Kids learn in a loving Christian environment!"])}
+          {quote("Michael", "Former Parent", ["My kids are receiving a rigorous education based upon Truth. I am very pleased with the academics, staff and students."])}
+          {quote("Elsie", "Grandmother of Former Students", ["5 of our grandchildren attended Covenant. Couldn't have made a better choice. 1 now has his Masters degree, from UAB, triplets are attending UAH, AUBURN! SOUTH ALABAMA, one is in Cottage Hill Christian Academy. They were prepared and are doing great in all areas. God has blessed them."])}
+        </div>
+      </div>
     </div>
   </section>
 
