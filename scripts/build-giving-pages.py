@@ -749,6 +749,13 @@ def build():
     # Homepage refresh: preview only until approved (served on ?preview=... by the worker)
     (PAGES / "redesign").mkdir(exist_ok=True)
     (PAGES / "redesign" / "home.html").write_text(with_main(shell("index.html", chrome="index.html"), home()))
+    from brand_guide import brand_guide
+    bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
+    bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)
+    bg = bg.replace("</head>", '<meta name="robots" content="noindex, nofollow"></head>', 1)
+    (PAGES / "redesign" / "brand-guide.html").write_text(bg)
+    PV = (ROOT / "assets" / "preview-version.mjs")
+    PV.write_text(f'export const PREVIEW_CSS_VERSION = "{_v("preview.css")}";\n')
     print("Built ways-to-give.html, scholarship-opportunities.html, federal-tax-credit.html, redesign/home.html")
 
 

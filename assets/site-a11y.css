@@ -134,43 +134,5 @@ html.ccs-donate-open { overflow: hidden; }
 .ccs-donate.is-doc { width: min(1100px, calc(100vw - 48px)); height: calc(100vh - 48px); }
 .ccs-donate.is-doc .ccs-donate-bar h2 { font-size: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* Homepage: text over photos. Dark fallback colors sit behind every photo (so checkers and slow
-   connections see a dark background), the hero uses an even overlay since its text is centered,
-   so the header menu sits on the hero's navy overlay (white text stays at least 7.9:1 over any photo). */
-body:has(#heading-widget-1518129426779) #container-widget-1509144589946,
-#container-widget-1518962688375 { background-color: #0d2136 !important; }
-body:has(#heading-widget-1518129426779) #container-widget-1509144589946 > .background-overlay {
-  background-image: none !important; background-color: rgba(13, 33, 54, .72) !important;
-}
-#container-widget-1518962688375 > .background-overlay { background-color: rgba(0, 0, 0, .55) !important; }
-#text-widget-1518129426778 span { color: #f0d9c2 !important; }
-#text-widget-1518973632135 span, #heading-widget-1719549931653 span { color: #fff !important; }
-
-/* Back-to-top button: smaller (40px still meets the 24px minimum touch target) */
-a.scrollToTop { width: 40px !important; height: 40px !important; line-height: 38px !important; font-size: 20px !important; }
-a.scrollToTop::before { font-size: 20px !important; line-height: 38px !important; }
-
-/* Footer social icons: round outlines, matching the homepage hero */
-footer a.social-media-button { display: inline-flex !important; align-items: center; justify-content: center; width: 46px !important; height: 46px !important; border-radius: 50% !important; border: 1.5px solid rgba(255, 255, 255, .55) !important; background: transparent !important; transition: background .2s, border-color .2s, transform .2s; }
-footer a.social-media-button i { background: transparent !important; color: #fff !important; width: auto !important; height: auto !important; padding: 0 !important; font-size: 19px !important; line-height: 1 !important; border-radius: 0 !important; }
-footer a.social-media-button:is(:hover, :focus-visible) { background: #daad86 !important; border-color: #daad86 !important; transform: translateY(-2px); }
-footer a.social-media-button:is(:hover, :focus-visible) i { color: #131c24 !important; }
-footer a.social-media-button:not(#a11y-btn):not(#a11y-panel):not(#a11y-x):focus-visible { border-radius: 50% !important; outline-color: #daad86 !important; }
-
-/* Contrast checkers can't see photos or see-through colors. Declare the real backdrops:
-   - homepage header sits on the hero's navy overlay (white menu text is 7.9:1 or better over any photo),
-     so it carries that navy as a near-invisible background color;
-   - the accessibility panel's Reset button gets a solid navy;
-   - testimonial text is darkened so it passes on the light blue cards either way. */
-body:has(#heading-widget-1518129426779) .main-header-wrapper,
-body:has(.gv-hero-home) .main-header-wrapper { background-color: rgba(13, 33, 54, .01); }
-#a11y-panel #a11y-panel-reset { background: #2d5089 !important; }
-#a11y-panel #a11y-panel-reset:hover { background: #3a5f9c !important; }
-#text-widget-1719607130454 :is(p, span), #text-widget-1719607130453 :is(p, span),
-#text-widget-1719607130452 :is(p, span), #text-widget-1719523282218 :is(p, span) { color: #474747 !important; }
-
-/* Homepage tagline: regular weight at body size so it reads (and is announced) as a tagline, not a heading */
-#text-widget-1518129426778 span { font-size: 18px !important; font-weight: 400 !important; letter-spacing: .12em; }
-
 /* Accessibility panel: "Text size" is a group label (span), styled like the old label */
 #a11y-textsize-row > .a11y-size-label { font-size: .78rem !important; color: #555 !important; font-weight: 600 !important; flex: 1 !important; letter-spacing: .01em !important; }

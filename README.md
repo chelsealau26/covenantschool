@@ -153,3 +153,9 @@ is otherwise 404. To publish, copy the redesign files over the files in `pages/`
 Tax-credit blocks have `<!--eftc:soon-->` and `<!--eftc:live-->` versions; the
 worker shows "soon" before the launch time and "live" after (preview links show
 "live"; add `&soon=1` to see "soon").
+
+## Refreshed design (preview only, awaiting client approval)
+- Preview links: `https://covenantschool.com/?preview=JBYlnxBB-i0b` (homepage) and `/brand-guide?preview=JBYlnxBB-i0b` (brand guide).
+- Sitewide styles for the refresh live in `assets/preview.css`; `worker.mjs` adds it only on preview links. Preview-only pages live in `pages/redesign/` and are mapped in `REDESIGNS` (`assets/eftc-launch.mjs`).
+- Preview links also retire `/school-supplies` (redirects to the Family Portal); the live page stays until approval.
+- To publish: move `preview.css` rules into `site-a11y.css`/`giving.css`, swap `pages/redesign/home.html` into `pages/index.html`, drop the school-supplies page, and remove the preview injection.

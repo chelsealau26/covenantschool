@@ -35,6 +35,7 @@ This serves on **port 5000**. The workflow "Start application" is configured to 
 - `new-student-application.html` — Apply
 - `schedule-tour.html` — Schedule a Tour
 - `scholarship-opportunities.html` — Scholarships
+- `school-supplies.html` — School Supplies
 - `technology.html` — Technology
 - `ways-to-give.html` — Ways to Give
 - `employment-openings.html` — Employment
