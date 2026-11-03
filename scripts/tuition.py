@@ -90,7 +90,7 @@ def tuition(ICON, IMG, NEW_TAB):
         {item("calendar", "Save Your Spot for Next Year!", f'''<p>Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p>
           <h4>CCS Student Re-Enrollment</h4><ul class="tu-list">{enroll}</ul>
           <h4>New Student Enrollment</h4><ul class="tu-list"><li><strong>Open Enrollment</strong><span class="tu-when">February 22nd</span><span class="tu-amt">$200 / New Student <em>(Max $750/Family)</em></span></li></ul>
-          <p class="tu-fine">All enrollment fees are non-refundable.</p>''', True)}
+          <p class="tu-fine">All enrollment fees are non-refundable.</p>''')}
         {item("clock", "Clear due dates for tuition and fees", f'<ul class="tu-list">{plans}</ul>')}
         {item("receipt", "Additional Fees", f'''<p>For K3-8th grade, the curriculum fee includes use of all textbooks, consumable workbooks, classroom activities &amp; celebrations, and other materials required for curriculum. Also included is student accident insurance for on &amp; off campus school related activities. Athletic expenses and field trip fees are excluded. All fees are non-refundable.</p>
           <ul class="tu-list">{fees}</ul>
