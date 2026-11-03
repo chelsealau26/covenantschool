@@ -1635,3 +1635,14 @@ a.ct-tile:hover .hm-col-icon { background: var(--navy); color: var(--tan); borde
 .gv-tc-hero::before { background-position: center, center 8% !important; }
 /* Tax credit: on desktop the pledge form starts about halfway down the hero */
 @media (min-width: 961px) { .gv-tc-form { padding-top: calc((100vh - 100px) * .42); padding-top: calc((100svh - 100px) * .42); } }
+
+/* Tax credit hero, set up like Tuition: navy gradient on the left, photo shown clearly on the right
+   and fading into the navy (no zooming across the full width) */
+.gv-tc-hero::before { background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553 !important; }
+.gv-tc-hero::after { content: ""; position: absolute; top: 0; bottom: 0; z-index: -1; pointer-events: none;
+  left: calc(100vw * .42 - var(--tcx, 0px)); width: calc(100vw * .58);
+  background: var(--hero-img) 50% var(--tcy, 22%) / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30%); mask-image: linear-gradient(90deg, transparent 0, #000 30%); }
+@media (max-width: 960px) {
+  .gv-tc-hero::after { left: calc(-1 * var(--tcx, 0px)); width: 100vw; -webkit-mask-image: none; mask-image: none; opacity: .28; background-position: 50% 20%; }
+}

@@ -358,7 +358,7 @@
     });
     if (tc && document.querySelector('link[href*="/assets/preview.css"]')) {
       var r = tc.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < vh) tc.style.setProperty("--tcp", (Math.min(Math.max(0, 160 - r.top) * 0.3, 140)).toFixed(1) + "px");
+      if (r.bottom > 0 && r.top < vh) tc.style.setProperty("--tcy", (22 + Math.min(Math.max(0, 160 - r.top) * 0.04, 18)).toFixed(1) + "%");
     }
     drift.forEach(function (el) {
       var r = el.parentElement.getBoundingClientRect();
