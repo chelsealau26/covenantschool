@@ -1063,3 +1063,104 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .ns-ages > div { grid-template-columns: 84px 1fr; gap: 16px; }
   .gv .ns-ages dt { font-size: 56px; }
 }
+
+/* ---------------------------------------------------------------- Tuition (preview redesign) */
+.tu-hero .gv-hero-photo { background-position: 45% 30%; }
+.tu-jump .gv-jump-links { justify-content: center; }
+.tu-head { max-width: 780px; margin-bottom: 40px; }
+.gv .tu-head p { margin-top: 14px !important; color: var(--muted); font-size: 18px; line-height: 1.65; }
+.gv-dark .tu-head h2 { color: #fff; }
+/* Enrollment: two tracks laid out on a date line */
+.tu-tracks { display: grid; grid-template-columns: 3fr 1fr; gap: 40px; }
+.tu-track-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; padding-bottom: 14px; margin-bottom: 26px; border-bottom: 2px solid var(--navy); }
+.gv .tu-track-head h3 { font-weight: 700 !important; font-size: 20px !important; color: var(--navy); }
+.gv .tu-track-head .ns-link { margin-top: 0; }
+.gv .tu-steps { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; position: relative; }
+.tu-track-new .tu-steps { grid-template-columns: 1fr; }
+.gv .tu-step { position: relative; margin: 0 !important; padding: 26px 0 0 !important; border-top: 2px solid #e6d6c5; }
+.tu-dot { position: absolute; left: 0; top: -9px; width: 16px; height: 16px; border-radius: 50%; background: var(--tan); box-shadow: 0 0 0 4px #fff; }
+.gv .tu-step h4 { font-weight: 700; font-size: 18px; color: var(--navy); }
+.gv .tu-when { margin-top: 6px !important; font-size: 15px; font-weight: 700; color: var(--tan-deep); letter-spacing: .02em; }
+.gv .tu-price { margin-top: 14px !important; font: 400 30px/1.1 Anton, "Open Sans", Arial, sans-serif; color: var(--ink); }
+.gv .tu-price span { display: block; margin-top: 4px; font: 700 14px/1.3 "Open Sans", Arial, sans-serif; color: var(--muted); }
+.gv .tu-nr { margin-top: 4px !important; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+/* Schedule intro + index of what's on the page */
+.tu-sched { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+.gv .tu-index { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; gap: 0; }
+.gv .tu-index li { margin: 0 !important; border-top: 1px solid #ddcfbf; }
+.gv .tu-index li:last-child { border-bottom: 1px solid #ddcfbf; }
+.gv .tu-index a { display: flex; align-items: center; gap: 16px; padding: 14px 4px; color: var(--navy) !important; font-weight: 700; font-size: 17px; text-decoration: none !important; transition: color .2s, padding .2s; }
+.tu-index .hm-col-icon { width: 44px; height: 44px; flex: none; }
+.tu-index .hm-col-icon svg { width: 20px; height: 20px; }
+.gv .tu-index a:hover, .gv .tu-index a:focus-visible { color: var(--tan-deep) !important; padding-left: 10px; }
+.tu-index a:hover .hm-col-icon { background: var(--navy); color: var(--tan); border-color: var(--navy); }
+/* Tables: the clearest way to compare prices */
+.tu-table-wrap { overflow-x: auto; border-radius: 4px; border: 1px solid #e6dacb; box-shadow: 0 20px 44px rgba(13, 33, 54, .07); }
+.gv .tu-table { width: 100%; border-collapse: collapse; font-size: 16px; background: #fff; }
+.gv .tu-table thead th { padding: 16px 22px; text-align: left; font: 700 13px/1.3 "Open Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: linear-gradient(165deg, #224361 0%, #153553 60%, #0d2136 100%) #153553; }
+.gv .tu-table tbody th, .gv .tu-table td { padding: 18px 22px; text-align: left; vertical-align: middle; border-top: 1px solid #ece2d6; }
+.gv .tu-table tbody tr:first-child th, .gv .tu-table tbody tr:first-child td { border-top: 0; }
+.gv .tu-table tbody tr:nth-child(even) { background: #faf8f4; }
+.gv .tu-table tbody tr { transition: background .2s; }
+.gv .tu-table tbody tr:hover { background: var(--tan-soft); }
+.gv .tu-table tbody th strong { display: block; font-size: 18px; color: var(--navy); }
+.gv .tu-table tbody th span { display: block; margin-top: 2px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--tan-deep); }
+.gv .tu-annual { font: 400 30px/1 Anton, "Open Sans", Arial, sans-serif; color: var(--ink); }
+.gv .tu-month { font-size: 20px; font-weight: 700; color: var(--navy); }
+.gv .tu-month span { display: block; margin-top: 3px; font-size: 13px; font-weight: 400; color: var(--muted); }
+.gv .tu-note { display: flex; gap: 16px; align-items: flex-start; margin-top: 22px !important; padding: 18px 20px; border-left: 3px solid var(--tan); background: var(--tan-soft); border-radius: 0 4px 4px 0; font-size: 16px; line-height: 1.6; color: var(--ink); }
+.tu-note .hm-col-icon { width: 38px; height: 38px; flex: none; }
+.tu-note .hm-col-icon svg { width: 18px; height: 18px; }
+/* Payment options on navy */
+.gv.tu-plans { position: relative; overflow: hidden; background: linear-gradient(165deg, #224361 0%, #153553 42%, #0d2136 100%) #153553 !important; }
+.tu-plans .gv-wrap { position: relative; }
+.gv .tu-plan-grid { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.gv .tu-plan-grid li { margin: 0 !important; padding: 4px 28px 0 !important; border-left: 1px solid rgba(218, 173, 134, .4); display: flex; flex-direction: column; }
+.gv .tu-plan-grid li:first-child { padding-left: 0 !important; border-left: 0; }
+.gv .tu-plan-grid h4 { font: 400 32px/1 Anton, "Open Sans", Arial, sans-serif; color: var(--tan); }
+.gv .tu-plan-grid p { margin: 14px 0 18px !important; color: rgba(255, 255, 255, .9); font-size: 16px; line-height: 1.6; flex: 1; }
+.tu-tag { align-self: flex-start; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(218, 173, 134, .6); color: #f0d9c2; font-size: 13px; font-weight: 700; }
+/* Additional fees */
+.tu-fees { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+.tu-fee-table, .tu-cur-table { border: 1px solid #e6dacb; border-radius: 4px; overflow: hidden; }
+.gv .tu-fee-table tbody th { font-size: 17px; font-weight: 700; color: var(--navy); }
+.gv .tu-fee-table tbody th span { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: 14px; }
+.gv .tu-fee-table td, .gv .tu-cur-table td { text-align: right; font-weight: 700; color: var(--ink); white-space: nowrap; font-size: 17px; }
+.tu-cur { padding: 28px; border-radius: 4px; background: var(--tan-soft); border-top: 4px solid var(--tan); }
+.gv .tu-cur h3 { font-weight: 700 !important; font-size: 22px !important; color: var(--navy); }
+.gv .tu-cur-when { margin: 4px 0 16px !important; font-size: 14px; color: var(--muted); }
+.gv .tu-cur-table tbody th { font-weight: 400; color: var(--ink); font-size: 16px; }
+.gv .tu-cur-table tbody th, .gv .tu-cur-table td { padding: 12px 16px; }
+/* Discount band + Choose Act */
+.gv.tu-discount { padding-top: 110px; padding-bottom: 110px; }
+.gv .tu-discount .gv-eyebrow { color: #f0d9c2; }
+.tu-choose { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+.gv .tu-small { margin: 16px 0 26px !important; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.tu-choose-facts { padding: 32px; border-radius: 4px; background: #fff; border: 1px solid #e6dacb; border-top: 4px solid var(--tan); }
+.gv .tu-choose-facts h3 { font-weight: 700 !important; font-size: 20px !important; color: var(--navy); margin-bottom: 8px !important; }
+.gv .tu-choose-facts dl { margin: 0 !important; }
+.tu-choose-facts dl > div { padding: 14px 0; border-top: 1px solid #ece2d6; }
+.gv .tu-choose-facts dt { font-size: 14px; font-weight: 700; color: var(--tan-deep); }
+.gv .tu-choose-facts dd { margin: 4px 0 0 !important; font-size: 17px; color: var(--ink); }
+.gv .tu-big dd { font: 400 30px/1.1 Anton, "Open Sans", Arial, sans-serif; color: var(--navy); }
+@media (max-width: 960px) {
+  .tu-tracks, .tu-sched, .tu-fees, .tu-choose { grid-template-columns: 1fr; gap: 40px; }
+  .gv .tu-plan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 0; }
+  .gv .tu-plan-grid li:nth-child(3) { padding-left: 0 !important; border-left: 0; }
+}
+@media (max-width: 640px) {
+  .gv .tu-steps { grid-template-columns: 1fr; gap: 26px; }
+  .gv .tu-plan-grid { grid-template-columns: 1fr; }
+  .gv .tu-plan-grid li { padding: 0 0 0 18px !important; border-left: 2px solid var(--tan) !important; }
+  .tu-table-wrap { overflow: visible; border: 0; box-shadow: none; }
+  .gv .tu-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .gv .tu-table:not(.tu-fee-table):not(.tu-cur-table) tbody tr { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; padding: 18px; margin-bottom: 12px; border: 1px solid #e6dacb; border-radius: 4px; background: #fff; }
+  .gv .tu-table:not(.tu-fee-table):not(.tu-cur-table) tbody th { grid-column: 1 / -1; padding: 0; border: 0; }
+  .gv .tu-table:not(.tu-fee-table):not(.tu-cur-table) td { padding: 8px 0 0; border: 0; }
+  .gv .tu-annual::before { content: "Annual"; display: block; margin-bottom: 4px; font: 700 12px/1 "Open Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .gv .tu-month::before { content: "11 Monthly"; display: block; margin-bottom: 4px; font: 700 12px/1 "Open Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .gv .tu-annual { font-size: 26px; }
+  .gv .tu-fee-table tbody th, .gv .tu-fee-table td { padding: 14px; }
+  .gv .tu-fee-table td { white-space: normal; }
+  .tu-cur { padding: 20px; }
+}

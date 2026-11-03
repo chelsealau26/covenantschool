@@ -757,6 +757,8 @@ def build():
     (PAGES / "redesign" / "schedule-tour.html").write_text(with_main(shell("schedule-tour.html"), schedule_tour(ICON, IMG, HOME_LINKS["maps"], NEW_TAB)))
     from new_student import new_student
     (PAGES / "redesign" / "new-student-application.html").write_text(with_main(shell("new-student-application.html"), new_student(ICON, IMG, NEW_TAB)))
+    from tuition import tuition
+    (PAGES / "redesign" / "tuition.html").write_text(with_main(shell("tuition.html"), tuition(ICON, IMG, NEW_TAB)))
     from brand_guide import brand_guide
     bg = with_main(shell("ways-to-give.html"), brand_guide(ICON))
     bg = re.sub(r"<title>[^<]*</title>", "<title>Brand Guide | Covenant Christian School</title>", bg, count=1)
