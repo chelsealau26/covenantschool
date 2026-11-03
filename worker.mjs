@@ -5,6 +5,20 @@ import { PREVIEW_KEY, isLaunched, isPreview, isEftcPath, hideEftc, hideEftcSitem
 
 const SUPPLY_LISTS_URL = "https://sis.factsmgt.com/accounts/Account/Login?ReturnUrl=%2Faccounts%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DfamilyPortalCode%26redirect_uri%3Dhttps%253A%252F%252Fsis.factsmgt.com%252Ffamily-portal%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520familyPortalUserInfo%2520familyPortalUserConfig%2520offline_access%2520ftApi%26code_challenge%3DFiul3nN-aztKjGsczQavRZoVMLWZuxwkV5-Mm89Hp18%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D639080670995718110.ZDQyODQ0NmUtYWEzMS00OGU5LWFjN2ItMjRiMjk4MTg5MGI1NmE5ZTA1YjMtYjE1NS00NzkwLWJmMWEtMzM3MGJiMmU0N2Vk%26state%3DCfDJ8Lq1N5Cgm6tFnilnlNGlkcEod0V-wCTGxmw71V0Ux6x0cT40BqsZUZKtA5B8_yAnDYQLGNuzKV1VrllGwfqni1QHIX5H9utq8LNhcc9Bd6PPmf33REHdGqkwHkGnIjPPtu8c-N5Aj204dBYeJ7722Rl8O02GXGlKnnvw22icE117EKUsj_phuldyGYYj_aF3InNQp3JeAe3AvqpJhxxoFZoAXeZhT2gpzxB7pWyj3fQRlzibUr1VuvW7sFAURLWIJObzjAMCRZu0N0XH3bLQDx_tr3JWVOIeTYvOGN6FrJjauybBdnZ95Oala1No5BUYaSk942NFX6-0fyHIYavB6DG-eloKjrip56N7qi1B64iUcxT2DZFwrhvEn6Asl3xolG413HM-KPT_lELYIfIhub17SsYmOFUP_DtfNqOxlxyDgyPttuqttx6Q4VMDwvpmDEY1O_PX7flIna8V7CYc_HnqGZgqOK8KteLJFpn2P426-c4tXI8gbN_STDeK8cx-yA%26x-client-SKU%3DID_NET9_0%26x-client-ver%3D8.15.0.0";
 
+// On preview pages, every link to another page of this site carries the preview key,
+// so clicking around never drops back to the live site (even if cookies are blocked).
+function keepPreviewInLinks(html) {
+  return html.replace(/href="([^"]*)"/gi, (m, href) => {
+    const own = href.match(/^(?:https?:)?\/\/(?:www\.)?covenantschool\.com(\/[^"]*)?$/i);
+    const rel = own ? (own[1] || "/") : (href.startsWith("/") && !href.startsWith("//") ? href : null);
+    if (!rel || /[?&]preview=/.test(rel)) return m;
+    if (/^\/(?:assets|pdfs|cdn-cgi)\/|\.(?:pdf|jpe?g|png|webp|svg|gif|css|js|ico|xml|txt|mp4)(?:[?#]|$)/i.test(rel)) return m;
+    const hashAt = rel.indexOf("#");
+    const base = hashAt === -1 ? rel : rel.slice(0, hashAt), hash = hashAt === -1 ? "" : rel.slice(hashAt);
+    return `href="${base}${base.includes("?") ? "&" : "?"}preview=${PREVIEW_KEY}${hash}"`;
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -16,7 +30,7 @@ export default {
     const enteringPreview = isPreview(url);
     if (leavingPreview) {
       url.searchParams.delete("preview");
-      return new Response(null, { status: 302, headers: { "Location": url.pathname + url.search + url.hash, "Set-Cookie": "ccs_preview=; Path=/; Max-Age=0; Secure; SameSite=Lax", "Cache-Control": "no-store" } });
+      return new Response(null, { status: 302, headers: { "Location": url.pathname + url.search + url.hash, "Set-Cookie": "ccs_preview=; Domain=covenantschool.com; Path=/; Max-Age=0; Secure; SameSite=Lax", "Cache-Control": "no-store" } });
     }
     if (!enteringPreview && cookies.split(/;\s*/).includes(`ccs_preview=${PREVIEW_KEY}`)) url.searchParams.set("preview", PREVIEW_KEY);
     if (path === EMPLOYMENT_FORM_PATH) return handleEmploymentForm(request, env);
@@ -66,10 +80,11 @@ export default {
       // Refreshed design (not yet approved): its sitewide styles load only on preview links.
       if (isPreview(url) && path !== "/sitemap.xml") {
         text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"></head>`);
+        text = keepPreviewInLinks(text);
         text = text.replace("</body>", `<a class="ccs-preview-badge" href="?preview=off" aria-label="You are viewing the preview of the new design. Select to exit preview.">Preview<span aria-hidden="true"> · </span><span>Exit</span></a></body>`);
         headers.set("X-Robots-Tag", "noindex");
       }
-      if (enteringPreview) headers.append("Set-Cookie", `ccs_preview=${PREVIEW_KEY}; Path=/; Max-Age=1209600; Secure; SameSite=Lax`);
+      if (enteringPreview) headers.append("Set-Cookie", `ccs_preview=${PREVIEW_KEY}; Domain=covenantschool.com; Path=/; Max-Age=1209600; Secure; SameSite=Lax`);
       return new Response(request.method === "HEAD" ? null : text, {status:response.status, headers});
     }
     return response;
