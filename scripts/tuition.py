@@ -44,52 +44,16 @@ def tuition(ICON, IMG, NEW_TAB):
     <div class="gv-hero-photo" style="background-image: url('{IMG}covenant-24-9584556.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap">
       <div class="gv-hero-copy">
+        <span class="gv-eyebrow">New Families · Tuition &amp; Fees Schedule</span>
         <h1>Tuition and Fees</h1>
         <p class="gv-lead">Explore our approachable tuition and fees structure, offering key insights into payment schedules, grade-specific pricing, school fees, and beneficial multi-student savings.</p>
-        <div class="gv-actions">
-          <a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment</a>
-          <a class="gv-btn gv-btn-ghost" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment</a>
-        </div>
+        <ul class="tu-checks">
+          <li>Clear due dates for tuition and fees</li>
+          <li>Tailored rates for each grade level</li>
+          <li>Breakdown of additional fees</li>
+          <li>Save with our multi-student discounts</li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <nav class="gv gv-jump tu-jump" aria-label="On this page">
-    <div class="gv-wrap">
-      <div class="gv-jump-links">
-        <a href="#enrollment">Enrollment dates</a><a href="#tuition">Tuition</a><a href="#payments">Payment options</a><a href="#fees">Additional fees</a><a href="#discount">Multi-student discount</a><a href="#choose">Choose Act</a>
-      </div>
-    </div>
-  </nav>
-
-  <section class="gv gv-section gv-white" id="enrollment" aria-labelledby="tu-enroll-title">
-    <div class="gv-wrap">
-      <div class="tu-head" data-reveal><h2 id="tu-enroll-title">Save Your Spot for Next Year!</h2><p>Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p></div>
-      <div class="tu-tracks">
-        <div class="tu-track">
-          <div class="tu-track-head"><h3>CCS Student Re-Enrollment</h3><a class="ns-link" href="{PORTAL}"{NEW_TAB}>Start Here <span aria-hidden="true">&rarr;</span></a></div>
-          <ol class="tu-steps">{enroll}</ol>
-        </div>
-        <div class="tu-track tu-track-new">
-          <div class="tu-track-head"><h3>New Student Enrollment</h3><a class="ns-link" href="/new-student-application">Start Here <span aria-hidden="true">&rarr;</span></a></div>
-          <ol class="tu-steps"><li class="tu-step" data-reveal><span class="tu-dot" aria-hidden="true"></span><h4>Open Enrollment</h4><p class="tu-when">February 22nd</p><p class="tu-price">$200 / New Student <span>(Max $750/Family)</span></p><p class="tu-nr">(Non-refundable)</p></li></ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gv gv-section gv-paper" aria-labelledby="tu-sched-title">
-    <div class="gv-wrap tu-sched">
-      <div data-reveal>
-        <span class="gv-eyebrow">New Families</span>
-        <h2 id="tu-sched-title">Tuition &amp; Fees Schedule<span class="mv-dot" aria-hidden="true">.</span></h2>
-      </div>
-      <ul class="tu-index" data-reveal>
-        <li><a href="#payments"><span class="hm-col-icon">{ICON["calendar"]}</span>Clear due dates for tuition and fees</a></li>
-        <li><a href="#tuition"><span class="hm-col-icon">{ICON["school"]}</span>Tailored rates for each grade level</a></li>
-        <li><a href="#fees"><span class="hm-col-icon">{ICON["receipt"]}</span>Breakdown of additional fees</a></li>
-        <li><a href="#discount"><span class="hm-col-icon">{ICON["users"]}</span>Save with our multi-student discounts</a></li>
-      </ul>
     </div>
   </section>
 
@@ -111,15 +75,7 @@ def tuition(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-section gv-dark tu-plans" id="payments" aria-labelledby="tu-plans-title">
-    <img class="mv-faith-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
-    <div class="gv-wrap">
-      <div class="tu-head" data-reveal><h2 id="tu-plans-title">Clear due dates for tuition and fees<span class="mv-dot" aria-hidden="true">.</span></h2></div>
-      <ul class="tu-plan-grid">{plans}</ul>
-    </div>
-  </section>
-
-  <section class="gv gv-section gv-white" id="fees" aria-labelledby="tu-fees-title">
+  <section class="gv gv-section gv-paper" id="fees" aria-labelledby="tu-fees-title">
     <div class="gv-wrap">
       <div class="tu-head" data-reveal>
         <h2 id="tu-fees-title">Additional Fees<span class="mv-dot" aria-hidden="true">.</span></h2>
@@ -135,17 +91,24 @@ def tuition(ICON, IMG, NEW_TAB):
     </div>
   </section>
 
-  <section class="gv gv-band gv-band-left gv-band-parallax tu-discount" id="discount" data-focus=".3" aria-labelledby="tu-disc-title">
+  <section class="gv gv-section gv-dark tu-plans" id="payments" aria-labelledby="tu-plans-title">
+    <img class="mv-faith-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
+    <div class="gv-wrap">
+      <div class="tu-head" data-reveal><h2 id="tu-plans-title">Clear due dates for tuition and fees<span class="mv-dot" aria-hidden="true">.</span></h2></div>
+      <ul class="tu-plan-grid">{plans}</ul>
+    </div>
+  </section>
+
+  <section class="gv gv-band gv-band-left gv-band-parallax tu-discount" id="discount" data-focus=".05" aria-labelledby="tu-disc-title">
     <div class="gv-band-bg" style="background-image: url('{IMG}covenant-94-9522791.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <span class="gv-eyebrow">Multi Student Discount</span>
       <h2 id="tu-disc-title">The Bigger The Family, The More The Savings</h2>
       <p>There is a 3% discount for the second and third child. Additional discounts for 4th + additional students are determined by administrative staff. No multiple student discounts apply for half-day programs. Please contact the school office for more information.</p>
-      <div class="gv-actions"><a class="gv-btn gv-btn-gold" href="/new-student-application">Apply Today</a><a class="gv-btn gv-btn-ghost" href="{INFO}"{NEW_TAB}>Request More Information</a></div>
     </div>
   </section>
 
-  <section class="gv gv-section gv-paper" id="choose" aria-labelledby="tu-choose-title">
+  <section class="gv gv-section gv-white" id="choose" aria-labelledby="tu-choose-title">
     <div class="gv-wrap tu-choose">
       <div data-reveal>
         <span class="gv-eyebrow">Apply Now</span>
@@ -161,6 +124,27 @@ def tuition(ICON, IMG, NEW_TAB):
           <div><dt>New Family Applications ('26–'27 Academic Year)</dt><dd>Open January 2, 2026 – March 31, 2026</dd></div>
           <div class="tu-big"><dt>Funding Amount</dt><dd>Up to $7,000 per participating student</dd></div>
         </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="gv gv-section gv-white tu-enroll" id="enrollment" aria-labelledby="tu-enroll-title">
+    <div class="gv-wrap">
+      <div class="tu-head" data-reveal><h2 id="tu-enroll-title">Save Your Spot for Next Year!</h2><p>Re-enrollment opens January 16th. Don’t miss early bird savings! Open enrollment starts February 22nd. Limited spots—apply early!</p></div>
+      <div class="tu-tracks">
+        <div class="tu-track">
+          <div class="tu-track-head"><h3>CCS Student Re-Enrollment</h3></div>
+          <ol class="tu-steps">{enroll}</ol>
+        </div>
+        <div class="tu-track tu-track-new">
+          <div class="tu-track-head"><h3>New Student Enrollment</h3></div>
+          <ol class="tu-steps"><li class="tu-step" data-reveal><span class="tu-dot" aria-hidden="true"></span><h4>Open Enrollment</h4><p class="tu-when">February 22nd</p><p class="tu-price">$200 / New Student <span>(Max $750/Family)</span></p><p class="tu-nr">(Non-refundable)</p></li></ol>
+        </div>
+      </div>
+      <div class="tu-final" data-reveal>
+        <a class="gv-btn gv-btn-gold" href="/new-student-application">New Student Enrollment</a>
+        <a class="gv-btn gv-btn-line" href="{PORTAL}"{NEW_TAB}>CCS Student Re-Enrollment</a>
+        <a class="ns-link" href="{INFO}"{NEW_TAB}>Request More Information <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>

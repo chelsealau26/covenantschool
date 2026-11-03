@@ -1164,3 +1164,13 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .gv .tu-fee-table td { white-space: normal; }
   .tu-cur { padding: 20px; }
 }
+
+/* Tuition, linear version: info first (price -> fees -> how to pay -> savings), actions at the end */
+.gv .tu-checks { list-style: none !important; margin: 26px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; max-width: 560px; }
+.gv .tu-checks li { position: relative; margin: 0 !important; padding-left: 28px; color: #fff; font-size: 16px; font-weight: 700; line-height: 1.4; }
+.tu-checks li::before { content: ""; position: absolute; left: 0; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--tan); }
+.tu-checks li::after { content: ""; position: absolute; left: 6px; top: 6px; width: 5px; height: 8px; border: solid var(--navy); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.gv.tu-enroll { background: linear-gradient(180deg, #ffffff 0%, #faf8f4 100%) #fff; }
+.tu-final { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 48px; padding-top: 32px; border-top: 1px solid #ddcfbf; }
+.gv .tu-final .ns-link { margin: 0 0 0 6px; }
+@media (max-width: 640px) { .gv .tu-checks { grid-template-columns: 1fr; } .tu-final .gv-btn { width: 100%; } .gv .tu-final .ns-link { margin: 6px 0 0; } }
