@@ -463,7 +463,7 @@
 .gv-hero-home::before { background: rgba(13, 33, 54, .66) !important; }
 .gv-hero-home h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1.02; letter-spacing: .01em; }
 .gv-hero-home .gv-hero-copy { max-width: 920px; }
-.gv .gv-home-tagline { margin: 22px 0 0; font-size: 19px; letter-spacing: .16em; color: var(--tan); }
+.gv .gv-home-tagline { margin: 22px 0 0; font-size: 19px; font-weight: 700; letter-spacing: .14em; color: #f0d9c2; } /* light tan + bold: stays above 3:1 large-text contrast on every hero photo */
 .gv-hero-home .gv-lead { max-width: 720px; margin: 16px auto 0; }
 .gv-social { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
 .gv-social a { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .55); color: #fff !important; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s, transform .2s; }
