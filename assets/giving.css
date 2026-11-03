@@ -2030,3 +2030,20 @@ html.cu-js .cu-panel + .cu-panel { margin-top: 0; }
   .cal-main #school-calendar .fc-toolbar-title { font-size: 26px !important; }
   .cal-main #school-calendar .fc-event { font-size: 10px; }
 }
+.ac-app-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 72px; align-items: center; }
+.gv .ac-app h2 { font-size: clamp(38px, 4.2vw, 58px); line-height: 1.02; margin: 6px 0 16px; }
+.gv .ac-app-text p { max-width: 560px; font-size: 19px; line-height: 1.7; color: var(--ink); }
+.ac-stores { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.gv .ac-store { display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px 12px 18px; border-radius: 10px; color: #fff; background: linear-gradient(165deg, #224361, #153553 60%, #0d2136) #153553; font-size: 20px; font-weight: 700; line-height: 1.1; text-decoration: none; box-shadow: 0 12px 26px rgba(13, 33, 54, .18); transition: transform .2s, box-shadow .2s; }
+.gv .ac-store small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #f0d9c2; }
+.ac-store svg { width: 28px; height: 28px; flex: none; }
+.gv .ac-store:hover, .gv .ac-store:focus-visible { transform: translateY(-2px); box-shadow: 0 18px 34px rgba(13, 33, 54, .26); }
+.gv .ac-store:focus-visible { outline: 3px solid var(--tan); outline-offset: 3px; }
+.ac-phone { justify-self: center; width: 250px; padding: 12px; border-radius: 40px; background: #0d2136; box-shadow: 0 0 0 2px #2b4a6a inset, 0 40px 80px rgba(13, 33, 54, .3); transform: rotate(4deg); }
+.ac-phone-screen { display: flex; flex-direction: column; align-items: center; gap: 6px; height: 470px; padding: 60px 22px 24px; border-radius: 30px; color: #fff; text-align: center; background: radial-gradient(300px 220px at 100% 0%, rgba(218, 173, 134, .28), transparent 60%), linear-gradient(165deg, #224361, #153553 55%, #0d2136); }
+.ac-phone-screen img { width: 84px; height: auto; margin-bottom: 8px; }
+.ac-phone-screen strong { font: 400 34px/1 Anton, "Open Sans", Arial, sans-serif; letter-spacing: .02em; }
+.ac-phone-screen span { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #f0d9c2; margin-bottom: 26px; }
+.ac-phone-screen i { display: block; width: 100%; height: 46px; margin-top: 10px; border-radius: 10px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(240, 217, 194, .18); }
+.ac-phone-screen i:first-of-type { background: var(--tan); border-color: var(--tan); }
+@media (max-width: 960px) { .ac-app-grid { grid-template-columns: 1fr; gap: 56px; } .ac-phone { transform: none; width: 220px; } .ac-phone-screen { height: 400px; } }
