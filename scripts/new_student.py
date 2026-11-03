@@ -68,7 +68,7 @@ def new_student(ICON, IMG, NEW_TAB):
   <section class="gv gv-section ns-kinder" aria-labelledby="ns-kinder-title">
     <img class="mv-faith-eagle" src="{IMG}eagle-mark-white.png" alt="" width="900" height="321">
     <div class="gv-wrap ns-kinder-grid">
-      <div class="hm-frame ns-kinder-photo" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-151_1-9523341.jpg" alt="Three smiling preschool girls in Covenant uniforms on the playground" loading="lazy"></div>
+      <div class="hm-frame ns-kinder-photo" data-reveal="left"><svg class="hm-frame-line" aria-hidden="true" focusable="false"><rect x="1" y="1" rx="4" ry="4"/></svg><img src="{IMG}covenant-142-9598319.jpg" alt="A beaming young student putting together a puzzle in her classroom" loading="lazy"></div>
       <div data-reveal>
         <span class="gv-eyebrow">All you need to know</span>
         <h2 id="ns-kinder-title">Kinder Requirements<span class="mv-dot" aria-hidden="true">.</span></h2>
@@ -89,7 +89,7 @@ def new_student(ICON, IMG, NEW_TAB):
   </section>
 
   <section class="gv gv-band gv-band-parallax" aria-labelledby="ns-tour-title">
-    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-95-9602737.jpg')" aria-hidden="true"></div>
+    <div class="gv-band-bg" style="background-image: url('{IMG}covenant-151_1-9523341.jpg')" aria-hidden="true"></div>
     <div class="gv-wrap" data-reveal>
       <h2 id="ns-tour-title">TOUR OUR CAMPUS</h2>
       <p class="gv-band-sub">Your child's exceptional education experience awaits.</p>

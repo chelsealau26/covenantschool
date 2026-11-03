@@ -1041,17 +1041,18 @@ body:has(.gv-hero-home) #container-widget-1511379532336 { background: #0a1a2b !i
   .ns-kinder-photo { max-width: 440px; }
 }
 @media (max-width: 640px) {
-  /* Phones: still full screen. Her face fills the top, lightly shaded; the words sit on solid navy below it */
-  .gv.ns-hero { align-items: flex-end; min-height: calc(100svh - 110px); padding: 0 18px 56px; }
-  .ns-hero-img { bottom: 40%; background-position: 70% 22%; }
-  .ns-hero::before { background: rgba(13, 33, 54, .12); }
-  /* Solid navy travels with the words (fades in just above them), so text passes contrast on any phone height */
+  /* Phones: the photo fills the whole hero, zoomed so her face sits clearly in the top part (light 10% shade);
+     the words sit on a navy fade that travels with them, so they pass contrast on any phone height */
+  .gv.ns-hero { align-items: flex-end; min-height: calc(100svh - 110px); padding: 0 18px 40px; }
+  .ns-hero-img { background-size: auto 150%; background-position: 64% 58%; animation: none; }
+  .ns-hero::before { background: rgba(13, 33, 54, .1); }
   .ns-hero-copy { isolation: isolate; }
-  .ns-hero-copy::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -90px; bottom: -56px; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .94) 80px, #0d2136 100%); pointer-events: none; }
-  .gv.ns-hero h1 { font-size: 44px; }
-  .gv.ns-hero .gv-lead { font-size: 17px; margin-top: 14px !important; }
-  .ns-hero .gv-actions { margin-top: 22px; gap: 10px; }
-  .ns-hero .gv-actions .gv-btn { width: 100%; min-height: 48px; }
+  .ns-hero-copy::before { content: ""; position: absolute; z-index: -1; left: -18px; right: -18px; top: -70px; bottom: -40px; background: linear-gradient(180deg, rgba(13, 33, 54, 0) 0, rgba(13, 33, 54, .94) 64px, #0d2136 100%); pointer-events: none; }
+  .gv.ns-hero .gv-eyebrow { margin-bottom: 6px; font-size: 12px; }
+  .gv.ns-hero h1 { font-size: 36px; line-height: 1.02; }
+  .gv.ns-hero .gv-lead { font-size: 15px; line-height: 1.55; margin-top: 10px !important; }
+  .ns-hero .gv-actions { margin-top: 18px; gap: 10px; }
+  .ns-hero .gv-actions .gv-btn { width: 100%; min-height: 46px; padding: 11px 16px; }
   .ns-scroll { display: none; }
   .gv .ns-journey li { padding-left: 52px !important; padding-bottom: 40px !important; }
   .gv .ns-journey .mv-year { font-size: 44px; }
