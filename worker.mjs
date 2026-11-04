@@ -40,8 +40,8 @@ export default {
     }
     if (!enteringPreview && cookies.split(/;\s*/).includes(`ccs_preview=${PREVIEW_KEY}`)) url.searchParams.set("preview", PREVIEW_KEY);
     if (path === EMPLOYMENT_FORM_PATH) return handleEmploymentForm(request, env);
-    // Redesign (preview only): the School Supplies page is retired; supply lists live in the Family Portal.
-    if (isPreview(url) && /^\/school-supplies(\.html)?\/?$/i.test(path)) return Response.redirect(SUPPLY_LISTS_URL, 302);
+    // The School Supplies page is retired; supply lists live in the Family Portal.
+    if (/^\/school-supplies(\.html)?\/?$/i.test(path)) return Response.redirect(SUPPLY_LISTS_URL, 302);
     if (hasEnded() && isFundraiserPath(decodeURIComponent(path))) {
       return new Response(request.method === "HEAD" ? null : CLOSED_PAGE, {
         status: 410,
@@ -56,7 +56,7 @@ export default {
         headers: {"Content-Type":"text/html; charset=utf-8", "Cache-Control":"no-store", "X-Robots-Tag":"noindex"}
       });
     }
-    // Redesigned pages: hidden unless on a preview link, where they replace the current page.
+    // Redesigned pages (launched Nov 4, 2026): served at each page's normal URL. The internal /redesign/ paths stay hidden.
     const decoded = decodeURIComponent(path);
     if (isRedesignPath(decoded) && !isPreview(url)) {
       return new Response(request.method === "HEAD" ? null : NOT_FOUND_PAGE, {
@@ -64,7 +64,8 @@ export default {
         headers: {"Content-Type":"text/html; charset=utf-8", "Cache-Control":"no-store", "X-Robots-Tag":"noindex"}
       });
     }
-    const redesign = isPreview(url) ? redesignFor(decoded) : null;
+    // The brand guide is internal: preview link only.
+    const redesign = (isPreview(url) || !/^\/brand-guide/i.test(decoded)) ? redesignFor(decoded) : null;
     let response = await env.ASSETS.fetch(redesign ? new Request(new URL(redesign, url), request) : request);
     // A preview must never redirect the visitor to the internal /redesign/ path (it would drop the preview key).
     if (redesign && response.status >= 300 && response.status < 400 && response.headers.get("Location")) {
@@ -82,14 +83,18 @@ export default {
       if (hasEnded()) text = path === "/sitemap.xml" ? removeSitemapEntry(text) : removeBanner(text);
       if (eftcHidden) text = path === "/sitemap.xml" ? hideEftcSitemap(text) : hideEftc(text);
       if (path !== "/sitemap.xml") text = pickCreditVersion(text, showLiveCredit(url));
-      if (redesign) headers.set("X-Robots-Tag", "noindex");
-      // Refreshed design (not yet approved): its sitewide styles load only on preview links.
+      if (redesign && /^\/brand-guide/i.test(decoded)) headers.set("X-Robots-Tag", "noindex");
+      // The new design (silver look), live for everyone since Nov 4, 2026.
+      if (path !== "/sitemap.xml") {
+        text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"><link rel="stylesheet" href="/assets/silver.css?v=${SILVER_CSS_VERSION}"><script>document.documentElement.classList.add("ccs-silver")</script></head>`);
+        // The AOSF pledge form is an iframe, so pass it the silver accent.
+        text = text.replace(/data-primary-color="#daad86"/g, 'data-primary-color="#cfd2d6"');
+        text = text.replace("</body>", `<script src="/assets/preview.js?v=${PREVIEW_JS_VERSION}" defer></script></body>`);
+      }
+      // Preview links (client review of anything still unreleased, e.g. the tax credit page before Dec 1).
       if (isPreview(url) && path !== "/sitemap.xml") {
-        text = text.replace("</head>", `<link rel="stylesheet" href="/assets/preview.css?v=${PREVIEW_CSS_VERSION}"><link rel="stylesheet" href="/assets/silver.css?v=${SILVER_CSS_VERSION}"><script>document.documentElement.classList.add("ccs-silver");try{var q=new URLSearchParams(location.search).get("look");if(q)sessionStorage.setItem("ccs_look",q);if((q||sessionStorage.getItem("ccs_look"))==="tan")document.documentElement.classList.remove("ccs-silver")}catch(e){}</script></head>`);
         text = keepPreviewInLinks(text);
-        // Silver look (default on preview): the AOSF pledge form is an iframe, so pass it the silver accent.
-        if (url.searchParams.get("look") !== "tan") text = text.replace(/data-primary-color="#daad86"/g, 'data-primary-color="#cfd2d6"');
-        text = text.replace("</body>", `<script src="/assets/preview.js?v=${PREVIEW_JS_VERSION}" defer></script><a class="ccs-preview-badge" href="?preview=off" aria-label="You are viewing the preview of the new design. Select to exit preview.">Preview<span aria-hidden="true"> · </span><span>Exit</span></a></body>`);
+        text = text.replace("</body>", `<a class="ccs-preview-badge" href="?preview=off" aria-label="You are viewing the preview. Select to exit preview.">Preview<span aria-hidden="true"> · </span><span>Exit</span></a></body>`);
         headers.set("X-Robots-Tag", "noindex");
       }
       if (enteringPreview) headers.append("Set-Cookie", `ccs_preview=${PREVIEW_KEY}; Domain=covenantschool.com; Path=/; Max-Age=1209600; Secure; SameSite=Lax`);

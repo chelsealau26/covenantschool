@@ -355,7 +355,7 @@ def scholarships():
       <div class="gv-panels">
         <div class="gv-panel" data-reveal>
           <div class="gv-panel-icon">{ICON["users"]}</div>
-          <h4>Eligibility Requirements</h4>
+          <h3 class="gv-h4">Eligibility Requirements</h3>
           <ul>
             <li>Students must meet income-based criteria.</li>
             <li>Priority is given to students zoned to a public school deemed a "priority school" (those receiving a D or F on the Alabama School Report Card).</li>
@@ -363,7 +363,7 @@ def scholarships():
         </div>
         <div class="gv-panel" data-reveal>
           <div class="gv-panel-icon">{ICON["info"]}</div>
-          <h4>Key Details</h4>
+          <h3 class="gv-h4">Key Details</h3>
           <ul>
             <li>Scholarships cover some or all tuition costs.</li>
             <li>Students already receiving AOSF scholarships may be eligible to transfer their award to Covenant Christian School.</li>
@@ -371,7 +371,7 @@ def scholarships():
         </div>
         <div class="gv-panel" data-reveal>
           <div class="gv-panel-icon">{ICON["calendar"]}</div>
-          <h4>How to Apply</h4>
+          <h3 class="gv-h4">How to Apply</h3>
           <ul>
             <li><strong>Applications for 2027–2028 are not open yet.</strong> They typically open in March, so check back then.</li>
             <li>Visit the <a href="https://www.alabamascholarshipfund.org/"{NEW_TAB}>AOSF website</a> regularly for updates.</li>
@@ -449,13 +449,13 @@ def scholarships():
       <div class="gv-cards gv-cards-2">
         <div class="gv-panel" data-reveal>
           <div class="gv-panel-icon">{ICON["check"]}</div>
-          <h4>Complete Enrollment</h4>
+          <h3 class="gv-h4">Complete Enrollment</h3>
           <p>Families must complete Covenant Christian School's enrollment process to ensure space is available in the desired grade level.</p>
           <div class="gv-actions"><a class="gv-btn" href="/new-student-application">Apply Today</a></div>
         </div>
         <div class="gv-panel" data-reveal>
           <div class="gv-panel-icon">{ICON["info"]}</div>
-          <h4>Scholarship &ne; Enrollment</h4>
+          <h3 class="gv-h4">Scholarship &ne; Enrollment</h3>
           <p>Scholarships or ESAs do not guarantee enrollment.</p>
           <div class="gv-actions"><a class="gv-btn gv-btn-line" href="https://content.app-sources.com/s/641329925069930801/uploads/PDF_Files/External_Scholarships_Info_Dec2024-4631514.pdf"{NEW_TAB} data-doc="External Scholarships Information">{ICON["file"]}Scholarships Info (PDF)</a></div>
         </div>
