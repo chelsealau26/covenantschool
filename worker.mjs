@@ -1,6 +1,6 @@
 import { EMPLOYMENT_FORM_PATH, handleEmploymentForm } from "./employment-form.mjs";
 import { hasEnded, isFundraiserPath, removeBanner, removeSitemapEntry, CLOSED_PAGE } from "./assets/fundraiser-lifecycle.mjs";
-import { showChooseOpen, pickChooseVersion } from "./assets/choose-window.mjs";
+import { chooseStateFor, pickChooseVersion } from "./assets/choose-window.mjs";
 import { PREVIEW_CSS_VERSION, PREVIEW_JS_VERSION, SILVER_CSS_VERSION } from "./assets/preview-version.mjs";
 import { PREVIEW_KEY, isLaunched, isPreview, isEftcPath, hideEftc, hideEftcSitemap, NOT_FOUND_PAGE, showLiveCredit, pickCreditVersion, redesignFor, isRedesignPath } from "./assets/eftc-launch.mjs";
 
@@ -84,7 +84,7 @@ export default {
       if (hasEnded()) text = path === "/sitemap.xml" ? removeSitemapEntry(text) : removeBanner(text);
       if (eftcHidden) text = path === "/sitemap.xml" ? hideEftcSitemap(text) : hideEftc(text);
       if (path !== "/sitemap.xml") text = pickCreditVersion(text, showLiveCredit(url));
-      if (path !== "/sitemap.xml") text = pickChooseVersion(text, showChooseOpen(url, isPreview(url)));
+      if (path !== "/sitemap.xml") text = pickChooseVersion(text, chooseStateFor(url, isPreview(url)));
       if (redesign && /^\/brand-guide/i.test(decoded)) headers.set("X-Robots-Tag", "noindex");
       // The new design (silver look), live for everyone since Nov 4, 2026.
       if (path !== "/sitemap.xml") {
